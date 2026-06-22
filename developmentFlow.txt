@@ -1,0 +1,41 @@
+FLOW OF MERN PROJECT DEVELOPMENT
+
+BACKEND :-
+
+• Initialize a Node.js project
+• Install project dependencies
+• Set scripts in package.js file according to your project
+• Create a server.js file
+• Create a .env file to store environment value
+
+--------------------
+
+• Establish a server using Express.js ↓
+
+- Import the Express.js library into the project.
+- Import the dotenv package for environment variables.
+- Load environment variables from the .env file.
+- Create an Express application instance.
+- Get the port number from the .env file.
+- Use port 4000 if no port is found in the .env file.
+- Start the server.
+- Listen for incoming client requests.
+- Display a success message in the console when the server starts.
+
+--------------------
+
+• Connect to DATABASE (mangodb) ↓
+
+- Create a project in MongoDB Atlas.
+- Get the MongoDB connection URL.
+- Store the connection URL in an environment variable.
+- Create a database connection function.
+- Connect to MongoDB using Mongoose.
+- Export the database connection function.
+- Import the connection function into server.js.
+- Call the connection function to connect the application to MongoDB.
+
+--------------------
+
+• 
+
