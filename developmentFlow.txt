@@ -37,5 +37,17 @@ BACKEND :-
 
 --------------------
 
-• 
+• Setup Error Handling ↓
+
+- Create a custom `ErrorHandler` class.
+- Create a `catchAsyncError` wrapper function for async controllers.
+- Create a global `Error Middleware`.
+- Handle common application errors (MongoDB, JWT, Validation, etc.).
+- Convert raw errors into user-friendly error messages.
+- Send a consistent error response to the client.
+- Import the Error Middleware into `server.js`.
+- Register the Error Middleware using `app.use(errorMiddleware)` after all routes.
+
+--------------------
+
 
