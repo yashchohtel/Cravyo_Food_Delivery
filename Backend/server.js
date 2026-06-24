@@ -2,6 +2,7 @@
 import express from "express"; // Express framework for building APIs
 import dotenv from "dotenv"; // Import dotenv for environment variables
 import connectDB from "./config/dataBase.js"; // Import the function to connect to MongoDB
+import errorMiddleware from "./middleware/error.js";
 
 // -------------------- CONFIGURATION  -------------------- //
 
@@ -10,6 +11,10 @@ dotenv.config();
 
 // Initialize the Express app
 const app = express();
+
+// -------------------- MIDDLEWARES -------------------- //
+
+app.use(errorMiddleware); // Use error middleware
 
 // -------------------- CONNECT TO MONGODB -------------------- //
 
