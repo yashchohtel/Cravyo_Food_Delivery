@@ -1,0 +1,128 @@
+# MERN Backend - Concept Revision List
+
+## Project Setup
+
+* Node.js Project Initialization
+* Package.json
+* NPM Scripts
+* Project Folder Structure
+* Environment Variables (.env)
+* Git & .gitignore
+
+---
+
+## Express Fundamentals
+
+* What is Express?
+* Node.js HTTP Server
+* Express Application (`const app = express()`)
+* Express Internal Working
+* HTTP Request Lifecycle
+* Express Request Pipeline
+* `app.use()`
+* Middleware
+* Route Handler
+* Controller
+* Router
+* `req`, `res`, `next`
+* `next()` vs `next(err)`
+* Request Object
+* Response Object
+
+---
+
+## Server Setup
+
+* Import Modules
+* Load Environment Variables
+* Create Express App
+* Configure Middlewares
+* Start Server (`listen()`)
+
+---
+
+## Database
+
+* MongoDB Atlas
+* MongoDB Connection String
+* Mongoose
+* Database Connection
+* `connectDB()` Function
+* Export & Import Database Connection
+
+---
+
+## Error Handling
+
+* Why Error Handling?
+* Custom ErrorHandler Class
+* Extending the Error Class
+* `super()`
+* `captureStackTrace()`
+* catchAsyncError
+* Higher Order Function
+* Wrapper Function
+* Global Error Middleware
+* CastError
+* Duplicate Key Error
+* JWT Error
+* Token Expired Error
+* Default Error Values
+* Error Response Format
+
+---
+
+## Middleware
+
+* Built-in Middleware
+* Third-party Middleware
+* Custom Middleware
+* Middleware Execution Order
+* Authentication Middleware
+* Error Middleware
+
+---
+
+## Routing
+
+* Express Router
+* Route Registration
+* Route Matching
+* Route Parameters
+* Query Parameters
+
+---
+
+## Request Data
+
+* req.body
+* req.params
+* req.query
+* req.headers
+* req.cookies
+
+---
+
+## Response
+
+* res.send()
+* res.json()
+* res.status()
+* res.cookie()
+
+---
+
+## Authentication (Upcoming)
+
+* User Model
+* Register API
+* Login API
+* Logout API
+* JWT
+* Cookies
+* Password Hashing (bcrypt)
+* Protected Routes
+* Authorization
+
+---
+
