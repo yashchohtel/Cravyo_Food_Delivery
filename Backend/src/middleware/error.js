@@ -1,4 +1,5 @@
-import ErrorHandler from "../utils/errorHandler.js"; // Import the custom ErrorHandler
+ // Import the custom ErrorHandler
+import ErrorHandler from '../utils/errorHandler.js'
 
 // Global error handling middleware
 const errorMiddleware = (err, req, res, next) => {
