@@ -50,4 +50,23 @@ BACKEND :-
 
 --------------------
 
+• Build an API ↓
+
+- Install Required Packages
+- Configure Middlewares
+- Create Database Schema
+- Create Database Model
+- Add Model Methods (if needed)
+- Create Feature
+- Create Route
+- Create Controller
+- Validate Request Data
+- Perform Business Logic
+- Interact with Database
+- Generate Token (if needed)
+- Set Cookie (if needed)
+- Send Response
+- Test API using Postman
+
+--------------------
 
