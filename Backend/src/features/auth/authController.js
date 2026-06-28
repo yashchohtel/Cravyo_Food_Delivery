@@ -40,36 +40,3 @@ export const registerUser = async (req, res, next) => {
 
 };
 
-// LOGIN
-export const loginUser = async (req, res, next) => {
-
-    // Extract login details from request body
-    // "identifier" can be either email or mobileNumber
-    const { identifier, password } = req.body;
-
-    // Check if all required fields are provided
-    if (!identifier || !password) {
-        return next(new ErrorHandler("Missing login details", 400));
-    }
-
-    // Find user by email or mobileNumber
-    const user = await User.findOne({
-        $or: [{ email: identifier }, { mobileNumber: identifier }]
-    });
-
-    // If user not found, return error
-    if (!user) {
-        return next(new ErrorHandler("Invalid credentials", 401));
-    }
-
-    // Check if the password matches
-    const isPasswordMatch = await user.comparePassword(password);
-
-    if (!isPasswordMatch) {
-        return next(new ErrorHandler("Invalid credentials", 401));
-    }
-
-    // sending token to the user
-    sendToken(user, 200, res);
-
-};
