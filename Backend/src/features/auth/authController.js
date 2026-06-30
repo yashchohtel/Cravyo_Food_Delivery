@@ -1,6 +1,7 @@
 import User from "../../models/user.modal.js"; // Import User model
 import ErrorHandler from "../../utils/errorHandler.js"; // Import custom error handler
 import { sendToken } from "../../utils/sendJwtToken.js"; // import sendToken utility 
+import sendEmail from "../../utils/sendEmail.js"; // send email function to send email to suer
 
 // REGISTRATION 
 export const registerUser = async (req, res, next) => {
@@ -34,6 +35,29 @@ export const registerUser = async (req, res, next) => {
         password,
         mobileNumber
     });
+
+    // Send Welcome Email (Don't fail registration if email sending fails)
+    try {
+
+        await sendEmail({
+
+            to: savedUser.email,
+            subject: "Welcome to Cravyo 🎉",
+            html: `
+                <h2>Welcome to Cravyo, ${savedUser.fullName}! 👋</h2>
+
+                <p>Your account has been created successfully.</p>
+
+                <p>We're excited to have you with us.</p>
+
+                <p>Happy Ordering! 🍔🍕</p>
+            `,
+
+        });
+
+    } catch (error) {
+        console.error("Welcome Email Error:", error.message);
+    }
 
     // sending token to the user
     sendToken(savedUser, 201, res);
