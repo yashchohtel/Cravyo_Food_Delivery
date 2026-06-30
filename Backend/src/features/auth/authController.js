@@ -93,6 +93,8 @@ export const loginUser = async (req, res, next) => {
         return next(new ErrorHandler("Invalid credentials", 401));
     }
 
+
+    
     // sending token to the user
     sendToken(user, 200, res);
 
