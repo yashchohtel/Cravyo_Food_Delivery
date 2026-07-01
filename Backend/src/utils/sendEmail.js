@@ -15,15 +15,6 @@ const transporter = nodemailer.createTransport({
 
 });
 
-// 👇 Yaha lagao
-console.log("send email file ↓");
-console.log(process.env.BREVO_SMTP_HOST);
-console.log(process.env.BREVO_SMTP_PORT);
-console.log(process.env.BREVO_SMTP_LOGIN);
-console.log(transporter.options);
-console.log("send email file ↑");
-
-
 // send mail utility function to send email to the user
 const sendEmail = async ({ to, subject, text, html }) => {
 

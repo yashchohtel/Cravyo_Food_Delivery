@@ -4,7 +4,7 @@ import { sendToken } from "../../utils/sendJwtToken.js"; // import sendToken uti
 import sendEmail from "../../utils/sendEmail.js"; // send email function to send email to suer
 
 // REGISTRATION 
-export const registerUser = async (req, res, next) => {
+export const register = async (req, res, next) => {
 
     // Extract user details from request body
     const { fullName, email, password, mobileNumber } = req.body;
@@ -60,15 +60,16 @@ export const registerUser = async (req, res, next) => {
     }
 
     // sending token to the user
-    sendToken(savedUser, 201, res);
+    sendToken(savedUser, 201, res, `Welcome, ${savedUser.fullName}`);
 
 };
 
 // LOGIN
-export const loginUser = async (req, res, next) => {
+export const login = async (req, res, next) => {
 
     // Extract login details from request body
-    // "identifier" can be either email or mobileNumber
+
+    // "identifier" can be either email or mobile number
     const { identifier, password } = req.body;
 
     // Check if all required fields are provided
@@ -76,26 +77,146 @@ export const loginUser = async (req, res, next) => {
         return next(new ErrorHandler("Missing login details", 400));
     }
 
-    // Find user by email or mobileNumber
+    // Find user by email or mobile number
     const user = await User.findOne({
-        $or: [{ email: identifier }, { mobileNumber: identifier }]
+        $or: [
+            { email: identifier.toLowerCase() },
+            { mobileNumber: identifier }
+        ]
     });
 
-    // If user not found, return error
+    // If user does not exist
     if (!user) {
-        return next(new ErrorHandler("Invalid credentials", 401));
+        return next(new ErrorHandler("Invalid email/mobile number or password", 401));
     }
 
-    // Check if the password matches
+    // Compare password
     const isPasswordMatch = await user.comparePassword(password);
 
     if (!isPasswordMatch) {
-        return next(new ErrorHandler("Invalid credentials", 401));
+        return next(new ErrorHandler("Invalid email/mobile number or password", 401));
     }
 
-
-    
-    // sending token to the user
-    sendToken(user, 200, res);
+    // Send JWT token
+    sendToken(user, 200, res, `Welcome back, ${user.fullName}`);
 
 };
+
+// LOGOUT
+export const logout = (req, res) => {
+
+    // Clear JWT cookie
+    res.clearCookie("token", {
+        httpOnly: true,
+    });
+
+    // Send success response
+    res.status(200).json({
+        success: true,
+        message: "Logged out successfully",
+    });
+
+};
+
+// SEND LOGIN OTP - (opt login)
+export const sendLoginOtp = async (req, res, next) => {
+
+    // Extract mobile number
+    const { mobileNumber } = req.body;
+
+    // Validate input
+    if (!mobileNumber) {
+        return next(new ErrorHandler("Mobile number is required", 400));
+    }
+
+    // Find user
+    const user = await User.findOne({ mobileNumber });
+
+    if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+    }
+
+    // Generate 6-digit OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Save OTP and expiry
+    user.loginOtp = otp;
+    user.loginOtpExpire = new Date(Date.now() + 5 * 60 * 1000);
+
+    // Save user with OTP
+    await user.save();
+
+    // Send Login OTP (Don't fail if email sending fails)
+    try {
+
+        await sendEmail({
+
+            to: user.email,
+            subject: "Your Cravyo Login OTP 🔐",
+            html: `
+            <h2>Your Login OTP</h2>
+
+            <p>Hello ${user.fullName},</p>
+
+            <p>Your OTP is:</p>
+
+            <h1>${otp}</h1>
+
+            <p>This OTP is valid for <strong>5 minutes</strong>.</p>
+
+            <p>If you didn't request this OTP, please ignore this email.</p>
+        `,
+
+        });
+
+    } catch (error) {
+        console.error("Login OTP Email Error:", error.message);
+    }
+
+    // Send success response
+    res.status(200).json({
+        success: true,
+        message: "OTP sent successfully",
+    });
+
+};
+
+// VERIFY LOGIN OTP - (opt login)
+export const verifyLoginOtp = async (req, res, next) => {
+
+    // Extract data
+    const { mobileNumber, otp } = req.body;
+
+    // Validate input
+    if (!mobileNumber || !otp) {
+        return next(new ErrorHandler("Mobile number and OTP are required", 400));
+    }
+
+    // Find user
+    const user = await User.findOne({ mobileNumber });
+
+    if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+    }
+
+    // Check OTP
+    if (user.loginOtp !== otp) {
+        return next(new ErrorHandler("Invalid OTP", 400));
+    }
+
+    // Check OTP expiry
+    if (user.loginOtpExpire < Date.now()) {
+        return next(new ErrorHandler("OTP has expired", 400));
+    }
+
+    // Clear OTP after successful verification
+    user.loginOtp = undefined;
+    user.loginOtpExpire = undefined;
+
+    await user.save();
+
+    // Login user
+    sendToken(user, 200, res, `Welcome back, ${user.fullName}`);
+
+};
+

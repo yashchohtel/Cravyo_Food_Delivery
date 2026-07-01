@@ -7,7 +7,7 @@ import connectDB from "./config/dataBase.js"; // Import the function to connect 
 import errorMiddleware from "./middleware/error.js"; // Import errorMIddleware
 import authRouter from "./features/auth/authRoutes.js"; // import auth router
  
-// -------------------- CONFIGURATION  -------------------- //
+// -------------------- CONFIGURATION -------------------- //
 
 // Load environment variables
 dotenv.config();
@@ -27,8 +27,8 @@ app.use(cors({
     origin: [
         "http://localhost:5173",
     ],
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // Allowed HTTP methods
     credentials: true, // Allow cookies to be sent with requests
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // Allowed HTTP methods
 }));
 
 // Enable cookie parsing for incoming requests

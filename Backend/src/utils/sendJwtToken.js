@@ -1,5 +1,5 @@
 // function to create send and store JWT token for user authentication
-export const sendToken = (user, statusCode, res) => {
+export const sendToken = (user, statusCode, res, message) => {
 
     // creating JWT token for the user
     const token = user.getJwtToken();
@@ -23,7 +23,7 @@ export const sendToken = (user, statusCode, res) => {
     // send response with cookie
     res.status(statusCode).cookie("token", token, options).json({
         success: true,
-        message: `Welcome, ${user.fullName}`,
+        message,
         user: userData
     })
 

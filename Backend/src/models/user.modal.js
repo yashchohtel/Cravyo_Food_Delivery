@@ -43,6 +43,16 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
 
+    // Login OTP
+    loginOtp: {
+        type: String,
+    },
+
+    // Login OTP Expiry
+    loginOtpExpire: {
+        type: Date,
+    },
+
 }, { timestamps: true })
 
 // Pre-save hook to hash the password before saving
