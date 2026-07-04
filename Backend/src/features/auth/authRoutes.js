@@ -1,6 +1,7 @@
 import express from "express"; // Express framework for building APIs
 import catchAsyncError from "../../middleware/catchAsyncError.js";
-import { login, logout, register, sendLoginOtp, verifyLoginOtp } from "./authController.js";
+import { isUserAuth } from "../../middleware/auth.js"; // Import authentication middleware
+import { getCurrentUser, login, logout, register, sendLoginOtp, verifyLoginOtp } from "./authController.js";
 
 const authRouter = express.Router(); // Creating an instance of Express Router
 
@@ -20,5 +21,9 @@ authRouter.post("/send-login-otp", catchAsyncError(sendLoginOtp));
 
 // Verify Login OTP [POST] - 'http://localhost:5000/api/auth/verify-login-otp'
 authRouter.post("/verify-login-otp", catchAsyncError(verifyLoginOtp));
+
+//  Get my profile [get] - 'http://localhost:5000/api/auth/me'
+authRouter.get("/me", isUserAuth, catchAsyncError(getCurrentUser));
+
 
 export default authRouter; // export user router

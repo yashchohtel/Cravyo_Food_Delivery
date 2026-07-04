@@ -220,3 +220,37 @@ export const verifyLoginOtp = async (req, res, next) => {
 
 };
 
+// GET CURRENT USER
+export const getCurrentUser = async (req, res, next) => {
+
+    // Extract authenticated user id
+    const { id } = req.user;
+
+    // Find user and exclude sensitive fields
+    const user = await User.findById(id).select("-password -loginOtp -loginOtpExpire");
+
+    // Check if user exists
+    if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+    }
+
+    // Optimized user data
+    const userData = {
+        id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        mobileNumber: user.mobileNumber,
+        roles: user.roles,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+    };
+
+    // Send response
+    res.status(200).json({
+        success: true,
+        message: "User fetched successfully",
+        user: userData,
+    });
+
+};
+
