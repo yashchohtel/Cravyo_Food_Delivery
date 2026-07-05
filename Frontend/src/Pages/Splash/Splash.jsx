@@ -7,6 +7,9 @@ import { loadUser } from "../../features/auth/authThunk";
 
 const Splash = () => {
 
+    console.log("Splash Render");
+
+
     // initialize use dispatch
     const dispatch = useDispatch();
 
@@ -18,7 +21,7 @@ const Splash = () => {
     /* -------------------------------------- */
 
     // Get auth state from Redux store
-    const { authLoading, isAuthenticated } = useSelector((state) => state.auth);
+    const { authLoading , isAuthenticated } = useSelector((state) => state.auth);
 
     /* -------------------------------------- */
 
