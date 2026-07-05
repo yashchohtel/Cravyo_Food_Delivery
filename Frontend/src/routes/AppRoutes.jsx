@@ -11,7 +11,11 @@ function AppRoutes() {
     <Routes>
 
       {/* default splash route */}
-      <Route path="/" element={<Splash />} />
+      {/* <Route path="/" element={<Splash />} /> */}
+      <Route
+        path="/"
+        element={<h1 style={{ color: "red" }}>ROOT PAGE</h1>}
+      />
 
       {/* auth route */}
       <Route path="/auth" element={<Auth />} />
