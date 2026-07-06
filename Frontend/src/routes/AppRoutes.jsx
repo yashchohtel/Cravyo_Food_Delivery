@@ -1,38 +1,25 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Auth from "../Pages/Auth/Auth";
 import Home from "../Pages/Home/Home";
-import { useSelector } from "react-redux";
+import PublicRoute from "./PublicRoute";
+import ProtectedRoute from "./ProtectedRoute";
 
 function AppRoutes() {
 
-  // Get auth state from Redux store
-  const { isAuthenticated } = useSelector((state) => state.auth);
 
   return (
 
-    // // routes for the app
-    // <Routes>
-
-    //   {/* default splash route */}
-    //   <Route path="/" element={<Splash />} />
-
-    //   {/* auth route */}
-    //   <Route path="/auth" element={<Auth />} />
-
-    //   {/* home route */}
-    //   <Route path="/home" element={<Home />} />
-
-    // </Routes>
-
+    // routes for the app
     <Routes>
 
-      <Route path="/" element={ isAuthenticated ? <Navigate to="/home" replace /> : <Navigate to="/auth" replace /> } />
+      {/* auth route */}
+      <Route path="/" element={<PublicRoute> <Auth /> </PublicRoute>} />
 
-      <Route path="/auth" element={ isAuthenticated ? <Navigate to="/home" replace /> : <Auth /> } />
-
-      <Route path="/home" element={ isAuthenticated ? <Home /> : <Navigate to="/auth" replace /> } />
+      {/* home route */}
+      <Route path="/home" element={<ProtectedRoute> <Home /> </ProtectedRoute>} />
 
     </Routes>
+
 
   );
 }
