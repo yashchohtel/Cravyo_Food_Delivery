@@ -1,27 +1,36 @@
-import { Routes, Route } from "react-router-dom";
-import Splash from "../Pages/Splash/Splash";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Auth from "../Pages/Auth/Auth";
 import Home from "../Pages/Home/Home";
+import { useSelector } from "react-redux";
 
 function AppRoutes() {
 
+  // Get auth state from Redux store
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
   return (
 
-    // routes for the app
+    // // routes for the app
+    // <Routes>
+
+    //   {/* default splash route */}
+    //   <Route path="/" element={<Splash />} />
+
+    //   {/* auth route */}
+    //   <Route path="/auth" element={<Auth />} />
+
+    //   {/* home route */}
+    //   <Route path="/home" element={<Home />} />
+
+    // </Routes>
+
     <Routes>
 
-      {/* default splash route */}
-      {/* <Route path="/" element={<Splash />} /> */}
-      <Route
-        path="/"
-        element={<h1 style={{ color: "red" }}>ROOT PAGE</h1>}
-      />
+      <Route path="/" element={ isAuthenticated ? <Navigate to="/home" replace /> : <Navigate to="/auth" replace /> } />
 
-      {/* auth route */}
-      <Route path="/auth" element={<Auth />} />
+      <Route path="/auth" element={ isAuthenticated ? <Navigate to="/home" replace /> : <Auth /> } />
 
-      {/* home route */}
-      <Route path="/home" element={<Home />} />
+      <Route path="/home" element={ isAuthenticated ? <Home /> : <Navigate to="/auth" replace /> } />
 
     </Routes>
 
@@ -29,3 +38,4 @@ function AppRoutes() {
 }
 
 export default AppRoutes;
+

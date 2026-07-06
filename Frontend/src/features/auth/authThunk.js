@@ -8,6 +8,8 @@ export const loadUser = createAsyncThunk("auth/loadUser", async (_, { rejectWith
 
         const { data } = await api.get("/api/auth/me");
 
+        console.log("loadUser data:", data); // Log the response data for debugging
+
         return data.user;
 
     } catch (error) {

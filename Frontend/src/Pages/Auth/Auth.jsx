@@ -1,7 +1,7 @@
-
-console.log("Redirect");
-
 const Auth = () => {
+
+  console.log("Redirect");
+
   return (
     <div>Auth</div>
   )
