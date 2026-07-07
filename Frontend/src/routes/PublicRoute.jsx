@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -10,7 +8,7 @@ const PublicRoute = ({ children }) => {
 
     // check if user is Authenticated or not
     if (isAuthenticated) {
-        return <Navigate to="/app" replace />;
+        return <Navigate to="/home" replace />;
     }
 
     // if user is authenticated then return the children component
