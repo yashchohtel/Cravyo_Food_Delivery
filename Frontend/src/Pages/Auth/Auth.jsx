@@ -4,25 +4,42 @@ import { Eye, EyeClosed } from 'lucide-react';
 
 const Auth = () => {
 
-  // state to toggle between register and login and login forms
-  const [currentForm, setCurrentForm] = useState("login"); // Possible values: "login", "signup", "otp", "verifyOtp"
-
-  /* -------------------------------------- */
-
   // state to toggle password visibility
   const [showPassword, setShowPassword] = useState(true);
 
   /* -------------------------------------- */
 
-  // state to hold form data
-  const [formData, setFormData] = useState({
+  // Initial form data
+  const initialFormData = {
     fullName: "",
     email: "",
     mobileNumber: "",
     identifier: "",
     password: "",
     otp: "",
-  });
+  };
+
+  // state to hold form data
+  const [formData, setFormData] = useState(initialFormData);
+
+  /* -------------------------------------- */
+
+  // state to toggle between register and login and login forms
+  const [currentForm, setCurrentForm] = useState("login"); // Possible values: "login", "signup", "otp", "verifyOtp"
+
+  // change form function to switch between forms
+  const changeForm = (formName) => {
+
+    // set the current form to the new form name and reset errors
+    setCurrentForm(formName);
+
+    // reset errors when changing forms
+    setErrors({});
+
+    // reset form data when changing forms
+    setFormData(initialFormData);
+
+  };
 
   /* -------------------------------------- */
 
@@ -45,6 +62,35 @@ const Auth = () => {
   // state to store validation errors
   const [errors, setErrors] = useState({});
 
+  // function to validate the form data based on the current form
+  const validateForm = () => {
+
+    // create a new errors object to hold validation errors
+    const newErrors = {};
+
+    // Validation for login form
+    if (currentForm === "login") {
+
+      // Identifier
+      if (!formData.identifier.trim()) {
+        newErrors.identifier = "Email or Mobile is required";
+      }
+
+      // Password
+      if (!formData.password.trim()) {
+        newErrors.password = "Password is required";
+      }
+
+    }
+
+    // set the errors state with the new errors object
+    setErrors(newErrors);
+
+    // return errors object to indicate if there are any validation errors
+    return newErrors;
+
+  };
+
   /* -------------------------------------- */
 
   // handle form submission
@@ -53,10 +99,37 @@ const Auth = () => {
     // Prevent the default form submission behavior
     e.preventDefault();
 
-    console.log(formData);
+    // call validateForm to check for validation errors and store them in newErrors
+    const newErrors = validateForm();
+
+    // If there are validation errors, do not proceed with form submission
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
+
+    // -------------------
+
+    // login form submission 
+    if (currentForm === "login") {
+      // Login API
+    }
+
+    // signup form submission 
+    else if (currentForm === "signup") {
+      // Signup API
+    }
+
+    // login with otp form submission
+    else if (currentForm === "otp") {
+      // Send OTP API
+    }
+
+    // verify otp form submission
+    else if (currentForm === "verifyOtp") {
+      // Verify OTP API
+    }
 
   };
-
 
   return (
     <>
@@ -154,14 +227,13 @@ const Auth = () => {
                 </p>
 
                 {/* continue with google button */}
-                {/* Google Login Button */}
                 <button className="btn btnGoogle">
                   <img src="/googleLogo.png" alt="Google" />
                   Continue with Google
                 </button>
 
                 {/* login with otp button */}
-                <p className="otpLoginText" onClick={() => setCurrentForm("otp")} >
+                <p className="otpLoginText" onClick={() => changeForm("otp")} >
                   Login with OTP
                 </p>
 
@@ -169,7 +241,7 @@ const Auth = () => {
                 <p className="bottomText">
                   Don't have an account?
 
-                  <span onClick={() => setCurrentForm("signup")}>
+                  <span onClick={() => changeForm("signup")}>
                     Sign Up
                   </span>
 
@@ -262,7 +334,7 @@ const Auth = () => {
                 {/* login form button */}
                 <p className="bottomText">
                   Already have an account?
-                  <span onClick={() => setCurrentForm("login")}>
+                  <span onClick={() => changeForm("login")}>
                     Login
                   </span>
                 </p>
@@ -291,14 +363,13 @@ const Auth = () => {
                 {/* send otp button */}
                 <button
                   className="btn btnPrimary"
-                  onClick={setCurrentForm("verifyOtp")}
+                  onClick={() => changeForm("verifyOtp")}
                   type="submit"
                 >
                   Send OTP
                 </button>
 
                 {/* continue with google button */}
-                {/* Google Login Button */}
                 <button className="btn btnGoogle">
                   <img src="/googleLogo.png" alt="Google" />
                   Continue with Google
@@ -307,7 +378,7 @@ const Auth = () => {
                 {/* login form button */}
                 <p className="bottomText">
                   Login using Password?
-                  <span onClick={() => setCurrentForm("login")}>
+                  <span onClick={() => changeForm("login")}>
                     Login
                   </span>
                 </p>
@@ -341,7 +412,7 @@ const Auth = () => {
                 {/* change mobile number button */}
                 <p className="bottomText">
                   Wrong mobile number?
-                  <span onClick={() => setCurrentForm("otp")}>
+                  <span onClick={() => changeForm("otp")}>
                     Change Number
                   </span>
                 </p>
