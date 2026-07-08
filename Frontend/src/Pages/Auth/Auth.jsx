@@ -24,6 +24,8 @@ const Auth = () => {
     otp: "",
   });
 
+  /* -------------------------------------- */
+
   // handle input change for form fields
   const handleInputChange = (e) => {
 
@@ -38,7 +40,17 @@ const Auth = () => {
 
   };
 
+  /* -------------------------------------- */
+
+  // state to store validation errors
+  const [errors, setErrors] = useState({});
+
+  /* -------------------------------------- */
+
+  // handle form submission
   const handleFormSubmit = (e) => {
+
+    // Prevent the default form submission behavior
     e.preventDefault();
 
     console.log(formData);
