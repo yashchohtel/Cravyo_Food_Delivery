@@ -1,4 +1,4 @@
-import "./spladh.css";
+import "./Spladh.css";
 
 const Splash = () => {
     return (
