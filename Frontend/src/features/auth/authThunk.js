@@ -8,8 +8,7 @@ export const loadUser = createAsyncThunk("auth/loadUser", async (_, { rejectWith
 
         const { data } = await api.get("/api/auth/me");
 
-        console.log("loadUser data:", data); // Log the response data for debugging
-
+        // Return the user data from the response
         return data.user;
 
     } catch (error) {
@@ -22,4 +21,66 @@ export const loadUser = createAsyncThunk("auth/loadUser", async (_, { rejectWith
 
 });
 
+// Thunk to register a new user
+export const registerUser = createAsyncThunk("auth/registerUser", async (formData, { rejectWithValue }) => {
 
+    try {
+
+        // register api call
+        const { data } = await api.post("/api/auth/register", formData);
+
+        // return success response
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Something went wrong"
+        );
+
+    }
+
+});
+
+// Thunk to login user
+export const loginUser = createAsyncThunk("auth/loginUser", async (formData, { rejectWithValue }) => {
+
+    try {
+
+        // login api call
+        const { data } = await api.post("/api/auth/login", formData);
+
+        console.log(data);
+
+        // return success response
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Something went wrong"
+        );
+
+    }
+
+});
+
+// Thunk to logout the current user
+export const logoutUser = createAsyncThunk("auth/logoutUser", async (_, { rejectWithValue }) => {
+
+    try {
+
+        // logout api call
+        const { data } = await api.post("/api/auth/logout");
+
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Something went wrong"
+        );
+
+    }
+
+});

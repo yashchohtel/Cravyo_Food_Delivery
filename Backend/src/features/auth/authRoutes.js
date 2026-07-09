@@ -25,5 +25,4 @@ authRouter.post("/verify-login-otp", catchAsyncError(verifyLoginOtp));
 //  Get my profile [get] - 'http://localhost:5000/api/auth/me'
 authRouter.get("/me", isUserAuth, catchAsyncError(getCurrentUser));
 
-
 export default authRouter; // export user router

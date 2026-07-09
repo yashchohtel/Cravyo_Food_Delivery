@@ -2,12 +2,18 @@ import { useState } from "react";
 import "./Auth.css";
 import { Eye, EyeClosed } from 'lucide-react';
 import ButtonLoader from "../../Components/Loaders/ButtonLoader/ButtonLoader";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, registerUser } from "../../features/auth/authThunk.js";
 
 const Auth = () => {
 
+  // initialize use dispatch
+  const dispatch = useDispatch();
+
+  /* -------------------------------------- */
+
   // getting required data from global store using useSelector
-  const { authLoading } = useSelector((state) => state.auth);
+  const { formLoading, errorMessage } = useSelector((state) => state.auth);
 
   /* -------------------------------------- */
 
@@ -170,20 +176,32 @@ const Auth = () => {
     const newErrors = validateForm();
 
     // If there are validation errors, do not proceed with form submission
-    if (Object.keys(newErrors).length > 0) {
-      return;
-    }
+    if (Object.keys(newErrors).length > 0) return;
 
     // -------------------
 
     // login form submission 
     if (currentForm === "login") {
-      // Login API
+
+      // dispatch Login thunk
+      dispatch(loginUser({
+        identifier: formData.identifier,
+        password: formData.password,
+      }));
+
     }
 
     // signup form submission 
     else if (currentForm === "signup") {
-      // Signup API
+
+      // dispatch register user thunk
+      dispatch(registerUser({
+        fullName: formData.fullName,
+        email: formData.email,
+        mobileNumber: formData.mobileNumber,
+        password: formData.password,
+      }));
+
     }
 
     // login with otp form submission
@@ -288,11 +306,15 @@ const Auth = () => {
                   {/* password error */}
                   {errors.password && <p className="inputError"> {errors.password} </p>}
 
+                  {errorMessage === "Invalid email/mobile number or password" && (
+                    <p className="inputError">{errorMessage}</p>
+                  )}
+
                 </div>
 
                 {/* login button */}
                 <button className="btn btnPrimary" type="submit">
-                  {authLoading ? <ButtonLoader /> : "Login"}
+                  {formLoading ? <ButtonLoader /> : "Login"}
                 </button>
 
                 {/* forgot password button */}
@@ -364,6 +386,11 @@ const Auth = () => {
                   {/* email error */}
                   {errors.email && <p className="inputError"> {errors.email} </p>}
 
+                  {/* email server error */}
+                  {errorMessage === "Email already exists" && (
+                    <p className="inputError">{errorMessage}</p>
+                  )}
+
                 </div>
 
                 {/* mobile number input */}
@@ -381,6 +408,11 @@ const Auth = () => {
 
                   {/* mobile number error */}
                   {errors.mobileNumber && <p className="inputError"> {errors.mobileNumber} </p>}
+
+                  {/* mobile server error */}
+                  {errorMessage === "Mobile number already exists" && (
+                    <p className="inputError">{errorMessage}</p>
+                  )}
 
                 </div>
 
@@ -417,7 +449,7 @@ const Auth = () => {
 
                 {/* create account button */}
                 <button className="btn btnPrimary" type="submit">
-                  {authLoading ? <ButtonLoader /> : "Create Account"}
+                  {formLoading ? <ButtonLoader /> : "Create Account"}
                 </button>
 
                 {/* Google Login Button */}
@@ -463,7 +495,7 @@ const Auth = () => {
 
                 {/* send otp button */}
                 <button className="btn btnPrimary" type="submit" >
-                  {authLoading ? <ButtonLoader /> : "Send OTP"}
+                  {formLoading ? <ButtonLoader /> : "Send OTP"}
                 </button>
 
                 {/* continue with google button */}
