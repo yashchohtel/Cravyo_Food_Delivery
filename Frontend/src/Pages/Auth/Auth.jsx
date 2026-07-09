@@ -1,8 +1,15 @@
 import { useState } from "react";
 import "./Auth.css";
 import { Eye, EyeClosed } from 'lucide-react';
+import ButtonLoader from "../../Components/Loaders/ButtonLoader/ButtonLoader";
+import { useSelector } from "react-redux";
 
 const Auth = () => {
+
+  // getting required data from global store using useSelector
+  const { authLoading } = useSelector((state) => state.auth);
+
+  /* -------------------------------------- */
 
   // state to toggle password visibility
   const [showPassword, setShowPassword] = useState(true);
@@ -24,8 +31,8 @@ const Auth = () => {
 
   /* -------------------------------------- */
 
-  // state to toggle between register and login and login forms
-  const [currentForm, setCurrentForm] = useState("login"); // Possible values: "login", "signup", "otp", "verifyOtp"
+  // state to toggle between register and login and login forms - "login", "signup", "otp", "verifyOtp"
+  const [currentForm, setCurrentForm] = useState("login");
 
   // change form function to switch between forms
   const changeForm = (formName) => {
@@ -79,6 +86,66 @@ const Auth = () => {
       // Password
       if (!formData.password.trim()) {
         newErrors.password = "Password is required";
+      }
+
+    }
+
+    // Validation for signup form
+    else if (currentForm === "signup") {
+
+      // Full Name
+      if (!formData.fullName.trim()) {
+        newErrors.fullName = "Full name is required";
+      }
+      else if (formData.fullName.trim().length < 4) {
+        newErrors.fullName = "Full name must be at least 4 characters";
+      }
+
+      // Email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!formData.email.trim()) {
+        newErrors.email = "Email is required";
+      }
+      else if (!emailRegex.test(formData.email)) {
+        newErrors.email = "Invalid email address";
+      }
+
+      // Mobile Number
+      const mobileRegex = /^[6-9]\d{9}$/;
+
+      if (!formData.mobileNumber.trim()) {
+        newErrors.mobileNumber = "Mobile number is required";
+      }
+      else if (!mobileRegex.test(formData.mobileNumber)) {
+        newErrors.mobileNumber = "Enter a valid mobile number";
+      }
+
+      // Password
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+
+      if (!formData.password.trim()) {
+        newErrors.password = "Password is required";
+      }
+      else if (formData.password.length < 8) {
+        newErrors.password = "Password must be at least 8 characters";
+      }
+      else if (!passwordRegex.test(formData.password)) {
+        newErrors.password = "Password must contain uppercase, lowercase, number and special character";
+      }
+
+    }
+
+    // login with otp form validation
+    else if (currentForm === "otp") {
+
+      const mobileRegex = /^[6-9]\d{9}$/;
+
+      if (!formData.mobileNumber.trim()) {
+        newErrors.mobileNumber = "Mobile number is required";
+      }
+      else if (!mobileRegex.test(formData.mobileNumber)) {
+        newErrors.mobileNumber = "Enter a valid mobile number";
       }
 
     }
@@ -165,12 +232,13 @@ const Auth = () => {
           </div>
 
           {/* Form */}
-          <div className="authForm" onSubmit={(e) => handleFormSubmit(e)}>
+          <form className="authForm" onSubmit={(e) => handleFormSubmit(e)}>
 
             {/* login form */}
             {currentForm === "login" && (
 
               <>
+
                 {/* identifiers */}
                 <div className="inputGroup">
 
@@ -185,6 +253,9 @@ const Auth = () => {
                     value={formData.identifier}
                     onChange={handleInputChange}
                   />
+
+                  {/* identifier error message */}
+                  {errors.identifier && <p className="inputError"> {errors.identifier} </p>}
 
                 </div>
 
@@ -214,11 +285,14 @@ const Auth = () => {
 
                   </div>
 
+                  {/* password error */}
+                  {errors.password && <p className="inputError"> {errors.password} </p>}
+
                 </div>
 
                 {/* login button */}
                 <button className="btn btnPrimary" type="submit">
-                  Login
+                  {authLoading ? <ButtonLoader /> : "Login"}
                 </button>
 
                 {/* forgot password button */}
@@ -258,7 +332,9 @@ const Auth = () => {
 
                 {/* full name input */}
                 <div className="inputGroup">
+
                   <label>Full Name</label>
+
                   <input
                     type="text"
                     placeholder="Enter full name"
@@ -266,11 +342,17 @@ const Auth = () => {
                     value={formData.fullName}
                     onChange={handleInputChange}
                   />
+
+                  {/* full name error */}
+                  {errors.fullName && <p className="inputError"> {errors.fullName} </p>}
+
                 </div>
 
                 {/* email input */}
                 <div className="inputGroup">
+
                   <label>Email</label>
+
                   <input
                     type="email"
                     placeholder="Enter email"
@@ -278,11 +360,17 @@ const Auth = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                   />
+
+                  {/* email error */}
+                  {errors.email && <p className="inputError"> {errors.email} </p>}
+
                 </div>
 
                 {/* mobile number input */}
                 <div className="inputGroup">
+
                   <label>Mobile Number</label>
+
                   <input
                     type="tel"
                     placeholder="Enter mobile number"
@@ -290,6 +378,10 @@ const Auth = () => {
                     value={formData.mobileNumber}
                     onChange={handleInputChange}
                   />
+
+                  {/* mobile number error */}
+                  {errors.mobileNumber && <p className="inputError"> {errors.mobileNumber} </p>}
+
                 </div>
 
                 {/* password input signup*/}
@@ -318,11 +410,14 @@ const Auth = () => {
 
                   </div>
 
+                  {/* password error */}
+                  {errors.password && <p className="inputError"> {errors.password} </p>}
+
                 </div>
 
                 {/* create account button */}
                 <button className="btn btnPrimary" type="submit">
-                  Create Account
+                  {authLoading ? <ButtonLoader /> : "Create Account"}
                 </button>
 
                 {/* Google Login Button */}
@@ -350,7 +445,9 @@ const Auth = () => {
 
                 {/* mobile number input */}
                 <div className="inputGroup">
+
                   <label>Mobile Number</label>
+
                   <input
                     type="tel"
                     placeholder="Enter mobile number"
@@ -358,15 +455,15 @@ const Auth = () => {
                     value={formData.mobileNumber}
                     onChange={handleInputChange}
                   />
+
+                  {/* mobile number error */}
+                  {errors.mobileNumber && <p className="inputError"> {errors.mobileNumber} </p>}
+
                 </div>
 
                 {/* send otp button */}
-                <button
-                  className="btn btnPrimary"
-                  onClick={() => changeForm("verifyOtp")}
-                  type="submit"
-                >
-                  Send OTP
+                <button className="btn btnPrimary" type="submit" >
+                  {authLoading ? <ButtonLoader /> : "Send OTP"}
                 </button>
 
                 {/* continue with google button */}
@@ -427,7 +524,7 @@ const Auth = () => {
 
             )}
 
-          </div>
+          </form>
 
         </div>
 

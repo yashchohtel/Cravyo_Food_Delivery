@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 2.4rem;
-  margin-top: -5rem;
+  /* margin-top: -5rem; */
 }
 
 /* auth logo */
@@ -116,6 +116,14 @@
   height: 2rem;
   cursor: pointer;
   color: var(--text-secondary);
+}
+
+/* input error */
+.inputError {
+  padding-left: 0.4rem;;
+  color: var(--error-color);
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 /* forgot passward link */
