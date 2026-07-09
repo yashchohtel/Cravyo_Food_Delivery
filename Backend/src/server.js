@@ -6,7 +6,7 @@ import cors from "cors"; // Middleware to enable CORS (Cross-Origin Resource Sha
 import connectDB from "./config/dataBase.js"; // Import the function to connect to MongoDB
 import errorMiddleware from "./middleware/error.js"; // Import errorMIddleware
 import authRouter from "./features/auth/authRoutes.js"; // import auth router
- 
+
 // -------------------- CONFIGURATION -------------------- //
 
 // Load environment variables
@@ -42,7 +42,7 @@ connectDB() // Call the function to connect to MongoDB
 // -------------------- ROUTES -------------------- //
 
 // authentication routes `/api/auth` - Use authRouter for handling auth-related routes
-app.use("/api/auth", authRouter); 
+app.use("/api/auth", authRouter);
 
 // -------------------- ERROR MIDDLEWARES -------------------- //
 
