@@ -110,10 +110,7 @@ const authSlice = createSlice({
             // Rejected
             .addCase(loginUser.rejected, (state, action) => {
                 state.formLoading = false;
-                state.errorMessage = action.payload;
-
-                console.log(action.payload);
-                
+                state.errorMessage = action.payload;                
             })
 
             /* ----------- LOGOUT ↓ */

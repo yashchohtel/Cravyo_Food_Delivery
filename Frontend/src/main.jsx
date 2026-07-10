@@ -16,10 +16,10 @@ createRoot(document.getElementById('root')).render(
 
       <App />
 
-       <Toaster
-            position="top-center"
-            reverseOrder={false}
-        />
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
 
     </Provider>
 
