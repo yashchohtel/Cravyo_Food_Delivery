@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loadUser, loginUser, logoutUser, registerUser } from "./authThunk";
+import { loadUser, loginUser, logoutUser, registerUser, sendLoginOtp } from "./authThunk";
 
 // Initial state for authentication
 const initialState = {
@@ -110,7 +110,7 @@ const authSlice = createSlice({
             // Rejected
             .addCase(loginUser.rejected, (state, action) => {
                 state.formLoading = false;
-                state.errorMessage = action.payload;                
+                state.errorMessage = action.payload;
             })
 
             /* ----------- LOGOUT ↓ */
@@ -136,7 +136,27 @@ const authSlice = createSlice({
                 state.errorMessage = action.payload;
             })
 
+            // Pending
+            .addCase(sendLoginOtp.pending, (state) => {
+                state.formLoading = true;
+                state.errorMessage = null;
+                state.successMessage = null;
+            })
+
+            // Fulfilled
+            .addCase(sendLoginOtp.fulfilled, (state, action) => {
+                state.formLoading = false;
+                state.successMessage = action.payload.message;
+            })
+
+            // Rejected
+            .addCase(sendLoginOtp.rejected, (state, action) => {
+                state.formLoading = false;
+                state.errorMessage = action.payload;
+            })
+
     },
+    
 });
 
 // Export actions for use in components

@@ -65,6 +65,26 @@ export const loginUser = createAsyncThunk("auth/loginUser", async (formData, { r
 
 });
 
+// Thunk to send login OTP
+export const sendLoginOtp = createAsyncThunk("auth/sendLoginOtp", async (formData, { rejectWithValue }) => {
+
+    try {
+
+        // send login otp api call
+        const { data } = await api.post("/api/auth/send-login-otp", formData);
+
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Something went wrong"
+        );
+
+    }
+
+});
+
 // Thunk to logout the current user
 export const logoutUser = createAsyncThunk("auth/logoutUser", async (_, { rejectWithValue }) => {
 

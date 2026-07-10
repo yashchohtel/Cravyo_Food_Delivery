@@ -3,7 +3,7 @@ import "./Auth.css";
 import { Eye, EyeClosed } from 'lucide-react';
 import ButtonLoader from "../../Components/Loaders/ButtonLoader/ButtonLoader";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, registerUser } from "../../features/auth/authThunk.js";
+import { loginUser, registerUser, sendLoginOtp } from "../../features/auth/authThunk.js";
 import { clearMessages } from "../../features/auth/authSlice.js";
 import { useEffect } from "react";
 
@@ -15,7 +15,7 @@ const Auth = () => {
   /* -------------------------------------- */
 
   // getting required data from global store using useSelector
-  const { formLoading, errorMessage, isAuthenticated } = useSelector((state) => state.auth);
+  const { formLoading, errorMessage } = useSelector((state) => state.auth);
 
   /* -------------------------------------- */
 
@@ -211,7 +211,12 @@ const Auth = () => {
 
     // login with otp form submission
     else if (currentForm === "otp") {
+
       // Send OTP API
+      dispatch(sendLoginOtp({
+        mobileNumber: formData.mobileNumber,
+      }));
+
     }
 
     // verify otp form submission
@@ -222,8 +227,8 @@ const Auth = () => {
   };
 
   useEffect(() => {
-    console.log(isAuthenticated);
-  }, [isAuthenticated])
+    console.log();
+  },[])
 
   return (
     <>
