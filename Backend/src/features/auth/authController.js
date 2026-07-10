@@ -133,7 +133,7 @@ export const sendLoginOtp = async (req, res, next) => {
     const user = await User.findOne({ mobileNumber });
 
     if (!user) {
-        return next(new ErrorHandler("User not found", 404));
+        return next(new ErrorHandler("No account found with this mobile number.", 404));
     }
 
     // Generate 6-digit OTP

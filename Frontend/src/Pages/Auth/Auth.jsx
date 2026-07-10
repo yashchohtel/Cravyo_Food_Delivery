@@ -15,7 +15,7 @@ const Auth = () => {
   /* -------------------------------------- */
 
   // getting required data from global store using useSelector
-  const { formLoading, errorMessage } = useSelector((state) => state.auth);
+  const { formLoading, errorMessage, successMessage } = useSelector((state) => state.auth);
 
   /* -------------------------------------- */
 
@@ -227,8 +227,9 @@ const Auth = () => {
   };
 
   useEffect(() => {
-    console.log();
-  },[])
+    console.log("success: " + successMessage);
+    console.log("error: " + errorMessage);
+  }, [successMessage, errorMessage])
 
   return (
     <>
@@ -504,6 +505,11 @@ const Auth = () => {
 
                   {/* mobile number error */}
                   {errors.mobileNumber && <p className="inputError"> {errors.mobileNumber} </p>}
+
+                  {/* Mobile server error */}
+                  {errorMessage === "No account found with this mobile number." && (
+                    <p className="inputError"> {errorMessage} </p>
+                  )}
 
                 </div>
 
