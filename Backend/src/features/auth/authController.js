@@ -2,6 +2,7 @@ import User from "../../models/user.modal.js"; // Import User model
 import ErrorHandler from "../../utils/errorHandler.js"; // Import custom error handler
 import { sendToken } from "../../utils/sendJwtToken.js"; // import sendToken utility 
 import sendEmail from "../../utils/sendEmail.js"; // send email function to send email to suer
+import bcrypt from "bcryptjs"; // import bcryptjs
 
 // REGISTRATION 
 export const register = async (req, res, next) => {
@@ -139,8 +140,11 @@ export const sendLoginOtp = async (req, res, next) => {
     // Generate 6-digit OTP
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-    // Save OTP and expiry
-    user.loginOtp = otp;
+    // Hash OTP
+    const hashedOtp = await bcrypt.hash(otp, 10);
+
+    // Save hashed OTP and expiry
+    user.loginOtp = hashedOtp;
     user.loginOtpExpire = new Date(Date.now() + 5 * 60 * 1000);
 
     // Save user with OTP
@@ -181,7 +185,7 @@ export const sendLoginOtp = async (req, res, next) => {
 
 };
 
-// VERIFY LOGIN OTP - (opt login)
+// VERIFY LOGIN OTP
 export const verifyLoginOtp = async (req, res, next) => {
 
     // Extract data
@@ -199,9 +203,9 @@ export const verifyLoginOtp = async (req, res, next) => {
         return next(new ErrorHandler("User not found", 404));
     }
 
-    // Check OTP
-    if (user.loginOtp !== otp) {
-        return next(new ErrorHandler("Invalid OTP", 400));
+    // Check OTP exists
+    if (!user.loginOtp || !user.loginOtpExpire) {
+        return next(new ErrorHandler("Invalid OTP request", 400));
     }
 
     // Check OTP expiry
@@ -209,7 +213,14 @@ export const verifyLoginOtp = async (req, res, next) => {
         return next(new ErrorHandler("OTP has expired", 400));
     }
 
-    // Clear OTP after successful verification
+    // Compare OTP
+    const isOtpMatched = await bcrypt.compare(otp, user.loginOtp);
+
+    if (!isOtpMatched) {
+        return next(new ErrorHandler("Invalid OTP", 400));
+    }
+
+    // Clear OTP
     user.loginOtp = undefined;
     user.loginOtpExpire = undefined;
 
@@ -218,7 +229,7 @@ export const verifyLoginOtp = async (req, res, next) => {
     // Login user
     sendToken(user, 200, res, `Welcome back, ${user.fullName}`);
 
-};
+}; 
 
 // GET CURRENT USER
 export const getCurrentUser = async (req, res, next) => {

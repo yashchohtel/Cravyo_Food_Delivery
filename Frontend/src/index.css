@@ -162,6 +162,10 @@ img {
   user-select: none;
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+}
+
 /* Primary Button */
 .btnPrimary {
   background: var(--primary-color);

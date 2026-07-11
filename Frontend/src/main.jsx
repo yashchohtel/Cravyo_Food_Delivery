@@ -17,8 +17,23 @@ createRoot(document.getElementById('root')).render(
       <App />
 
       <Toaster
-        position="top-center"
-        reverseOrder={false}
+        position="top-right"
+        toastOptions={{
+          style: {
+            color: "var(--text-primary)",
+            background: "var(--background-color)",
+            fontSize: "1.3rem",
+            fontWeight: 500,
+            letterSpacing: "0.03rem",
+          },
+          success: {
+            iconTheme: {
+              primary: "var(--primary-color)", // Tick color
+              secondary: "var(--background-color)", // Circle color
+            },
+          },
+
+        }}
       />
 
     </Provider>

@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Auth.css";
 import { Eye, EyeClosed } from 'lucide-react';
 import ButtonLoader from "../../Components/Loaders/ButtonLoader/ButtonLoader";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, registerUser, sendLoginOtp } from "../../features/auth/authThunk.js";
 import { clearMessages } from "../../features/auth/authSlice.js";
-import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const Auth = () => {
 
@@ -172,7 +172,7 @@ const Auth = () => {
   /* -------------------------------------- */
 
   // handle form submission
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
 
     // Prevent the default form submission behavior
     e.preventDefault();
@@ -213,9 +213,14 @@ const Auth = () => {
     else if (currentForm === "otp") {
 
       // Send OTP API
-      dispatch(sendLoginOtp({
-        mobileNumber: formData.mobileNumber,
-      }));
+      const result = await dispatch(
+        sendLoginOtp({ mobileNumber: formData.mobileNumber })
+      );
+
+      // change form to verify otp if otp send succesfully
+      if (sendLoginOtp.fulfilled.match(result)) {
+        changeForm("verifyOtp");
+      }
 
     }
 
@@ -226,10 +231,28 @@ const Auth = () => {
 
   };
 
+  /* -------------------------------------- */
+
+  // effect to show toast on api success
   useEffect(() => {
-    console.log("success: " + successMessage);
-    console.log("error: " + errorMessage);
-  }, [successMessage, errorMessage])
+
+    // return if successMessage is null
+    if (!successMessage) return;
+
+    // show toast on otp send
+    if (successMessage === "OTP sent successfully") {
+      toast.success("OTP sent to mail!");
+    }
+
+    // show toast on logout
+    if (successMessage === "Logged out successfully"){
+      toast.success("Logged out !");
+    }
+
+    // clear state success/error message
+    dispatch(clearMessages());
+
+  }, [successMessage, dispatch]);
 
   return (
     <>
@@ -328,7 +351,11 @@ const Auth = () => {
                 </div>
 
                 {/* login button */}
-                <button className="btn btnPrimary" type="submit">
+                <button
+                  className="btn btnPrimary"
+                  type="submit"
+                  disabled={formLoading}
+                >
                   {formLoading ? <ButtonLoader /> : "Login"}
                 </button>
 
@@ -463,7 +490,11 @@ const Auth = () => {
                 </div>
 
                 {/* create account button */}
-                <button className="btn btnPrimary" type="submit">
+                <button
+                  className="btn btnPrimary"
+                  type="submit"
+                  disabled={formLoading}
+                >
                   {formLoading ? <ButtonLoader /> : "Create Account"}
                 </button>
 
@@ -514,7 +545,11 @@ const Auth = () => {
                 </div>
 
                 {/* send otp button */}
-                <button className="btn btnPrimary" type="submit" >
+                <button
+                  className="btn btnPrimary"
+                  type="submit"
+                  disabled={formLoading}
+                >
                   {formLoading ? <ButtonLoader /> : "Send OTP"}
                 </button>
 

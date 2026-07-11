@@ -72,7 +72,7 @@ export const sendLoginOtp = createAsyncThunk("auth/sendLoginOtp", async (formDat
 
         // send login otp api call
         const { data } = await api.post("/api/auth/send-login-otp", formData);
-
+        console.log(data);
         return data;
 
     } catch (error) {
