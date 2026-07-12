@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser, registerUser, sendLoginOtp } from "../../features/auth/authThunk.js";
 import { clearMessages } from "../../features/auth/authSlice.js";
 import toast from "react-hot-toast";
+import OtpInput from "../../../../Backend/src/Components/OtpInput/OtpInput.jsx";
 
 const Auth = () => {
 
@@ -587,6 +588,8 @@ const Auth = () => {
                     onChange={handleInputChange}
                   />
                 </div>
+
+                <OtpInput length={4}/>
 
                 {/* verify otp button */}
                 <button className="btn btnPrimary" type="submit">
