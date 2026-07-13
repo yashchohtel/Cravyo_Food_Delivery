@@ -32,9 +32,15 @@ const OtpInput = ({ length, onOtpChange }) => {
     // send otp to parent component
     onOtpChange(combinedOtp);
 
-    // move to next input if current filled is filled
-    if (index < length - 1 && !newOtp[index + 1] && inputRefs.current[index + 1]) {
-      inputRefs.current[newOtp.indexOf("")].focus();
+    // move focus to first empty input
+    if (value) {
+
+      const firstEmptyIndex = newOtp.indexOf("");
+
+      if (firstEmptyIndex !== -1) {
+        inputRefs.current[firstEmptyIndex].focus();
+      }
+
     }
 
   }
