@@ -3,7 +3,7 @@ import "./Auth.css";
 import { Eye, EyeClosed } from 'lucide-react';
 import ButtonLoader from "../../Components/Loaders/ButtonLoader/ButtonLoader";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, registerUser, sendLoginOtp } from "../../features/auth/authThunk.js";
+import { loginUser, registerUser, sendLoginOtp, verifyLoginOtp } from "../../features/auth/authThunk.js";
 import { clearMessages } from "../../features/auth/authSlice.js";
 import toast from "react-hot-toast";
 import OtpInput from "../../../../Backend/src/Components/OtpInput/OtpInput.jsx";
@@ -38,10 +38,12 @@ const Auth = () => {
   // state to hold form data
   const [formData, setFormData] = useState(initialFormData);
 
+  console.log(formData);
+
   /* -------------------------------------- */
 
   // state to toggle between register and login and login forms - "login", "signup", "otp", "verifyOtp"
-  const [currentForm, setCurrentForm] = useState("login");
+  const [currentForm, setCurrentForm] = useState("verifyOtp");
 
   // change form function to switch between forms
   const changeForm = (formName) => {
@@ -54,6 +56,9 @@ const Auth = () => {
 
     // reset errors when changing forms
     setErrors({});
+
+    // Don't reset form data when going to Verify OTP
+    if (formName === "verifyOtp") return;
 
     // reset form data when changing forms
     setFormData(initialFormData);
@@ -72,6 +77,17 @@ const Auth = () => {
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+    }));
+
+  };
+
+  // function to get opt from otp input object and store in form data
+  const handleOtpChange = (otp) => {
+
+    // update otp on form data
+    setFormData((prev) => ({
+      ...prev,
+      otp: otp,
     }));
 
   };
@@ -227,7 +243,13 @@ const Auth = () => {
 
     // verify otp form submission
     else if (currentForm === "verifyOtp") {
+
       // Verify OTP API
+      dispatch(verifyLoginOtp({
+        mobileNumber: formData.mobileNumber,
+        otp: formData.otp,
+      }));
+
     }
 
   };
@@ -246,7 +268,7 @@ const Auth = () => {
     }
 
     // show toast on logout
-    if (successMessage === "Logged out successfully"){
+    if (successMessage === "Logged out successfully") {
       toast.success("Logged out !");
     }
 
@@ -283,7 +305,7 @@ const Auth = () => {
               {currentForm === "login" && "Login to continue ordering delicious food."}
               {currentForm === "signup" && "Create your Cravyo account."}
               {currentForm === "otp" && "Enter your mobile number."}
-              {currentForm === "verifyOtp" && "Enter the OTP sent to your email."}
+              {currentForm === "verifyOtp" && "Enter the 4-digit OTP sent to your email."}
             </p>
 
           </div>
@@ -577,23 +599,19 @@ const Auth = () => {
 
               <>
 
-                {/* enter otp input */}
-                <div className="inputGroup">
-                  <label>Enter OTP</label>
-                  <input
-                    type="text"
-                    placeholder="Enter 6 digit OTP"
-                    name="otp"
-                    value={formData.otp}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <OtpInput length={4}/>
+                {/* enter otp input component */}
+                <OtpInput
+                  length={4}
+                  onOtpChange={handleOtpChange}
+                />
 
                 {/* verify otp button */}
-                <button className="btn btnPrimary" type="submit">
-                  Verify OTP
+                <button
+                  className="btn btnPrimary"
+                  type="submit"
+                  disabled={formLoading}
+                >
+                  {formLoading ? <ButtonLoader /> : "Verify OTP"}
                 </button>
 
                 {/* change mobile number button */}

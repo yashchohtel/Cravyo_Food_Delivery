@@ -72,7 +72,7 @@ export const sendLoginOtp = createAsyncThunk("auth/sendLoginOtp", async (formDat
 
         // send login otp api call
         const { data } = await api.post("/api/auth/send-login-otp", formData);
-        console.log(data);
+
         return data;
 
     } catch (error) {
@@ -83,6 +83,20 @@ export const sendLoginOtp = createAsyncThunk("auth/sendLoginOtp", async (formDat
 
     }
 
+});
+
+export const verifyLoginOtp = createAsyncThunk("auth/verifyLoginOtp", async (formData, { rejectWithValue }) => {
+
+    try {
+
+        // verify otp to login api call
+        const { data } = await api.post("/api/auth/verify-login-otp", formData);
+        console.log(data);
+        return data;
+
+    } catch (error) {
+        return rejectWithValue(error.response.data.message);
+    }
 });
 
 // Thunk to logout the current user

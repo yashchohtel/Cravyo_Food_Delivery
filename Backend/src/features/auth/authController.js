@@ -137,8 +137,8 @@ export const sendLoginOtp = async (req, res, next) => {
         return next(new ErrorHandler("No account found with this mobile number.", 404));
     }
 
-    // Generate 6-digit OTP
-    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    // Generate 4-digit OTP
+    const otp = Math.floor(1000 + Math.random() * 9000).toString();
 
     // Hash OTP
     const hashedOtp = await bcrypt.hash(otp, 10);
@@ -229,7 +229,7 @@ export const verifyLoginOtp = async (req, res, next) => {
     // Login user
     sendToken(user, 200, res, `Welcome back, ${user.fullName}`);
 
-}; 
+};
 
 // GET CURRENT USER
 export const getCurrentUser = async (req, res, next) => {

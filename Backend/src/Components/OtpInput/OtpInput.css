@@ -1,29 +1,23 @@
-.otpInput{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    width: 100%;
+.otpInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
-
-
-
-
-
-
-
-
-.otpInput input{
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    outline: none;
-    border: 1.5px solid #a5a5a5;
-    text-align: center;
-
+.otpInput input {
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+  outline: none;
+  border: 2.5px solid #a5a5a5;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
 }
 
-.otpInput input:focus{
-    border-color: #575757;
+.otpInput input:focus {
+  border-color: var(--primary-color);
 }

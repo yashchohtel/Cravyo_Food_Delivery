@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import "./OtpInput.css"
 
-const OtpInput = ({ length }) => {
+const OtpInput = ({ length, onOtpChange }) => {
 
   // state to store otp
   const [otp, setOtp] = useState(new Array(length).fill(""));
@@ -29,23 +29,34 @@ const OtpInput = ({ length }) => {
     // combined otp
     const combinedOtp = newOtp.join("");
 
-    // // move to next input if current filled is filled
-    if (value && index < length - 1 && inputRefs.current[index + 1]) {
-      inputRefs.current[index + 1].focus()
+    // send otp to parent component
+    onOtpChange(combinedOtp);
+
+    // move to next input if current filled is filled
+    if (index < length - 1 && !newOtp[index + 1] && inputRefs.current[index + 1]) {
+      inputRefs.current[newOtp.indexOf("")].focus();
+    }
+
+  }
+
+  // function to handleKeyDown event (backspace - input value delete)
+  const handleKeyDown = (index, e) => {
+
+    if (e.key === "Backspace" && !otp[index] && index > 0 && inputRefs.current[index - 1]) {
+      inputRefs.current[index - 1].focus();
     }
 
   }
 
   // function to hanle input click
-  const handleInputClick = () => {
+  const handleInputClick = (index) => {
 
-  }
+    // Keep cursor at the end of the current input
+    inputRefs.current[index].setSelectionRange(1, 1);
 
-  // function to handleKeyDown event
-  const handleKeyDown = (index, e) => {
-
-    if (e.key === "Backspace" && !otp[index] && index > 0 && inputRefs.current[index - 1]) {
-      inputRefs.current[index - 1].focus();
+    // Prevent users from skipping empty OTP boxes
+    if (index > 0 && !otp[index - 1]) {
+      inputRefs.current[otp.indexOf("")].focus();
     }
 
   }
@@ -76,7 +87,7 @@ const OtpInput = ({ length }) => {
                 value={value}
                 ref={(input) => inputRefs.current[index] = input}
                 onChange={(e) => handleInputChange(index, e)}
-                onClick={() => handleInputClick()}
+                onClick={() => handleInputClick(index)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
                 className="input"
               />
