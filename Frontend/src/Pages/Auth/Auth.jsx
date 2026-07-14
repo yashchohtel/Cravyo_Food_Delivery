@@ -326,9 +326,14 @@ const Auth = () => {
     // set time left
     setTimeLeft(remainingTime);
 
+    console.log("Expire At:", resendOtpAvailableAt);
+    console.log("Remaining:", remainingTime);
+    console.log("TimeLeft State:", timeLeft);
+
   }, [currentForm]);
 
   return (
+
     <>
 
       {/* authpage */}
@@ -691,9 +696,10 @@ const Auth = () => {
                 {/* resend otp button */}
                 <p className="bottomText">
                   {timeLeft > 0 ?
-                    (<p className="bottomText"> Resend OTP in <span>{timeLeft}s</span> </p>)
+                    <>Resend OTP in <span>{timeLeft}s</span></>
                     :
-                    (<p className="bottomText"> Didn't receive OTP? <span> Resend OTP </span></p>)}
+                    <>Didn't receive OTP? <span>Resend OTP</span></>
+                  }
                 </p>
 
               </>
@@ -710,6 +716,5 @@ const Auth = () => {
 
   );
 }
+
 export default Auth
-
-
