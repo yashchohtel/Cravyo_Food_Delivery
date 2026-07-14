@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
 import "./Auth.css";
 import { Eye, EyeClosed } from 'lucide-react';
@@ -38,8 +39,6 @@ const Auth = () => {
   // state to hold form data
   const [formData, setFormData] = useState(initialFormData);
 
-  console.log(formData);
-
   /* -------------------------------------- */
 
   // state to toggle between register and login and login forms - "login", "signup", "otp", "verifyOtp"
@@ -56,9 +55,6 @@ const Auth = () => {
 
     // reset errors when changing forms
     setErrors({});
-
-    // Don't reset form data when going to Verify OTP
-    if (formName === "verifyOtp") return;
 
     // reset form data when changing forms
     setFormData(initialFormData);
@@ -178,6 +174,21 @@ const Auth = () => {
 
     }
 
+    // verify otp form validation
+    else if (currentForm === "verifyOtp") {
+
+      if (!formData.otp.trim()) {
+        newErrors.otp = "OTP is required";
+      }
+      else if (formData.otp.length !== 4) {
+        newErrors.otp = "Enter a valid 4-digit OTP";
+      }
+      else if (!/^\d+$/.test(formData.otp)) {
+        newErrors.otp = "OTP must contain only numbers";
+      }
+
+    }
+
     // set the errors state with the new errors object
     setErrors(newErrors);
 
@@ -234,8 +245,19 @@ const Auth = () => {
         sendLoginOtp({ mobileNumber: formData.mobileNumber })
       );
 
-      // change form to verify otp if otp send succesfully
+      // change form and set mobile numbe in session storage for otp verification
       if (sendLoginOtp.fulfilled.match(result)) {
+
+        // Save mobile number
+        sessionStorage.setItem("otpMobile", formData.mobileNumber);
+
+        // resend otp time (start countdown when opt send successfull)
+        sessionStorage.setItem(
+          "resendOtpAvailableAt",
+          Date.now() + 45 * 1000
+        );
+
+        // change form
         changeForm("verifyOtp");
       }
 
@@ -244,15 +266,28 @@ const Auth = () => {
     // verify otp form submission
     else if (currentForm === "verifyOtp") {
 
+      // Get mobile number from session storage
+      const mobileNumber = sessionStorage.getItem("otpMobile");
+
       // Verify OTP API
-      dispatch(verifyLoginOtp({
-        mobileNumber: formData.mobileNumber,
+      const result = await dispatch(verifyLoginOtp({
+        mobileNumber,
         otp: formData.otp,
       }));
+
+      // Remove mobile number after successful login
+      if (verifyLoginOtp.fulfilled.match(result)) {
+        sessionStorage.removeItem("otpMobile");
+      }
 
     }
 
   };
+
+  /* -------------------------------------- */
+
+  // state to store time left to show resend OTP clink
+  const [timeLeft, setTimeLeft] = useState(0);
 
   /* -------------------------------------- */
 
@@ -276,6 +311,22 @@ const Auth = () => {
     dispatch(clearMessages());
 
   }, [successMessage, dispatch]);
+
+  // effect to show resend otp countdown
+  useEffect(() => {
+
+    if (currentForm !== "verifyOtp") return;
+
+    // get the resend otp countdown time
+    const resendOtpAvailableAt = Number(sessionStorage.getItem("resendOtpAvailableAt"));
+
+    // remaining time
+    const remainingTime = Math.max(0, Math.ceil((resendOtpAvailableAt - Date.now()) / 1000));
+
+    // set time left
+    setTimeLeft(remainingTime);
+
+  }, [currentForm]);
 
   return (
     <>
@@ -602,8 +653,23 @@ const Auth = () => {
                 {/* enter otp input component */}
                 <OtpInput
                   length={4}
-                  onOtpChange={handleOtpChange}
+                  onOtpChange={handleOtpChange} // to set otp
+                  setErrors={setErrors} // to set otp validation error
+                  errors={errors} // validation errors object
                 />
+
+                {/* mobile number error */}
+                {errors.otp && <p className="inputError errTextCenter"> {errors.otp} </p>}
+
+                {/* verify otp server error - invalid otp*/}
+                {errorMessage === "Invalid OTP." && (
+                  <p className="inputError errTextCenter"> {errorMessage} </p>
+                )}
+
+                {/* verify otp server error - expired otp */}
+                {errorMessage === "OTP has expired." && (
+                  <p className="inputError errTextCenter"> {errorMessage} </p>
+                )}
 
                 {/* verify otp button */}
                 <button
@@ -624,8 +690,10 @@ const Auth = () => {
 
                 {/* resend otp button */}
                 <p className="bottomText">
-                  Didn't receive OTP?
-                  <span> Resend OTP </span>
+                  {timeLeft > 0 ?
+                    (<p className="bottomText"> Resend OTP in <span>{timeLeft}s</span> </p>)
+                    :
+                    (<p className="bottomText"> Didn't receive OTP? <span> Resend OTP </span></p>)}
                 </p>
 
               </>

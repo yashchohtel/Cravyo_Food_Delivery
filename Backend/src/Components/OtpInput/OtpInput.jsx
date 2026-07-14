@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import "./OtpInput.css"
 
-const OtpInput = ({ length, onOtpChange }) => {
+const OtpInput = ({ length, onOtpChange, setErrors, errors }) => {
 
   // state to store otp
   const [otp, setOtp] = useState(new Array(length).fill(""));
@@ -15,9 +15,26 @@ const OtpInput = ({ length, onOtpChange }) => {
     // extract value
     const value = e.target.value;
 
-    // if value is not a number return
-    if (isNaN(value)) return;
+    // allow only numbers
+    if (!/^\d*$/.test(value)) {
 
+      setErrors((prev) => ({
+        ...prev,
+        otp: "OTP must contain only numbers",
+      }));
+
+      return;
+    }
+
+    // clear error if there is error
+    if (errors.otp) {
+      setErrors((prev) => ({
+        ...prev,
+        otp: "",
+      }));
+    }
+
+    // state to store fresh otp
     const newOtp = [...otp];
 
     // allow only one input
@@ -30,11 +47,14 @@ const OtpInput = ({ length, onOtpChange }) => {
     const combinedOtp = newOtp.join("");
 
     // send otp to parent component
-    onOtpChange(combinedOtp);
+    if (combinedOtp.length === length) {
+      onOtpChange(combinedOtp);
+    }
 
     // move focus to first empty input
     if (value) {
 
+      // first empty input box
       const firstEmptyIndex = newOtp.indexOf("");
 
       if (firstEmptyIndex !== -1) {
@@ -45,11 +65,22 @@ const OtpInput = ({ length, onOtpChange }) => {
 
   }
 
-  // function to handleKeyDown event (backspace - input value delete)
+  // function to handleKeyDown event 
   const handleKeyDown = (index, e) => {
 
+    // backspace - input value delete
     if (e.key === "Backspace" && !otp[index] && index > 0 && inputRefs.current[index - 1]) {
       inputRefs.current[index - 1].focus();
+    }
+
+    // Move focus to previous input
+    if (e.key === "ArrowLeft" && index > 0 && inputRefs.current[index - 1]) {
+      inputRefs.current[index - 1].focus();
+    }
+
+    // Move focus to next input
+    if (e.key === "ArrowRight" && index < length - 1 && inputRefs.current[index + 1]) {
+      inputRefs.current[index + 1].focus();
     }
 
   }
@@ -63,6 +94,60 @@ const OtpInput = ({ length, onOtpChange }) => {
     // Prevent users from skipping empty OTP boxes
     if (index > 0 && !otp[index - 1]) {
       inputRefs.current[otp.indexOf("")].focus();
+    }
+
+  }
+
+  // function to handle paste event
+  const handlePaste = (e) => {
+
+    // prevent default paste behavior
+    e.preventDefault();
+
+    // get pasted text
+    const pastedData = e.clipboardData.getData("text");
+
+    // Allow only numbers
+    if (!/^\d+$/.test(pastedData)) {
+
+      setErrors((prev) => ({
+        ...prev,
+        otp: `Only numbers are allowed.`,
+      }));
+
+      return;
+    }
+
+    // clear error if there is error
+    if (errors.otp) {
+      setErrors((prev) => ({
+        ...prev,
+        otp: "",
+      }));
+    }
+
+    // take only required digits
+    const pastedOtp = pastedData.slice(0, length).split("");
+
+    // create new otp array
+    const newOtp = [...otp];
+
+    // update otp values
+    pastedOtp.forEach((digit, index) => {
+      newOtp[index] = digit;
+    });
+
+    // update state
+    setOtp(newOtp);
+
+    // send otp to parent
+    onOtpChange(newOtp.join(""));
+
+    // focus last pasted input
+    const lastIndex = pastedOtp.length - 1;
+
+    if (inputRefs.current[lastIndex]) {
+      inputRefs.current[lastIndex].focus();
     }
 
   }
@@ -95,6 +180,7 @@ const OtpInput = ({ length, onOtpChange }) => {
                 onChange={(e) => handleInputChange(index, e)}
                 onClick={() => handleInputClick(index)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
+                onPaste={handlePaste}
                 className="input"
               />
             )

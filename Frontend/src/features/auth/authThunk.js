@@ -95,6 +95,7 @@ export const verifyLoginOtp = createAsyncThunk("auth/verifyLoginOtp", async (for
         return data;
 
     } catch (error) {
+        console.log(error.response.data.message);
         return rejectWithValue(error.response.data.message);
     }
 });

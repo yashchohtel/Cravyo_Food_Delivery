@@ -127,6 +127,11 @@
   font-weight: 500;
 }
 
+.errTextCenter{
+  text-align: center;
+  font-size: 1.4rem;
+}
+
 /* forgot passward link */
 .forgotPasswordText {
   width: fit-content;

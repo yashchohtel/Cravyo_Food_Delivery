@@ -158,18 +158,66 @@ export const sendLoginOtp = async (req, res, next) => {
             to: user.email,
             subject: "Your Cravyo Login OTP 🔐",
             html: `
-            <h2>Your Login OTP</h2>
+            <div style="margin:0;padding:40px 20px;background:#f8f8f8;font-family:Lato,Arial,sans-serif;">
 
-            <p>Hello ${user.fullName},</p>
+              <div style="max-width:550px;margin:auto;background:#ffffff;border-radius:12px;padding:40px;border:1px solid #eeeeee;">
 
-            <p>Your OTP is:</p>
+                <h1 style="margin:0;color:#222222;font-family:Poppins,Arial,sans-serif;font-size:28px;">
+                  Login Verification
+                </h1>
 
-            <h1>${otp}</h1>
+                <p style="color:#666666;font-size:16px;line-height:1.7;margin-top:20px;">
+                  Hi <strong>${user.fullName}</strong>,
+                </p>
 
-            <p>This OTP is valid for <strong>5 minutes</strong>.</p>
+                <p style="color:#666666;font-size:16px;line-height:1.7;">
+                  Use the OTP below to securely log in to your <strong>Cravyo</strong> account.
+                </p>
 
-            <p>If you didn't request this OTP, please ignore this email.</p>
-        `,
+                <div style="
+                            margin:35px 0;
+                            background:#fff5f1;
+                            border:2px dashed #ff5a1f;
+                            border-radius:10px;
+                            padding:20px;
+                            text-align:center;
+                            user-select:all;
+                        ">
+
+                  <div style="font-size:14px;color:#666666;margin-bottom:10px;">
+                    Your One-Time Password
+                  </div>
+
+                  <div style="
+                                font-size:40px;
+                                font-weight:700;
+                                letter-spacing:10px;
+                                color:#ff5a1f;
+                                font-family:Poppins,Arial,sans-serif;
+                            ">
+                    ${otp}
+                  </div>
+
+                </div>
+
+                <p style="color:#666666;font-size:15px;line-height:1.7;">
+                  This OTP is valid for
+                  <strong style="color:#222222;">5 minutes</strong>.
+                </p>
+
+                <p style="color:#666666;font-size:15px;line-height:1.7;">
+                  Never share this OTP with anyone. Cravyo will never ask for your OTP.
+                </p>
+
+                <hr style="border:none;border-top:1px solid #eeeeee;margin:30px 0;">
+
+                <p style="font-size:13px;color:#999999;line-height:1.7;text-align:center;">
+                  If you didn't request this login, you can safely ignore this email.
+                </p>
+
+              </div>
+
+            </div>`,
 
         });
 
@@ -205,19 +253,19 @@ export const verifyLoginOtp = async (req, res, next) => {
 
     // Check OTP exists
     if (!user.loginOtp || !user.loginOtpExpire) {
-        return next(new ErrorHandler("Invalid OTP request", 400));
+        return next(new ErrorHandler("Invalid OTP request.", 400));
     }
 
     // Check OTP expiry
     if (user.loginOtpExpire < Date.now()) {
-        return next(new ErrorHandler("OTP has expired", 400));
+        return next(new ErrorHandler("OTP has expired.", 400));
     }
 
     // Compare OTP
     const isOtpMatched = await bcrypt.compare(otp, user.loginOtp);
 
     if (!isOtpMatched) {
-        return next(new ErrorHandler("Invalid OTP", 400));
+        return next(new ErrorHandler("Invalid OTP.", 400));
     }
 
     // Clear OTP
