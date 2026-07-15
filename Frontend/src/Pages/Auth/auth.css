@@ -121,13 +121,13 @@
 
 /* input error */
 .inputError {
-  padding-left: 0.4rem;;
+  padding-left: 0.4rem;
   color: var(--error-color);
   font-size: 1.2rem;
   font-weight: 500;
 }
 
-.errTextCenter{
+.errTextCenter {
   text-align: center;
   font-size: 1.4rem;
 }
@@ -200,4 +200,10 @@
 
 .bottomText span:hover {
   color: var(--primary-hover);
+}
+
+.bottomText .timer {
+  width: 2.5rem;
+  display: inline-block;
+  height: 2rem;
 }

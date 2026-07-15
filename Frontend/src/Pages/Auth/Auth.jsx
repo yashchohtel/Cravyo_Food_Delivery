@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser, registerUser, sendLoginOtp, verifyLoginOtp } from "../../features/auth/authThunk.js";
 import { clearMessages } from "../../features/auth/authSlice.js";
 import toast from "react-hot-toast";
-import OtpInput from "../../../../Backend/src/Components/OtpInput/OtpInput.jsx";
+import OtpInput from "../../Components/OtpInput/OtpInput.jsx";
 
 const Auth = () => {
 
@@ -41,8 +41,9 @@ const Auth = () => {
 
   /* -------------------------------------- */
 
-  // state to toggle between register and login and login forms - "login", "signup", "otp", "verifyOtp"
-  const [currentForm, setCurrentForm] = useState("verifyOtp");
+  // state to toggle between register and login and login forms, initilize the current from from sessionstorage
+  // "login", "signup", "otp", "verifyOtp"
+  const [currentForm, setCurrentForm] = useState(sessionStorage.getItem("authForm") || "login");
 
   // change form function to switch between forms
   const changeForm = (formName) => {
@@ -53,6 +54,9 @@ const Auth = () => {
     // set the current form to the new form name and reset errors
     setCurrentForm(formName);
 
+    // save current form in sessionStorage to persist current form on page reload
+    sessionStorage.setItem("authForm", formName);
+
     // reset errors when changing forms
     setErrors({});
 
@@ -60,6 +64,15 @@ const Auth = () => {
     setFormData(initialFormData);
 
   };
+
+  /* -------------------------------------- */
+
+  // function to clear temperory session data
+  const clearTempSessionData = () => {
+    sessionStorage.removeItem("authForm");
+    sessionStorage.removeItem("otpMobile");
+    sessionStorage.removeItem("resendOtpAvailableAt");
+  }
 
   /* -------------------------------------- */
 
@@ -217,10 +230,18 @@ const Auth = () => {
     if (currentForm === "login") {
 
       // dispatch Login thunk
-      dispatch(loginUser({
+      const result = await dispatch(loginUser({
         identifier: formData.identifier,
         password: formData.password,
       }));
+
+      // on login fulfilled
+      if (loginUser.fulfilled.match(result)) {
+
+        // clear session temp data
+        clearTempSessionData();
+
+      }
 
     }
 
@@ -228,12 +249,20 @@ const Auth = () => {
     else if (currentForm === "signup") {
 
       // dispatch register user thunk
-      dispatch(registerUser({
+      const result = await dispatch(registerUser({
         fullName: formData.fullName,
         email: formData.email,
         mobileNumber: formData.mobileNumber,
         password: formData.password,
       }));
+
+      // on signup fulfilled
+      if (registerUser.fulfilled.match(result)) {
+
+        // clear session temp data
+        clearTempSessionData();
+
+      }
 
     }
 
@@ -252,10 +281,7 @@ const Auth = () => {
         sessionStorage.setItem("otpMobile", formData.mobileNumber);
 
         // resend otp time (start countdown when opt send successfull)
-        sessionStorage.setItem(
-          "resendOtpAvailableAt",
-          Date.now() + 45 * 1000
-        );
+        sessionStorage.setItem("resendOtpAvailableAt", Date.now() + 45 * 1000);
 
         // change form
         changeForm("verifyOtp");
@@ -275,9 +301,12 @@ const Auth = () => {
         otp: formData.otp,
       }));
 
-      // Remove mobile number after successful login
+      // on verification fulfilled
       if (verifyLoginOtp.fulfilled.match(result)) {
-        sessionStorage.removeItem("otpMobile");
+
+        // clear session temp data
+        clearTempSessionData();
+
       }
 
     }
@@ -312,9 +341,30 @@ const Auth = () => {
 
   }, [successMessage, dispatch]);
 
+  // effect to refill mobile number input in OTP form on change number or resend opt click
+  useEffect(() => {
+
+    // return if current form is not otp
+    if (currentForm !== "otp") return;
+
+    // get mobile number from session storage
+    const otpMobile = sessionStorage.getItem("otpMobile");
+
+    // if no mobile number return
+    if (!otpMobile) return;
+
+    // set mobile number in form data
+    setFormData((prev) => ({
+      ...prev,
+      mobileNumber: otpMobile,
+    }));
+
+  }, [currentForm]);
+
   // effect to show resend otp countdown
   useEffect(() => {
 
+    // if current form is not verify otp return
     if (currentForm !== "verifyOtp") return;
 
     // get the resend otp countdown time
@@ -326,11 +376,27 @@ const Auth = () => {
     // set time left
     setTimeLeft(remainingTime);
 
-    console.log("Expire At:", resendOtpAvailableAt);
-    console.log("Remaining:", remainingTime);
-    console.log("TimeLeft State:", timeLeft);
+    // set interval to update countdown time
+    const interval = setInterval(() => {
+
+      // calculate remaning time every second
+      const remainingTime = Math.max(0, Math.ceil((resendOtpAvailableAt - Date.now()) / 1000));
+
+      // set remaining time
+      setTimeLeft(remainingTime);
+
+      // clear interval when remainingTime is zero
+      if (remainingTime <= 0) {
+        clearInterval(interval);
+      }
+
+    }, 1000);
+
+    // clear interval
+    return () => clearInterval(interval);
 
   }, [currentForm]);
+
 
   return (
 
@@ -696,9 +762,9 @@ const Auth = () => {
                 {/* resend otp button */}
                 <p className="bottomText">
                   {timeLeft > 0 ?
-                    <>Resend OTP in <span>{timeLeft}s</span></>
+                    <> Resend OTP in : <span className="timer">{timeLeft}s</span></>
                     :
-                    <>Didn't receive OTP? <span>Resend OTP</span></>
+                    <> Didn't receive OTP? <span onClick={() => changeForm("otp")} >Resend OTP</span></>
                   }
                 </p>
 
