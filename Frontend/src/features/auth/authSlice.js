@@ -225,7 +225,6 @@ const authSlice = createSlice({
 
             // Pending
             .addCase(verifyResetToken.pending, (state) => {
-                state.verifyTokenLoading = true;
                 state.errorMessage = null;
                 state.successMessage = null;
                 state.isResetTokenValid = null;
@@ -233,14 +232,12 @@ const authSlice = createSlice({
 
             // Fulfilled
             .addCase(verifyResetToken.fulfilled, (state, action) => {
-                state.verifyTokenLoading = false;
                 state.successMessage = action.payload.message;
                 state.isResetTokenValid = true;
             })
 
             // Rejected
             .addCase(verifyResetToken.rejected, (state, action) => {
-                state.verifyTokenLoading = false;
                 state.errorMessage = action.payload;
                 state.isResetTokenValid = false;
             })

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import './ResetPassword.css'
+import '../Auth/Auth.css'
 import { Eye, EyeClosed } from 'lucide-react';
-import ButtonLoader from '../../Components/Loaders/ButtonLoader/ButtonLoader';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { verifyResetToken } from '../../features/auth/authThunk';
+import ButtonLoader from '../../Components/Loaders/ButtonLoader/ButtonLoader';
 
 const ResetPassword = () => {
 
@@ -14,7 +15,7 @@ const ResetPassword = () => {
     /* -------------------------------------- */
 
     // getting required data from global store using useSelector
-    const { formLoading, verifyTokenLoading, isResetTokenValid, } = useSelector((state) => state.auth);
+    const { formLoading, isResetTokenValid, } = useSelector((state) => state.auth);
 
     /* -------------------------------------- */
 
@@ -107,6 +108,8 @@ const ResetPassword = () => {
 
     }, [dispatch, token]);
 
+    /* -------------------------------------- */
+
     return (
         <>
             {/* authpage */}
@@ -114,6 +117,8 @@ const ResetPassword = () => {
 
                 {/* container */}
                 <div className="authContainer resetPassContainer container">
+
+                    <ButtonLoader />
 
                     {/* Form */}
                     <form
@@ -222,5 +227,4 @@ const ResetPassword = () => {
 
 }
 
-export default ResetPassword
-
+export default ResetPassword;
