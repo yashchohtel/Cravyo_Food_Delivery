@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loadUser, loginUser, logoutUser, registerUser, sendLoginOtp, verifyLoginOtp } from "./authThunk";
+import { loadUser, loginUser, logoutUser, registerUser, resetPassword, sendLoginOtp, sendPasswordResetLink, verifyLoginOtp, verifyResetToken } from "./authThunk";
 
 // Initial state for authentication
 const initialState = {
@@ -9,6 +9,7 @@ const initialState = {
     errorMessage: null, // 
     successMessage: null,
     isAuthenticated: false,
+    isResetTokenValid: null, // flag for passward reset token validation
 };
 
 const authSlice = createSlice({
@@ -174,6 +175,72 @@ const authSlice = createSlice({
             .addCase(verifyLoginOtp.rejected, (state, action) => {
                 state.formLoading = false;
                 state.errorMessage = action.payload;
+            })
+
+            /* ----------- SEND PASSWORD RESET LINK ↓ */
+
+            // Pending
+            .addCase(sendPasswordResetLink.pending, (state) => {
+                state.formLoading = true;
+                state.errorMessage = null;
+                state.successMessage = null;
+            })
+
+            // Fulfilled
+            .addCase(sendPasswordResetLink.fulfilled, (state, action) => {
+                state.formLoading = false;
+                state.successMessage = action.payload.message;
+            })
+
+            // Rejected
+            .addCase(sendPasswordResetLink.rejected, (state, action) => {
+                state.formLoading = false;
+                state.errorMessage = action.payload;
+            })
+
+            /* ----------- RESET PASSWORD ↓ */
+
+            // Pending
+            .addCase(resetPassword.pending, (state) => {
+                state.formLoading = true;
+                state.errorMessage = null;
+                state.successMessage = null;
+            })
+
+            // Fulfilled
+            .addCase(resetPassword.fulfilled, (state, action) => {
+                state.formLoading = false;
+                state.successMessage = action.payload.message;
+            })
+
+            // Rejected
+            .addCase(resetPassword.rejected, (state, action) => {
+                state.formLoading = false;
+                state.errorMessage = action.payload;
+            })
+
+            /* ----------- VERIFY RESET TOKEN ↓ */
+
+            // Pending
+            .addCase(verifyResetToken.pending, (state) => {
+                state.formLoading = true;
+                state.errorMessage = null;
+                state.successMessage = null;
+                state.isResetTokenValid = null;
+            })
+
+            // Fulfilled
+            .addCase(verifyResetToken.fulfilled, (state, action) => {
+                state.formLoading = false;
+                state.successMessage = action.payload.message;
+                state.isResetTokenValid = true;
+            })
+
+            // Rejected
+            .addCase(verifyResetToken.rejected, (state, action) => {
+                state.formLoading = false;
+                state.errorMessage = action.payload;
+                state.isResetTokenValid = false;
             })
 
     },

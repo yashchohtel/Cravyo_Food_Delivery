@@ -3,7 +3,10 @@ import ErrorHandler from "../../utils/errorHandler.js"; // Import custom error h
 import { sendToken } from "../../utils/sendJwtToken.js"; // import sendToken utility 
 import sendEmail from "../../utils/sendEmail.js"; // send email function to send email to suer
 import bcrypt from "bcryptjs"; // import bcryptjs
-import loginOtpEmail from "../../utils/emailTemplate/sendLoginOtpEmailTemplate.js"; // email template
+import crypto from "crypto"; // import crypto
+import welcomeEmail from "../../utils/emailTemplate/welcomUserEmailTemplate.js"; // email template welcome user
+import loginOtpEmail from "../../utils/emailTemplate/sendLoginOtpEmailTemplate.js"; // email template login otp
+import resetPasswordEmail from "../../utils/emailTemplate/sendPassResetLinkEmailTemplate.js"; // email template reset password
 
 // REGISTRATION 
 export const register = async (req, res, next) => {
@@ -45,15 +48,9 @@ export const register = async (req, res, next) => {
 
             to: savedUser.email,
             subject: "Welcome to Cravyo 🎉",
-            html: `
-                <h2>Welcome to Cravyo, ${savedUser.fullName}! 👋</h2>
-
-                <p>Your account has been created successfully.</p>
-
-                <p>We're excited to have you with us.</p>
-
-                <p>Happy Ordering! 🍔🍕</p>
-            `,
+            html: welcomeEmail({
+                fullName: savedUser.fullName,
+            }),
 
         });
 
@@ -257,3 +254,129 @@ export const getCurrentUser = async (req, res, next) => {
 
 };
 
+// SEND PASSWORD RESET LINK
+export const sendPasswordResetLink = async (req, res, next) => {
+
+    // Extract email
+    const { email } = req.body;
+
+    // Validate input
+    if (!email) return next(new ErrorHandler("Email is required", 400));
+
+    // Find user
+    const user = await User.findOne({ email });
+
+    if (!user) return next(new ErrorHandler("No account found with this email.", 404));
+
+    // Generate reset token
+    const resetToken = crypto.randomBytes(32).toString("hex");
+
+    // Hash reset token
+    const hashedToken = crypto.createHash("sha256").update(resetToken).digest("hex");
+
+    // Save hashed token and expiry
+    user.resetPasswordToken = hashedToken;
+    user.resetPasswordExpire = new Date(Date.now() + 10 * 60 * 1000);
+
+    // Save user
+    await user.save();
+
+    // Reset password link
+    const resetPasswordLink = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
+
+    // Send reset password email (Don't fail if email sending fails)
+    try {
+
+        await sendEmail({
+
+            to: user.email,
+            subject: "Reset Your Cravyo Password 🔐",
+            html: resetPasswordEmail({
+                fullName: user.fullName,
+                resetPasswordLink,
+            }),
+
+        });
+
+    } catch (error) {
+        console.error("Reset Password Email Error:", error.message);
+    }
+
+    // Send success response
+    res.status(200).json({
+        success: true,
+        message: "Reset link sent.",
+    });
+
+};
+
+// RESET PASSWORD
+export const resetPassword = async (req, res, next) => {
+
+    // Extract token and password
+    const { token } = req.params;
+    const { password } = req.body;
+
+    // Validate input
+    if (!password) {
+        return next(new ErrorHandler("Password is required", 400));
+    }
+
+    // Hash token
+    const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
+
+    // Find user
+    const user = await User.findOne({
+        resetPasswordToken: hashedToken,
+        resetPasswordExpire: { $gt: Date.now() },
+    });
+
+    if (!user) {
+        return next(new ErrorHandler("Invalid or expired reset link.", 400));
+    }
+
+    // Hash new password
+    user.password = await bcrypt.hash(password, 10);
+
+    // Clear reset token
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+
+    // Save user
+    await user.save();
+
+    // Success response
+    res.status(200).json({
+        success: true,
+        message: "Password reset successful",
+    });
+
+};
+
+// VERIFY RESET TOKEN
+export const verifyResetToken = async (req, res, next) => {
+
+    // Extract token
+    const { token } = req.params;
+
+    // Hash token
+    const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
+
+    // Find user
+    const user = await User.findOne({
+        resetPasswordToken: hashedToken,
+        resetPasswordExpire: { $gt: Date.now() },
+    });
+
+    // Invalid or expired token
+    if (!user) {
+        return next(new ErrorHandler("Invalid or expired reset link.", 400));
+    }
+
+    // Success response
+    res.status(200).json({
+        success: true,
+        message: "Reset link is valid.",
+    });
+
+};

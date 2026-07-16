@@ -118,3 +118,61 @@ export const logoutUser = createAsyncThunk("auth/logoutUser", async (_, { reject
     }
 
 });
+
+// Thunk to send password reset link
+export const sendPasswordResetLink = createAsyncThunk("auth/sendPasswordResetLink", async (formData, { rejectWithValue }) => {
+
+    try {
+
+        // send password reset link api call
+        const { data } = await api.post("/api/auth/forgot-password", formData);
+
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Something went wrong"
+        );
+
+    }
+
+});
+
+// Thunk to reset password
+export const resetPassword = createAsyncThunk("auth/resetPassword", async ({ token, password }, { rejectWithValue }) => {
+
+    try {
+
+        // reset password api call
+        const { data } = await api.post(`/api/auth/reset-password/${token}`, { password });
+
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(error.response?.data?.message || "Something went wrong");
+
+    }
+
+});
+
+// Thunk to verify reset token
+export const verifyResetToken = createAsyncThunk("auth/verifyResetToken", async (token, { rejectWithValue }) => {
+
+    try {
+
+        // Verify reset token API call
+        const { data } = await api.get(`/api/auth/verify-reset-token/${token}`);
+
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Something went wrong"
+        );
+
+    }
+
+});

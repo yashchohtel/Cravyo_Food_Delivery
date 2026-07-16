@@ -1,7 +1,7 @@
 import express from "express"; // Express framework for building APIs
 import catchAsyncError from "../../middleware/catchAsyncError.js";
 import { isUserAuth } from "../../middleware/auth.js"; // Import authentication middleware
-import { getCurrentUser, login, logout, register, sendLoginOtp, verifyLoginOtp } from "./authController.js";
+import { getCurrentUser, login, logout, register, resetPassword, sendLoginOtp, sendPasswordResetLink, verifyLoginOtp, verifyResetToken } from "./authController.js";
 
 const authRouter = express.Router(); // Creating an instance of Express Router
 
@@ -24,5 +24,14 @@ authRouter.post("/verify-login-otp", catchAsyncError(verifyLoginOtp));
 
 //  Get my profile [get] - 'http://localhost:5000/api/auth/me'
 authRouter.get("/me", isUserAuth, catchAsyncError(getCurrentUser));
+
+// Send Password Reset Link [POST] - 'http://localhost:5000/api/auth/forgot-password'
+authRouter.post("/forgot-password", catchAsyncError(sendPasswordResetLink));
+
+// Reset Password [POST] - 'http://localhost:5000/api/auth/reset-password/:token'
+authRouter.post("/reset-password/:token", catchAsyncError(resetPassword));
+
+// Verify Reset Token [GET] - 'http://localhost:5000/api/auth/verify-reset-token/:token'
+authRouter.get("/verify-reset-token/:token", catchAsyncError(verifyResetToken));
 
 export default authRouter; // export user router

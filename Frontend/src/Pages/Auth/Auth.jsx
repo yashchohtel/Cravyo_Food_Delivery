@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
 import "./Auth.css";
-import { Eye, EyeClosed } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { Eye, EyeClosed} from 'lucide-react';
 import ButtonLoader from "../../Components/Loaders/ButtonLoader/ButtonLoader";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, registerUser, sendLoginOtp, verifyLoginOtp } from "../../features/auth/authThunk.js";
@@ -397,7 +398,6 @@ const Auth = () => {
 
   }, [currentForm]);
 
-
   return (
 
     <>
@@ -505,9 +505,9 @@ const Auth = () => {
                 </button>
 
                 {/* forgot password button */}
-                <p className="forgotPasswordText">
+                <Link to="/forgotPass" className="forgotPasswordText">
                   Forgot Password?
-                </p>
+                </Link>
 
                 {/* continue with google button */}
                 <button className="btn btnGoogle">
