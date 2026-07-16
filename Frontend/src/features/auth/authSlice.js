@@ -9,6 +9,8 @@ const initialState = {
     errorMessage: null, // 
     successMessage: null,
     isAuthenticated: false,
+
+    verifyTokenLoading: true, // loading state for pass reset token validation
     isResetTokenValid: null, // flag for passward reset token validation
 };
 
@@ -223,7 +225,7 @@ const authSlice = createSlice({
 
             // Pending
             .addCase(verifyResetToken.pending, (state) => {
-                state.formLoading = true;
+                state.verifyTokenLoading = true;
                 state.errorMessage = null;
                 state.successMessage = null;
                 state.isResetTokenValid = null;
@@ -231,14 +233,14 @@ const authSlice = createSlice({
 
             // Fulfilled
             .addCase(verifyResetToken.fulfilled, (state, action) => {
-                state.formLoading = false;
+                state.verifyTokenLoading = false;
                 state.successMessage = action.payload.message;
                 state.isResetTokenValid = true;
             })
 
             // Rejected
             .addCase(verifyResetToken.rejected, (state, action) => {
-                state.formLoading = false;
+                state.verifyTokenLoading = false;
                 state.errorMessage = action.payload;
                 state.isResetTokenValid = false;
             })

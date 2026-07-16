@@ -1,14 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './ResetPassword.css'
 import { Eye, EyeClosed } from 'lucide-react';
 import ButtonLoader from '../../Components/Loaders/ButtonLoader/ButtonLoader';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { verifyResetToken } from '../../features/auth/authThunk';
 
 const ResetPassword = () => {
 
+    // initialize use dispatch
+    const dispatch = useDispatch();
+
+    /* -------------------------------------- */
 
     // getting required data from global store using useSelector
-    const { formLoading } = useSelector((state) => state.auth);
+    const { formLoading, verifyTokenLoading, isResetTokenValid, } = useSelector((state) => state.auth);
+
+    /* -------------------------------------- */
+
+    // get token from url params
+    const { token } = useParams();
 
     /* -------------------------------------- */
 
@@ -50,16 +61,66 @@ const ResetPassword = () => {
 
     /* -------------------------------------- */
 
+    // handle form submission
+    const handleFormSubmit = async (e) => {
+
+        // Prevent default form submission
+        e.preventDefault();
+
+        // Store validation errors
+        const newErrors = {};
+
+        // Password regex
+        const passwordRegex =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+
+        // Password validation
+        if (!formData.password.trim()) {
+            newErrors.password = "Password is required";
+        } else if (!passwordRegex.test(formData.password)) {
+            newErrors.password = "Password must contain 8 characters, uppercase, lowercase, number and special character";
+        }
+
+        // Confirm password validation
+        if (!formData.confirmPassword.trim()) {
+            newErrors.confirmPassword = "Confirm password is required";
+        } else if (formData.password !== formData.confirmPassword) {
+            newErrors.confirmPassword = "Passwords do not match";
+        }
+
+        // Set errors
+        setErrors(newErrors);
+
+        // Stop if validation fails
+        if (Object.keys(newErrors).length > 0) return;
+
+        // Reset password API call
+
+    };
+
+    /* -------------------------------------- */
+
+    // effeto to verify rest token on page load
+    useEffect(() => {
+
+        dispatch(verifyResetToken(token));
+
+    }, [dispatch, token]);
+
     return (
         <>
             {/* authpage */}
             <div className="authPage resetPasswordPage">
 
                 {/* container */}
-                <div className="authContainer container">
+                <div className="authContainer resetPassContainer container">
 
                     {/* Form */}
-                    <form className="authForm" >
+                    <form
+                        className="authForm"
+                        onSubmit={(e) => handleFormSubmit(e)}
+                        noValidate
+                    >
 
                         {/* Logo */}
                         <div className="authLogo">
@@ -162,3 +223,4 @@ const ResetPassword = () => {
 }
 
 export default ResetPassword
+
