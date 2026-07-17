@@ -139,24 +139,6 @@ export const sendPasswordResetLink = createAsyncThunk("auth/sendPasswordResetLin
 
 });
 
-// Thunk to reset password
-export const resetPassword = createAsyncThunk("auth/resetPassword", async ({ token, password }, { rejectWithValue }) => {
-
-    try {
-
-        // reset password api call
-        const { data } = await api.post(`/api/auth/reset-password/${token}`, { password });
-
-        return data;
-
-    } catch (error) {
-
-        return rejectWithValue(error.response?.data?.message || "Something went wrong");
-
-    }
-
-});
-
 // Thunk to verify reset token
 export const verifyResetToken = createAsyncThunk("auth/verifyResetToken", async (token, { rejectWithValue }) => {
 
@@ -176,3 +158,22 @@ export const verifyResetToken = createAsyncThunk("auth/verifyResetToken", async 
     }
 
 });
+
+// Thunk to reset password
+export const resetPassword = createAsyncThunk("auth/resetPassword", async ({ token, password }, { rejectWithValue }) => {
+
+    try {
+
+        // reset password api call
+        const { data } = await api.post(`/api/auth/reset-password/${token}`, { password });
+
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(error.response?.data?.message || "Something went wrong");
+
+    }
+
+});
+

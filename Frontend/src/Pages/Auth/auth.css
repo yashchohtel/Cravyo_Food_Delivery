@@ -1,13 +1,13 @@
 /* auth */
 .authPage {
-  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
   width: 100%;
-  min-height: 100vh;
   background: var(--background-color);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 0;
+  /* padding: 2rem 0; */
 }
 
 /* auth container */

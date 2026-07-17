@@ -6,11 +6,11 @@ const initialState = {
     user: null,
     authLoading: true, // App initialization loading
     formLoading: false, // Login / Register / OTP loading
-    errorMessage: null, // 
+    errorMessage: null, 
     successMessage: null,
     isAuthenticated: false,
 
-    verifyTokenLoading: true, // loading state for pass reset token validation
+    verifyTokenLoading: true, // state to track reset password token verificaion loading
     isResetTokenValid: null, // flag for passward reset token validation
 };
 
@@ -200,6 +200,30 @@ const authSlice = createSlice({
                 state.errorMessage = action.payload;
             })
 
+            /* ----------- VERIFY RESET TOKEN ↓ */
+
+            // Pending
+            .addCase(verifyResetToken.pending, (state) => {
+                state.verifyTokenLoading = true;
+                state.errorMessage = null;
+                state.successMessage = null;
+                state.isResetTokenValid = null;
+            })
+
+            // Fulfilled
+            .addCase(verifyResetToken.fulfilled, (state, action) => {
+                state.verifyTokenLoading = false;
+                state.successMessage = action.payload.message;
+                state.isResetTokenValid = true;
+            })
+
+            // Rejected
+            .addCase(verifyResetToken.rejected, (state, action) => {
+                state.verifyTokenLoading = false;
+                state.errorMessage = action.payload;
+                state.isResetTokenValid = false;
+            })
+
             /* ----------- RESET PASSWORD ↓ */
 
             // Pending
@@ -221,26 +245,6 @@ const authSlice = createSlice({
                 state.errorMessage = action.payload;
             })
 
-            /* ----------- VERIFY RESET TOKEN ↓ */
-
-            // Pending
-            .addCase(verifyResetToken.pending, (state) => {
-                state.errorMessage = null;
-                state.successMessage = null;
-                state.isResetTokenValid = null;
-            })
-
-            // Fulfilled
-            .addCase(verifyResetToken.fulfilled, (state, action) => {
-                state.successMessage = action.payload.message;
-                state.isResetTokenValid = true;
-            })
-
-            // Rejected
-            .addCase(verifyResetToken.rejected, (state, action) => {
-                state.errorMessage = action.payload;
-                state.isResetTokenValid = false;
-            })
 
     },
 

@@ -3,11 +3,21 @@ import './ResetPassword.css'
 import '../Auth/Auth.css'
 import { Eye, EyeClosed } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { verifyResetToken } from '../../features/auth/authThunk';
+import { useNavigate, useParams } from 'react-router-dom';
+import { resetPassword, verifyResetToken } from '../../features/auth/authThunk';
 import ButtonLoader from '../../Components/Loaders/ButtonLoader/ButtonLoader';
+import { FaTriangleExclamation } from 'react-icons/fa6';
+import SplashLoader from '../../Components/Loaders/SplashLoader/SplashLoader';
+import toast from 'react-hot-toast';
+import { clearMessages } from '../../features/auth/authSlice';
 
 const ResetPassword = () => {
+
+
+    // initialize use navigate
+    const navigate = useNavigate();
+
+    /* -------------------------------------- */
 
     // initialize use dispatch
     const dispatch = useDispatch();
@@ -15,12 +25,19 @@ const ResetPassword = () => {
     /* -------------------------------------- */
 
     // getting required data from global store using useSelector
-    const { formLoading, isResetTokenValid, } = useSelector((state) => state.auth);
+    const { formLoading, successMessage, isResetTokenValid, verifyTokenLoading } = useSelector((state) => state.auth);
 
+    console.log(isResetTokenValid);
+    
     /* -------------------------------------- */
 
     // get token from url params
     const { token } = useParams();
+
+    /* -------------------------------------- */
+
+    // state to track password reset is successful or not
+    const [isPasswordReset, setIsPasswordReset] = useState(false);
 
     /* -------------------------------------- */
 
@@ -96,6 +113,18 @@ const ResetPassword = () => {
         if (Object.keys(newErrors).length > 0) return;
 
         // Reset password API call
+        const result = await dispatch(resetPassword({
+            token,
+            password: formData.password,
+        }))
+
+        if (resetPassword.fulfilled.match(result)) {
+            setIsPasswordReset(true);
+            setFormData({
+                password: "",
+                confirmPassword: "",
+            });
+        }
 
     };
 
@@ -110,6 +139,31 @@ const ResetPassword = () => {
 
     /* -------------------------------------- */
 
+    useEffect(() => {
+
+        if (!successMessage) return;
+
+        if (successMessage === "Password reset successful.") {
+            toast.success("Password reset successful.!");
+        }
+
+        // clear message
+        dispatch(clearMessages());
+
+    }, [successMessage, dispatch]);
+
+    /* -------------------------------------- */
+
+    if (verifyTokenLoading) {
+        return (
+            <div className="authPage resetPasswordPage">
+                <SplashLoader />
+            </div>
+        )
+    }
+
+    /* -------------------------------------- */
+
     return (
         <>
             {/* authpage */}
@@ -118,106 +172,148 @@ const ResetPassword = () => {
                 {/* container */}
                 <div className="authContainer resetPassContainer container">
 
-                    <ButtonLoader />
+                    {/* show expired note is token is not valid */}
+                    {!isResetTokenValid && (
 
-                    {/* Form */}
-                    <form
-                        className="authForm"
-                        onSubmit={(e) => handleFormSubmit(e)}
-                        noValidate
-                    >
-
-                        {/* Logo */}
-                        <div className="authLogo">
-                            <img src="/logosmall.png" alt="Cravyo" />
-                        </div>
-
-                        {/* Heading */}
                         <div className="authHeading">
-                            <h2>Reset Password</h2>
-                            <p>Enter new password to reset.</p>
-                        </div>
 
-                        {/* password input */}
-                        <div className="inputGroup">
+                            <FaTriangleExclamation className="invalidIcon" />
 
-                            <label>Password</label>
+                            <h2>Reset Link Expired</h2>
 
-                            <div className="inputWrapper">
+                            <p>
+                                This password reset link is no longer valid.
+                                It may have expired or has already been used.
+                            </p>
 
-                                <input
-                                    type={showPassword ? "text" : "password"}
-                                    placeholder="Enter password"
-                                    name="password"
-                                    value={formData.password}
-                                    onChange={handleInputChange}
-                                />
-
-                                {showPassword ? (
-                                    <Eye
-                                        className="eyeIcon"
-                                        onClick={() => setShowPassword(false)}
-                                    />
-                                ) : (
-                                    <EyeClosed
-                                        className="eyeIcon"
-                                        onClick={() => setShowPassword(true)}
-                                    />
-                                )}
-
-                            </div>
-
-                            {errors.password && (
-                                <p className="inputError">{errors.password}</p>
-                            )}
+                            <p id="invalidNote">
+                                Please request a new password reset link from the login page if you still need to reset your password.
+                            </p>
 
                         </div>
 
-                        {/* confirm password input */}
-                        <div className="inputGroup">
+                    )}
 
-                            <label>Confirm Password</label>
+                    {/* show password if token is valid and password is not reset yet */}
+                    {isResetTokenValid && !isPasswordReset && (
 
-                            <div className="inputWrapper">
-
-                                <input
-                                    type={showPassword ? "text" : "password"}
-                                    placeholder="Confirm password"
-                                    name="confirmPassword"
-                                    value={formData.confirmPassword}
-                                    onChange={handleInputChange}
-                                />
-
-                                {showPassword ? (
-                                    <Eye
-                                        className="eyeIcon"
-                                        onClick={() => setShowPassword(false)}
-                                    />
-                                ) : (
-                                    <EyeClosed
-                                        className="eyeIcon"
-                                        onClick={() => setShowPassword(true)}
-                                    />
-                                )}
-
-                            </div>
-
-                            {errors.confirmPassword && (
-                                <p className="inputError">{errors.confirmPassword}</p>
-                            )}
-
-                        </div>
-
-                        {/* Reset Password button */}
-                        <button
-                            className="btn btnPrimary"
-                            type="submit"
-                            disabled={formLoading}
+                        <form
+                            className="authForm"
+                            onSubmit={(e) => handleFormSubmit(e)}
+                            noValidate
                         >
-                            {formLoading ? <ButtonLoader /> : "Reset Password"}
-                        </button>
 
-                    </form>
+                            {/* Logo */}
+                            <div className="authLogo">
+                                <img src="/logosmall.png" alt="Cravyo" />
+                            </div>
+
+                            {/* Heading */}
+                            <div className="authHeading">
+                                <h2>Reset Password</h2>
+                                <p>Enter new password to reset.</p>
+                            </div>
+
+                            {/* password input */}
+                            <div className="inputGroup">
+
+                                <label>Password</label>
+
+                                <div className="inputWrapper">
+
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        placeholder="Enter password"
+                                        name="password"
+                                        value={formData.password}
+                                        onChange={handleInputChange}
+                                    />
+
+                                    {showPassword ? (
+                                        <Eye
+                                            className="eyeIcon"
+                                            onClick={() => setShowPassword(false)}
+                                        />
+                                    ) : (
+                                        <EyeClosed
+                                            className="eyeIcon"
+                                            onClick={() => setShowPassword(true)}
+                                        />
+                                    )}
+
+                                </div>
+
+                                {errors.password && (
+                                    <p className="inputError">{errors.password}</p>
+                                )}
+
+                            </div>
+
+                            {/* confirm password input */}
+                            <div className="inputGroup">
+
+                                <label>Confirm Password</label>
+
+                                <div className="inputWrapper">
+
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        placeholder="Confirm password"
+                                        name="confirmPassword"
+                                        value={formData.confirmPassword}
+                                        onChange={handleInputChange}
+                                    />
+
+                                    {showPassword ? (
+                                        <Eye
+                                            className="eyeIcon"
+                                            onClick={() => setShowPassword(false)}
+                                        />
+                                    ) : (
+                                        <EyeClosed
+                                            className="eyeIcon"
+                                            onClick={() => setShowPassword(true)}
+                                        />
+                                    )}
+
+                                </div>
+
+                                {errors.confirmPassword && (
+                                    <p className="inputError">{errors.confirmPassword}</p>
+                                )}
+
+                            </div>
+
+                            {/* Reset Password button */}
+                            <button
+                                className="btn btnPrimary"
+                                type="submit"
+                                disabled={formLoading}
+                            >
+                                {formLoading ? <ButtonLoader /> : "Reset Password"}
+                            </button>
+
+                        </form>
+                    )}
+
+                    {/* show password reset message if password reset successfull */}
+                    {isResetTokenValid && isPasswordReset && (
+
+                        <div className="authHeading">
+
+                            <h2>Password Reset Successful</h2>
+
+                            <p>
+                                Your password has been reset successfully.
+                            </p>
+
+                            <p className="bottomText">
+                                You can now sign in using your new password. Back to <span onClick={() => navigate("/")}>Login</span>
+                            </p>
+
+                        </div>
+
+                    )}
 
                 </div>
 
