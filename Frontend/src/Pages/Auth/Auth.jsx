@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import "./Auth.css";
 import { Link } from "react-router-dom";
-import { Eye, EyeClosed} from 'lucide-react';
+import { Eye, EyeClosed } from 'lucide-react';
 import ButtonLoader from "../../Components/Loaders/ButtonLoader/ButtonLoader";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, registerUser, sendLoginOtp, verifyLoginOtp } from "../../features/auth/authThunk.js";
@@ -397,6 +397,7 @@ const Auth = () => {
     return () => clearInterval(interval);
 
   }, [currentForm]);
+
 
   return (
 
