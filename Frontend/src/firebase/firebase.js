@@ -5,7 +5,7 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey:  import.meta.env.VITE_FIREBASE_API_KEY,
+  apiKey:  import.meta.env.VITE_FIREBASE_APIKEY,
   authDomain: "crayvo-foodtech.firebaseapp.com",
   projectId: "crayvo-foodtech",
   storageBucket: "crayvo-foodtech.firebasestorage.app",
