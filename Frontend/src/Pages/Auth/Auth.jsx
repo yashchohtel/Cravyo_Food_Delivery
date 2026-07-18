@@ -9,6 +9,7 @@ import { loginUser, registerUser, sendLoginOtp, verifyLoginOtp } from "../../fea
 import { clearMessages } from "../../features/auth/authSlice.js";
 import toast from "react-hot-toast";
 import OtpInput from "../../Components/OtpInput/OtpInput.jsx";
+import GoogleAuth from "../../Components/GoogleAuth/GoogleAuth.jsx";
 
 const Auth = () => {
 
@@ -510,11 +511,8 @@ const Auth = () => {
                   Forgot Password?
                 </Link>
 
-                {/* continue with google button */}
-                <button className="btn btnGoogle">
-                  <img src="/googleLogo.png" alt="Google" />
-                  Continue with Google
-                </button>
+                {/* google authentication button */}
+                <GoogleAuth />
 
                 {/* login with otp button */}
                 <p className="otpLoginText" onClick={() => changeForm("otp")} >
@@ -644,11 +642,8 @@ const Auth = () => {
                   {formLoading ? <ButtonLoader /> : "Create Account"}
                 </button>
 
-                {/* Google Login Button */}
-                <button className="btn btnGoogle">
-                  <img src="/googleLogo.png" alt="Google" />
-                  Continue with Google
-                </button>
+                {/* google authentication button */}
+                <GoogleAuth />
 
                 {/* login form button */}
                 <p className="bottomText">
@@ -699,11 +694,8 @@ const Auth = () => {
                   {formLoading ? <ButtonLoader /> : "Send OTP"}
                 </button>
 
-                {/* continue with google button */}
-                <button className="btn btnGoogle">
-                  <img src="/googleLogo.png" alt="Google" />
-                  Continue with Google
-                </button>
+                {/* google authentication button */}
+                <GoogleAuth />
 
                 {/* login form button */}
                 <p className="bottomText">
