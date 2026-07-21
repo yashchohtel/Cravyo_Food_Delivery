@@ -15,6 +15,11 @@ const GoogleAuth = () => {
             // to show popup
             const result = await signInWithPopup(auth, provider)
 
+            // get goken id from the result
+            const idToken = await result.user.getIdToken();
+
+            console.log(idToken);
+
         } catch (err) {
 
             console.log(err);

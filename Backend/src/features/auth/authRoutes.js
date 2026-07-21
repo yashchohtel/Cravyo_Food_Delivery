@@ -1,7 +1,7 @@
 import express from "express"; // Express framework for building APIs
 import catchAsyncError from "../../middleware/catchAsyncError.js";
 import { isUserAuth } from "../../middleware/auth.js"; // Import authentication middleware
-import { getCurrentUser, login, logout, register, resetPassword, sendLoginOtp, sendPasswordResetLink, verifyLoginOtp, verifyResetToken } from "./authController.js";
+import { getCurrentUser, googleAuth, login, logout, register, resetPassword, sendLoginOtp, sendPasswordResetLink, verifyLoginOtp, verifyResetToken } from "./authController.js";
 
 const authRouter = express.Router(); // Creating an instance of Express Router
 
@@ -33,5 +33,8 @@ authRouter.post("/reset-password/:token", catchAsyncError(resetPassword));
 
 // Verify Reset Token [GET] - 'http://localhost:5000/api/auth/verify-reset-token/:token'
 authRouter.get("/verify-reset-token/:token", catchAsyncError(verifyResetToken));
+
+// googole authentication [POST] - "http://localhost:5000/api/auth/google"
+authRouter.post("/google", catchAsyncError(googleAuth));
 
 export default authRouter; // export user router

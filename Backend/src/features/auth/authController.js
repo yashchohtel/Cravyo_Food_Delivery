@@ -38,7 +38,8 @@ export const register = async (req, res, next) => {
         fullName,
         email,
         password,
-        mobileNumber
+        mobileNumber,
+        provider: "local"
     });
 
     // Send Welcome Email (Don't fail registration if email sending fails)
@@ -87,6 +88,11 @@ export const login = async (req, res, next) => {
     // If user does not exist
     if (!user) {
         return next(new ErrorHandler("Invalid email/mobile number or password", 401));
+    }
+
+    // Prevent Google users from logging in with email and password
+    if (user.provider === "google") {
+        return next(new ErrorHandler("Please login with Google", 400));
     }
 
     // Compare password
@@ -381,3 +387,7 @@ export const resetPassword = async (req, res, next) => {
 
 };
 
+// GOOGLE LOGIN
+export const googleAuth = async (req, res, next) => {
+
+}

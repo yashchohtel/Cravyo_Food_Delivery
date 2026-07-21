@@ -5,6 +5,13 @@ import jwt from "jsonwebtoken"; // Import JWT for authentication
 // Creating a user schema
 const userSchema = new mongoose.Schema({
 
+    // Method of creating account
+    provider: {
+        type: String,
+        enum: ["local", "google"],
+        default: "local"
+    },
+
     // full name
     fullName: {
         type: String,
@@ -24,15 +31,19 @@ const userSchema = new mongoose.Schema({
     // user password
     password: {
         type: String,
-        required: true,
+        required: function () {
+            return this.provider === "local";
+        }
     },
 
     // mobile number
     mobileNumber: {
         type: String,
-        required: [true, "Mobile number is required"],
         unique: true,
         trim: true,
+        required: function () {
+            return this.provider === "local";
+        }
     },
 
     // user roles
@@ -61,6 +72,19 @@ const userSchema = new mongoose.Schema({
     // Reset password token expire
     resetPasswordExpire: {
         type: Date,
+    },
+
+    // Firebase unique user id
+    googleId: {
+        type: String,
+        unique: true,
+        sparse: true
+    },
+
+    // profile image url
+    profileImage: {
+        type: String,
+        default: ""
     },
 
 }, { timestamps: true })
