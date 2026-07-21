@@ -8,13 +8,13 @@ const GoogleAuth = () => {
     const handleGoogleAuth = async () => {
 
         try {
+
             // Creatign a google auth provider instance
             const provider = new GoogleAuthProvider();
 
             // to show popup
             const result = await signInWithPopup(auth, provider)
 
-            console.log(result);
         } catch (err) {
 
             console.log(err);

@@ -42,3 +42,6 @@ Thumbs.db
 # Runtime files
 *.pid
 *.seed
+
+# firebased confidential files
+Backend/src/firebase/serviceAccountKey.json
