@@ -1,8 +1,23 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '../../firebase/firebase.js';
 import './GoogleAuth.css'
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { googleAuth } from '../../features/auth/authThunk.js';
+import ButtonLoader from '../Loaders/ButtonLoader/ButtonLoader.jsx';
 
 const GoogleAuth = () => {
+
+    // initialize use dispatch
+    const dispatch = useDispatch();
+
+    /* -------------------------------------- */
+
+    // getting required data from global store using useSelector
+    const { googleAuthLoading, errorMessage, successMessage } = useSelector((state) => state.auth);
+
+    console.log("google auth loading - " + googleAuthLoading);
+
+    /* -------------------------------------- */
 
     // function to handle google authentication
     const handleGoogleAuth = async () => {
@@ -18,7 +33,8 @@ const GoogleAuth = () => {
             // get goken id from the result
             const idToken = await result.user.getIdToken();
 
-            console.log(idToken);
+            // dispatch google auth 
+            dispatch(googleAuth(idToken));
 
         } catch (err) {
 
@@ -29,16 +45,30 @@ const GoogleAuth = () => {
     }
 
     return (
+
         <>
+
             {/* continue with google button */}
             <button
                 className="btn btnGoogle"
                 type="button"
-                onClick={() => handleGoogleAuth()}
+                onClick={handleGoogleAuth}
+                disabled={googleAuthLoading}
             >
-                <img src="/googleLogo.png" alt="Google" />
-                Continue with Google
+                {googleAuthLoading ?
+                    (<ButtonLoader color="var(--primary-color)" />)
+                    :
+                    (<>
+                        <img src="/googleLogo.png" alt="Google" />
+                        Continue with Google
+                    </>)
+                }
             </button>
+
+            {/* email server error */}
+            {errorMessage === "Please login with Google." && (
+                <p className="inputError errTextCenter">{errorMessage}</p>
+            )}
 
         </>
     )

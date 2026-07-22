@@ -7,6 +7,7 @@ import crypto from "crypto"; // import crypto
 import welcomeEmail from "../../utils/emailTemplate/welcomUserEmailTemplate.js"; // email template welcome user
 import loginOtpEmail from "../../utils/emailTemplate/sendLoginOtpEmailTemplate.js"; // email template login otp
 import resetPasswordEmail from "../../utils/emailTemplate/sendPassResetLinkEmailTemplate.js"; // email template reset password
+import { adminAuth } from "../../firebase/firebaseAdmin.js"; // import firebase admin
 
 // REGISTRATION 
 export const register = async (req, res, next) => {
@@ -92,7 +93,7 @@ export const login = async (req, res, next) => {
 
     // Prevent Google users from logging in with email and password
     if (user.provider === "google") {
-        return next(new ErrorHandler("Please login with Google", 400));
+        return next(new ErrorHandler("Please login with Google.", 400));
     }
 
     // Compare password
@@ -389,5 +390,61 @@ export const resetPassword = async (req, res, next) => {
 
 // GOOGLE LOGIN
 export const googleAuth = async (req, res, next) => {
+
+    // get idToken fro the request body
+    const { idToken } = req.body;
+
+    // if no id token
+    if (!idToken) {
+        return next(new ErrorHandler("Unable to sign in with Google. Please try again.", 400));
+    }
+
+    // decode the token
+    const decodedToken = await adminAuth.verifyIdToken(idToken);
+
+    // Extract user information from decoded token
+    const { uid, email, name, picture } = decodedToken;
+
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+
+    // If user exists, log them in
+    if (existingUser) {
+
+        // send token to frontend
+        return sendToken(existingUser, 200, res, `Welcome back, ${existingUser.fullName}`);
+
+    }
+
+    // Create new Google user
+    const savedUser = await User.create({
+        fullName: name,
+        email,
+        googleId: uid,
+        profileImage: picture,
+        provider: "google",
+    });
+
+    // send welcome email to users email
+    try {
+
+        await sendEmail({
+
+            to: savedUser.email,
+            subject: "Welcome to Cravyo 🎉",
+            html: welcomeEmail({
+                fullName: savedUser.fullName,
+            }),
+
+        });
+
+    } catch (error) {
+
+        console.error("Welcome Email Error:", error.message);
+
+    }
+
+    // Login newly created user
+    return sendToken(savedUser, 201, res, `Welcome, ${savedUser.fullName}`);
 
 }

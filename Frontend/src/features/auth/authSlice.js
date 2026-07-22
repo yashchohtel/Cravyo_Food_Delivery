@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loadUser, loginUser, logoutUser, registerUser, resetPassword, sendLoginOtp, sendPasswordResetLink, verifyLoginOtp, verifyResetToken } from "./authThunk";
+import { googleAuth, loadUser, loginUser, logoutUser, registerUser, resetPassword, sendLoginOtp, sendPasswordResetLink, verifyLoginOtp, verifyResetToken } from "./authThunk";
 
 // Initial state for authentication
 const initialState = {
     user: null,
     authLoading: true, // App initialization loading
     formLoading: false, // Login / Register / OTP loading
-    errorMessage: null, 
+    googleAuthLoading: false, // google auth loadint 
+    errorMessage: null,
     successMessage: null,
     isAuthenticated: false,
-
     verifyTokenLoading: true, // state to track reset password token verificaion loading
     isResetTokenValid: null, // flag for passward reset token validation
 };
@@ -242,6 +242,29 @@ const authSlice = createSlice({
             // Rejected
             .addCase(resetPassword.rejected, (state, action) => {
                 state.formLoading = false;
+                state.errorMessage = action.payload;
+            })
+
+            /* ----------- GOOGLE AUTH ↓ */
+
+            // Pending
+            .addCase(googleAuth.pending, (state) => {
+                state.googleAuthLoading = true;
+                state.errorMessage = null;
+                state.successMessage = null;
+            })
+
+            // Fulfilled
+            .addCase(googleAuth.fulfilled, (state, action) => {
+                state.googleAuthLoading = false;
+                state.isAuthenticated = true;
+                state.user = action.payload.user;
+                state.successMessage = action.payload.message;
+            })
+
+            // Rejected
+            .addCase(googleAuth.rejected, (state, action) => {
+                state.googleAuthLoading = false;
                 state.errorMessage = action.payload;
             })
 

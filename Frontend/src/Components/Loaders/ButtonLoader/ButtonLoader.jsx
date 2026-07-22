@@ -1,16 +1,16 @@
-import "./ButtonLoader.css"
+import "./ButtonLoader.css";
 
-const ButtonLoader = () => {
-
+const ButtonLoader = ({ color = "#fff" }) => {
     return (
-        <>
-            <div className="buttonLoader">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </>
-    )
+        <div
+            className="buttonLoader"
+            style={{ "--loader-color": color }}
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    );
+};
 
-}
-export default ButtonLoader
+export default ButtonLoader;

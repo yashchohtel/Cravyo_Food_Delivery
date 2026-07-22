@@ -177,3 +177,23 @@ export const resetPassword = createAsyncThunk("auth/resetPassword", async ({ tok
 
 });
 
+// Thunk for Google Authentication
+export const googleAuth = createAsyncThunk("auth/googleAuth", async (idToken, { rejectWithValue }) => {
+
+    try {
+
+        // Google authentication api call
+        const { data } = await api.post("/api/auth/google", { idToken });
+
+        // return success response
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Something went wrong"
+        );
+
+    }
+
+});
