@@ -4,6 +4,7 @@ import './GoogleAuth.css'
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { googleAuth } from '../../features/auth/authThunk.js';
 import ButtonLoader from '../Loaders/ButtonLoader/ButtonLoader.jsx';
+import { useState } from 'react';
 
 const GoogleAuth = () => {
 
@@ -13,9 +14,12 @@ const GoogleAuth = () => {
     /* -------------------------------------- */
 
     // getting required data from global store using useSelector
-    const { googleAuthLoading, errorMessage, successMessage } = useSelector((state) => state.auth);
+    const { googleAuthLoading, errorMessage } = useSelector((state) => state.auth);
 
-    console.log("google auth loading - " + googleAuthLoading);
+    /* -------------------------------------- */
+
+    // state to handle google loading
+    const [googleLoading, setGoogleLoading] = useState(false);
 
     /* -------------------------------------- */
 
@@ -23,6 +27,9 @@ const GoogleAuth = () => {
     const handleGoogleAuth = async () => {
 
         try {
+
+            // set google button loading
+            setGoogleLoading(true);
 
             // Creatign a google auth provider instance
             const provider = new GoogleAuthProvider();
@@ -40,6 +47,11 @@ const GoogleAuth = () => {
 
             console.log(err);
 
+        } finally {
+
+            // set google loading false on api complition
+            setGoogleLoading(false);
+
         }
 
     }
@@ -53,9 +65,9 @@ const GoogleAuth = () => {
                 className="btn btnGoogle"
                 type="button"
                 onClick={handleGoogleAuth}
-                disabled={googleAuthLoading}
+                disabled={googleLoading || googleAuthLoading}
             >
-                {googleAuthLoading ?
+                {googleLoading || googleAuthLoading ?
                     (<ButtonLoader color="var(--primary-color)" />)
                     :
                     (<>

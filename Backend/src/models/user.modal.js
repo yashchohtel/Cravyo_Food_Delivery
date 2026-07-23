@@ -39,7 +39,6 @@ const userSchema = new mongoose.Schema({
     // mobile number
     mobileNumber: {
         type: String,
-        unique: true,
         trim: true,
         required: function () {
             return this.provider === "local";
@@ -88,6 +87,17 @@ const userSchema = new mongoose.Schema({
     },
 
 }, { timestamps: true })
+
+// user schema index or mobie
+userSchema.index(
+    { mobileNumber: 1 },
+    {
+        unique: true,
+        partialFilterExpression: {
+            mobileNumber: { $type: "string" }
+        }
+    }
+);
 
 // Pre-save hook to hash the password before saving
 userSchema.pre("save", async function () {

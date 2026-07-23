@@ -416,7 +416,7 @@ export const googleAuth = async (req, res, next) => {
 
     }
 
-    // Create new Google user
+    // save user document
     const savedUser = await User.create({
         fullName: name,
         email,
@@ -424,6 +424,7 @@ export const googleAuth = async (req, res, next) => {
         profileImage: picture,
         provider: "google",
     });
+
 
     // send welcome email to users email
     try {
