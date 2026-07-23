@@ -6,7 +6,7 @@ import { googleAuth } from '../../features/auth/authThunk.js';
 import ButtonLoader from '../Loaders/ButtonLoader/ButtonLoader.jsx';
 import { useState } from 'react';
 
-const GoogleAuth = () => {
+const GoogleAuth = ({ changeForm }) => {
 
     // initialize use dispatch
     const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const GoogleAuth = () => {
     /* -------------------------------------- */
 
     // getting required data from global store using useSelector
-    const { googleAuthLoading, errorMessage } = useSelector((state) => state.auth);
+    const { googleAuthLoading } = useSelector((state) => state.auth);
 
     /* -------------------------------------- */
 
@@ -25,6 +25,9 @@ const GoogleAuth = () => {
 
     // function to handle google authentication
     const handleGoogleAuth = async () => {
+
+        // clear all errors and state message
+        // changeForm()
 
         try {
 
@@ -76,11 +79,6 @@ const GoogleAuth = () => {
                     </>)
                 }
             </button>
-
-            {/* email server error */}
-            {errorMessage === "Please login with Google." && (
-                <p className="inputError errTextCenter">{errorMessage}</p>
-            )}
 
         </>
     )

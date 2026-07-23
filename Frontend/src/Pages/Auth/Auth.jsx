@@ -399,7 +399,6 @@ const Auth = () => {
 
   }, [currentForm]);
 
-
   return (
 
     <>
@@ -495,6 +494,13 @@ const Auth = () => {
                     <p className="inputError">{errorMessage}</p>
                   )}
 
+                  {/* This email is registered with Google. Use "Continue with Google". */}
+
+                  {/* email server error */}
+                  {errorMessage === "Please login with Google." && (
+                    <p className="inputError">This email is registered with Google. Use "Continue with Google".</p>
+                  )}
+
                 </div>
 
                 {/* login button */}
@@ -512,7 +518,9 @@ const Auth = () => {
                 </Link>
 
                 {/* google authentication button */}
-                <GoogleAuth />
+                <GoogleAuth
+                  changeForm={changeForm} // function to clear state
+                />
 
                 {/* login with otp button */}
                 <p className="otpLoginText" onClick={() => changeForm("otp")} >
