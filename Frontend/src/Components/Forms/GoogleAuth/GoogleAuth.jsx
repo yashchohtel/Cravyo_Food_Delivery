@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { auth } from '../../firebase/firebase.js';
+import { auth } from '../../../firebase/firebase.js';
 import './GoogleAuth.css'
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { googleAuth } from '../../features/auth/authThunk.js';
-import ButtonLoader from '../Loaders/ButtonLoader/ButtonLoader.jsx';
-import { useState } from 'react';
+import { googleAuth } from '../../../features/auth/authThunk.js';
+import ButtonLoader from '../../Loaders/ButtonLoader/ButtonLoader.jsx';
 
-const GoogleAuth = ({ changeForm }) => {
+const GoogleAuth = ({changeForm, formLoading, googleLoading, setGoogleLoading}) => {
 
     // initialize use dispatch
     const dispatch = useDispatch();
@@ -18,16 +17,11 @@ const GoogleAuth = ({ changeForm }) => {
 
     /* -------------------------------------- */
 
-    // state to handle google loading
-    const [googleLoading, setGoogleLoading] = useState(false);
-
-    /* -------------------------------------- */
-
     // function to handle google authentication
     const handleGoogleAuth = async () => {
 
-        // clear all errors and state message
-        // changeForm()
+        // clear error and form data
+        changeForm()
 
         try {
 
@@ -68,7 +62,7 @@ const GoogleAuth = ({ changeForm }) => {
                 className="btn btnGoogle"
                 type="button"
                 onClick={handleGoogleAuth}
-                disabled={googleLoading || googleAuthLoading}
+                disabled={googleLoading || googleAuthLoading || formLoading}
             >
                 {googleLoading || googleAuthLoading ?
                     (<ButtonLoader color="var(--primary-color)" />)
