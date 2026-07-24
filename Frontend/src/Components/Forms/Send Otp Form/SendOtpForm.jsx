@@ -5,14 +5,15 @@ const SendOtpForm = (props) => {
 
     // destructure props
     const {
-        formData,          // otp form values
-        errors,            // validation errors
-        errorMessage,      // server error messages
-        handleInputChange, // update input values
-        changeForm,        // switch auth forms
-        formLoading,       // button loading state
-        googleLoading,      // google popup loading state
-        setGoogleLoading,  // update google loading state
+        formData,            // otp form values
+        errors,              // validation errors
+        errorMessage,        // server error messages
+        handleInputChange,   // update input values
+        changeForm,          // switch auth forms
+        formLoading,         // button loading state
+        googleLoading,       // google popup loading state
+        setGoogleLoading,    // update google loading state
+        clearTempSessionData //clear temperory session data
     } = props;
 
     return (
@@ -53,10 +54,11 @@ const SendOtpForm = (props) => {
 
             {/* google authentication button */}
             <GoogleAuth
-                changeForm={changeForm}             // to change form and clear states
-                formLoading={formLoading}           // formLoading 
-                googleLoading={googleLoading}       // google popup loading state
-                setGoogleLoading={setGoogleLoading} // update google loading state
+                changeForm={changeForm}                     // to change form and clear states
+                formLoading={formLoading}                   // formLoading 
+                googleLoading={googleLoading}               // google popup loading state
+                setGoogleLoading={setGoogleLoading}         // update google loading state
+                clearTempSessionData={clearTempSessionData} // clear temperory session data
             />
 
             {/* login form button */}

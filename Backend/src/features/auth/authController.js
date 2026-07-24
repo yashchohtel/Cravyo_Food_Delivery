@@ -23,6 +23,13 @@ export const register = async (req, res, next) => {
     // Check if the email already exists in the database
     const existingEmail = await User.findOne({ email });
 
+    console.log(existingEmail);
+
+    // Prevent Google users from logging in with email and password
+    if (existingEmail.provider === "google") {
+        return next(new ErrorHandler("Please login with Google.", 400));
+    }
+
     if (existingEmail) {
         return next(new ErrorHandler("Email already exists", 400));
     }
@@ -275,6 +282,11 @@ export const sendPasswordResetLink = async (req, res, next) => {
 
     if (!user) return next(new ErrorHandler("No account found with this email.", 404));
 
+    // Prevent Google users from logging in with email and password
+    if (user.provider === "google") {
+        return next(new ErrorHandler("Please login with Google.", 400));
+    }
+
     // Generate reset token
     const resetToken = crypto.randomBytes(32).toString("hex");
 
@@ -391,7 +403,7 @@ export const resetPassword = async (req, res, next) => {
 // GOOGLE LOGIN
 export const googleAuth = async (req, res, next) => {
 
-    // get idToken fro the request body
+    // get idToken from the request body
     const { idToken } = req.body;
 
     // if no id token
@@ -424,7 +436,6 @@ export const googleAuth = async (req, res, next) => {
         profileImage: picture,
         provider: "google",
     });
-
 
     // send welcome email to users email
     try {

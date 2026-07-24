@@ -5,7 +5,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { googleAuth } from '../../../features/auth/authThunk.js';
 import ButtonLoader from '../../Loaders/ButtonLoader/ButtonLoader.jsx';
 
-const GoogleAuth = ({changeForm, formLoading, googleLoading, setGoogleLoading}) => {
+const GoogleAuth = ({ changeForm, formLoading, googleLoading, setGoogleLoading, clearTempSessionData }) => {
 
     // initialize use dispatch
     const dispatch = useDispatch();
@@ -48,6 +48,9 @@ const GoogleAuth = ({changeForm, formLoading, googleLoading, setGoogleLoading}) 
 
             // set google loading false on api complition
             setGoogleLoading(false);
+
+            // clear temperory sesstion data on login sucessfull
+            clearTempSessionData()
 
         }
 

@@ -172,6 +172,12 @@ const ForgotPassword = () => {
                                 <p className="inputError">{errorMessage}</p>
                             )}
 
+                            {/* This email is registered with Google. Use "Continue with Google". */}
+                            {/* email server error */}
+                            {errorMessage === "Please login with Google." && (
+                                <p className="inputError">This email is registered with Google. Use "Continue with Google".</p>
+                            )}
+
                         </div>
 
                         {/* Send Reset Link button */}

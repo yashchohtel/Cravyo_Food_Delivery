@@ -7,16 +7,17 @@ const LoginForm = (props) => {
 
     // destructure props
     const {
-        formData,          // login form values
-        errors,            // validation errors
-        errorMessage,      // server error messages
-        showPassword,      // password visibility
-        setShowPassword,   // toggle password visibility
-        handleInputChange, // update input values
-        changeForm,        // switch auth forms
-        formLoading,       // button loading state
-        googleLoading,      // google popup loading state
-        setGoogleLoading,  // update google loading state
+        formData,            // login form values
+        errors,              // validation errors
+        errorMessage,        // server error messages
+        showPassword,        // password visibility
+        setShowPassword,     // toggle password visibility
+        handleInputChange,   // update input values
+        changeForm,          // switch auth forms
+        formLoading,         // button loading state
+        googleLoading,       // google popup loading state
+        setGoogleLoading,    // update google loading state
+        clearTempSessionData //clear temperory session data
     } = props;
 
     return (
@@ -94,16 +95,21 @@ const LoginForm = (props) => {
             </button>
 
             {/* forgot password button */}
-            <Link to="/forgotPass" className="forgotPasswordText">
+            <Link
+                to="/forgotPass"
+                className="forgotPasswordText"
+                onClick={() => changeForm()}
+            >
                 Forgot Password?
             </Link>
 
             {/* google authentication button */}
             <GoogleAuth
-                changeForm={changeForm}             // to change form and clear states
-                formLoading={formLoading}           // formLoading 
-                googleLoading={googleLoading}       // google popup loading state
-                setGoogleLoading={setGoogleLoading} // update google loading state
+                changeForm={changeForm}                     // to change form and clear states
+                formLoading={formLoading}                   // formLoading 
+                googleLoading={googleLoading}               // google popup loading state
+                setGoogleLoading={setGoogleLoading}         // update google loading state
+                clearTempSessionData={clearTempSessionData} // clear temperory session data
             />
 
             {/* login with otp button */}

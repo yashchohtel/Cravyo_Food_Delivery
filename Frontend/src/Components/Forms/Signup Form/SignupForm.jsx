@@ -6,16 +6,17 @@ const SignupForm = (props) => {
 
     // destructure props
     const {
-        formData,          // signup form values
-        errors,            // validation errors
-        errorMessage,      // server error messages
-        showPassword,      // password visibility
-        setShowPassword,   // toggle password visibility
-        handleInputChange, // update input values
-        changeForm,        // switch auth forms
-        formLoading,       // button loading state
-        googleLoading,      // google popup loading state
-        setGoogleLoading,  // update google loading state
+        formData,            // signup form values
+        errors,              // validation errors
+        errorMessage,        // server error messages
+        showPassword,        // password visibility
+        setShowPassword,     // toggle password visibility
+        handleInputChange,   // update input values
+        changeForm,          // switch auth forms
+        formLoading,         // button loading state
+        googleLoading,       // google popup loading state
+        setGoogleLoading,    // update google loading state
+        clearTempSessionData //clear temperory session data
     } = props;
 
     return (
@@ -115,6 +116,13 @@ const SignupForm = (props) => {
                 {/* password validation error */}
                 {errors.password && <p className="inputError"> {errors.password} </p>}
 
+                {/* This email is registered with Google. Use "Continue with Google". */}
+                {/* email server error */}
+                {errorMessage === "Please login with Google." && (
+                    <p className="inputError">This email is registered with Google. Use "Continue with Google".</p>
+                )}
+
+
             </div>
 
             {/* create account button */}
@@ -128,10 +136,11 @@ const SignupForm = (props) => {
 
             {/* google authentication button */}
             <GoogleAuth
-                changeForm={changeForm}             // to change form and clear states
-                formLoading={formLoading}           // formLoading 
-                googleLoading={googleLoading}       // google popup loading state
-                setGoogleLoading={setGoogleLoading} // update google loading state
+                changeForm={changeForm}                     // to change form and clear states
+                formLoading={formLoading}                   // formLoading 
+                googleLoading={googleLoading}               // google popup loading state
+                setGoogleLoading={setGoogleLoading}         // update google loading state
+                clearTempSessionData={clearTempSessionData} // clear temperory session data
             />
 
             {/* login form button */}

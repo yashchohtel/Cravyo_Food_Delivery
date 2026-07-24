@@ -21,6 +21,8 @@ const Auth = () => {
   // getting required data from global store using useSelector
   const { formLoading, errorMessage, successMessage } = useSelector((state) => state.auth);
 
+  console.log(errorMessage);
+  
   /* -------------------------------------- */
 
   // state to toggle password visibility
@@ -71,9 +73,9 @@ const Auth = () => {
 
   // function to clear temperory session data
   const clearTempSessionData = () => {
-    sessionStorage.removeItem("authForm");
-    sessionStorage.removeItem("otpMobile");
-    sessionStorage.removeItem("resendOtpAvailableAt");
+    sessionStorage.removeItem("authForm"); // clear current auth form
+    sessionStorage.removeItem("otpMobile"); // clear otp mobile number
+    sessionStorage.removeItem("resendOtpAvailableAt"); // clear otp resend timer
   }
 
   /* -------------------------------------- */
@@ -387,16 +389,17 @@ const Auth = () => {
             {currentForm === "login" && (
 
               <LoginForm
-                formData={formData}                   // login form values
-                errors={errors}                       // validation errors
-                errorMessage={errorMessage}           // server error messages
-                showPassword={showPassword}           // password visibility
-                setShowPassword={setShowPassword}     // toggle password visibility
-                handleInputChange={handleInputChange} // update input values
-                changeForm={changeForm}               // switch auth forms
-                formLoading={formLoading}             // button loading state
-                googleLoading={googleLoading}         // google popup loading state
-                setGoogleLoading={setGoogleLoading}   // update google loading state
+                formData={formData}                         // login form values
+                errors={errors}                             // validation errors
+                errorMessage={errorMessage}                 // server error messages
+                showPassword={showPassword}                 // password visibility
+                setShowPassword={setShowPassword}           // toggle password visibility
+                handleInputChange={handleInputChange}       // update input values
+                changeForm={changeForm}                     // switch auth forms
+                formLoading={formLoading}                   // button loading state
+                googleLoading={googleLoading}               // google popup loading state
+                setGoogleLoading={setGoogleLoading}         // update google loading state
+                clearTempSessionData={clearTempSessionData} // clear temperory session data
               />
 
             )}
@@ -405,16 +408,17 @@ const Auth = () => {
             {currentForm === "signup" && (
 
               <SignupForm
-                formData={formData}                   // signup form values
-                errors={errors}                       // validation errors
-                errorMessage={errorMessage}           // server error messages
-                showPassword={showPassword}           // password visibility
-                setShowPassword={setShowPassword}     // toggle password visibility
-                handleInputChange={handleInputChange} // update input values
-                changeForm={changeForm}               // switch auth forms
-                formLoading={formLoading}             // button loading state
-                googleLoading={googleLoading}         // google popup loading state
-                setGoogleLoading={setGoogleLoading}   // update google loading state
+                formData={formData}                         // signup form values
+                errors={errors}                             // validation errors
+                errorMessage={errorMessage}                 // server error messages
+                showPassword={showPassword}                 // password visibility
+                setShowPassword={setShowPassword}           // toggle password visibility
+                handleInputChange={handleInputChange}       // update input values
+                changeForm={changeForm}                     // switch auth forms
+                formLoading={formLoading}                   // button loading state
+                googleLoading={googleLoading}               // google popup loading state
+                setGoogleLoading={setGoogleLoading}         // update google loading state
+                clearTempSessionData={clearTempSessionData} // clear temperory session data
               />
 
             )}
@@ -423,14 +427,15 @@ const Auth = () => {
             {currentForm === "otp" && (
 
               <SendOtpForm
-                formData={formData}                   // otp form values
-                errors={errors}                       // validation errors
-                errorMessage={errorMessage}           // server error messages
-                handleInputChange={handleInputChange} // update input values
-                changeForm={changeForm}               // switch auth forms
-                formLoading={formLoading}             // button loading state
-                googleLoading={googleLoading}         // google popup loading state
-                setGoogleLoading={setGoogleLoading}   // update google loading state
+                formData={formData}                         // otp form values
+                errors={errors}                             // validation errors
+                errorMessage={errorMessage}                 // server error messages
+                handleInputChange={handleInputChange}       // update input values
+                changeForm={changeForm}                     // switch auth forms
+                formLoading={formLoading}                   // button loading state
+                googleLoading={googleLoading}               // google popup loading state
+                setGoogleLoading={setGoogleLoading}         // update google loading state
+                clearTempSessionData={clearTempSessionData} // clear temperory session data
               />
 
             )}
