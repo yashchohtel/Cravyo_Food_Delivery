@@ -23,10 +23,8 @@ export const register = async (req, res, next) => {
     // Check if the email already exists in the database
     const existingEmail = await User.findOne({ email });
 
-    console.log(existingEmail);
-
     // Prevent Google users from logging in with email and password
-    if (existingEmail.provider === "google") {
+    if (existingEmail?.provider === "google") {
         return next(new ErrorHandler("Please login with Google.", 400));
     }
 

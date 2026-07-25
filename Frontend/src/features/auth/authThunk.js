@@ -50,8 +50,6 @@ export const loginUser = createAsyncThunk("auth/loginUser", async (formData, { r
         // login api call
         const { data } = await api.post("/api/auth/login", formData);
 
-        console.log(data);
-
         // return success response
         return data;
 

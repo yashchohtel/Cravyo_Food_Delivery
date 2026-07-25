@@ -20,8 +20,6 @@ const Auth = () => {
 
   // getting required data from global store using useSelector
   const { formLoading, errorMessage, successMessage } = useSelector((state) => state.auth);
-
-  console.log(errorMessage);
   
   /* -------------------------------------- */
 
