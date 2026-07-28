@@ -1,0 +1,92 @@
+/* Top Navbar */
+.top-navbar {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--background-color);
+  border-bottom: 0.1rem solid var(--border-color);
+}
+
+.locationTop {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.locationTop .location-icon {
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+.locationTop .destination {
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  color: var(--text-primary);
+}
+
+.address {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-left: 0.4rem;
+}
+
+/* Right Section */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Common Icon Button */
+.icon-btn {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: none;
+  border-radius: 50%;
+  background: var(--surface-color);
+  cursor: pointer;
+  font-size: 2.32em;
+  transition: var(--transition-fast);
+  color: var(--text-primary);
+}
+
+.icon-btn:hover {
+  background: var(--border-color);
+}
+
+/* Cart Badge */
+.cart-btn {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}

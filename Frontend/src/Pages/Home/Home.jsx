@@ -11,10 +11,18 @@ const Home = () => {
       <div className="homePage">
 
         {/* navbar top */}
-        <NavbarTop/>
+        <NavbarTop />
 
         {/* navbar bottom */}
-        <NavbarBottom/>
+        <NavbarBottom />
+
+        <button className='btn btnPrimary'>
+          logout
+        </button>
+
+        <button className='btn btnPrimary'>
+          delete
+        </button>
 
       </div>
 
