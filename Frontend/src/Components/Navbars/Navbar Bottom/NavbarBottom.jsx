@@ -1,6 +1,15 @@
 import './NavbarBottom.css'
+import { FiSearch } from "react-icons/fi";
 
-const NavbarBottom = () => {
+const NavbarBottom = (props) => {
+
+  // destructure props
+  const {
+    vegMode,      // current veg filter status
+    setVegMode,   // updates veg filter status
+  } = props;
+
+  // functin to set veg mode 
 
   return (
 
@@ -13,6 +22,11 @@ const NavbarBottom = () => {
         <div className="search-container">
 
           {/* Search Icon */}
+          <span className="searchIcon">
+            <FiSearch />
+          </span>
+
+          {/* search input */}
           <input
             type="text"
             placeholder="Search for food, restaurants..."
@@ -21,13 +35,22 @@ const NavbarBottom = () => {
 
         </div>
 
-        {/* Veg / Non Veg */}
-        <div className="food-preference">
+        {/* veg mode button */}
+        <div
+          className="veg-mode"
+          onClick={() => setVegMode(!vegMode)} // toggle food prefrences
+        >
 
-          <button className="active">
-            Veg
-          </button>
-          
+          <span className="veg-title">
+            VEG
+          </span>
+
+          <div className={`veg-switch ${vegMode ? "active" : ""}`}>
+
+            <div className="veg-thumb"></div>
+
+          </div>
+
         </div>
 
       </section>
@@ -37,4 +60,5 @@ const NavbarBottom = () => {
   )
 
 }
+
 export default NavbarBottom

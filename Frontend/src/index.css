@@ -11,6 +11,11 @@
   --primary-color: #ff5a1f;
   --primary-hover: #e84d16;
 
+  /* Veg Colors */
+  --veg-color: #16a34a;
+  --veg-light: #dcfce7;
+  --veg-dark: #15803d;
+
   /* Background Colors */
   --background-color: #ffffff;
   --surface-color: #f8f8f8;
@@ -41,6 +46,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-heading);
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* HTML & Body Styling */

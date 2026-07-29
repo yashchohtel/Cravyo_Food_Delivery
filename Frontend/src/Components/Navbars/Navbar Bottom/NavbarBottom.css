@@ -9,14 +9,23 @@
 
 .search-container {
   flex: 1;
-  height: 4.8rem;
+  height: 4.5rem;
+  min-width: 0;
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0 1.6rem;
+  padding: 0 1.5rem;
   border: 0.1rem solid var(--border-color);
   border-radius: 1.4rem;
   background: var(--surface-color);
+}
+
+.search-container .searchIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: var(--text-secondary);
 }
 
 .search-input {
@@ -32,26 +41,51 @@
   color: var(--text-secondary);
 }
 
-.food-preference {
-  display: flex;
-  padding: 0.4rem;
+/* veg mode button */
+.veg-mode {
+  width: 4.5rem;
+  height: 4.5rem;
   border-radius: 1.4rem;
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
   background: var(--surface-color);
-}
-
-.food-preference button {
-  width: 7rem;
-  height: 4rem;
-  border: none;
-  border-radius: 1rem;
-  background: transparent;
+  border: 0.1rem solid var(--border-color);
+  border-radius: 1.4rem;
   cursor: pointer;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text-secondary);
+  user-select: none;
+  flex-shrink: 0;
 }
 
-.food-preference .active {
-  background: var(--success-color);
-  color: #fff;
+.veg-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--veg-color);
+}
+
+.veg-switch {
+  width: 2.8rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem;
+  background: #d9d9d9;
+  border-radius: 5rem;
+  transition: var(--transition-normal);
+}
+
+.veg-switch.active {
+  justify-content: flex-end;
+  background: var(--veg-color);
+}
+
+.veg-thumb {
+  width: 1.1rem;
+  height: 1.1rem;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: var(--transition-normal);
 }

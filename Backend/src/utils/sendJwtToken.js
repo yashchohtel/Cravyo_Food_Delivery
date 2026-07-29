@@ -15,6 +15,7 @@ export const sendToken = (user, statusCode, res, message) => {
         fullName: user.fullName,
         email: user.email,
         mobileNumber: user.mobileNumber,
+        profileImage: user.profileImage,
         roles: user.roles,
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
