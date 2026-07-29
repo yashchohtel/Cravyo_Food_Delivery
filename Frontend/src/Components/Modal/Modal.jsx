@@ -5,7 +5,7 @@ const Modal = () => {
     return (
 
         <>
-            Modal
+            <div className="modal"></div>
         </>
 
     )
