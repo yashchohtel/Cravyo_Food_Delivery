@@ -9,7 +9,7 @@ function App() {
   // initialize use dispatch
   const dispatch = useDispatch();
 
-  /* -------------------------------------- */
+  /* -------------------------------------- */ 
 
   // Get auth state from Redux store
   const { authLoading } = useSelector((state) => state.auth);

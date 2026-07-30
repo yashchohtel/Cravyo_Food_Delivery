@@ -1,5 +1,20 @@
-.modal{
-    width: 400px;
-    height: 400px;
-    background-color: black;
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(0.05rem);
+  cursor: pointer;
+}
+
+.dialog {
+  position: relative;
+  z-index: 1;
 }

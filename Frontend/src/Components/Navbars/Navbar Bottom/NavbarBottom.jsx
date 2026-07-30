@@ -5,11 +5,9 @@ const NavbarBottom = (props) => {
 
   // destructure props
   const {
-    vegMode,      // current veg filter status
-    setVegMode,   // updates veg filter status
+    vegMode,             // current veg filter status
+    setIsFoodDialogOpen, // to set food prefrence dialog open close state
   } = props;
-
-  // functin to set veg mode 
 
   return (
 
@@ -38,7 +36,7 @@ const NavbarBottom = (props) => {
         {/* veg mode button */}
         <div
           className="veg-mode"
-          onClick={() => setVegMode(!vegMode)} // toggle food prefrences
+          onClick={() => setIsFoodDialogOpen(true)} // open food prefrence
         >
 
           <span className="veg-title">

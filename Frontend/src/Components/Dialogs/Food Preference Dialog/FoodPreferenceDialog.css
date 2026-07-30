@@ -1,0 +1,25 @@
+.food-preference-dialog {
+  width: 90%;
+  max-width: 35rem;
+
+  padding: 2rem;
+
+  background: var(--background-color);
+
+  border-radius: 2rem;
+
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.food-preference-dialog h2 {
+  margin-bottom: 1rem;
+
+  font-size: 2rem;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+}
+
+.food-preference-dialog p {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+}
