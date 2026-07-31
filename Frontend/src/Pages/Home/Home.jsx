@@ -36,7 +36,9 @@ const Home = () => {
         >
 
           {/* food preference dialog box */}
-          <FoodPreferenceDialog />
+          <FoodPreferenceDialog
+            setIsFoodDialogOpen={setIsFoodDialogOpen} // to set food prefrence dialog open close state
+          />
 
         </Modal>
 

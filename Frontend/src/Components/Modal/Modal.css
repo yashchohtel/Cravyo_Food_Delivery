@@ -4,6 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 .overlay {
@@ -17,4 +19,8 @@
 .dialog {
   position: relative;
   z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

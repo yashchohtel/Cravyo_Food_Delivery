@@ -1,21 +1,32 @@
 import './FoodPreferenceDialog.css'
+import { IoClose } from "react-icons/io5";
 
-const FoodPreferenceDialog = () => {
+const FoodPreferenceDialog = ({ setIsFoodDialogOpen }) => {
 
     return (
 
         <>
+            {/* food dialog box */}
             <div className="food-dialog">
+
+                {/* close dialog box button */}
+                <button
+                    className="close-btn"
+                    onClick={() => setIsFoodDialogOpen(false)}
+                >
+
+                    <IoClose />
+                </button>
 
                 <div className="food-dialog-header">
 
                     <div>
-                        <h2>I want to see veg choices from</h2>
+                        <h2>Choose Your Preference</h2>
                     </div>
 
-                    <button className="close-btn">
-                        ✕
-                    </button>
+                    <div className="vegImg">
+                        <img src="/vegImg.png" alt="vegLogo" />
+                    </div>
 
                 </div>
 
