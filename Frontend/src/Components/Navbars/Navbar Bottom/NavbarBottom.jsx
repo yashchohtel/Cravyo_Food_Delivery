@@ -5,7 +5,7 @@ const NavbarBottom = (props) => {
 
   // destructure props
   const {
-    vegMode,             // current veg filter status
+    userFoodPreference,  // user's current Food Preference
     setIsFoodDialogOpen, // to set food prefrence dialog open close state
   } = props;
 
@@ -39,14 +39,10 @@ const NavbarBottom = (props) => {
           onClick={() => setIsFoodDialogOpen(true)} // open food prefrence
         >
 
-          <span className="veg-title">
-            VEG
-          </span>
+          <span className="veg-title"> VEG </span>
 
-          <div className={`veg-switch ${vegMode ? "active" : ""}`}>
-
+          <div className={`veg-switch ${userFoodPreference === "veg" ? "active" : ""}`}>
             <div className="veg-thumb"></div>
-
           </div>
 
         </div>
@@ -59,4 +55,4 @@ const NavbarBottom = (props) => {
 
 }
 
-export default NavbarBottom
+export default NavbarBottom;

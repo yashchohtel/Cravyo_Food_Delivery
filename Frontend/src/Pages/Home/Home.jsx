@@ -7,11 +7,28 @@ import FoodPreferenceDialog from '../../Components/Dialogs/Food Preference Dialo
 
 const Home = () => {
 
-  // state to show food prefrence dialogbox
-  const [vegMode, setVegMode] = useState(false);
-
   // state to show/hide food prefrence dialog box
   const [isFoodDialogOpen, setIsFoodDialogOpen] = useState(false);
+
+  /* -------------------------------------- */
+
+  // State to store user's food preference ("all" / "veg")
+  const [userFoodPreference, setUserFoodPreference] = useState(() => {
+
+    // Get the saved food preference from localStorage
+    const savedPreference = localStorage.getItem("userFoodPreference");
+
+    // If no preference is saved, show all restaurants by default
+    if (savedPreference === null) {
+      return "all";
+    }
+
+    // Return the saved preference ("all" or "veg")
+    return JSON.parse(savedPreference);
+
+  });
+
+  /* -------------------------------------- */
 
   return (
 
@@ -25,19 +42,20 @@ const Home = () => {
 
         {/* navbar bottom */}
         <NavbarBottom
-          vegMode={vegMode} // current veg filter status
-          setIsFoodDialogOpen={setIsFoodDialogOpen} // to set food prefrence dialog open close state
+          setIsFoodDialogOpen={setIsFoodDialogOpen} // to set food prefrence dialog box open/close state
+          userFoodPreference={userFoodPreference} // user's current Food Preference
         />
 
         {/* food prefrence modal */}
         <Modal
-          isOpen={isFoodDialogOpen} // food prefrence dialog open close state
-          onClose={() => setIsFoodDialogOpen(false)}
+          isOpen={isFoodDialogOpen} // food prefrence dialog box open/close state
+          onClose={() => setIsFoodDialogOpen(false)} // function to close current opened dialog box
         >
 
           {/* food preference dialog box */}
           <FoodPreferenceDialog
-            setIsFoodDialogOpen={setIsFoodDialogOpen} // to set food prefrence dialog open close state
+            onClose={() => setIsFoodDialogOpen(false)} // function to close current opened dialog box
+            setUserFoodPreference={setUserFoodPreference} // to set user food prefrence all / veg only
           />
 
         </Modal>

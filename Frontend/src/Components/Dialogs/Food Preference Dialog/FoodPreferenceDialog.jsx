@@ -1,7 +1,34 @@
+import { useState } from 'react';
 import './FoodPreferenceDialog.css'
 import { IoClose } from "react-icons/io5";
 
-const FoodPreferenceDialog = ({ setIsFoodDialogOpen }) => {
+const FoodPreferenceDialog = (props) => {
+
+    // destructure props
+    const {
+        onClose, // to set food prefrence dialog open close state
+        setUserFoodPreference, // to set user food prefrence all / veg only
+    } = props;
+
+    /* -------------------------------------- */
+
+    // state to store user selected prefrence
+    const [selectedPreference, setSelectedPreference] = useState("all");
+
+    /* -------------------------------------- */
+
+    // function to handle apply function
+    const handleApply = () => {
+
+        setUserFoodPreference(selectedPreference);
+
+        localStorage.setItem(
+            "userFoodPreference",
+            JSON.stringify(selectedPreference)
+        );
+
+        onClose();
+    };
 
     return (
 
@@ -12,7 +39,7 @@ const FoodPreferenceDialog = ({ setIsFoodDialogOpen }) => {
                 {/* close dialog box button */}
                 <button
                     className="close-btn"
-                    onClick={() => setIsFoodDialogOpen(false)}
+                    onClick={onClose}
                 >
 
                     <IoClose />
@@ -40,6 +67,8 @@ const FoodPreferenceDialog = ({ setIsFoodDialogOpen }) => {
                             type="radio"
                             name="foodPreference"
                             value="all"
+                            checked={selectedPreference === "all"}
+                            onChange={(e) => setSelectedPreference(e.target.value)}
                         />
 
                     </label>
@@ -52,6 +81,8 @@ const FoodPreferenceDialog = ({ setIsFoodDialogOpen }) => {
                             type="radio"
                             name="foodPreference"
                             value="veg"
+                            checked={selectedPreference === "veg"}
+                            onChange={(e) => setSelectedPreference(e.target.value)}
                         />
 
                     </label>
@@ -59,14 +90,14 @@ const FoodPreferenceDialog = ({ setIsFoodDialogOpen }) => {
                 </div>
 
                 <div className="remember-choice">
-
                     <span>Remember my choice going forward</span>
-
                     <input type="checkbox" />
-
                 </div>
 
-                <button className="apply-btn">
+                <button
+                    className="apply-btn"
+                    onClick={handleApply}
+                >
                     Show restaurants
                 </button>
 
