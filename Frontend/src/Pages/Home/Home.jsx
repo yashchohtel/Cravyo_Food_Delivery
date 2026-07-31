@@ -44,6 +44,7 @@ const Home = () => {
         <NavbarBottom
           setIsFoodDialogOpen={setIsFoodDialogOpen} // to set food prefrence dialog box open/close state
           userFoodPreference={userFoodPreference} // user's current Food Preference
+          setUserFoodPreference={setUserFoodPreference} // to set user food prefrence all / veg only
         />
 
         {/* food prefrence modal */}
