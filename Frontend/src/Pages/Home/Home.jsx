@@ -4,6 +4,7 @@ import NavbarTop from '../../Components/Navbars/Navbar Top/NavbarTop';
 import './Home.css';
 import Modal from '../../Components/Modal/Modal';
 import FoodPreferenceDialog from '../../Components/Dialogs/Food Preference Dialog/FoodPreferenceDialog';
+import { handleGetLocation } from '../../utils/getLocation';
 
 const Home = () => {
 
@@ -49,7 +50,7 @@ const Home = () => {
 
         {/* food prefrence modal */}
         <Modal
-          isOpen={isFoodDialogOpen} // food prefrence dialog box open/close state
+          isOpen={isFoodDialogOpen} // food prefrence dialog box open/close state 
           onClose={() => setIsFoodDialogOpen(false)} // function to close current opened dialog box
         >
 
@@ -63,11 +64,17 @@ const Home = () => {
 
       </div>
 
+      <button className='btn btnPrimary'
+      onClick={() => handleGetLocation()}
+      >
+        get location
+      </button>
+
     </>
   )
 }
 
-export default Home
+export default Home;
 
 
 

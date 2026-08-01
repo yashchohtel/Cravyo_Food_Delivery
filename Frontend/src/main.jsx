@@ -17,6 +17,7 @@ createRoot(document.getElementById('root')).render(
       <App />
 
       <Toaster
+      
         position="top-right"
         toastOptions={{
           style: {
@@ -34,6 +35,7 @@ createRoot(document.getElementById('root')).render(
           },
 
         }}
+
       />
 
     </Provider>
