@@ -8,10 +8,10 @@ import { handleGetLocation } from '../../utils/getLocation';
 
 const Home = () => {
 
+  /* -------------------------------------- */
+  
   // state to show/hide food prefrence dialog box
   const [isFoodDialogOpen, setIsFoodDialogOpen] = useState(false);
-
-  /* -------------------------------------- */
 
   // State to store user's food preference ("all" / "veg")
   const [userFoodPreference, setUserFoodPreference] = useState(() => {
@@ -65,7 +65,7 @@ const Home = () => {
       </div>
 
       <button className='btn btnPrimary'
-      onClick={() => handleGetLocation()}
+        onClick={() => handleGetLocation()}
       >
         get location
       </button>

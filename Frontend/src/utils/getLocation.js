@@ -39,7 +39,4 @@ export const handleGetLocation = () => {
 
     );
 
-
-    
-
 };
