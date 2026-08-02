@@ -1,0 +1,8 @@
+.locErr-dialog {
+  max-width: 40rem;
+  padding: 1.8rem;
+  background: var(--background-color);
+  border-radius: 2rem;
+  box-shadow: var(--shadow-mid);
+  position: relative;
+}

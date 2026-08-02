@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import NavbarBottom from '../../Components/Navbars/Navbar Bottom/NavbarBottom';
 import NavbarTop from '../../Components/Navbars/Navbar Top/NavbarTop';
@@ -5,11 +6,18 @@ import './Home.css';
 import Modal from '../../Components/Modal/Modal';
 import FoodPreferenceDialog from '../../Components/Dialogs/Food Preference Dialog/FoodPreferenceDialog';
 import { handleGetLocation } from '../../utils/getLocation';
+import LocationErrorDialog from '../../Components/Dialogs/Location Error Dialog/LocationErrorDialog';
 
 const Home = () => {
 
+  // state to manage location dialog open/close state
+  const [isLocationDialogOpen, setIsLocationDialogOpen] = useState(false);
+
+  // state to store location error message
+  const [locationError, setLocationError] = useState(null);
+
   /* -------------------------------------- */
-  
+
   // state to show/hide food prefrence dialog box
   const [isFoodDialogOpen, setIsFoodDialogOpen] = useState(false);
 
@@ -37,6 +45,19 @@ const Home = () => {
 
       {/* home page */}
       <div className="homePage">
+
+        {/* location error modal */}
+        <Modal
+          isOpen={isLocationDialogOpen} // location error dialog box open/close state 
+          onClose={() => setIsLocationDialogOpen(false)} // function to close current opened dialog box
+        >
+
+          {/* location error dialog box */}
+          <LocationErrorDialog
+            error={locationError} // to display the location error message
+          />
+
+        </Modal>
 
         {/* navbar top */}
         <NavbarTop />
