@@ -34,15 +34,21 @@
   --error-color: #ef4444;
   --warning-color: #f59e0b;
 
+  /* Location Dialog */
+  --location-red-bg: #fdecec;
+  --location-yellow-bg: #fff7e6;
+  --location-blue-bg: #eaf4ff;
+  --location-purple-bg: #f4eeff;
+
   /* transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.4s ease;
 
   /* box shadow */
-  --shadow-mild: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  --shadow-mild:
+    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   --shadow-mid: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
 }
 
 /* Universal Reset */

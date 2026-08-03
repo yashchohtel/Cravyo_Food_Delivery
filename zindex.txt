@@ -1,0 +1,7 @@
+.modal {
+    z-index: 9;
+}
+
+.dialog {
+    z-index: 10;
+}

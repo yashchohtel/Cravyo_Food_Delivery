@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import NavbarBottom from '../../Components/Navbars/Navbar Bottom/NavbarBottom';
 import NavbarTop from '../../Components/Navbars/Navbar Top/NavbarTop';
@@ -14,7 +13,7 @@ const Home = () => {
   const [isLocationDialogOpen, setIsLocationDialogOpen] = useState(false);
 
   // state to store location error message
-  const [locationError, setLocationError] = useState(null);
+  const [locationError, setLocationError] = useState(null); // "permission" / "positionUnavailable" / "timeout" / "unknown"
 
   /* -------------------------------------- */
 
@@ -55,6 +54,8 @@ const Home = () => {
           {/* location error dialog box */}
           <LocationErrorDialog
             error={locationError} // to display the location error message
+            onClose={() => setIsLocationDialogOpen(false)} // function to close current opened dialog box
+            onRetry={() => handleGetLocation(setLocationError, setIsLocationDialogOpen)} // to retry getting user location
           />
 
         </Modal>
@@ -85,10 +86,11 @@ const Home = () => {
 
       </div>
 
-      <button className='btn btnPrimary'
-        onClick={() => handleGetLocation()}
+      <button
+        className="btn btnPrimary"
+        onClick={() => handleGetLocation(setLocationError, setIsLocationDialogOpen) }
       >
-        get location
+        Get Location
       </button>
 
     </>
@@ -96,11 +98,6 @@ const Home = () => {
 }
 
 export default Home;
-
-
-
-
-
 
 
 

@@ -1,39 +1,76 @@
-export const handleGetLocation = () => {
+export const handleGetLocation = async (setLocationError, setIsLocationDialogOpen) => {
 
     if (!navigator.geolocation) {
-        alert("Geolocation is not supported.");
+
+        setLocationError("unknown");
+        setIsLocationDialogOpen(true);
+
         return;
     }
 
     navigator.geolocation.getCurrentPosition(
 
         // Success
-        (position) => {
-            console.log("Latitude:", position.coords.latitude);
-            console.log("Longitude:", position.coords.longitude);
+        async (position) => {
+
+            // Get latitude and longitude from position object
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            // Get Geoapify API Key from environment variables
+            const apiKey = import.meta.env.VITE_GEOAPIFY_API_KEY;
+
+            // Construct the API URL for reverse geocoding
+            const url = `https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&format=json&apiKey=${apiKey}`;
+
+            try {
+
+                // API Call
+                const response = await fetch(url);
+
+                // Convert response into JSON
+                const data = await response.json();
+
+                // Print complete response
+                console.log(data);
+
+            } catch (error) {
+
+                console.error(error);
+
+            }
+
         },
 
         // Error
         (error) => {
+
             console.log(error);
 
             switch (error.code) {
 
                 case error.PERMISSION_DENIED:
-                    alert("Location permission denied.");
+
+                    setLocationError("permission");
                     break;
 
                 case error.POSITION_UNAVAILABLE:
-                    alert("Turn on your device location.");
+
+                    setLocationError("positionUnavailable");
                     break;
 
                 case error.TIMEOUT:
-                    alert("Location request timed out.");
+
+                    setLocationError("timeout");
                     break;
 
                 default:
-                    alert("Something went wrong.");
+
+                    setLocationError("unknown");
+
             }
+
+            setIsLocationDialogOpen(true);
 
         }
 

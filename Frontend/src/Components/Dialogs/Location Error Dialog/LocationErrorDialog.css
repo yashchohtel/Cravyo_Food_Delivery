@@ -1,8 +1,106 @@
 .locErr-dialog {
-  max-width: 40rem;
-  padding: 1.8rem;
+  max-width: 35rem;
+  padding: 2rem;
   background: var(--background-color);
   border-radius: 2rem;
   box-shadow: var(--shadow-mid);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Close Button */
+.locErr-closeBtn {
+  position: absolute;
+  top: 1.8rem;
+  right: 1.8rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 2.8rem;
+  color: var(--text-secondary);
+}
+
+/* Icon Circle */
+.locErr-icon {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+/* Background Colors */
+.locErr-icon.permission {
+  background: var(--location-red-bg);
+}
+
+.locErr-icon.service {
+  background: var(--location-yellow-bg);
+}
+
+.locErr-icon.timeout {
+  background: var(--location-blue-bg);
+}
+
+.locErr-icon.unknown {
+  background: var(--location-purple-bg);
+}
+
+/* Big Location Icon */
+.location-icon {
+  font-size: 4rem;
+  color: var(--primary-color);
+}
+
+/* Small Status Icon */
+.status-icon {
+  position: absolute;
+
+  right: 1.2rem;
+  bottom: 1.2rem;
+
+  font-size: 2rem;
+
+  background: #fff;
+  border-radius: 50%;
+}
+
+/* Individual Colors */
+.permission .status-icon {
+  color: var(--error-color);
+}
+
+.service .status-icon {
+  color: var(--warning-color);
+}
+
+.timeout .status-icon {
+  color: #2563eb;
+}
+
+.unknown .status-icon {
+  color: #7c3aed;
+}
+
+/* Title */
+.locErr-dialog h2 {
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Description */
+.locErr-dialog p {
+  margin-bottom: 2.5rem;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
 }
