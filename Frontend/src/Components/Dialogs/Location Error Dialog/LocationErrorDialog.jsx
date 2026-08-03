@@ -104,7 +104,10 @@ const LocationErrorDialog = (props) => {
                 {/* Retry Button */}
                 <button
                     className="btn btnPrimary"
-                    onClick={onRetry}
+                    onClick={() => {
+                        onClose();
+                        onRetry();
+                    }}
                 >
                     Retry
                 </button>

@@ -33,12 +33,18 @@ export const handleGetLocation = async (setLocationError, setIsLocationDialogOpe
                 const result = data.results[0];
                 const address = `${result.suburb || result.district}, ${result.city}, ${result.state}`;
 
-                // Set user location state
-                setUserLocation({
+                // Create location data object
+                const locationData = {
                     latitude,
                     longitude,
                     address,
-                });
+                };
+
+                // Set user location state
+                setUserLocation(locationData);
+
+                // Store user location in local storage
+                localStorage.setItem("userLocation", JSON.stringify(locationData));
 
             } catch (error) {
 

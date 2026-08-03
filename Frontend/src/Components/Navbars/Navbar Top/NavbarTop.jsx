@@ -5,11 +5,11 @@ import { IoIosArrowForward } from "react-icons/io";
 import { FiShoppingBag } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 
-const NavbarTop = () => {
+const NavbarTop = ({ userLocation }) => {
 
   // Get auth state from Redux store
   const { user } = useSelector((state) => state.auth);
-  
+
   /* -------------------------------------- */
 
   return (
@@ -35,7 +35,7 @@ const NavbarTop = () => {
           </div>
 
           {/* location text */}
-          <p className="address">Sector 24, Palki Nagar...</p>
+          <p className="address"> {userLocation.address || "Getting your location..."} </p>
 
         </button>
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NavbarBottom from '../../Components/Navbars/Navbar Bottom/NavbarBottom';
 import NavbarTop from '../../Components/Navbars/Navbar Top/NavbarTop';
 import './Home.css';
@@ -18,14 +18,29 @@ const Home = () => {
   const [locationError, setLocationError] = useState(null); // "permission" / "positionUnavailable" / "timeout" / "unknown"
 
   // state to store user's location (latitude, longitude, address)
-  const [userLocation, setUserLocation] = useState({
-    latitude: null,
-    longitude: null,
-    address: ""
+  const [userLocation, setUserLocation] = useState(() => {
+
+    // Get the saved user location from localStorage
+    const savedLocation = localStorage.getItem("userLocation");
+
+    // If a saved location exists, parse and return it; otherwise, return default values
+    if (savedLocation) {
+      return JSON.parse(savedLocation);
+    }
+
+    return {
+      latitude: null,
+      longitude: null,
+      address: "",
+    };
+
   });
 
-  console.log(userLocation);
-  
+  // state to manage location loading state
+  const [isLocationLoading, setIsLocationLoading] = useState(false);
+
+  console.log(isLocationLoading);
+
   /* FOOD PREFRENCE ↓ -------------------------------------- */
 
   // state to show/hide food prefrence dialog box
@@ -48,6 +63,24 @@ const Home = () => {
   });
 
   /* -------------------------------------- */
+
+  useEffect(() => {
+
+    // Agar localStorage me address nahi hai
+    if (!userLocation.address) {
+
+      setIsLocationLoading(true);
+
+    }
+
+    handleGetLocation(
+      setLocationError,
+      setIsLocationDialogOpen,
+      setUserLocation,
+      setIsLocationLoading
+    );
+
+  }, []);
 
   return (
 
