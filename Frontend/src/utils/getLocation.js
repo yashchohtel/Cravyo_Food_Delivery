@@ -31,8 +31,11 @@ export const handleGetLocation = async (setLocationError, setIsLocationDialogOpe
                 // Convert response into JSON
                 const data = await response.json();
 
-                // Print complete response
-                console.log(data);
+                console.log("Location Data:", data);
+
+                const result = data.results[0];
+                const address = `${result.suburb || result.district}, ${result.city}, ${result.state}`;
+                console.log(address);
 
             } catch (error) {
 
