@@ -9,13 +9,24 @@ import LocationErrorDialog from '../../Components/Dialogs/Location Error Dialog/
 
 const Home = () => {
 
+  /* LOCATION ↓ -------------------------------------- */
+
   // state to manage location dialog open/close state
   const [isLocationDialogOpen, setIsLocationDialogOpen] = useState(false);
 
   // state to store location error message
   const [locationError, setLocationError] = useState(null); // "permission" / "positionUnavailable" / "timeout" / "unknown"
 
-  /* -------------------------------------- */
+  // state to store user's location (latitude, longitude, address)
+  const [userLocation, setUserLocation] = useState({
+    latitude: null,
+    longitude: null,
+    address: ""
+  });
+
+  console.log(userLocation);
+  
+  /* FOOD PREFRENCE ↓ -------------------------------------- */
 
   // state to show/hide food prefrence dialog box
   const [isFoodDialogOpen, setIsFoodDialogOpen] = useState(false);
@@ -55,13 +66,15 @@ const Home = () => {
           <LocationErrorDialog
             error={locationError} // to display the location error message
             onClose={() => setIsLocationDialogOpen(false)} // function to close current opened dialog box
-            onRetry={() => handleGetLocation(setLocationError, setIsLocationDialogOpen)} // to retry getting user location
+            onRetry={() => handleGetLocation(setLocationError, setIsLocationDialogOpen, setUserLocation)} // to retry getting user location
           />
 
         </Modal>
 
         {/* navbar top */}
-        <NavbarTop />
+        <NavbarTop
+          userLocation={userLocation} // user's current location (latitude, longitude, address)
+        />
 
         {/* navbar bottom */}
         <NavbarBottom
@@ -88,7 +101,11 @@ const Home = () => {
 
       <button
         className="btn btnPrimary"
-        onClick={() => handleGetLocation(setLocationError, setIsLocationDialogOpen) }
+        onClick={() => handleGetLocation(
+          setLocationError,
+          setIsLocationDialogOpen,
+          setUserLocation,
+        )}
       >
         Get Location
       </button>
