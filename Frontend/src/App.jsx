@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AppRoutes from "./routes/AppRoutes"
 import { useEffect, useState } from "react";
 import { loadUser } from "./features/auth/authThunk";
-import Splash from "./Pages/Splash/Splash";
+import Splash from "./Components/Splash Screens/App Loading Splash/AppLoadingSplash";
 
 function App() {
 

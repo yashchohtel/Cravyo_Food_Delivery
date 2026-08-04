@@ -6,6 +6,7 @@ import Modal from '../../Components/Modal/Modal';
 import FoodPreferenceDialog from '../../Components/Dialogs/Food Preference Dialog/FoodPreferenceDialog';
 import { handleGetLocation } from '../../utils/getLocation';
 import LocationErrorDialog from '../../Components/Dialogs/Location Error Dialog/LocationErrorDialog';
+import LocationLoadingSplash from '../../Components/Splash Screens/Location Loading Splash/LocationLoadingSplash';
 
 const Home = () => {
 
@@ -37,9 +38,9 @@ const Home = () => {
   });
 
   // state to manage location loading state
-  const [isLocationLoading, setIsLocationLoading] = useState(false);
-
-  console.log(isLocationLoading);
+  const [isLocationLoading, setIsLocationLoading] = useState(() => {
+    return !localStorage.getItem("userLocation");
+  });
 
   /* FOOD PREFRENCE ↓ -------------------------------------- */
 
@@ -64,20 +65,15 @@ const Home = () => {
 
   /* -------------------------------------- */
 
+  // useEffect to get user's location on component mount
   useEffect(() => {
 
-    // Agar localStorage me address nahi hai
-    if (!userLocation.address) {
-
-      setIsLocationLoading(true);
-
-    }
-
+    // Call the handleGetLocation function to get user's location and handle errors
     handleGetLocation(
-      setLocationError,
-      setIsLocationDialogOpen,
-      setUserLocation,
-      setIsLocationLoading
+      setLocationError, // to set location error message
+      setIsLocationDialogOpen, // to set location error dialog box open/close state
+      setUserLocation, // to set user's current location (latitude, longitude, address)
+      setIsLocationLoading // to set location loading state
     );
 
   }, []);
@@ -99,22 +95,15 @@ const Home = () => {
           <LocationErrorDialog
             error={locationError} // to display the location error message
             onClose={() => setIsLocationDialogOpen(false)} // function to close current opened dialog box
-            onRetry={() => handleGetLocation(setLocationError, setIsLocationDialogOpen, setUserLocation)} // to retry getting user location
+            onRetry={() => handleGetLocation( // to retry getting user location
+              setLocationError,
+              setIsLocationDialogOpen,
+              setUserLocation,
+              setIsLocationLoading
+            )}
           />
 
         </Modal>
-
-        {/* navbar top */}
-        <NavbarTop
-          userLocation={userLocation} // user's current location (latitude, longitude, address)
-        />
-
-        {/* navbar bottom */}
-        <NavbarBottom
-          setIsFoodDialogOpen={setIsFoodDialogOpen} // to set food prefrence dialog box open/close state
-          userFoodPreference={userFoodPreference} // user's current Food Preference
-          setUserFoodPreference={setUserFoodPreference} // to set user food prefrence all / veg only
-        />
 
         {/* food prefrence modal */}
         <Modal
@@ -130,18 +119,23 @@ const Home = () => {
 
         </Modal>
 
+        {/* navbar top */}
+        <NavbarTop
+          userLocation={userLocation} // user's current location (latitude, longitude, address)
+        />
+
+
+        {/* navbar bottom */}
+        <NavbarBottom
+          setIsFoodDialogOpen={setIsFoodDialogOpen} // to set food prefrence dialog box open/close state
+          userFoodPreference={userFoodPreference} // user's current Food Preference
+          setUserFoodPreference={setUserFoodPreference} // to set user food prefrence all / veg only
+        />
+
+
       </div>
 
-      <button
-        className="btn btnPrimary"
-        onClick={() => handleGetLocation(
-          setLocationError,
-          setIsLocationDialogOpen,
-          setUserLocation,
-        )}
-      >
-        Get Location
-      </button>
+      <LocationLoadingSplash />
 
     </>
   )

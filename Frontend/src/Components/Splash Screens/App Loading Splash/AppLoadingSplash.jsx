@@ -1,5 +1,5 @@
-import SplashLoader from "../../Components/Loaders/SplashLoader/SplashLoader";
-import "./Spladh.css";
+import SplashLoader from "../../Loaders/SplashLoader/SplashLoader";
+import "./AppLoadingSplash.css";
 
 const Splash = () => {
     return (

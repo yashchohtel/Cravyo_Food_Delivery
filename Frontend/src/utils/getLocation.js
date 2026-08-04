@@ -1,10 +1,16 @@
-export const handleGetLocation = async (setLocationError, setIsLocationDialogOpen, setUserLocation) => {
+// Function to get user's location and handle errors 
+export const handleGetLocation = async (setLocationError, setIsLocationDialogOpen, setUserLocation, setIsLocationLoading) => {
 
+    // Show loading only if no saved location exists
+    if (!localStorage.getItem("userLocation")) {
+        setIsLocationLoading(true);
+    }
+
+    // Check if the browser supports geolocation
     if (!navigator.geolocation) {
-
+        setIsLocationLoading(false);
         setLocationError("unknown");
         setIsLocationDialogOpen(true);
-
         return;
     }
 
@@ -46,6 +52,9 @@ export const handleGetLocation = async (setLocationError, setIsLocationDialogOpe
                 // Store user location in local storage
                 localStorage.setItem("userLocation", JSON.stringify(locationData));
 
+                // Stop loading
+                setIsLocationLoading(false);
+
             } catch (error) {
 
                 console.error(error);
@@ -57,8 +66,7 @@ export const handleGetLocation = async (setLocationError, setIsLocationDialogOpe
         // Error
         (error) => {
 
-            console.log(error);
-
+            // Handle different types of geolocation errors and set the appropriate error message
             switch (error.code) {
 
                 case error.PERMISSION_DENIED:
@@ -82,6 +90,10 @@ export const handleGetLocation = async (setLocationError, setIsLocationDialogOpe
 
             }
 
+            // Stop loading
+            setIsLocationLoading(false);
+
+            // Open the location error dialog
             setIsLocationDialogOpen(true);
 
         }
