@@ -1,16 +1,17 @@
 import SplashLoader from "../../Loaders/SplashLoader/SplashLoader";
-import "./AppLoadingSplash.css";
+import './AppLoadingSplash.css'
 
-const Splash = () => {
+const AppLoadingSplash = () => {
     return (
-        <div className="splash container">
+        <>
+            <div className="splash container">
 
-            <img src="/logosmall.png" alt="Cravyo Logo" className="logo" />
+                <img src="/logosmall.png" alt="Cravyo Logo" className="logo" />
 
-            <SplashLoader />
+                <SplashLoader />
 
-        </div>
-    );
-};
-
-export default Splash;
+            </div>
+        </>
+    )
+}
+export default AppLoadingSplash

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AppRoutes from "./routes/AppRoutes"
 import { useEffect, useState } from "react";
 import { loadUser } from "./features/auth/authThunk";
-import Splash from "./Components/Splash Screens/App Loading Splash/AppLoadingSplash";
+import AppLoadingSplash from "./Components/Splash Screens/App Loading Splash/AppLoadingSplash";
 
 function App() {
 
@@ -34,7 +34,7 @@ function App() {
   }, [dispatch]);
  
   if (authLoading || !minTimeDone) {
-    return <Splash />;
+    return <AppLoadingSplash />;
   }
 
   {/* app routes to manage all routes */ }

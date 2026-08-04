@@ -78,6 +78,11 @@ const Home = () => {
 
   }, []);
 
+  // If the location is still loading, show the LocationLoadingSplash component
+  if (isLocationLoading) {
+    return <LocationLoadingSplash />;
+  }
+
   return (
 
     <>
@@ -132,10 +137,7 @@ const Home = () => {
           setUserFoodPreference={setUserFoodPreference} // to set user food prefrence all / veg only
         />
 
-
       </div>
-
-      <LocationLoadingSplash />
 
     </>
   )
