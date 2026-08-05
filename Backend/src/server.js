@@ -26,7 +26,7 @@ app.use(cors({
     // Allow requests from this origin
     origin: [
         "http://localhost:5173",
-        "http://10.72.133.238:5173"
+        "http://10.232.30.238:5173"
     ],
     credentials: true, // Allow cookies to be sent with requests
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // Allowed HTTP methods

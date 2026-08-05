@@ -4,6 +4,7 @@ import { FaLocationDot } from 'react-icons/fa6'
 import { IoIosArrowForward } from "react-icons/io";
 import { FiShoppingBag } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
+import { useNavigate } from 'react-router-dom';
 
 const NavbarTop = ({ userLocation }) => {
 
@@ -12,15 +13,23 @@ const NavbarTop = ({ userLocation }) => {
 
   /* -------------------------------------- */
 
+  // Get navigate function from react-router-dom
+  const navigate = useNavigate();
+
+  /* -------------------------------------- */
+
   return (
 
     <>
 
       {/* top navbar */}
-      <header className="top-navbar">
+      <header className="top-navbar container">
 
         {/* Left Section */}
-        <button className="navbar-left location">
+        <button
+          className="navbar-left location"
+          onClick={() => navigate("/location")}
+        >
 
           {/* location top */}
           <div className="locationTop">

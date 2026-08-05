@@ -107,4 +107,5 @@ const FoodPreferenceDialog = (props) => {
     )
 
 }
-export default FoodPreferenceDialog
+
+export default FoodPreferenceDialog;

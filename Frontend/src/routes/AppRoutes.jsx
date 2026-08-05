@@ -9,6 +9,7 @@ import RestaurantOwner from "../Pages/Restaurant Owner/RestaurantOwner";
 import DeliveryBoy from "../Pages/Delivery Boy/DeliveryBoy";
 import RoleProtectedRoute from "./RoleProtectedRoute";
 import Page404 from "../Pages/Page404/Page404";
+import LocationPage from "../Pages/Location Page/LocationPage";
 
 function AppRoutes() {
 
@@ -28,6 +29,9 @@ function AppRoutes() {
 
       {/* home route */}
       <Route path="/home" element={<ProtectedRoute> <Home /> </ProtectedRoute>} />
+
+      {/* Location Page */}
+      <Route path="/location" element={<ProtectedRoute> <LocationPage /> </ProtectedRoute>} />
 
       {/* restaurant route */}
       <Route path="/restaurant" element={

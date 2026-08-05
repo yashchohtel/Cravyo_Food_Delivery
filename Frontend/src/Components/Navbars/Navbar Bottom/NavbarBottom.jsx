@@ -20,10 +20,7 @@ const NavbarBottom = (props) => {
 
       setUserFoodPreference("all");
 
-      localStorage.setItem(
-        "userFoodPreference",
-        JSON.stringify("all")
-      );
+      localStorage.setItem("userFoodPreference", JSON.stringify("all"));
 
       return;
     }
@@ -38,7 +35,7 @@ const NavbarBottom = (props) => {
     <>
 
       {/* navbar bottom */}
-      <section className="navbar-bottom">
+      <section className="navbar-bottom container">
 
         {/* Search */}
         <div className="search-container">
