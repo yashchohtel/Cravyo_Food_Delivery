@@ -5,7 +5,9 @@ const LocationCard = () => {
     return (
 
         <>
-            LocationCard
+            <div className="locationCard"></div>
+
+
         </>
 
     )
