@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import './LocationPage.css'
 import { useNavigate } from 'react-router-dom';
 import SearchBar from '../../Components/Ui/SearchBar/SearchBar';
@@ -29,8 +30,6 @@ const LocationPage = () => {
     // state to store the search results based on the user's query
     const [searchResults, setSearchResults] = useState([]);
 
-    console.log(isSearching);
-    console.log(searchResults);
 
     /* EFFECTS ↓ -------------------------------------- */
 
@@ -43,15 +42,10 @@ const LocationPage = () => {
         }
 
         const timeout = setTimeout(async () => {
-
             setIsSearching(true);
-
             const results = await getSearchLocations(searchQuery);
-
             console.log(results);
-
             setSearchResults(results);
-
             setIsSearching(false);
 
         }, 300);
