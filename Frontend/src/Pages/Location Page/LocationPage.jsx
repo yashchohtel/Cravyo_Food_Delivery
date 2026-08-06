@@ -46,6 +46,17 @@ const LocationPage = () => {
             const results = await getSearchLocations(searchQuery);
             console.log(results);
             setSearchResults(results);
+
+            const locations = results.map((item) => ({
+                id: item.place_id,
+                title: item.name,
+                address: item.formatted,
+                latitude: item.lat,
+                longitude: item.lon,
+            }));
+
+            setSearchResults(locations);
+
             setIsSearching(false);
 
         }, 300);
