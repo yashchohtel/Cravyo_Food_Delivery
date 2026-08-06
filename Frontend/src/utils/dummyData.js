@@ -6,20 +6,20 @@ export const savedAddresses = [
         address: "Jaistambh Chowk, Pali Road, Shahdol, Madhya Pradesh, India 484001",
         selected: true,
     },
-    {
-        id: 2,
-        label: "Office",
-        type: "work",
-        address: "New Bus Stand, Shahdol, Madhya Pradesh",
-        selected: false,
-    },
-    {
-        id: 3,
-        label: "Other",
-        type: "other",
-        address: "Medical College Road, Shahdol, Madhya Pradesh",
-        selected: false,
-    },
+    // {
+    //     id: 2,
+    //     label: "Office",
+    //     type: "work",
+    //     address: "New Bus Stand, Shahdol, Madhya Pradesh",
+    //     selected: false,
+    // },
+    // {
+    //     id: 3,
+    //     label: "Other",
+    //     type: "other",
+    //     address: "Medical College Road, Shahdol, Madhya Pradesh",
+    //     selected: false,
+    // },
 ];
 
 export const recentSearches = [

@@ -63,7 +63,7 @@ const Home = () => {
 
   });
 
-  /* -------------------------------------- */
+  /* EFFECTS ↓ -------------------------------------- */
 
   // useEffect to get user's location on component mount
   useEffect(() => {
@@ -141,6 +141,7 @@ const Home = () => {
 
     </>
   )
+  
 }
 
 export default Home;

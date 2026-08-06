@@ -32,7 +32,18 @@
 .locationActions {
   display: flex;
   gap: 0.8rem;
-  margin-top: 1rem;
+  margin-top: 0.8rem;
+  opacity: 1;
+  max-height: 8rem;
+  overflow: hidden;
+  transition: var(--transition-normal);
+}
+
+.locationActions.hide {
+  opacity: 0;
+  max-height: 0;
+  margin-top: 0;
+  pointer-events: none;
 }
 
 .locationAction {
@@ -70,4 +81,10 @@
   font-weight: 700;
   color: var(--text-light);
   letter-spacing: 0.05rem;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.01);
+  position: fixed;
+  z-index: 1;
 }

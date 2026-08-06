@@ -1,7 +1,10 @@
 import './SearchBar.css'
 import { FiSearch } from "react-icons/fi";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
+
+    // destructure props
+    const { value, onChange } = props;
 
     return (
 
@@ -11,6 +14,8 @@ const SearchBar = () => {
                 <input
                     type="text"
                     placeholder="Search an area or address"
+                    value={value}
+                    onChange={onChange}
                 />
 
                 <button className="searchBtn">

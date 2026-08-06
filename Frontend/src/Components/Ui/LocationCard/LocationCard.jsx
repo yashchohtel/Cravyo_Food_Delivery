@@ -4,8 +4,25 @@ import { IoHomeOutline } from "react-icons/io5";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { GrLocationPin } from "react-icons/gr";
 import { IoMdTime } from "react-icons/io";
+import { MdOutlineEditLocation } from "react-icons/md";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
-const LocationCard = ({ data, type }) => {
+
+const LocationCard = (props) => {
+
+    // destructure props
+    const {
+        data,
+        type,
+        openMenuId,
+        setOpenMenuId,
+        // menuRef,
+    } = props;
+
+    // function to handle the click event on the address menu button
+    const handleMenuToggle = (id) => {
+        setOpenMenuId((prev) => (prev === id ? null : id));
+    };
 
     // adress icon based on the label of the address
     const addressIcons = {
@@ -31,21 +48,41 @@ const LocationCard = ({ data, type }) => {
                     </div>
 
                     <p>{data.address}</p>
-                    
+
                 </div>
 
                 {type === "saved" && (
 
                     <>
 
-                        <button className="addressMenu">
+                        <button
+                            className="addressMenu"
+                            onClick={() => handleMenuToggle(data.id)}
+                        >
                             <HiOutlineDotsVertical />
                         </button>
 
-                        <div className="addressDropdown">
-                            <button>Edit</button>
-                            <button className="deleteBtn">Delete</button>
-                        </div>
+                        {openMenuId === data.id && (
+
+                            <div className="addressDropdown">
+
+                                <button className="editBtn"
+                                    onClick={() => handleMenuToggle(data.id)}
+                                >
+                                    <MdOutlineEditLocation />
+                                    <span>Edit</span>
+                                </button>
+
+                                <button className="deleteBtn"
+                                    onClick={() => handleMenuToggle(data.id)}
+                                >
+                                    <RiDeleteBin6Line />
+                                    <span>Delete</span>
+                                </button>
+
+                            </div>
+
+                        )}
 
                     </>
 

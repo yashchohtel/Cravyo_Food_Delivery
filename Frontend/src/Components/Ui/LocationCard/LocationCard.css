@@ -6,7 +6,7 @@
   background: var(--background-color);
   border-radius: 1.8rem;
   padding: 1.4rem;
-  margin-top: 1.2rem;
+  margin-top: 1rem;
 }
 
 .addressIcon {
@@ -55,6 +55,7 @@
 
 .addressContent p {
   font-size: 1.3rem;
+  font-weight: 500;
   color: var(--text-secondary);
   line-height: 1.45;
   display: -webkit-box;
@@ -76,37 +77,37 @@
   position: relative;
 }
 
+/* adress drowp down */
 .addressDropdown {
   position: absolute;
-  top: 5.2rem;
-  right: 1.2rem;
-
-  width: 14rem;
-
-  background: #1f1f1f;
+  top: 4.2rem;
+  right: 2.2rem;
+  width: 12rem;
+  background: var(--dark--bg);
   border-radius: 1.4rem;
   overflow: hidden;
-
   box-shadow: var(--shadow-mid);
+  z-index: 2;
 }
 
 .addressDropdown button {
   width: 100%;
-  height: 4rem;
+  height: 4.5rem;
   display: flex;
   align-items: center;
   padding: 0 1.5rem;
+  gap: 1rem;
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.addressDropdown button svg {
+  font-size: 1.5rem;
 }
 
 .addressDropdown button:last-child {
   border-bottom: none;
-}
-
-.addressDropdown button:hover {
-  background: rgba(255, 255, 255, 0.08);
 }
 
 .deleteBtn {
