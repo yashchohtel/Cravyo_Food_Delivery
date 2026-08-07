@@ -19,8 +19,6 @@ const LocationCard = (props) => {
         setOpenMenuId,
     } = props;
 
-    console.log("LocationCard data:", data);
-
     // function to handle the click event on the address menu button
     const handleMenuToggle = (id) => {
         setOpenMenuId((prev) => (prev === id ? null : id));

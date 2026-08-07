@@ -88,6 +88,12 @@ const LocationPage = () => {
             setIsSearching(false);
             setHasSearched(true);
 
+            const matchedSavedAddresses = savedAddresses.filter((savedAddress) => (
+                locations.some((location) => location.city === savedAddress.city)
+            ));
+
+            console.log(matchedSavedAddresses);
+
         }, 300);
 
         return () => clearTimeout(timeout);
@@ -160,7 +166,7 @@ const LocationPage = () => {
                 )}
 
                 {/* Saved Addresses */}
-                { !isSearching && savedAddresses.length > 0 && (
+                {!isSearching && savedAddresses.length > 0 && (
 
                     <>
 
