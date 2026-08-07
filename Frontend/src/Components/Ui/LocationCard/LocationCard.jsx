@@ -8,7 +8,6 @@ import { MdOutlineEditLocation } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoLocationOutline } from "react-icons/io5";
 
-
 const LocationCard = (props) => {
 
     // destructure props

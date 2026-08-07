@@ -35,6 +35,14 @@ const LocationPage = () => {
     // state to store the search results based on the user's query
     const [searchResults, setSearchResults] = useState([]);
 
+    // 
+    const matchedSavedAddresses = searchQuery.trim() ? savedAddresses.filter((savedAddress) => (
+        searchResults.some((location) => location.city === savedAddress.city)
+    )) : savedAddresses;
+
+    console.log(savedAddresses)
+    console.log(matchedSavedAddresses);
+
     /* EFFECTS ↓ -------------------------------------- */
 
     // Search locations when query changes
@@ -166,7 +174,7 @@ const LocationPage = () => {
                 )}
 
                 {/* Saved Addresses */}
-                {!isSearching && savedAddresses.length > 0 && (
+                {!isSearching && matchedSavedAddresses.length > 0 && (
 
                     <>
 
