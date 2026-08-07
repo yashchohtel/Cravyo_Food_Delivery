@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import SearchBar from '../../Components/Ui/SearchBar/SearchBar';
 import { FaArrowLeft } from "react-icons/fa6";
 import { BiTargetLock } from "react-icons/bi"; import { MdOutlineAddBox } from "react-icons/md";
-import { recentSearches, savedAddresses } from '../../utils/dummyData';
 import LocationCard from '../../Components/Ui/LocationCard/LocationCard';
 import { useEffect, useState } from 'react';
 import { getSearchLocations } from '../../utils/getLocation';
+import NoResult from '../../Components/Ui/NoReuslt/NoResult';
+import LocationCardSkeleton from '../../Components/Skeletons/Location Card Skeleton/LocationCardSkeleton';
+import { savedAddresses } from '../../utils/dummyData';
 
 const LocationPage = () => {
 
@@ -27,37 +29,64 @@ const LocationPage = () => {
     // state to track if the user is currently searching for a location
     const [isSearching, setIsSearching] = useState(false);
 
+    // state to track if the user has performed a search, used to conditionally render the "No Result" UI
+    const [hasSearched, setHasSearched] = useState(false);
+
     // state to store the search results based on the user's query
     const [searchResults, setSearchResults] = useState([]);
 
-
     /* EFFECTS ↓ -------------------------------------- */
 
+    // Search locations when query changes
     useEffect(() => {
 
-        // If the search query is empty, clear the search results and return early
+        // Reset when query is empty
         if (!searchQuery.trim()) {
             setSearchResults([]);
+            setHasSearched(false);
             return;
         }
 
         const timeout = setTimeout(async () => {
+
             setIsSearching(true);
+
             const results = await getSearchLocations(searchQuery);
-            console.log(results);
-            setSearchResults(results);
 
             const locations = results.map((item) => ({
+
+                // Unique identifier for the location
                 id: item.place_id,
+
+                // Display
                 title: item.name,
                 address: item.formatted,
+
+                // Coordinates
                 latitude: item.lat,
                 longitude: item.lon,
+
+                // Location Details
+                city: item.city,
+                state: item.state,
+                country: item.country,
+                postcode: item.postcode,
+
+                // Metadata
+                category: item.category,
+                resultType: item.result_type,
+
+                // Saved Address Fields (future)
+                addressType: null,      // home | work | other
+                selected: false,
             }));
 
+            // Update the search results state with the fetched locations
             setSearchResults(locations);
 
+            // Update the searching and searched states
             setIsSearching(false);
+            setHasSearched(true);
 
         }, 300);
 
@@ -112,17 +141,33 @@ const LocationPage = () => {
 
                 </div>
 
-                {/* Location cards - saved adress */}
-                {savedAddresses.length > 0 && (
+                {/* location card skeleton */}
+                {isSearching && searchQuery.trim() && (
+
+                    <div className="skeletonContainer">
+                        {
+                            Array.from({ length: 5 }).map((_, index) => (
+                                <LocationCardSkeleton key={index} />
+                            ))
+                        }
+                    </div>
+
+                )}
+
+                {/* no result ui */}
+                {!isSearching && hasSearched && searchQuery.trim() && searchResults.length === 0 && (
+                    <NoResult />
+                )}
+
+                {/* Saved Addresses */}
+                { !isSearching && savedAddresses.length > 0 && (
 
                     <>
 
-                        {/* saved adddress heading */}
                         <h3 className="sectionHeading">SAVED ADDRESSES</h3>
 
                         {savedAddresses.map((address) => (
 
-                            // location card component for each saved address
                             <LocationCard
                                 key={address.id}
                                 data={address}
@@ -137,18 +182,18 @@ const LocationPage = () => {
 
                 )}
 
-                {/* Location cards - recent searches */}
-                {recentSearches.length > 0 && (
+                {/* show search result */}
+                {!isSearching && hasSearched && searchQuery.trim() && searchResults.length > 0 && (
 
                     <>
-                        {/* Recent searches heading */}
-                        <h3 className="sectionHeading">RECENT SEARCHES</h3>
 
-                        {recentSearches.map((search) => (
+                        <div className="sectionHeading">Search result</div>
+
+                        {searchResults.map((location) => (
                             <LocationCard
-                                key={search.id}
-                                data={search}
-                                type="recent"
+                                key={location.id}
+                                data={location}
+                                type="search"
                             />
                         ))}
 

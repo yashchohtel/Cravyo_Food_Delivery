@@ -1,5 +1,6 @@
 .addressCard {
   width: 100%;
+  min-height: 9rem; /* ya 9.5rem */
   display: flex;
   gap: 1.2rem;
   align-items: flex-start;
@@ -7,6 +8,9 @@
   border-radius: 1.8rem;
   padding: 1.4rem;
   margin-top: 1rem;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  position: relative;
 }
 
 .addressIcon {
@@ -33,7 +37,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.3rem;
 }
 
 .addressTop h3 {
@@ -71,10 +75,6 @@
 .addressMenu svg {
   font-size: 2rem;
   color: var(--text-primary);
-}
-
-.addressCard {
-  position: relative;
 }
 
 /* adress drowp down */

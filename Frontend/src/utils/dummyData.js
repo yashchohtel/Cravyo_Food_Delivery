@@ -1,25 +1,55 @@
 export const savedAddresses = [
-    {
-        id: 1,
-        label: "Home",
-        type: "home",
-        address: "Jaistambh Chowk, Pali Road, Shahdol, Madhya Pradesh, India 484001",
-        selected: true,
-    },
-    // {
-    //     id: 2,
-    //     label: "Office",
-    //     type: "work",
-    //     address: "New Bus Stand, Shahdol, Madhya Pradesh",
-    //     selected: false,
-    // },
-    // {
-    //     id: 3,
-    //     label: "Other",
-    //     type: "other",
-    //     address: "Medical College Road, Shahdol, Madhya Pradesh",
-    //     selected: false,
-    // },
+  {
+    id: "saved-1",
+
+    // Display
+    title: "Home",
+    address: "Vijay Nagar, Scheme No. 54, Indore, Madhya Pradesh 452010",
+
+    // Coordinates
+    latitude: 22.7533,
+    longitude: 75.8937,
+
+    // Location Details
+    city: "Indore",
+    state: "Madhya Pradesh",
+    country: "India",
+    postcode: "452010",
+
+    // Metadata
+    category: "residential",
+    resultType: "street",
+
+    // Saved Address Fields
+    addressType: "home",
+    selected: true,
+  },
+
+  {
+    id: "saved-2",
+
+    // Display
+    title: "Office",
+    address: "LIG Square, A.B. Road, Indore, Madhya Pradesh 452008",
+
+    // Coordinates
+    latitude: 22.7196,
+    longitude: 75.8577,
+
+    // Location Details
+    city: "Indore",
+    state: "Madhya Pradesh",
+    country: "India",
+    postcode: "452008",
+
+    // Metadata
+    category: "commercial",
+    resultType: "street",
+
+    // Saved Address Fields
+    addressType: "work",
+    selected: false,
+  },
 ];
 
 export const recentSearches = [

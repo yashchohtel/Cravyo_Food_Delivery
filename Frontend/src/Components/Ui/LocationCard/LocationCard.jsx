@@ -6,6 +6,7 @@ import { GrLocationPin } from "react-icons/gr";
 import { IoMdTime } from "react-icons/io";
 import { MdOutlineEditLocation } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { IoLocationOutline } from "react-icons/io5";
 
 
 const LocationCard = (props) => {
@@ -16,8 +17,9 @@ const LocationCard = (props) => {
         type,
         openMenuId,
         setOpenMenuId,
-        // menuRef,
     } = props;
+
+    console.log("LocationCard data:", data);
 
     // function to handle the click event on the address menu button
     const handleMenuToggle = (id) => {
@@ -37,13 +39,15 @@ const LocationCard = (props) => {
             <div className="addressCard">
 
                 <div className="addressIcon">
-                    {type === "saved" ? addressIcons[data.type] : <IoMdTime />}
+                    {type === "saved" && addressIcons[data.addressType]}
+                    {type === "recent" && <IoMdTime />}
+                    {type === "search" && <IoLocationOutline />}
                 </div>
 
                 <div className="addressContent">
-                    <div className="addressTop">
-                        <h3>{data.label}</h3>
 
+                    <div className="addressTop">
+                        <h3>{data.title}</h3>
                         {data.selected && <span>SELECTED</span>}
                     </div>
 

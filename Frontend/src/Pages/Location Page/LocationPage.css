@@ -37,6 +37,7 @@
   max-height: 8rem;
   overflow: hidden;
   transition: var(--transition-normal);
+  /* display: none; */
 }
 
 .locationActions.hide {
@@ -81,10 +82,16 @@
   font-weight: 700;
   color: var(--text-light);
   letter-spacing: 0.05rem;
+  text-transform: uppercase;
 }
 
 .overlay {
   background-color: rgba(0, 0, 0, 0.01);
   position: fixed;
   z-index: 1;
+}
+
+/* skeleton container */
+.skeletonContainer {
+  margin-top: 2rem;
 }
