@@ -54,23 +54,54 @@ export const savedAddresses = [
 
 export const recentSearches = [
   {
-    id: 1,
-    title: "Shahdol",
-    address: "Bicharpur, Shahdol, Madhya Pradesh, India",
+    id: "recent-1",
+
+    // Display
+    title: "Rajwada Palace",
+    address: "Rajwada, Maharaja Tukoji Rao Holker Cloth Market, Indore, Madhya Pradesh",
+
+    // Coordinates
+    latitude: 22.7177,
+    longitude: 75.8587,
+
+    // Location Details
+    city: "Indore",
+    state: "Madhya Pradesh",
+    country: "India",
+    postcode: "452002",
+
+    // Metadata
+    category: "tourism",
+    resultType: "amenity",
+
+    // Future Fields
+    addressType: null,
+    selected: false,
   },
+
   {
-    id: 2,
-    title: "MP Nagar",
-    address: "Zone-II, MP Nagar, Bhopal, Madhya Pradesh, India",
-  },
-  {
-    id: 3,
-    title: "Vijay Nagar",
-    address: "Vijay Nagar, Indore, Madhya Pradesh, India",
-  },
-  {
-    id: 4,
-    title: "Railway Station",
-    address: "Railway Station Road, Jabalpur, Madhya Pradesh, India",
+    id: "recent-2",
+
+    // Display
+    title: "Phoenix Citadel Mall",
+    address: "MR 10 Road, Indore, Madhya Pradesh",
+
+    // Coordinates
+    latitude: 22.7576,
+    longitude: 75.9283,
+
+    // Location Details
+    city: "Indore",
+    state: "Madhya Pradesh",
+    country: "India",
+    postcode: "452016",
+
+    // Metadata
+    category: "commercial",
+    resultType: "amenity",
+
+    // Future Fields
+    addressType: null,
+    selected: false,
   },
 ];

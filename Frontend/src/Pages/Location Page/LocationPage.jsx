@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { getSearchLocations } from '../../utils/getLocation';
 import NoResult from '../../Components/Ui/NoReuslt/NoResult';
 import LocationCardSkeleton from '../../Components/Skeletons/Location Card Skeleton/LocationCardSkeleton';
-import { savedAddresses } from '../../utils/dummyData';
+import { recentSearches, savedAddresses } from '../../utils/dummyData';
 
 const LocationPage = () => {
 
@@ -35,13 +35,10 @@ const LocationPage = () => {
     // state to store the search results based on the user's query
     const [searchResults, setSearchResults] = useState([]);
 
-    // 
+    // Show all saved addresses by default, or only those that match the searched city
     const matchedSavedAddresses = searchQuery.trim() ? savedAddresses.filter((savedAddress) => (
         searchResults.some((location) => location.city === savedAddress.city)
     )) : savedAddresses;
-
-    console.log(savedAddresses)
-    console.log(matchedSavedAddresses);
 
     /* EFFECTS ↓ -------------------------------------- */
 
@@ -85,7 +82,7 @@ const LocationPage = () => {
                 resultType: item.result_type,
 
                 // Saved Address Fields (future)
-                addressType: null,      // home | work | other
+                addressType: null,
                 selected: false,
             }));
 
@@ -95,12 +92,6 @@ const LocationPage = () => {
             // Update the searching and searched states
             setIsSearching(false);
             setHasSearched(true);
-
-            const matchedSavedAddresses = savedAddresses.filter((savedAddress) => (
-                locations.some((location) => location.city === savedAddress.city)
-            ));
-
-            console.log(matchedSavedAddresses);
 
         }, 300);
 
@@ -143,7 +134,9 @@ const LocationPage = () => {
                 {/* locaiton actions */}
                 <div className={`locationActions ${searchQuery.trim() ? "hide" : ""}`}>
 
-                    <button className="locationAction">
+                    <button
+                        className="locationAction"
+                    >
                         <BiTargetLock />
                         <p>Use Current Location</p>
                     </button>
@@ -209,6 +202,27 @@ const LocationPage = () => {
                                 data={location}
                                 type="search"
                             />
+                        ))}
+
+                    </>
+
+                )}
+
+                {/* Saved Addresses */}
+                {!isSearching && !searchQuery.trim() && recentSearches.length > 0 && (
+
+                    <>
+
+                        <h3 className="sectionHeading"> RECENT SEARCHES </h3>
+
+                        {recentSearches.map((address) => (
+
+                            <LocationCard
+                                key={address.id}
+                                data={address}
+                                type="recent"
+                            />
+
                         ))}
 
                     </>

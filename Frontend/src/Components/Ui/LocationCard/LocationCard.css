@@ -1,6 +1,6 @@
 .addressCard {
   width: 100%;
-  min-height: 9rem; /* ya 9.5rem */
+  /* min-height: 9rem; */
   display: flex;
   gap: 1.2rem;
   align-items: flex-start;
