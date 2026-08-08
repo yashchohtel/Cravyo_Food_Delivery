@@ -40,10 +40,8 @@ const LocationPage = () => {
         searchResults.some((location) => location.city === savedAddress.city)
     )) : savedAddresses;
 
-    // recent searches data getting from local storage
-    const [recentSearches, setRecentSearches] = useState(
-        JSON.parse(localStorage.getItem("recentSearches")) || []
-    );
+    // Get recent searches from local storage
+    const recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
 
     /* EFFECTS ↓ -------------------------------------- */
 
@@ -210,7 +208,6 @@ const LocationPage = () => {
                                 key={location.id}
                                 data={location}
                                 type="search"
-                                setRecentSearches={setRecentSearches}
                             />
                         ))}
 

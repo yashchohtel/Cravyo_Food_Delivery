@@ -17,7 +17,6 @@ const LocationCard = (props) => {
         type,
         openMenuId,
         setOpenMenuId,
-        setRecentSearches,
     } = props;
 
     /* -------------------------------------- */
@@ -41,57 +40,20 @@ const LocationCard = (props) => {
 
     /* -------------------------------------- */
 
-    // Save the selected location to recent searches
-    const saveRecentSearch = () => {
-
-        // get recent searches data from local storage
-        const recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
-
-        const updatedSearches = [
-            data,
-            ...recentSearches.filter((item) => item.id !== data.id)
-        ].slice(0, 5);
-
-        // save to local storage
-        localStorage.setItem("recentSearches", JSON.stringify(updatedSearches));
-
-        // update recent searches
-        setRecentSearches(updatedSearches);
-
-    };
-
-    /* -------------------------------------- */
-
     // function to handle card click
     const handleCardClick = () => {
 
-        // if card type is saved navigate to home page
-        if (type === "saved") {
-            navigate("/");
+        // Saved / recent → home
+        if (type === "saved" || type === "recent") {
+            navigate("/home");
             return;
         }
 
-        // Search result → save to recent searches → navigate to map
+        // Search result → map
         if (type === "search") {
-
-            // saved recent search data to local storage
-            saveRecentSearch();
-
             navigate("/map", {
                 state: { location: data }
             });
-
-            return;
-        }
-
-        // Recent search → directly navigate to map
-        if (type === "recent") {
-
-            navigate("/map", {
-                state: { location: data }
-            });
-
-            return;
         }
 
     };

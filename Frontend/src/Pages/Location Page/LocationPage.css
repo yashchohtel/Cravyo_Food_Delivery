@@ -79,9 +79,9 @@
 .sectionHeading {
   margin: 2rem 0 1rem;
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-light);
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.02rem;
   text-transform: uppercase;
 }
 
