@@ -70,6 +70,13 @@
 
 .addressMenu {
   margin-left: auto;
+  padding: 00.5rem;
+  border-radius: 10px;
+  transform: var(--transition-normal);
+}
+
+.addressMenu:hover{
+  background: var(--surface-color);
 }
 
 .addressMenu svg {

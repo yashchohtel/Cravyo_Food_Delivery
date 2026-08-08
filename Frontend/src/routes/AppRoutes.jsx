@@ -10,6 +10,7 @@ import DeliveryBoy from "../Pages/Delivery Boy/DeliveryBoy";
 import RoleProtectedRoute from "./RoleProtectedRoute";
 import Page404 from "../Pages/Page404/Page404";
 import LocationPage from "../Pages/Location Page/LocationPage";
+import MapPage from "../Pages/Map Page/MapPage";
 
 function AppRoutes() {
 
@@ -32,6 +33,9 @@ function AppRoutes() {
 
       {/* Location Page */}
       <Route path="/location" element={<ProtectedRoute> <LocationPage /> </ProtectedRoute>} />
+
+      {/* Map Page */}
+      <Route path="/map" element={<ProtectedRoute> <MapPage /> </ProtectedRoute>} />
 
       {/* restaurant route */}
       <Route path="/restaurant" element={

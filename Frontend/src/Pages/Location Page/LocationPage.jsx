@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { getSearchLocations } from '../../utils/getLocation';
 import NoResult from '../../Components/Ui/NoReuslt/NoResult';
 import LocationCardSkeleton from '../../Components/Skeletons/Location Card Skeleton/LocationCardSkeleton';
-import { recentSearches, savedAddresses } from '../../utils/dummyData';
+import { savedAddresses } from '../../utils/dummyData';
 
 const LocationPage = () => {
 
@@ -39,6 +39,11 @@ const LocationPage = () => {
     const matchedSavedAddresses = searchQuery.trim() ? savedAddresses.filter((savedAddress) => (
         searchResults.some((location) => location.city === savedAddress.city)
     )) : savedAddresses;
+
+    // recent searches data getting from local storage
+    const [recentSearches, setRecentSearches] = useState(
+        JSON.parse(localStorage.getItem("recentSearches")) || []
+    );
 
     /* EFFECTS ↓ -------------------------------------- */
 
@@ -136,12 +141,16 @@ const LocationPage = () => {
 
                     <button
                         className="locationAction"
+                        onClick={() => navigate("/map")}
                     >
                         <BiTargetLock />
                         <p>Use Current Location</p>
                     </button>
 
-                    <button className="locationAction">
+                    <button
+                        className="locationAction"
+                        onClick={() => navigate("/map")}
+                    >
                         <MdOutlineAddBox />
                         <p>Add New Address</p>
                     </button>
@@ -201,6 +210,7 @@ const LocationPage = () => {
                                 key={location.id}
                                 data={location}
                                 type="search"
+                                setRecentSearches={setRecentSearches}
                             />
                         ))}
 
@@ -208,23 +218,19 @@ const LocationPage = () => {
 
                 )}
 
-                {/* Saved Addresses */}
+                {/* recent search */}
                 {!isSearching && !searchQuery.trim() && recentSearches.length > 0 && (
 
                     <>
-
-                        <h3 className="sectionHeading"> RECENT SEARCHES </h3>
+                        <h3 className="sectionHeading">RECENT SEARCHES</h3>
 
                         {recentSearches.map((address) => (
-
                             <LocationCard
                                 key={address.id}
                                 data={address}
                                 type="recent"
                             />
-
                         ))}
-
                     </>
 
                 )}
