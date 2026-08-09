@@ -1,19 +1,48 @@
-import { useLocation } from 'react-router-dom';
 import './MapPage.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { FaArrowLeft } from "react-icons/fa6";
+import SearchBar from '../../Components/Ui/SearchBar/SearchBar';
 
 const MapPage = () => {
+
+    // useNavigate hook to navigate to previous page
+    const navigate = useNavigate();
 
     // initilize use location
     const location = useLocation();
 
+    /* -------------------------------------- */
+
     console.log(location.state?.location);
     console.log(location.state?.mode);
-
 
     return (
 
         <>
-            MapPage
+            <div className="mapPage container">
+
+                {/* location page header */}
+                <div className="mapHeader">
+
+                    <div
+                        className="mapIconBack"
+                        onClick={() => navigate(-1)}
+                    >
+                        <FaArrowLeft />
+
+                    </div>
+
+                    {/* search bar */}
+                    <SearchBar />
+
+                </div>
+
+                {/* map */}
+                <div className="mapContainer">
+                    {/* yaha baad me actual map aayega */}
+                </div>
+
+            </div>
         </>
 
     )

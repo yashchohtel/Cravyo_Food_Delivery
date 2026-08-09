@@ -7,7 +7,6 @@
   border: 1px solid var(--border-color);
   border-radius: 1.6rem;
   overflow: hidden;
-  margin-top: 1rem;
 }
 
 .locationSearchBar input {
