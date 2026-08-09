@@ -56,6 +56,27 @@
   background: #949494;
 }
 
+/* map ko top se gradually blend karta hai */
+.mapPage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10rem;
+
+  background: linear-gradient(
+    to bottom,
+    var(--page-bg) 0%,
+    var(--page-bg) 25%,
+    rgba(245, 245, 250, 0.7) 55%,
+    transparent 100%
+  );
+
+  z-index: 2;
+  pointer-events: none;
+}
+
 /* map header */
 .mapHeader {
   position: absolute;
