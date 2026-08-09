@@ -39,7 +39,7 @@ const MapPage = () => {
 
                 {/* map */}
                 <div className="mapContainer">
-                    {/* yaha baad me actual map aayega */}
+                    
                 </div>
 
             </div>
