@@ -1,11 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// getting saved user locaiton for conditional initialstate setting
+const savedLocation = localStorage.getItem("userLocation");
+
 // initial state
 const initialState = {
+
+    // location error dialog box open clsose state
     isLocationErrorDialogOpen: false,
+
+    // erros related to getting location
     locationError: null,
-    userLocation: null,
-    isLocationLoading: false,
+
+    // user location
+    userLocation: savedLocation
+        ? JSON.parse(savedLocation)
+        : {
+            latitude: null,
+            longitude: null,
+            address: "",
+        },
+
+    // location loading state
+    isLocationLoading: !savedLocation,
+    
 };
 
 
