@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "../features/auth/authSlice"; // Import the auth reducer
+import authReducer from "../features/auth/authSlice"; 
+import locationReducer from "../features/location/locationSlice" 
 
 // configure store with 
 const store = configureStore({
@@ -9,6 +10,9 @@ const store = configureStore({
 
         // auth reducer for authentication state management
         auth: authReducer,
+
+        // location reducer for manageing user locations
+        location: locationReducer,
 
     },
 

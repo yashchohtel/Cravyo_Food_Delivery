@@ -1,5 +1,4 @@
 .locationSearchBar {
-  width: 100%;
   height: 4.5rem;
   display: flex;
   align-items: center;
@@ -11,6 +10,7 @@
 
 .locationSearchBar input {
   flex: 1;
+  min-width: 0;
   height: 100%;
   padding: 0 2rem;
   font-size: 1.7rem;
@@ -25,11 +25,13 @@
 }
 
 .locationSearchBar .searchBtn {
-  padding-right: 2rem;
+  width: 4rem;
+  min-width: 4rem;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .locationSearchBar .searchBtn svg {
