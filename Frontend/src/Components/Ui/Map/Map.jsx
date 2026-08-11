@@ -65,7 +65,7 @@ const Map = () => {
                 )}
 
                 <div className="pinContainer">
-                    <FaLocationDot/>
+                    <FaLocationDot className="locationPin"/>
                 </div>
 
             </MapContainer>

@@ -10,9 +10,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  height: 50px;
+  width: 50px;
+  background-color: #4da3ff;
   transform: translate(-50%, -50%);
-  transform: translate(-34%, -65%);
-
   z-index: 1000;
   pointer-events: none;
   color: var(--primary-color);
