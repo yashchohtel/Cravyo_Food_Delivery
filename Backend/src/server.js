@@ -26,7 +26,7 @@ app.use(cors({
     // Allow requests from this origin
     origin: [
         "http://localhost:5173",
-        "http://10.133.135.238:5173"
+        "http://10.172.85.238:5173"
     ],
     credentials: true, // Allow cookies to be sent with requests
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // Allowed HTTP methods
@@ -57,5 +57,3 @@ const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
-
-

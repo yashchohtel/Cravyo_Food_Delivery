@@ -9,7 +9,7 @@ const initialState = {
     // location error dialog box open clsose state
     isLocationErrorDialogOpen: false,
 
-    // erros related to getting location
+    // erros related to getting location - "permission" / "positionUnavailable" / "timeout" / "unknown"
     locationError: null,
 
     // user location
@@ -23,9 +23,8 @@ const initialState = {
 
     // location loading state
     isLocationLoading: !savedLocation,
-    
-};
 
+};
 
 // creating location slice
 const locationSlice = createSlice({
@@ -52,7 +51,8 @@ const locationSlice = createSlice({
         },
 
         setIsLocationErrorDialogOpen: (state, action) => {
-            state.isLocationDialogOpen = action.payload;
+            console.log(action.payload);
+            state.isLocationErrorDialogOpen = action.payload;
         },
 
     },
@@ -63,7 +63,7 @@ export const {
     setUserLocation,
     setIsLocationLoading,
     setLocationError,
-    setIsLocationDialogOpen,
+    setIsLocationErrorDialogOpen,
 } = locationSlice.actions;
 
 // exporting location slice reducer

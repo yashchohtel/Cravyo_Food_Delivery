@@ -20,6 +20,10 @@ const MapPage = () => {
     return (
 
         <>
+
+            <div className="lineh"></div>
+            <div className="linev"></div>
+
             <div className="mapPage container">
 
                 {/* location page header */}

@@ -1,18 +1,19 @@
 import axios from "axios"; // Importing axios for making HTTP requests
+import { setIsLocationErrorDialogOpen, setIsLocationLoading, setLocationError, setUserLocation } from "../features/Location/locationSlice";
 
 // Function to get user's location and handle errors (reverse geocoding using Geoapify API)
-export const handleGetLocation = async (setLocationError, setIsLocationDialogOpen, setUserLocation, setIsLocationLoading) => {
+export const handleGetLocation = async (dispatch) => {
 
     // Show loading only if no saved location exists
     if (!localStorage.getItem("userLocation")) {
-        setIsLocationLoading(true);
+        dispatch(setIsLocationLoading(true));
     }
 
     // Check if the browser supports geolocation
     if (!navigator.geolocation) {
-        setIsLocationLoading(false);
-        setLocationError("unknown");
-        setIsLocationDialogOpen(true);
+        dispatch(setIsLocationLoading(false));
+        dispatch(setLocationError("unknown"));
+        dispatch(setIsLocationErrorDialogOpen(true));
         return;
     }
 
@@ -47,21 +48,21 @@ export const handleGetLocation = async (setLocationError, setIsLocationDialogOpe
                 };
 
                 // Set user location state
-                setUserLocation(locationData);
+                dispatch(setUserLocation(locationData));
 
                 // Store user location in local storage
                 localStorage.setItem("userLocation", JSON.stringify(locationData));
 
                 // Stop loading
-                setIsLocationLoading(false);
+                dispatch(setIsLocationLoading(false));
 
             } catch (error) {
 
                 console.error(error);
 
-                setIsLocationLoading(false);
-                setLocationError("unknown");
-                setIsLocationDialogOpen(true);
+                dispatch(setIsLocationLoading(false));
+                dispatch(setLocationError("unknown"));
+                dispatch(setIsLocationErrorDialogOpen(true));
 
             }
 
@@ -75,30 +76,30 @@ export const handleGetLocation = async (setLocationError, setIsLocationDialogOpe
 
                 case error.PERMISSION_DENIED:
 
-                    setLocationError("permission");
+                    dispatch(setLocationError("permission"));
                     break;
 
                 case error.POSITION_UNAVAILABLE:
 
-                    setLocationError("positionUnavailable");
+                    dispatch(setLocationError("positionUnavailable"));
                     break;
 
                 case error.TIMEOUT:
 
-                    setLocationError("timeout");
+                    dispatch(setLocationError("timeout"));
                     break;
 
                 default:
 
-                    setLocationError("unknown");
+                    dispatch(setLocationError("unknown"));
 
             }
 
             // Stop loading
-            setIsLocationLoading(false);
+            dispatch(setIsLocationLoading(false));
 
             // Open the location error dialog
-            setIsLocationDialogOpen(true);
+            dispatch(setIsLocationErrorDialogOpen(true));
 
         }
 
