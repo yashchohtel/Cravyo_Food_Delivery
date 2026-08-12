@@ -1,8 +1,12 @@
+/* eslint-disable no-unused-vars */
 import './MapPage.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa6";
 import SearchBar from '../../Components/Ui/SearchBar/SearchBar';
 import Map from '../../Components/Ui/Map/Map';
+import { FaLocationCrosshairs } from "react-icons/fa6";
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 const MapPage = () => {
 
@@ -12,17 +16,14 @@ const MapPage = () => {
     // initilize use location
     const location = useLocation();
 
-    /* -------------------------------------- */
-
-    console.log(location.state?.location);
-    console.log(location.state?.mode);
+    // get locaiton data from local storage
+    const { userLocation } = useSelector((state) => state.location);
 
     return (
 
         <>
 
-            <div className="lineh"></div>
-            <div className="linev"></div>
+
 
             <div className="mapPage container">
 
@@ -47,7 +48,33 @@ const MapPage = () => {
                     <Map />
                 </div>
 
+                {/* button adress detail */}
+                <div className="addressDetail">
+
+                    {/* current locaiton button */}
+                    <button className='currentLocation'>
+                        <span className="icon"> <FaLocationCrosshairs /> </span> Current location
+                    </button>
+
+                    {/* details */}
+                    <div className="details">
+
+                        {/* description */}
+                        <div className="desc">
+
+                            <div className="descText">
+                                <span>Order will be delivered here</span>
+                                <span>Place the pin at exact delivery location</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+
         </>
 
     )
@@ -55,6 +82,21 @@ const MapPage = () => {
 }
 
 export default MapPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // Save the selected location to recent searches
 // const saveRecentSearch = () => {

@@ -43,8 +43,8 @@
 }
 
 .mapIconBack {
-  height: 4.3rem;
-  width: 4.3rem;
+  height: 4rem;
+  width: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +64,7 @@
 }
 
 .mapHeader .locationSearchBar {
-  height: 4.5rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   background: var(--background-color);
@@ -84,35 +84,101 @@
   z-index: 1;
 }
 
-.lineh {
-  width: 100%;
-  height: 1px;
-  background-color: black;
+/* -------------------------------- */
+
+/* bottom adress details */
+.addressDetail {
+  z-index: 2;
   position: absolute;
-  top: 50%;
+  bottom: 1.5rem;
   left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
+  width: 94%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.lineh {
-  width: 100%;
-  height: 1px;
-  background-color: black;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
+.addressDetail .currentLocation {
+  height: 4rem;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: none;
+  border-radius: 1rem;
+  background: var(--background-color);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  color: var(--text-secondary);
+  font-size: 1.35rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.02rem;
 }
 
-.linev {
-  height: 100%;
-  width: 1px;
-  background-color: black;
+.addressDetail .currentLocation .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-size: 1.6rem;
+}
+
+.addressDetail .details {
+  width: 100%;
+  height: 15rem;
+  background: var(--background-color);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-big);
+}
+
+.details .desc {
+  width: 100%;
+  height: 3.5rem;
+  background: var(--page-bg);
+  border-radius: 1rem 1rem 0 0;
+  border: 3px solid white;
+  overflow: hidden;
+  position: relative;
+}
+
+.descText {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: slideDescription 4s ease-in-out infinite;
+}
+
+.descText span {
+  width: 100%;
+  height: 3.5rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.02rem;
+  color: var(--text-secondary);
+}
+
+@keyframes slideDescription {
+  0%,
+  35% {
+    transform: translateY(0);
+  }
+
+  50%,
+  85% {
+    transform: translateY(-3.5rem);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }

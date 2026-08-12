@@ -1,70 +1,61 @@
+/* pin icon */
+.pinContainer {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 400;
+  pointer-events: none;
+}
+
+.pinContainer .locationPin {
+  position: absolute;
+  color: var(--primary-color);
+  font-size: 3rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
 /* map blinker */
-/* Remove Leaflet default icon styling */
 .currentLocationMarker {
   background: transparent;
   border: none;
 }
 
-/* pin icon */
-.pinContainer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 50px;
-  width: 50px;
-  background-color: #4da3ff;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-  pointer-events: none;
-  color: var(--primary-color);
-  font-size: 3rem;
-}
-
-.locationPulse {
+.locationDot {
+  width: 12px;
+  height: 12px;
+  background: #007bff;
+  border-radius: 50%;
+  border: 2px solid white;
   position: relative;
-  width: 40px;
-  height: 40px;
 }
 
-.locationPulse::before {
+.locationDot::before {
   content: "";
   position: absolute;
-  inset: 0;
-
-  border-radius: 50%;
-  background: rgba(77, 163, 255, 0.25);
-
-  animation: locationPulse 2s ease-out infinite;
-}
-
-.locationDot {
-  position: absolute;
   top: 50%;
   left: 50%;
-
-  width: 10px;
-  height: 10px;
-
+  width: 40px;
+  height: 40px;
   transform: translate(-50%, -50%);
-
-  background: #4da3ff;
-  border: 2px solid white;
+  background: rgb(0 123 255 / 92%);
   border-radius: 50%;
+  z-index: -1;
+  animation: locationPulse 1.5s ease-out infinite;
 }
 
 @keyframes locationPulse {
   0% {
-    transform: scale(0.5);
+    transform: translate(-50%, -50%) scale(0.5);
     opacity: 0.8;
   }
 
-  70% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
-
   100% {
-    transform: scale(1.5);
+    transform: translate(-50%, -50%) scale(1.5);
     opacity: 0;
   }
 }
