@@ -4,21 +4,35 @@ import L from "leaflet";
 import './Map.css'
 import "leaflet/dist/leaflet.css";
 import { FaLocationDot } from "react-icons/fa6";
+import { useEffect } from "react";
 
 // map controller component
-const MapController = () => {
+const MapController = ({ recenterMap }) => {
 
+    // get map 
     const map = useMap();
 
+    // get user locaiton
     const { userLocation } = useSelector((state) => state.location);
 
-    console.log(map);
-    console.log(userLocation);
+    // effect to recenter map
+    useEffect(() => {
+
+        // if no location return
+        if (!userLocation?.latitude || !userLocation?.longitude) {
+            return;
+        }
+
+        // recenter map
+        map.setView([userLocation.latitude, userLocation.longitude], 17);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [recenterMap]);
 
     return null;
 };
 
-const Map = () => {
+const Map = ({ recenterMap }) => {
 
     // Get location state from Redux store
     const { userLocation } = useSelector((state) => state.location);
@@ -54,7 +68,7 @@ const Map = () => {
                 }}
             >
 
-                <MapController />
+                <MapController recenterMap={recenterMap} />
 
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 

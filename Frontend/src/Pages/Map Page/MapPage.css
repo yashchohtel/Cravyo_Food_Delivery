@@ -115,6 +115,7 @@
   font-weight: 600;
   cursor: pointer;
   letter-spacing: 0.02rem;
+  user-select: none;
 }
 
 .addressDetail .currentLocation .icon {

@@ -19,11 +19,12 @@ const MapPage = () => {
     // get locaiton data from local storage
     const { userLocation } = useSelector((state) => state.location);
 
+    // state to trigger map recenter action
+    const [recenterMap, setRecenterMap] = useState(0);
+
     return (
 
         <>
-
-
 
             <div className="mapPage container">
 
@@ -45,14 +46,17 @@ const MapPage = () => {
 
                 {/* map */}
                 <div className="mapContainer">
-                    <Map />
+                    <Map recenterMap={recenterMap} />
                 </div>
 
                 {/* button adress detail */}
                 <div className="addressDetail">
 
                     {/* current locaiton button */}
-                    <button className='currentLocation'>
+                    <button
+                        className='currentLocation'
+                        onClick={() => setRecenterMap(prev => prev + 1)}
+                    >
                         <span className="icon"> <FaLocationCrosshairs /> </span> Current location
                     </button>
 
