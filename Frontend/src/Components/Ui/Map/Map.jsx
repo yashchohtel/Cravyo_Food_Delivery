@@ -24,7 +24,16 @@ const MapController = ({ recenterMap }) => {
         }
 
         // recenter map
-        map.setView([userLocation.latitude, userLocation.longitude], 17);
+        map.flyTo(
+            [
+                userLocation.latitude,
+                userLocation.longitude
+            ],
+            17,
+            {
+                duration: 0.8
+            }
+        );
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [recenterMap]);
