@@ -99,7 +99,6 @@ const Home = () => {
           userLocation={userLocation} // user's current location (latitude, longitude, address)
         />
 
-
         {/* navbar bottom */}
         <NavbarBottom
           setIsFoodDialogOpen={setIsFoodDialogOpen} // to set food prefrence dialog box open/close state

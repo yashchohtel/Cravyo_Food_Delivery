@@ -135,46 +135,6 @@ export const getSearchLocations = async (searchQuery) => {
 };
 
 // Function to get address from latitude and longitude
-// export const getAddressFromCoordinates = async (latitude, longitude) => {
-
-//     // Get Geoapify API key
-//     const apiKey = import.meta.env.VITE_GEOAPIFY_API_KEY;
-
-//     // Reverse geocoding API URL
-//     const url = `https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&format=json&apiKey=${apiKey}`;
-
-//     try {
-
-//         // API call
-//         const response = await axios.get(url);
-
-//         // Get first result
-//         const result = response.data.results[0];
-
-//         // Create address
-//         const address = `${result.suburb || result.district}, ${result.city}, ${result.state}`;
-
-//         console.log(response);
-//         console.log(result);
-
-//         // Just for testing
-//         console.log("Location:", {
-//             latitude,
-//             longitude,
-//             address
-//         });
-
-//         console.log("------------------");
-
-//     } catch (error) {
-
-//         console.error("Error getting address:", error);
-
-//     }
-
-// };
-
-// Function to get address from latitude and longitude
 export const getAddressFromCoordinates = async (latitude, longitude) => {
 
     const apiKey = import.meta.env.VITE_GEOAPIFY_API_KEY;

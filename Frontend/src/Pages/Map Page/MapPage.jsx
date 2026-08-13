@@ -5,14 +5,18 @@ import { FaArrowLeft, FaLocationDot } from "react-icons/fa6";
 import SearchBar from '../../Components/Ui/SearchBar/SearchBar';
 import Map from '../../Components/Ui/Map/Map';
 import { FaLocationCrosshairs } from "react-icons/fa6";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import LocationDataSkeleton from '../../Components/Skeletons/Location Data Skeleton/LocationDataSkeleton';
+import { setUserLocation } from '../../features/Location/locationSlice';
 
 const MapPage = () => {
 
     // useNavigate hook to navigate to previous page
     const navigate = useNavigate();
+
+    // initilize use dispatch
+    const dispatch = useDispatch();
 
     // get locaiton data from local storage
     const { isMapLocationLoading } = useSelector((state) => state.location);
@@ -27,6 +31,20 @@ const MapPage = () => {
         addressTitle: "",
         address: "",
     });
+
+    // function to save user selected lociaon to local storage 
+    const handleConfirmLocation = () => {
+
+        // Save selected location to localStorage
+        localStorage.setItem(
+            "userLocation",
+            JSON.stringify(locationData)
+        );
+
+        // Update Redux state
+        dispatch(setUserLocation(locationData));
+
+    };
 
     return (
 
@@ -107,7 +125,10 @@ const MapPage = () => {
                                         {locationData.address}
                                     </p>
 
-                                    <button className="locationDataButton">
+                                    <button
+                                        className="locationDataButton"
+                                        onClick={handleConfirmLocation}
+                                    >
                                         Confirm & proceed
                                     </button>
 
@@ -147,17 +168,17 @@ export default MapPage;
 
 
 // // Save the selected location to recent searches
-// const saveRecentSearch = () => {
+const saveRecentSearch = () => {
 
-//     // get recent searches data from local storage
-//     const recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
+    // get recent searches data from local storage
+    const recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
 
-//     const updatedSearches = [
-//         data,
-//         ...recentSearches.filter((item) => item.id !== data.id)
-//     ].slice(0, 5);
+    const updatedSearches = [
+        data,
+        ...recentSearches.filter((item) => item.id !== data.id)
+    ].slice(0, 5);
 
-//     // save to local storage
-//     localStorage.setItem("recentSearches", JSON.stringify(updatedSearches));
+    // save to local storage
+    localStorage.setItem("recentSearches", JSON.stringify(updatedSearches));
 
-// };
+};
