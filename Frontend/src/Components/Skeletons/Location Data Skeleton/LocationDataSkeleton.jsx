@@ -3,21 +3,19 @@ import './LocationDataSkeleton.css'
 const LocationDataSkeleton = () => {
 
     return (
-        
+
         <>
             <div className="locationLoadingCard">
 
-                <div className="locationTitleRow">
-                    <div className="skeletonIcon shimmer"></div>
-                    <div className="skeletonTitle shimmer"></div>
+                <div className="locationLoadingTitleRow">
+                    <div className="locationLoadingIcon locationLoadingShimmer"></div>
+                    <div className="locationLoadingTitle locationLoadingShimmer"></div>
                 </div>
 
-                <div className="skeletonAddress">
-                    <div className="skeletonLine shimmer"></div>
-                    <div className="skeletonLine shimmer"></div>
+                <div className="locationLoadingAddress">
+                    <div className="locationLoadingLine locationLoadingShimmer"></div>
+                    <div className="locationLoadingLine locationLoadingShimmer"></div>
                 </div>
-
-                {/* <div className="skeletonButton shimmer"></div> */}
 
             </div>
         </>

@@ -67,7 +67,7 @@ const LocationPage = () => {
                 id: item.place_id,
 
                 // Display
-                title: item.name,
+                addressTitle: item.name,
                 address: item.formatted,
 
                 // Coordinates
@@ -89,6 +89,8 @@ const LocationPage = () => {
                 selected: false,
             }));
 
+            console.log(locations);
+            
             // Update the search results state with the fetched locations
             setSearchResults(locations);
 
@@ -223,7 +225,7 @@ const LocationPage = () => {
 
                         {recentSearches.map((address) => (
                             <LocationCard
-                                key={address.id}
+                                key={`${address.latitude}-${address.longitude}`}
                                 data={address}
                                 type="recent"
                             />

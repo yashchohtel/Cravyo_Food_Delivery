@@ -75,7 +75,7 @@ const LocationCard = (props) => {
                 <div className="addressContent">
 
                     <div className="addressTop">
-                        <h3>{data.title}</h3>
+                        <h3>{data.addressTitle}</h3>
                         {data.selected && <span>SELECTED</span>}
                     </div>
 

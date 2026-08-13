@@ -32,17 +32,37 @@ const MapPage = () => {
         address: "",
     });
 
-    // function to save user selected lociaon to local storage 
+    // funciton to save searched location to local storge as recent search
+    const saveRecentLocation = (locationData) => {
+
+        // Get recent locations from localStorage
+        const recentLocations = JSON.parse(localStorage.getItem("recentSearches")) || [];
+
+        // Remove same location if it already exists
+        const updatedLocations = [
+            locationData,
+            ...recentLocations.filter((item) => (
+                item.latitude !== locationData.latitude ||
+                item.longitude !== locationData.longitude
+            ))
+        ].slice(0, 5);
+
+        // Save updated recent locations
+        localStorage.setItem("recentSearches", JSON.stringify(updatedLocations));
+
+    };
+
+    // function to save user selected location to local storage 
     const handleConfirmLocation = () => {
 
         // Save selected location to localStorage
-        localStorage.setItem(
-            "userLocation",
-            JSON.stringify(locationData)
-        );
+        localStorage.setItem("userLocation", JSON.stringify(locationData));
 
         // Update Redux state
         dispatch(setUserLocation(locationData));
+
+        // Save location to recent searches
+        saveRecentLocation(locationData);
 
     };
 
@@ -151,34 +171,3 @@ const MapPage = () => {
 }
 
 export default MapPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Save the selected location to recent searches
-const saveRecentSearch = () => {
-
-    // get recent searches data from local storage
-    const recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
-
-    const updatedSearches = [
-        data,
-        ...recentSearches.filter((item) => item.id !== data.id)
-    ].slice(0, 5);
-
-    // save to local storage
-    localStorage.setItem("recentSearches", JSON.stringify(updatedSearches));
-
-};

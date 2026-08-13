@@ -1,86 +1,59 @@
 .locationLoadingCard {
-    width: 100%;
-    box-sizing: border-box;
-    border-radius: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 1rem;
 }
-
 
 /* Icon + location name */
-.locationTitleRow {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.locationLoadingTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-
 
 /* Square-ish icon */
-.skeletonIcon {
-    width: 3.4rem;
-    height: 3.4rem;
-
-    border-radius: 0.8rem;
-    flex-shrink: 0;
+.locationLoadingIcon {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 0.8rem;
+  flex-shrink: 0;
 }
-
 
 /* Location name */
-.skeletonTitle {
-    width: 45%;
-    height: 1.8rem;
-    margin-bottom: 0;
-    border-radius: 0.6rem;
+.locationLoadingTitle {
+  width: 45%;
+  height: 1.8rem;
+  border-radius: 0.6rem;
 }
-
 
 /* Address details */
-.skeletonAddress {
-    width: 100%;
-    margin-top: 1rem;
+.locationLoadingAddress {
+  width: 100%;
+  margin-top: 1rem;
 }
 
-
-/* Two full-width address lines */
-.skeletonLine {
-    width: 100%;
-    height: 1.2rem;
-
-    border-radius: 0.6rem;
-    margin-bottom: 0.7rem;
+/* Address lines */
+.locationLoadingLine {
+  width: 100%;
+  height: 1.2rem;
+  border-radius: 0.6rem;
+  margin-bottom: 0.7rem;
 }
-
-
-/* Confirm button */
-.skeletonButton {
-    width: 100%;
-    height: 3.8rem;
-    margin-top: 1.2rem;
-    border-radius: 1.2rem;
-}
-
 
 /* Shimmer */
-.shimmer {
-    background: linear-gradient(
-        90deg,
-        #e2e5ea 25%,
-        #eef1f5 50%,
-        #e2e5ea 75%
-    );
+.locationLoadingShimmer {
+  background: linear-gradient(90deg, #e2e5ea 25%, #eef1f5 50%, #e2e5ea 75%);
 
-    background-size: 200% 100%;
-
-    animation: shimmer 1.3s linear infinite;
+  background-size: 200% 100%;
+  animation: locationLoadingShimmer 1.3s linear infinite;
 }
 
+@keyframes locationLoadingShimmer {
+  from {
+    background-position: 200% 0;
+  }
 
-@keyframes shimmer {
-
-    from {
-        background-position: 200% 0;
-    }
-
-    to {
-        background-position: -200% 0;
-    }
-
+  to {
+    background-position: -200% 0;
+  }
 }
