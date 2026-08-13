@@ -24,6 +24,9 @@ const initialState = {
     // location loading state
     isLocationLoading: !savedLocation,
 
+    // map location loading
+    isMapLocationLoading: false
+
 };
 
 // creating location slice
@@ -55,6 +58,10 @@ const locationSlice = createSlice({
             state.isLocationErrorDialogOpen = action.payload;
         },
 
+        setIsMapLocationLoading: (state, action) => {
+            state.isMapLocationLoading = action.payload;
+        },
+
     },
 });
 
@@ -64,6 +71,7 @@ export const {
     setIsLocationLoading,
     setLocationError,
     setIsLocationErrorDialogOpen,
+    setIsMapLocationLoading
 } = locationSlice.actions;
 
 // exporting location slice reducer

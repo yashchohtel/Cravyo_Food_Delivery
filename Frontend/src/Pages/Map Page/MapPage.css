@@ -98,6 +98,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  transition: var(--transition-normal);
 }
 
 .addressDetail .currentLocation {
@@ -128,7 +129,6 @@
 
 .addressDetail .details {
   width: 100%;
-  height: 15rem;
   background: var(--background-color);
   border-radius: 1rem;
   box-shadow: var(--shadow-big);
@@ -142,6 +142,7 @@
   border: 3px solid white;
   overflow: hidden;
   position: relative;
+  user-select: none;
 }
 
 .descText {
@@ -182,4 +183,72 @@
   100% {
     transform: translateY(0);
   }
+}
+
+/* locaiton data */
+.locaitonDataContainer {
+  padding: 1.2rem;
+}
+
+.locationData {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 1rem;
+}
+
+.locationDataTitle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.locationDataIcon {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-size: 2.4rem;
+  flex-shrink: 0;
+  background: var(--surface-color);
+  border-radius: 0.8rem;
+}
+
+.locationDataTitle h2 {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-primary);
+}
+
+.locationDataAddress {
+  width: 100%;
+  margin: 0.8rem 0 0;
+  font-size: 1.4rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 0 0.5rem;
+}
+
+.locationDataButton {
+  width: 100%;
+  height: 3.8rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 1.2rem;
+  background: var(--primary-color);
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.locationDataButton:hover {
+  background: var(--primary-hover);
 }

@@ -1,19 +1,26 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import L from "leaflet";
 import './Map.css'
 import "leaflet/dist/leaflet.css";
 import { FaLocationDot } from "react-icons/fa6";
 import { useEffect } from "react";
+import { getAddressFromCoordinates } from "../../../utils/getLocation";
+import { setIsMapLocationLoading } from "../../../features/Location/locationSlice";
 
 // map controller component
-const MapController = ({ recenterMap }) => {
+const MapController = ({ recenterMap, setLocationData }) => {
 
-    // get map 
+    // get map
     const map = useMap();
 
-    // get user locaiton
+    // dispatch
+    const dispatch = useDispatch();
+
+    // get user location
     const { userLocation } = useSelector((state) => state.location);
+
 
     // effect to recenter map
     useEffect(() => {
@@ -35,13 +42,50 @@ const MapController = ({ recenterMap }) => {
             }
         );
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [recenterMap]);
+
+
+    // effect to handle map movement
+    useEffect(() => {
+
+        // map movement started
+        const handleMapMove = () => {
+            dispatch(setIsMapLocationLoading(true));
+        };
+
+        // map movement ended
+        const handleMapMoveEnd = async () => {
+
+            const center = map.getCenter();
+
+            const locationData = await getAddressFromCoordinates(center.lat, center.lng);
+
+            setLocationData(locationData);
+
+            dispatch(setIsMapLocationLoading(false));
+
+        };
+
+
+        // events
+        map.on("move", handleMapMove);
+        map.on("moveend", handleMapMoveEnd);
+
+
+        // cleanup
+        return () => {
+
+            map.off("move", handleMapMove);
+            map.off("moveend", handleMapMoveEnd);
+
+        };
+
+    }, [map, dispatch]);
 
     return null;
 };
 
-const Map = ({ recenterMap }) => {
+const Map = ({ recenterMap, setLocationData }) => {
 
     // Get location state from Redux store
     const { userLocation } = useSelector((state) => state.location);
@@ -56,6 +100,7 @@ const Map = ({ recenterMap }) => {
     // zoom size according to location
     const mapZoom = hasUserLocation ? 17 : 5;
 
+    // current locaiton icon
     const currentLocationIcon = L.divIcon({
         className: "currentLocationMarker",
         html: `<div class="locationDot"></div>`,
@@ -77,7 +122,10 @@ const Map = ({ recenterMap }) => {
                 }}
             >
 
-                <MapController recenterMap={recenterMap} />
+                <MapController
+                    recenterMap={recenterMap}
+                    setLocationData={setLocationData}
+                />
 
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
