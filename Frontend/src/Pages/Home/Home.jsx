@@ -18,8 +18,8 @@ const Home = () => {
   /* -------------------------------------- */
 
   // Get location state from Redux store
-  const { isLocationErrorDialogOpen, locationError, userLocation, isLocationLoading } = useSelector((state) => state.location);
-  
+  const { isLocationErrorDialogOpen, locationError, isLocationLoading } = useSelector((state) => state.location);
+
   /* FOOD PREFRENCE ↓ -------------------------------------- */
 
   // state to show/hide food prefrence dialog box
@@ -46,10 +46,8 @@ const Home = () => {
   // useEffect to get user's location on component mount
   useEffect(() => {
 
-    // Call the handleGetLocation function to get user's location and handle errors
-    handleGetLocation(
-      dispatch, // dispatch to dispatch location actions
-    );
+    // Call the handleGetLocation function to get user's location and handle errors - dispatch to dispatch location actions
+    handleGetLocation(dispatch);
 
   }, [dispatch]);
 
@@ -95,9 +93,7 @@ const Home = () => {
         </Modal>
 
         {/* navbar top */}
-        <NavbarTop
-          userLocation={userLocation} // user's current location (latitude, longitude, address)
-        />
+        <NavbarTop/>
 
         {/* navbar bottom */}
         <NavbarBottom

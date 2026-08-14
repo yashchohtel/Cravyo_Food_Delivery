@@ -1,19 +1,28 @@
 import axios from "axios"; // Importing axios for making HTTP requests
-import { setIsLocationErrorDialogOpen, setIsLocationLoading, setLocationError, setUserLocation } from "../features/Location/locationSlice";
 
-// Function to get user's location and handle errors (reverse geocoding using Geoapify API)
+import {
+    setUserCurrentLocation,
+    setIsLocationLoading,
+    setLocationError,
+    setIsLocationErrorDialogOpen
+} from "../features/Location/locationSlice";
+
+
+// Function to get user's current location and handle errors
 export const handleGetLocation = async (dispatch) => {
 
-    // Show loading only if no saved location exists
-    if (!localStorage.getItem("userLocation")) {
+    // Show loading only if no saved current location exists
+    if (!localStorage.getItem("userCurrentLocation")) {
         dispatch(setIsLocationLoading(true));
     }
 
-    // Check if the browser supports geolocation
+    // Check if browser supports geolocation
     if (!navigator.geolocation) {
+
         dispatch(setIsLocationLoading(false));
         dispatch(setLocationError("unknown"));
         dispatch(setIsLocationErrorDialogOpen(true));
+
         return;
     }
 
@@ -22,36 +31,56 @@ export const handleGetLocation = async (dispatch) => {
         // Success
         async (position) => {
 
-            // Get latitude and longitude from position object
+            // Get latitude and longitude
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
 
-            // Get Geoapify API Key from environment variables
+            // Get Geoapify API key
             const apiKey = import.meta.env.VITE_GEOAPIFY_API_KEY;
 
-            // Construct the API URL for reverse geocoding
+            // Reverse geocoding API URL
             const url = `https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&format=json&apiKey=${apiKey}`;
 
             try {
 
-
-                // API Call
+                // API call
                 const response = await axios.get(url);
-                const result = response.data.results[0];
-                const address = `${result.suburb || result.district}, ${result.city}, ${result.state}`;
 
-                // Create location data object
+                const result = response.data.results[0];
+
+                // Get address safely
+                const suburb = result.suburb || result.district || "";
+                const city = result.city || result.town || result.village || "";
+                const state = result.state || "";
+                const postcode = result.postcode || "";
+
+                // Create short address title
+                const addressTitle = [
+                    suburb,
+                    city
+                ].filter(Boolean).join(", ");
+
+                // Create complete address
+                const address = [
+                    suburb,
+                    city,
+                    state,
+                    postcode
+                ].filter(Boolean).join(", ");
+
+                // Create current location data
                 const locationData = {
                     latitude,
                     longitude,
+                    addressTitle,
                     address,
                 };
 
-                // Set user location state
-                dispatch(setUserLocation(locationData));
+                // Update Redux current location
+                dispatch(setUserCurrentLocation(locationData));
 
-                // Store user location in local storage
-                localStorage.setItem("userLocation", JSON.stringify(locationData));
+                // Save current location to localStorage
+                localStorage.setItem("userCurrentLocation", JSON.stringify(locationData));
 
                 // Stop loading
                 dispatch(setIsLocationLoading(false));
@@ -71,26 +100,21 @@ export const handleGetLocation = async (dispatch) => {
         // Error
         (error) => {
 
-            // Handle different types of geolocation errors and set the appropriate error message
             switch (error.code) {
 
                 case error.PERMISSION_DENIED:
-
                     dispatch(setLocationError("permission"));
                     break;
 
                 case error.POSITION_UNAVAILABLE:
-
                     dispatch(setLocationError("positionUnavailable"));
                     break;
 
                 case error.TIMEOUT:
-
                     dispatch(setLocationError("timeout"));
                     break;
 
                 default:
-
                     dispatch(setLocationError("unknown"));
 
             }
@@ -98,7 +122,7 @@ export const handleGetLocation = async (dispatch) => {
             // Stop loading
             dispatch(setIsLocationLoading(false));
 
-            // Open the location error dialog
+            // Open error dialog
             dispatch(setIsLocationErrorDialogOpen(true));
 
         }

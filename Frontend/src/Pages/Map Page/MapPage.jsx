@@ -8,7 +8,7 @@ import { FaLocationCrosshairs } from "react-icons/fa6";
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import LocationDataSkeleton from '../../Components/Skeletons/Location Data Skeleton/LocationDataSkeleton';
-import { setUserLocation } from '../../features/Location/locationSlice';
+import { setSelectedLocation } from '../../features/Location/locationSlice';
 
 const MapPage = () => {
 
@@ -52,14 +52,14 @@ const MapPage = () => {
 
     };
 
-    // function to save user selected location to local storage 
+    // function to save user selected location
     const handleConfirmLocation = () => {
+        
+        // Save selected location to session storage
+        sessionStorage.setItem("selectedLocation",JSON.stringify(locationData));
 
-        // Save selected location to localStorage
-        localStorage.setItem("userLocation", JSON.stringify(locationData));
-
-        // Update Redux state
-        dispatch(setUserLocation(locationData));
+        // Update selected location in Redux
+        dispatch(setSelectedLocation(locationData));
 
         // Save location to recent searches
         saveRecentLocation(locationData);

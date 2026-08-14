@@ -19,22 +19,21 @@ const MapController = ({ recenterMap, setLocationData }) => {
     const dispatch = useDispatch();
 
     // get user location
-    const { userLocation } = useSelector((state) => state.location);
-
+    const { userCurrentLocation } = useSelector((state) => state.location);
 
     // effect to recenter map
     useEffect(() => {
 
         // if no location return
-        if (!userLocation?.latitude || !userLocation?.longitude) {
+        if (!userCurrentLocation?.latitude || !userCurrentLocation?.longitude) {
             return;
         }
 
         // recenter map
         map.flyTo(
             [
-                userLocation.latitude,
-                userLocation.longitude
+                userCurrentLocation.latitude,
+                userCurrentLocation.longitude
             ],
             17,
             {
@@ -88,13 +87,13 @@ const MapController = ({ recenterMap, setLocationData }) => {
 const Map = ({ recenterMap, setLocationData }) => {
 
     // Get location state from Redux store
-    const { userLocation } = useSelector((state) => state.location);
+    const { userCurrentLocation } = useSelector((state) => state.location);
 
     // finding is location avilable
-    const hasUserLocation = userLocation?.latitude && userLocation?.longitude;
+    const hasUserLocation = userCurrentLocation?.latitude && userCurrentLocation?.longitude;
 
     // setter map to user current location or india center if no locaiton
-    const mapCenter = hasUserLocation ? [userLocation.latitude, userLocation.longitude] : [20.5937, 78.9629];
+    const mapCenter = hasUserLocation ? [userCurrentLocation.latitude, userCurrentLocation.longitude] : [20.5937, 78.9629];
     // :[23.314057, 81.35011] ;
 
     // zoom size according to location
@@ -114,6 +113,7 @@ const Map = ({ recenterMap, setLocationData }) => {
             <MapContainer
                 center={mapCenter}
                 zoom={mapZoom}
+                minZoom={12}
                 scrollWheelZoom={true}
                 zoomControl={false}
                 style={{
@@ -132,8 +132,8 @@ const Map = ({ recenterMap, setLocationData }) => {
                 {hasUserLocation && (
                     <Marker
                         position={[
-                            userLocation.latitude,
-                            userLocation.longitude
+                            userCurrentLocation.latitude,
+                            userCurrentLocation.longitude
                         ]}
                         icon={currentLocationIcon}
                     />

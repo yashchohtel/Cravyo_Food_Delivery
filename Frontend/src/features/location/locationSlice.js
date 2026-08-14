@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// getting saved user locaiton for conditional initialstate setting
-const savedLocation = localStorage.getItem("userLocation");
+// Get saved locations from localStorage
+const savedCurrentLocation = localStorage.getItem("userCurrentLocation");
+const savedSelectedLocation = sessionStorage.getItem("selectedLocation");
 
 // initial state
 const initialState = {
@@ -13,16 +14,25 @@ const initialState = {
     locationError: null,
 
     // user location
-    userLocation: savedLocation
-        ? JSON.parse(savedLocation)
+    userCurrentLocation: savedCurrentLocation ? JSON.parse(savedCurrentLocation)
         : {
             latitude: null,
             longitude: null,
+            addressTitle: "",
+            address: "",
+        },
+
+    // User's manually selected location
+    selectedLocation: savedSelectedLocation ? JSON.parse(savedSelectedLocation)
+        : {
+            latitude: null,
+            longitude: null,
+            addressTitle: "",
             address: "",
         },
 
     // location loading state
-    isLocationLoading: !savedLocation,
+    isLocationLoading: !savedCurrentLocation,
 
     // map location loading
     isMapLocationLoading: false
@@ -41,23 +51,32 @@ const locationSlice = createSlice({
     // reducers
     reducers: {
 
-        setUserLocation: (state, action) => {
-            state.userLocation = action.payload;
+        // Set actual GPS location
+        setUserCurrentLocation: (state, action) => {
+            state.userCurrentLocation = action.payload;
         },
 
+        // Set manually selected location
+        setSelectedLocation: (state, action) => {
+            state.selectedLocation = action.payload;
+        },
+
+        // Location loading
         setIsLocationLoading: (state, action) => {
             state.isLocationLoading = action.payload;
         },
 
+        // Location error
         setLocationError: (state, action) => {
             state.locationError = action.payload;
         },
 
+        // Location error dialog
         setIsLocationErrorDialogOpen: (state, action) => {
-            console.log(action.payload);
             state.isLocationErrorDialogOpen = action.payload;
         },
 
+        // Map location loading
         setIsMapLocationLoading: (state, action) => {
             state.isMapLocationLoading = action.payload;
         },
@@ -67,7 +86,8 @@ const locationSlice = createSlice({
 
 // exporting location slice action
 export const {
-    setUserLocation,
+    setUserCurrentLocation,
+    setSelectedLocation,
     setIsLocationLoading,
     setLocationError,
     setIsLocationErrorDialogOpen,

@@ -3,7 +3,7 @@ export const savedAddresses = [
     id: "saved-1",
 
     // Display
-    title: "Home",
+    addressTitle: "Home",
     address: "Vijay Nagar, Scheme No. 54, Indore, Madhya Pradesh 452010",
 
     // Coordinates
@@ -29,7 +29,7 @@ export const savedAddresses = [
     id: "saved-2",
 
     // Display
-    title: "Office",
+    addressTitle: "Office",
     address: "LIG Square, A.B. Road, Indore, Madhya Pradesh 452008",
 
     // Coordinates
@@ -52,56 +52,3 @@ export const savedAddresses = [
   },
 ];
 
-export const recentSearches = [
-  {
-    id: "recent-1",
-
-    // Display
-    title: "Rajwada Palace",
-    address: "Rajwada, Maharaja Tukoji Rao Holker Cloth Market, Indore, Madhya Pradesh",
-
-    // Coordinates
-    latitude: 22.7177,
-    longitude: 75.8587,
-
-    // Location Details
-    city: "Indore",
-    state: "Madhya Pradesh",
-    country: "India",
-    postcode: "452002",
-
-    // Metadata
-    category: "tourism",
-    resultType: "amenity",
-
-    // Future Fields
-    addressType: null,
-    selected: false,
-  },
-
-  {
-    id: "recent-2",
-
-    // Display
-    title: "Phoenix Citadel Mall",
-    address: "MR 10 Road, Indore, Madhya Pradesh",
-
-    // Coordinates
-    latitude: 22.7576,
-    longitude: 75.9283,
-
-    // Location Details
-    city: "Indore",
-    state: "Madhya Pradesh",
-    country: "India",
-    postcode: "452016",
-
-    // Metadata
-    category: "commercial",
-    resultType: "amenity",
-
-    // Future Fields
-    addressType: null,
-    selected: false,
-  },
-];

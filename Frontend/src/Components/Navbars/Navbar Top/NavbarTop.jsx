@@ -6,17 +6,21 @@ import { FiShoppingBag } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
 
-const NavbarTop = ({ userLocation }) => {
+const NavbarTop = () => {
 
   // Get auth state from Redux store
   const { user } = useSelector((state) => state.auth);
+
+  // Get location state from Redux store
+  const { userCurrentLocation, selectedLocation } = useSelector((state) => state.location);
+
+  const displayLocation = selectedLocation?.address ? selectedLocation : userCurrentLocation;
 
   /* -------------------------------------- */
 
   // Get navigate function from react-router-dom
   const navigate = useNavigate();
 
-  /* -------------------------------------- */
 
   return (
 
@@ -44,7 +48,7 @@ const NavbarTop = ({ userLocation }) => {
           </div>
 
           {/* location text */}
-          <p className="address"> {userLocation.address || "Getting your location..."} </p>
+          <p className="address"> {displayLocation?.address || "Getting your location..."} </p>
 
         </button>
 

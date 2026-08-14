@@ -88,8 +88,6 @@ const LocationPage = () => {
                 addressType: null,
                 selected: false,
             }));
-
-            console.log(locations);
             
             // Update the search results state with the fetched locations
             setSearchResults(locations);
@@ -108,7 +106,7 @@ const LocationPage = () => {
 
         <>
 
-            {/* overlya */}
+            {/* overlay */}
             {openMenuId && <div
                 className="overlay"
                 onClick={() => setOpenMenuId(null)}
@@ -157,7 +155,7 @@ const LocationPage = () => {
 
                 </div>
 
-                {/* location card skeleton */}
+                {/* location card skeleton for search loaidng*/}
                 {isSearching && searchQuery.trim() && (
 
                     <div className="skeletonContainer">
