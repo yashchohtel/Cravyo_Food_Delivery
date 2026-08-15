@@ -54,15 +54,18 @@ const MapPage = () => {
 
     // function to save user selected location
     const handleConfirmLocation = () => {
-        
+
         // Save selected location to session storage
-        sessionStorage.setItem("selectedLocation",JSON.stringify(locationData));
+        sessionStorage.setItem("selectedLocation", JSON.stringify(locationData));
 
         // Update selected location in Redux
         dispatch(setSelectedLocation(locationData));
 
         // Save location to recent searches
         saveRecentLocation(locationData);
+
+        // Redirect to Home
+        navigate("/");
 
     };
 

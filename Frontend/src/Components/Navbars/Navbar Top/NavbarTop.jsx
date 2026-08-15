@@ -5,6 +5,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { FiShoppingBag } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const NavbarTop = () => {
 
@@ -21,6 +22,10 @@ const NavbarTop = () => {
   // Get navigate function from react-router-dom
   const navigate = useNavigate();
 
+  /* -------------------------------------- */
+
+  // state to set image profile error if loaindg fails
+  const [isProfileImageError, setIsProfileImageError] = useState(false);
 
   return (
 
@@ -70,15 +75,16 @@ const NavbarTop = () => {
           {/* Profile */}
           <button className="icon-btn">
 
-            {user?.profileImage ? (
+            {user?.profileImage && !isProfileImageError ? (
               <img
                 src={user.profileImage}
                 alt={user.fullName}
                 className="profile-image"
+                onError={() => setIsProfileImageError(true)}
               />
-            ) : (
-              <FiUser />
-            )}
+            )
+              : (<FiUser />)
+            }
 
           </button>
 
@@ -92,4 +98,4 @@ const NavbarTop = () => {
 
 }
 
-export default NavbarTop
+export default NavbarTop;

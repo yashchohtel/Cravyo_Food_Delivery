@@ -94,7 +94,6 @@ const Map = ({ recenterMap, setLocationData }) => {
 
     // setter map to user current location or india center if no locaiton
     const mapCenter = hasUserLocation ? [userCurrentLocation.latitude, userCurrentLocation.longitude] : [20.5937, 78.9629];
-    // :[23.314057, 81.35011] ;
 
     // zoom size according to location
     const mapZoom = hasUserLocation ? 17 : 5;
