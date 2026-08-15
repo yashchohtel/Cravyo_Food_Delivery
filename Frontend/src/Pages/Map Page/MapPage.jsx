@@ -1,6 +1,6 @@
 // /* eslint-disable no-unused-vars */
 import './MapPage.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaLocationDot } from "react-icons/fa6";
 import SearchBar from '../../Components/Ui/SearchBar/SearchBar';
 import Map from '../../Components/Ui/Map/Map';
@@ -11,6 +11,9 @@ import LocationDataSkeleton from '../../Components/Skeletons/Location Data Skele
 import { setSelectedLocation } from '../../features/Location/locationSlice';
 
 const MapPage = () => {
+
+    // initilize use location
+    const location = useLocation();
 
     // useNavigate hook to navigate to previous page
     const navigate = useNavigate();
@@ -68,6 +71,8 @@ const MapPage = () => {
         navigate("/");
 
     };
+
+    console.log("Map page received data:", location.state);
 
     return (
 
