@@ -1,5 +1,6 @@
 import './SearchBar.css'
 import { FiSearch } from "react-icons/fi";
+import { IoClose } from "react-icons/io5";
 
 const SearchBar = (props) => {
 
@@ -18,9 +19,15 @@ const SearchBar = (props) => {
                     onChange={onChange}
                 />
 
-                <button className="searchBtn">
-                    <FiSearch />
-                </button>
+                {value?.trim() ? (
+                    <button className="searchBtn">
+                        <IoClose />
+                    </button>
+                ) : (
+                    <button className="searchBtn">
+                        <FiSearch />
+                    </button>
+                )}
 
             </div>
         </>
