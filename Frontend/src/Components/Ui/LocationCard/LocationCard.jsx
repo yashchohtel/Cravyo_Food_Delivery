@@ -18,7 +18,7 @@ const LocationCard = (props) => {
         openMenuId,
         setOpenMenuId,
     } = props;
-
+    
     /* -------------------------------------- */
 
     // useNavigate hook to navigate to previous page

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 // /* eslint-disable no-unused-vars */
 import './MapPage.css';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -6,26 +7,39 @@ import SearchBar from '../../Components/Ui/SearchBar/SearchBar';
 import Map from '../../Components/Ui/Map/Map';
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LocationDataSkeleton from '../../Components/Skeletons/Location Data Skeleton/LocationDataSkeleton';
 import { setSelectedLocation } from '../../features/Location/locationSlice';
 
 const MapPage = () => {
 
-    // initilize use location
-    const location = useLocation();
-
     // useNavigate hook to navigate to previous page
     const navigate = useNavigate();
+
+    /* -------------------------------------- */
 
     // initilize use dispatch
     const dispatch = useDispatch();
 
+    /* -------------------------------------- */
+    
     // get locaiton data from local storage
     const { isMapLocationLoading } = useSelector((state) => state.location);
 
+    /* -------------------------------------- */
+
+    // initilize use location
+    const location = useLocation();
+
+    // extract the passed locatoin data
+    const passedLocation = location.state?.location;
+
+    /* -------------------------------------- */
+
     // state to trigger map recenter action
     const [recenterMap, setRecenterMap] = useState(0);
+    
+    /* -------------------------------------- */
 
     // state to store user selected locaion to show on display
     const [locationData, setLocationData] = useState({
@@ -34,7 +48,7 @@ const MapPage = () => {
         addressTitle: "",
         address: "",
     });
-
+    
     // funciton to save searched location to local storge as recent search
     const saveRecentLocation = (locationData) => {
 
@@ -72,7 +86,21 @@ const MapPage = () => {
 
     };
 
-    console.log("Map page received data:", location.state);
+    // effect to set location data when location data is passed via location
+    useEffect(() => {
+
+        if (!passedLocation) {
+            return;
+        }
+
+        setLocationData({
+            latitude: passedLocation.latitude,
+            longitude: passedLocation.longitude,
+            addressTitle: passedLocation.addressTitle,
+            address: passedLocation.address,
+        });
+
+    }, [passedLocation]);
 
     return (
 
@@ -101,6 +129,7 @@ const MapPage = () => {
                     <Map
                         recenterMap={recenterMap}
                         setLocationData={setLocationData}
+                        passedLocation={passedLocation}
                     />
                 </div>
 

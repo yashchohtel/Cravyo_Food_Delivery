@@ -10,7 +10,7 @@ import { getAddressFromCoordinates } from "../../../utils/getLocation";
 import { setIsMapLocationLoading } from "../../../features/Location/locationSlice";
 
 // map controller component
-const MapController = ({ recenterMap, setLocationData }) => {
+const MapController = ({ recenterMap, setLocationData, passedLocation }) => {
 
     // get map
     const map = useMap();
@@ -23,6 +23,11 @@ const MapController = ({ recenterMap, setLocationData }) => {
 
     // effect to recenter map
     useEffect(() => {
+
+        // Skip automatic recentering when a passed location is present on initial load
+        if (recenterMap === 0 && passedLocation) {
+            return;
+        }
 
         // if no location return
         if (!userCurrentLocation?.latitude || !userCurrentLocation?.longitude) {
@@ -42,7 +47,6 @@ const MapController = ({ recenterMap, setLocationData }) => {
         );
 
     }, [recenterMap]);
-
 
     // effect to handle map movement
     useEffect(() => {
@@ -70,7 +74,6 @@ const MapController = ({ recenterMap, setLocationData }) => {
         map.on("move", handleMapMove);
         map.on("moveend", handleMapMoveEnd);
 
-
         // cleanup
         return () => {
 
@@ -84,19 +87,25 @@ const MapController = ({ recenterMap, setLocationData }) => {
     return null;
 };
 
-const Map = ({ recenterMap, setLocationData }) => {
+const Map = ({ recenterMap, setLocationData, passedLocation }) => {
 
     // Get location state from Redux store
     const { userCurrentLocation } = useSelector((state) => state.location);
 
-    // finding is location avilable
+    // Check if passed location is available
+    const hasPassedLocation = passedLocation?.latitude && passedLocation?.longitude;
+
+    // Check if user current location is available
     const hasUserLocation = userCurrentLocation?.latitude && userCurrentLocation?.longitude;
 
-    // setter map to user current location or india center if no locaiton
-    const mapCenter = hasUserLocation ? [userCurrentLocation.latitude, userCurrentLocation.longitude] : [20.5937, 78.9629];
+    // Decide which location to use
+    const locationToUse = hasPassedLocation ? passedLocation : hasUserLocation ? userCurrentLocation : null;
 
-    // zoom size according to location
-    const mapZoom = hasUserLocation ? 17 : 5;
+    // Map center
+    const mapCenter = locationToUse ? [locationToUse.latitude, locationToUse.longitude] : [20.5937, 78.9629];
+
+    // Zoom
+    const mapZoom = locationToUse ? 17 : 5;
 
     // current locaiton icon
     const currentLocationIcon = L.divIcon({
@@ -124,6 +133,7 @@ const Map = ({ recenterMap, setLocationData }) => {
                 <MapController
                     recenterMap={recenterMap}
                     setLocationData={setLocationData}
+                    passedLocation={passedLocation}
                 />
 
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
