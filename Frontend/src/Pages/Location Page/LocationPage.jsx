@@ -24,16 +24,21 @@ const LocationPage = () => {
     /* SEARCHING LOCATION ↓ -------------------------------------- */
 
     // state to store the search query entered by the user in the search bar
-    const [searchQuery, setSearchQuery] = useState("");
+    const [searchQuery, setSearchQuery] = useState(() => {
+        return sessionStorage.getItem("locationSearchQuery") || "";
+    });
+
+    // state to store the search results based on the user's query
+    const [searchResults, setSearchResults] = useState(() => {
+        const savedResults = sessionStorage.getItem("locationSearchResults");
+        return savedResults ? JSON.parse(savedResults) : [];
+    });
 
     // state to track if the user is currently searching for a location
     const [isSearching, setIsSearching] = useState(false);
 
     // state to track if the user has performed a search, used to conditionally render the "No Result" UI
     const [hasSearched, setHasSearched] = useState(false);
-
-    // state to store the search results based on the user's query
-    const [searchResults, setSearchResults] = useState([]);
 
     // Show all saved addresses by default, or only those that match the searched city
     const matchedSavedAddresses = searchQuery.trim() ? savedAddresses.filter((savedAddress) => (
@@ -50,9 +55,21 @@ const LocationPage = () => {
 
         // Reset when query is empty
         if (!searchQuery.trim()) {
+
+            // set search result to empty when no query
             setSearchResults([]);
             setHasSearched(false);
+
+            // clear temperory storage data when string is empty
+            sessionStorage.removeItem("locationSearchQuery");
+            sessionStorage.removeItem("locationSearchResults");
+
             return;
+        }
+
+        // save search query to persiest the result
+        if (searchQuery.trim()) {
+            sessionStorage.setItem("locationSearchQuery", searchQuery);
         }
 
         const timeout = setTimeout(async () => {
@@ -88,9 +105,12 @@ const LocationPage = () => {
                 addressType: null,
                 selected: false,
             }));
-            
+
             // Update the search results state with the fetched locations
             setSearchResults(locations);
+
+            // save location search result to persist
+            sessionStorage.setItem("locationSearchResults", JSON.stringify(results));
 
             // Update the searching and searched states
             setIsSearching(false);
@@ -132,6 +152,7 @@ const LocationPage = () => {
                 <SearchBar
                     value={searchQuery} // pass the search query state as the value of the search bar input
                     onChange={(e) => setSearchQuery(e.target.value)} // update the search query state when the user types in the search bar
+                    onClear={() => setSearchQuery("")}
                 />
 
                 {/* locaiton actions */}

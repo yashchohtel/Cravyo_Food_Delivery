@@ -5,7 +5,7 @@ import { IoClose } from "react-icons/io5";
 const SearchBar = (props) => {
 
     // destructure props
-    const { value, onChange } = props;
+    const { value, onChange, onClear } = props;
 
     return (
 
@@ -20,7 +20,10 @@ const SearchBar = (props) => {
                 />
 
                 {value?.trim() ? (
-                    <button className="searchBtn">
+                    <button
+                        className="searchBtn"
+                        onClick={onClear}
+                    >
                         <IoClose />
                     </button>
                 ) : (
