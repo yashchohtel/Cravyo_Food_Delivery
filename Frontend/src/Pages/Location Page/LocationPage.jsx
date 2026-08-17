@@ -5,7 +5,7 @@ import SearchBar from '../../Components/Ui/SearchBar/SearchBar';
 import { FaArrowLeft } from "react-icons/fa6";
 import { BiTargetLock } from "react-icons/bi"; import { MdOutlineAddBox } from "react-icons/md";
 import LocationCard from '../../Components/Ui/LocationCard/LocationCard';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getSearchLocations } from '../../utils/getLocation';
 import NoResult from '../../Components/Ui/NoReuslt/NoResult';
 import LocationCardSkeleton from '../../Components/Skeletons/Location Card Skeleton/LocationCardSkeleton';
@@ -34,11 +34,20 @@ const LocationPage = () => {
         return savedResults ? JSON.parse(savedResults) : [];
     });
 
+    // Get saved search results
+    const savedSearchResults = sessionStorage.getItem("locationSearchResults");
+
+    // Get saved search results
+    const isRestoringSearch = useRef(Boolean(savedSearchResults));
+
     // state to track if the user is currently searching for a location
     const [isSearching, setIsSearching] = useState(false);
 
     // state to track if the user has performed a search, used to conditionally render the "No Result" UI
-    const [hasSearched, setHasSearched] = useState(false);
+    const [hasSearched, setHasSearched] = useState(() => {
+        const savedResults = sessionStorage.getItem("locationSearchResults");
+        return savedResults ? JSON.parse(savedResults).length > 0 : false;
+    });
 
     // Show all saved addresses by default, or only those that match the searched city
     const matchedSavedAddresses = searchQuery.trim() ? savedAddresses.filter((savedAddress) => (
@@ -67,9 +76,10 @@ const LocationPage = () => {
             return;
         }
 
-        // save search query to persiest the result
-        if (searchQuery.trim()) {
-            sessionStorage.setItem("locationSearchQuery", searchQuery);
+        // if resulst are stored in session storage then stop api calling
+        if (isRestoringSearch.current) {
+            isRestoringSearch.current = false;
+            return;
         }
 
         const timeout = setTimeout(async () => {
@@ -109,8 +119,13 @@ const LocationPage = () => {
             // Update the search results state with the fetched locations
             setSearchResults(locations);
 
+            // save search query to persiest the result
+            if (searchQuery.trim()) {
+                sessionStorage.setItem("locationSearchQuery", searchQuery);
+            }
+
             // save location search result to persist
-            sessionStorage.setItem("locationSearchResults", JSON.stringify(results));
+            sessionStorage.setItem("locationSearchResults", JSON.stringify(locations));
 
             // Update the searching and searched states
             setIsSearching(false);
@@ -120,7 +135,7 @@ const LocationPage = () => {
 
         return () => clearTimeout(timeout);
 
-    }, [searchQuery]);
+    }, [isRestoringSearch, searchQuery]);
 
     return (
 
@@ -141,7 +156,10 @@ const LocationPage = () => {
 
                     <FaArrowLeft
                         className="backIcon"
-                        onClick={() => navigate(-1)}
+                        onClick={() => {
+                            setSearchQuery("");
+                            navigate(-1);
+                        }}
                     />
 
                     <h2>Select Your Location</h2>

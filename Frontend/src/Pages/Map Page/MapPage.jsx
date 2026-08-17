@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-// /* eslint-disable no-unused-vars */
 import './MapPage.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaLocationDot } from "react-icons/fa6";
@@ -10,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import LocationDataSkeleton from '../../Components/Skeletons/Location Data Skeleton/LocationDataSkeleton';
 import { setSelectedLocation } from '../../features/Location/locationSlice';
+import { calculateDistance } from '../../utils/getLocation';
 
 const MapPage = () => {
 
@@ -22,9 +22,9 @@ const MapPage = () => {
     const dispatch = useDispatch();
 
     /* -------------------------------------- */
-    
+
     // get locaiton data from local storage
-    const { isMapLocationLoading } = useSelector((state) => state.location);
+    const { isMapLocationLoading, userCurrentLocation } = useSelector((state) => state.location);
 
     /* -------------------------------------- */
 
@@ -34,11 +34,15 @@ const MapPage = () => {
     // extract the passed locatoin data
     const passedLocation = location.state?.location;
 
+    const [mapSearchQuery, setMapSearchQuery] = useState(
+        passedLocation?.addressTitle || ""
+    );
+
     /* -------------------------------------- */
 
     // state to trigger map recenter action
     const [recenterMap, setRecenterMap] = useState(0);
-    
+
     /* -------------------------------------- */
 
     // state to store user selected locaion to show on display
@@ -48,7 +52,10 @@ const MapPage = () => {
         addressTitle: "",
         address: "",
     });
-    
+
+    // state to store distrom from current locaion to selected another location
+    const [distanceFromCurrentLocation, setDistanceFromCurrentLocation] = useState(null);
+
     // funciton to save searched location to local storge as recent search
     const saveRecentLocation = (locationData) => {
 
@@ -100,7 +107,18 @@ const MapPage = () => {
             address: passedLocation.address,
         });
 
-    }, [passedLocation]);
+        // calculate distance of user current location and selected location
+        const distance = calculateDistance(
+            userCurrentLocation.latitude,
+            userCurrentLocation.longitude,
+            passedLocation.latitude,
+            passedLocation.longitude
+        );
+
+        // set distance 
+        setDistanceFromCurrentLocation(distance);
+
+    }, [dispatch, passedLocation, userCurrentLocation.latitude, userCurrentLocation.longitude]);
 
     return (
 
@@ -120,17 +138,25 @@ const MapPage = () => {
                     </div>
 
                     {/* search bar */}
-                    <SearchBar />
+                    <SearchBar
+                        value={mapSearchQuery}
+                        readOnly={true}
+                        onClick={() => navigate(-1)}
+                    />
 
                 </div>
 
                 {/* map */}
                 <div className="mapContainer">
+
                     <Map
                         recenterMap={recenterMap}
                         setLocationData={setLocationData}
                         passedLocation={passedLocation}
+                        setMapSearchQuery={setMapSearchQuery}
+                        setDistanceFromCurrentLocation={setDistanceFromCurrentLocation}
                     />
+
                 </div>
 
                 {/* button adress detail */}
@@ -139,7 +165,10 @@ const MapPage = () => {
                     {/* current locaiton button */}
                     <button
                         className='currentLocation'
-                        onClick={() => setRecenterMap(prev => prev + 1)}
+                        onClick={() => {
+                            setMapSearchQuery("");
+                            setRecenterMap(prev => prev + 1);
+                        }}
                     >
                         <span className="icon"> <FaLocationCrosshairs /> </span> Current location
                     </button>
@@ -179,8 +208,20 @@ const MapPage = () => {
                                     </div>
 
                                     <p className="locationDataAddress">
-                                        {locationData.address}
+                                        {locationData.address} 
                                     </p>
+
+                                    {/* distance data  */}
+                                    {distanceFromCurrentLocation > 0.05 && (
+                                        <p className="distance">
+                                            This is{" "}
+                                            {distanceFromCurrentLocation < 1
+                                                ? `${Math.round(distanceFromCurrentLocation * 1000)} m`
+                                                : `${Math.round(distanceFromCurrentLocation)} km`
+                                            }{" "}
+                                            away from your current location
+                                        </p>
+                                    )}
 
                                     <button
                                         className="locationDataButton"

@@ -43,6 +43,15 @@ const Home = () => {
 
   /* EFFECTS ↓ -------------------------------------------- */
 
+  // effect to clear the temperory search data and query on location page leave
+  useEffect(() => {
+
+    // Clear temporary location search data
+    sessionStorage.removeItem("locationSearchQuery");
+    sessionStorage.removeItem("locationSearchResults");
+
+  }, []);
+
   // useEffect to get user's location on component mount
   useEffect(() => {
 
@@ -93,7 +102,7 @@ const Home = () => {
         </Modal>
 
         {/* navbar top */}
-        <NavbarTop/>
+        <NavbarTop />
 
         {/* navbar bottom */}
         <NavbarBottom

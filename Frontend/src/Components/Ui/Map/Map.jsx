@@ -6,11 +6,14 @@ import './Map.css'
 import "leaflet/dist/leaflet.css";
 import { FaLocationDot } from "react-icons/fa6";
 import { useEffect } from "react";
-import { getAddressFromCoordinates } from "../../../utils/getLocation";
+import { calculateDistance, getAddressFromCoordinates } from "../../../utils/getLocation";
 import { setIsMapLocationLoading } from "../../../features/Location/locationSlice";
 
 // map controller component
-const MapController = ({ recenterMap, setLocationData, passedLocation }) => {
+const MapController = (props) => {
+
+    // destructure props
+    const { recenterMap, setLocationData, passedLocation, setMapSearchQuery, setDistanceFromCurrentLocation } = props
 
     // get map
     const map = useMap();
@@ -59,16 +62,38 @@ const MapController = ({ recenterMap, setLocationData, passedLocation }) => {
         // map movement ended
         const handleMapMoveEnd = async () => {
 
+            // get map 
             const center = map.getCenter();
 
+            // get current location data
             const locationData = await getAddressFromCoordinates(center.lat, center.lng);
 
+            // calculate distance only if current location is available
+            if (userCurrentLocation?.latitude && userCurrentLocation?.longitude) {
+
+                // calculate distance of user current location and selected location
+                const distance = calculateDistance(
+                    userCurrentLocation.latitude,
+                    userCurrentLocation.longitude,
+                    locationData.latitude,
+                    locationData.longitude
+                );
+
+                // set distance
+                setDistanceFromCurrentLocation(distance);
+
+            }
+
+            // set current location data
             setLocationData(locationData);
 
+            // stop map loading
             dispatch(setIsMapLocationLoading(false));
 
-        };
+            // clear map page search bar query
+            setMapSearchQuery("");
 
+        };
 
         // events
         map.on("move", handleMapMove);
@@ -87,7 +112,10 @@ const MapController = ({ recenterMap, setLocationData, passedLocation }) => {
     return null;
 };
 
-const Map = ({ recenterMap, setLocationData, passedLocation }) => {
+const Map = (props) => {
+
+    // destructure props
+    const { recenterMap, setLocationData, passedLocation, setMapSearchQuery, setDistanceFromCurrentLocation } = props
 
     // Get location state from Redux store
     const { userCurrentLocation } = useSelector((state) => state.location);
@@ -134,6 +162,8 @@ const Map = ({ recenterMap, setLocationData, passedLocation }) => {
                     recenterMap={recenterMap}
                     setLocationData={setLocationData}
                     passedLocation={passedLocation}
+                    setMapSearchQuery={setMapSearchQuery}
+                    setDistanceFromCurrentLocation={setDistanceFromCurrentLocation}
                 />
 
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
