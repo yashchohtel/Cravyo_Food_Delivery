@@ -9,6 +9,7 @@ import LocationErrorDialog from '../../Components/Dialogs/Location Error Dialog/
 import LocationLoadingSplash from '../../Components/Splash Screens/Location Loading Splash/LocationLoadingSplash';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsLocationErrorDialogOpen } from '../../features/Location/locationSlice.js';
+import HomePromotionSlider from '../../Components/Sliders/Home Promotion Slider/HomePromotionSlider.jsx';
 
 const Home = () => {
 
@@ -110,6 +111,9 @@ const Home = () => {
           userFoodPreference={userFoodPreference} // user's current Food Preference
           setUserFoodPreference={setUserFoodPreference} // to set user food prefrence all / veg only
         />
+
+        {/* home promotional slides */}
+        <HomePromotionSlider/>
 
       </div>
 
