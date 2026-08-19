@@ -1,0 +1,48 @@
+.promotionSlideCont {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.promotionSlideCont.container {
+  padding: 0 1rem;
+}
+
+.promotion-slider-wrapper {
+  width: 100%;
+}
+
+.promotion-slider {
+  width: 100%;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.promotion-slide {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.promotion-slide img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+/* Pagination */
+.promotion-slider .swiper-pagination {
+  bottom: 12px;
+}
+
+.promotion-slider .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  opacity: 0.7;
+}
+
+.promotion-slider .swiper-pagination-bullet-active {
+  width: 22px;
+  border-radius: 10px;
+}
