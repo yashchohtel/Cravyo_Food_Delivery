@@ -32,17 +32,16 @@
 }
 
 /* Pagination */
-.promotion-slider .swiper-pagination {
-  bottom: 12px;
-}
-
 .promotion-slider .swiper-pagination-bullet {
   width: 8px;
   height: 8px;
-  opacity: 0.7;
+  margin: 0 4px !important;
+  opacity: 1;
+  background: #cfcfcf;
 }
 
 .promotion-slider .swiper-pagination-bullet-active {
-  width: 22px;
-  border-radius: 10px;
+  width: 8px;
+  height: 8px;
+  background: #ff4b1f; /* Cravyo brand orange */
 }

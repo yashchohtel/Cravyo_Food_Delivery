@@ -7,8 +7,8 @@ import "swiper/css/pagination";
 const HomePromotionSlider = () => {
 
     const images = [
-        "/heroBanner (1).png",
         "/heroBanner (2).png",
+        "/heroBanner (1).png",
         "/heroBanner (3).png",
         "/heroBanner (4).png",
         "/heroBanner (5).png",
@@ -29,7 +29,7 @@ const HomePromotionSlider = () => {
                         spaceBetween={16}
                         loop={true}
                         autoplay={{
-                            delay: 4000,
+                            delay: 3000,
                             disableOnInteraction: false,
                         }}
                         pagination={{
