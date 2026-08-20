@@ -28,6 +28,12 @@ related to map
   z-index: 2;
 }
 
+related to food category
+
+.allCategoriesOverlay {
+  z-index: 1000;
+}
+
 
 
 

@@ -143,7 +143,7 @@ const LocationPage = () => {
 
             {/* overlay */}
             {openMenuId && <div
-                className="overlay"
+                className="menuOverlay"
                 onClick={() => setOpenMenuId(null)}
             >
             </div>}

@@ -59,7 +59,4 @@ const HomePromotionSlider = () => {
 
 }
 
-
-
-
 export default HomePromotionSlider;

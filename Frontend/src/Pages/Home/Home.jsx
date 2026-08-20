@@ -10,6 +10,8 @@ import LocationLoadingSplash from '../../Components/Splash Screens/Location Load
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsLocationErrorDialogOpen } from '../../features/Location/locationSlice.js';
 import HomePromotionSlider from '../../Components/Sliders/Home Promotion Slider/HomePromotionSlider.jsx';
+import FoodCategorySlider from '../../Components/Sliders/Food Category Slider/FoodCategorySlider.jsx';
+import AllCategoryPage from '../../Components/Ui/AllCategoryPage/AllCategoryPage.jsx';
 
 const Home = () => {
 
@@ -41,6 +43,19 @@ const Home = () => {
     return JSON.parse(savedPreference);
 
   });
+
+  /* FOOD CATEGORY ↓ -------------------------------------------- */
+
+  // state to store see all categories 
+  const [showAllCategories, setShowAllCategories] = useState(false);
+
+  // state to store user clicked category item
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  // function to get the click category element
+  const handleCategoryClick = (categoryId) => {
+    setSelectedCategory(categoryId);
+  };
 
   /* EFFECTS ↓ -------------------------------------------- */
 
@@ -75,7 +90,7 @@ const Home = () => {
 
         {/* location error modal */}
         <Modal
-          isOpen={isLocationErrorDialogOpen} // location error dialog box open/close state 
+          isOpen={isLocationErrorDialogOpen} // location error dialog box open/close state
           onClose={() => dispatch(setIsLocationErrorDialogOpen(false))} // function to close current opened dialog box
         >
 
@@ -113,7 +128,23 @@ const Home = () => {
         />
 
         {/* home promotional slides */}
-        <HomePromotionSlider/>
+        <HomePromotionSlider />
+
+        {/* food category slider */}
+        <FoodCategorySlider
+          onClick={() => setShowAllCategories(true)}
+          handleCategoryClick={handleCategoryClick}
+          selectedCategory={selectedCategory}
+        />
+
+        {/* all food category */}
+        {showAllCategories && (
+          <AllCategoryPage
+            onClose={() => setShowAllCategories(false)}
+            handleCategoryClick={handleCategoryClick}
+            selectedCategory={selectedCategory}
+          />
+        )}
 
       </div>
 
@@ -130,3 +161,4 @@ export default Home;
 //   await signOut(auth)
 //   dispatch(logoutUser());
 // };
+

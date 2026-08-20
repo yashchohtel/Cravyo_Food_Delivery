@@ -86,10 +86,13 @@
   text-transform: uppercase;
 }
 
-.overlay {
+.menuOverlay {
   background-color: rgba(0, 0, 0, 0.01);
   position: fixed;
   z-index: 1;
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(0.05rem);
 }
 
 /* skeleton container */
