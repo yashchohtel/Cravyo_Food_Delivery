@@ -12,6 +12,7 @@ import { setIsLocationErrorDialogOpen } from '../../features/Location/locationSl
 import HomePromotionSlider from '../../Components/Sliders/Home Promotion Slider/HomePromotionSlider.jsx';
 import FoodCategorySlider from '../../Components/Sliders/Food Category Slider/FoodCategorySlider.jsx';
 import AllCategoryPage from '../../Components/Ui/AllCategoryPage/AllCategoryPage.jsx';
+import { categories } from '../../utils/dummyData.js';
 
 const Home = () => {
 
@@ -52,9 +53,26 @@ const Home = () => {
   // state to store user clicked category item
   const [selectedCategory, setSelectedCategory] = useState("all");
 
+  // state to store the category which is other then the visible item
+  const [hiddenCategoryItem, setHiddenCategoryItem] = useState(null);
+
   // function to get the click category element
   const handleCategoryClick = (categoryId) => {
+
+    // set selected category item id to make item active
     setSelectedCategory(categoryId);
+
+    // get selected item object 
+    const selectedItem = categories.find(
+      (category) => category.id === categoryId
+    );
+
+    // find if its visible item or hidden item
+    const isVisible = categories.slice(0, 10).some((category) => category.id === categoryId);
+
+    // if hidden item set it in hidden item category
+    setHiddenCategoryItem(isVisible ? null : selectedItem);
+
   };
 
   /* EFFECTS ↓ -------------------------------------------- */
@@ -135,6 +153,7 @@ const Home = () => {
           onClick={() => setShowAllCategories(true)}
           handleCategoryClick={handleCategoryClick}
           selectedCategory={selectedCategory}
+          hiddenCategoryItem={hiddenCategoryItem}
         />
 
         {/* all food category */}

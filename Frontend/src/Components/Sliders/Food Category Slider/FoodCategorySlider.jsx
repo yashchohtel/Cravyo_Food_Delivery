@@ -7,7 +7,7 @@ import { categories } from '../../../utils/dummyData';
 const FoodCategorySlider = (props) => {
 
     // destructure props
-    const { onClick, handleCategoryClick, selectedCategory } = props;
+    const { onClick, handleCategoryClick, selectedCategory, hiddenCategoryItem } = props;
 
     return (
 
@@ -49,6 +49,32 @@ const FoodCategorySlider = (props) => {
 
                         </SwiperSlide>
                     ))}
+
+                    {/* hiden selected category */}
+                    {hiddenCategoryItem && (
+                        <SwiperSlide key={hiddenCategoryItem.name}>
+
+                            <div
+                                className={`categoryItem ${selectedCategory === hiddenCategoryItem.id ? "active" : ""}`}
+                                onClick={() => handleCategoryClick(hiddenCategoryItem.id)}
+                            >
+
+                                <div
+                                    className={`categoryImage ${selectedCategory === hiddenCategoryItem.id ? "active" : ""}`}
+                                >
+
+                                    <img src={hiddenCategoryItem.image} alt={hiddenCategoryItem.name} />
+                                </div>
+
+                                <p className={`${selectedCategory === hiddenCategoryItem.id ? "active" : ""}`} >
+                                    {hiddenCategoryItem.name}
+                                </p>
+
+                            </div>
+
+                        </SwiperSlide>
+                    )}
+
 
                     <SwiperSlide>
 
