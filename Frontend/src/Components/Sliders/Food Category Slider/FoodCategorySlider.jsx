@@ -7,7 +7,7 @@ import { categories } from '../../../utils/dummyData';
 const FoodCategorySlider = (props) => {
 
     // destructure props
-    const { onClick, handleCategoryClick, selectedCategory, hiddenCategoryItem } = props;
+    const { onClick, handleCategoryClick, selectedCategory, hiddenCategoryItem, swiperRef } = props;
 
     return (
 
@@ -20,6 +20,9 @@ const FoodCategorySlider = (props) => {
                 </h2>
 
                 <Swiper
+                    onSwiper={(swiper) => {
+                        swiperRef.current = swiper;
+                    }}
                     slidesPerView={5}
                     spaceBetween={5}
                     className="categorySwiper"
