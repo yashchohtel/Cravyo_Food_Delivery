@@ -27,6 +27,7 @@ const useFoodPreference = () => {
         userFoodPreference,     // current food preference
         setUserFoodPreference   // update food preference
     };
+    
 };
 
 export default useFoodPreference;

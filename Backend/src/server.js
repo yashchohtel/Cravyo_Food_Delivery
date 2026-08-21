@@ -26,7 +26,8 @@ app.use(cors({
     // Allow requests from this origin
     origin: [
         "http://localhost:5173",
-        "http://10.248.84.238:5173"
+        "http://10.74.227.238:5173",
+        "https://mycravo.netlify.app/"
     ],
     credentials: true, // Allow cookies to be sent with requests
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // Allowed HTTP methods
@@ -57,5 +58,3 @@ const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
-
-
