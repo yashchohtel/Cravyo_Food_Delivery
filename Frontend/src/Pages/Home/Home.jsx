@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import NavbarBottom from '../../Components/Navbars/Navbar Bottom/NavbarBottom';
 import NavbarTop from '../../Components/Navbars/Navbar Top/NavbarTop';
 import './Home.css';
@@ -12,7 +12,8 @@ import { setIsLocationErrorDialogOpen } from '../../features/Location/locationSl
 import HomePromotionSlider from '../../Components/Sliders/Home Promotion Slider/HomePromotionSlider.jsx';
 import FoodCategorySlider from '../../Components/Sliders/Food Category Slider/FoodCategorySlider.jsx';
 import AllCategoryPage from '../../Components/Ui/AllCategoryPage/AllCategoryPage.jsx';
-import { categories } from '../../utils/dummyData.js';
+import useFoodCategories from '../../hooks/useFoodCategories.jsx';
+import useFoodPreference from '../../hooks/useFoodPreference.jsx';
 
 const Home = () => {
 
@@ -26,63 +27,25 @@ const Home = () => {
 
   /* FOOD PREFRENCE ↓ -------------------------------------- */
 
-  // state to show/hide food prefrence dialog box
-  const [isFoodDialogOpen, setIsFoodDialogOpen] = useState(false);
-
-  // State to store user's food preference ("all" / "veg")
-  const [userFoodPreference, setUserFoodPreference] = useState(() => {
-
-    // Get the saved food preference from localStorage
-    const savedPreference = localStorage.getItem("userFoodPreference");
-
-    // If no preference is saved, show all restaurants by default
-    if (savedPreference === null) {
-      return "all";
-    }
-
-    // Return the saved preference ("all" or "veg")
-    return JSON.parse(savedPreference);
-
-  });
+  // get element of useFoodPrefrence hook
+  const {
+    isFoodDialogOpen,       // food preference dialog state
+    setIsFoodDialogOpen,    // update dialog state
+    userFoodPreference,     // current food preference
+    setUserFoodPreference   // update food preference
+  } = useFoodPreference();
 
   /* FOOD CATEGORY ↓ -------------------------------------------- */
 
-  // state to store see all categories 
-  const [showAllCategories, setShowAllCategories] = useState(false);
-
-  // state to store user clicked category item
-  const [selectedCategory, setSelectedCategory] = useState("all");
-
-  // state to store the category which is other then the visible item
-  const [hiddenCategoryItem, setHiddenCategoryItem] = useState(null);
-
-  // reference of swiper
-  const swiperRef = useRef(null);
-
-  // function to get the click category element
-  const handleCategoryClick = (categoryId) => {
-
-    // set selected category item id to make item active
-    setSelectedCategory(categoryId);
-
-    // get selected item object
-    const selectedItem = categories.find(category => category.id === categoryId);
-
-    // find if its visible item or hidden item
-    const isVisible = categories.slice(0, 10).some((category) => category.id === categoryId);
-
-    // if hidden item set it in hidden item category
-    setHiddenCategoryItem(isVisible ? null : selectedItem);
-
-    // move swiper to selected category
-    if (isVisible && swiperRef.current) {
-
-      const index = categories.slice(0, 10).findIndex((category) => category.id === categoryId);
-
-      swiperRef.current.slideTo(index);
-    }
-
-  };
+  // get elements of use food categoires hook
+  const {
+    showAllCategories,      // show/hide all categories
+    setShowAllCategories,   // update show/hide all categories state
+    selectedCategory,       // selected category id
+    hiddenCategoryItem,     // selected hidden category
+    swiperRef,              // Swiper reference
+    handleCategoryClick     // handle category selection
+  } = useFoodCategories();
 
   /* EFFECTS ↓ -------------------------------------------- */
 
@@ -117,8 +80,10 @@ const Home = () => {
 
         {/* location error modal */}
         <Modal
+
           isOpen={isLocationErrorDialogOpen} // location error dialog box open/close state
           onClose={() => dispatch(setIsLocationErrorDialogOpen(false))} // function to close current opened dialog box
+
         >
 
           {/* location error dialog box */}
@@ -182,15 +147,6 @@ const Home = () => {
 
 }
 
-
-
-
 export default Home;
 
-
-// funciton to handle logout
-// const handleLogout = async () => {
-//   await signOut(auth)
-//   dispatch(logoutUser());
-// };
 

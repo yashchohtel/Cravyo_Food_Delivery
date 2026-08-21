@@ -1,3 +1,7 @@
+.homePage{
+  height: 200vh;
+}
+
 .logout {
   position: absolute;
   bottom: 2rem;
