@@ -5,27 +5,6 @@ import path from "path";
 const storage = multer.memoryStorage();
 
 // Multer file filter
-// const imageFilter = (req, file, cb) => {
-
-//     console.log("FILE MIME TYPE:", file.mimetype);
-//     console.log("FILE NAME:", file.originalname);
-
-//     // Allowed image types
-//     const allowed = [
-//         "image/jpeg",
-//         "image/jpg",
-//         "image/png",
-//         "image/webp"
-//     ];
-
-//     if (allowed.includes(file.mimetype)) {
-//         cb(null, true); // Accept image
-//     } else {
-//         cb(new Error("Only images are allowed!"), false); // Reject file
-//     }
-
-// };
-
 const imageFilter = (req, file, cb) => {
     const allowedExtensions = [".jpg", ".jpeg", ".png", ".webp"];
 
