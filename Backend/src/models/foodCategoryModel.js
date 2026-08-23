@@ -17,6 +17,12 @@ const foodCategorySchema = new mongoose.Schema({
         trim: true,
     },
 
+    // Category image public ID from Cloudinary
+    imagePublicId: {
+        type: String,
+        required: true,
+    },
+
     // Category display order
     order: {
         type: Number,
@@ -36,7 +42,6 @@ const foodCategorySchema = new mongoose.Schema({
     },
 
 }, { timestamps: true });
-
 
 // Create category model
 const FoodCategory = mongoose.model("FoodCategory", foodCategorySchema);

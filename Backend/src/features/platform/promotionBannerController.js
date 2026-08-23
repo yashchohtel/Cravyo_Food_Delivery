@@ -1,6 +1,8 @@
 import ErrorHandler from "../../utils/errorHandler.js";
 import PromotionBanner from "../../models/promotionBannerSchema.js";
-import { uploadBufferToCloudinary } from "../../utils/uploadImage.js";
+import { deleteFromCloudinary, uploadBufferToCloudinary } from "../../utils/uploadImage.js";
+
+/* PROMOTION BANNEER API'S ↓ ------------------------------------- */ 
 
 // Create Promotion Banners
 export const createPromotionBanners = async (req, res, next) => {
