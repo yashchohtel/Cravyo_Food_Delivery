@@ -10,6 +10,13 @@ const promotionBannerSchema = new mongoose.Schema({
         trim: true,
     },
 
+    // cloudinary public id
+    publicId: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+
     // Where this promotion banner will be displayed
     location: {
         type: String,

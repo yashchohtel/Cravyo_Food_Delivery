@@ -1,15 +1,19 @@
 import multer from "multer"; // Import multer for handling file uploads
 import path from "path";
 
-// Multer memory storage - File temporary RAM/buffer mein rahegi
+// Multer memory storage - file will be in RAM/buffer temporaryu
 const storage = multer.memoryStorage();
 
 // Multer file filter
 const imageFilter = (req, file, cb) => {
+
+    // allowed forment
     const allowedExtensions = [".jpg", ".jpeg", ".png", ".webp"];
 
+    // get file extension
     const extension = path.extname(file.originalname).toLowerCase();
 
+    // show error if file now allowed
     if (allowedExtensions.includes(extension)) {
         cb(null, true);
     } else {
