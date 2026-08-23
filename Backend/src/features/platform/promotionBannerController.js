@@ -177,21 +177,68 @@ export const updatePromotionBanner = async (req, res, next) => {
         // Prepare update data
         const updateData = {};
 
+        // update image and publicId
         if (newImage) {
             updateData.image = newImage.secure_url;
             updateData.publicId = newImage.public_id;
         }
 
+        // update location
         if (req.body.location !== undefined) {
             updateData.location = req.body.location;
         }
 
-        if (req.body.order !== undefined) {
-            updateData.order = Number(req.body.order);
-        }
-
+        // update active status
         if (req.body.isActive !== undefined) {
             updateData.isActive = req.body.isActive === "true";
+        }
+
+        // Handle order update
+        if (req.body.order !== undefined) {
+
+            const newOrder = Number(req.body.order);
+            const oldOrder = banner.order;
+
+            if (newOrder !== oldOrder) {
+
+                // Moving banner upward
+                if (newOrder < oldOrder) {
+
+                    await PromotionBanner.updateMany(
+                        {
+                            _id: { $ne: banner._id },
+                            order: {
+                                $gte: newOrder,
+                                $lt: oldOrder,
+                            },
+                        },
+                        {
+                            $inc: { order: 1 },
+                        }
+                    );
+
+                } 
+
+                // Moving banner downward
+                else {
+
+                    await PromotionBanner.updateMany(
+                        {
+                            _id: { $ne: banner._id },
+                            order: {
+                                $gt: oldOrder,
+                                $lte: newOrder,
+                            },
+                        },
+                        {
+                            $inc: { order: -1 },
+                        }
+                    );
+
+                }
+
+                updateData.order = newOrder;
+            }
         }
 
         // Update MongoDB
@@ -226,8 +273,8 @@ export const updatePromotionBanner = async (req, res, next) => {
         console.log("UPDATE PROMOTION BANNER ERROR:", error);
 
         return next(
-            new ErrorHandler("Banner update failed. Please try again.",500)
+            new ErrorHandler("Banner update failed. Please try again.", 500)
         );
     }
 
-};
+}; 

@@ -19,7 +19,7 @@ platformActionRouter.get("/getBanners", catchAsyncError(getAllPromotionBanners))
 // Get Single Promotion Banner [GET] - "http://localhost:5000/api/platformAction/getBanner/BANNER_ID"
 platformActionRouter.get("/getBanner/:id", catchAsyncError(getPromotionBannerById));
 
-// Update Promotion Banner [PUT] - 
+// Update Promotion Banner [PUT] - "http://localhost:5000/api/platformAction/updateBanner/BANNER_ID"
 platformActionRouter.put("/updateBanner/:id", isUserAuth, authorizeRole("admin"), upload.single("image"), catchAsyncError(updatePromotionBanner));
 
 export default platformActionRouter; // export user router
