@@ -217,7 +217,7 @@ export const updatePromotionBanner = async (req, res, next) => {
                         }
                     );
 
-                } 
+                }
 
                 // Moving banner downward
                 else {
@@ -277,4 +277,53 @@ export const updatePromotionBanner = async (req, res, next) => {
         );
     }
 
-}; 
+};
+
+// Delete Promotion Banner
+export const deletePromotionBanner = async (req, res, next) => {
+
+    // Find banner
+    const banner = await PromotionBanner.findById(req.params.id);
+
+    if (!banner) {
+        return next(new ErrorHandler("Promotion banner not found", 404));
+    }
+
+    // Delete image from Cloudinary
+    if (banner.publicId) {
+        await deleteFromCloudinary(banner.publicId);
+    }
+
+    // Delete banner from MongoDB
+    await PromotionBanner.findByIdAndDelete(banner._id);
+
+    // Response
+    res.status(200).json({
+        success: true,
+        message: "Promotion banner deleted successfully",
+    });
+
+};
+
+// Toggle Promotion Banner Status
+export const togglePromotionBannerStatus = async (req, res, next) => {
+
+    // Find banner
+    const banner = await PromotionBanner.findById(req.params.id);
+
+    if (!banner) {
+        return next(new ErrorHandler("Promotion banner not found", 404));
+    }
+
+    // Toggle status
+    banner.isActive = !banner.isActive;
+
+    await banner.save();
+
+    res.status(200).json({
+        success: true,
+        message: `Promotion banner ${banner.isActive ? "activated" : "deactivated"} successfully`,
+        banner,
+    });
+
+};
