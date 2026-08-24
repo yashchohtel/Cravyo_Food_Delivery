@@ -1,42 +1,98 @@
 .admin-sidebar {
-    width: 20%;
-    flex-shrink: 0;
-
-    min-height: calc(100vh - 70px);
-
-    background-color: var(--background-color);
-    border-right: 1px solid var(--border-color);
-
-    padding: 25px 15px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  width: max-content;
+  flex-shrink: 0;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-right: 0.1rem solid var(--border-color);
+  position: relative;
+  z-index: 2;
 }
 
-.admin-sidebar a {
-    padding: 12px 15px;
-
-    text-decoration: none;
-
-    font-family: var(--font-main);
-    font-size: 16px;
-    font-weight: 500;
-
-    color: var(--text-secondary);
-
-    border-radius: 8px;
-
-    transition: var(--transition-fast);
+.sidebarToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.6rem;
 }
 
-.admin-sidebar a:hover {
-    background-color: var(--surface-color);
-    color: var(--primary-color);
+.sidebarToggle .toggleIcon {
+  font-size: 2.1rem;
+  background: #f6f6f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 1.4rem;
+  transition: var(--transition-fast);
+  cursor: pointer;
+  border-radius: 0.8rem;
 }
 
-.admin-sidebar a.active {
-    background-color: #fff1eb;
-    color: var(--primary-color);
-    font-weight: 600;
+/* Expanded */
+.sidebarToggle .close {
+  margin-left: auto;
+}
+
+/* Hover */
+.sidebarToggle .toggleIcon:hover {
+  background-color: var(--sruface-color-3);
+  color: var(--primary-color);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: max-content;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 1.2rem 1.4rem;
+  border-radius: 0.8rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 1.6rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+  height: 5.5rem;
+}
+
+/* Icon */
+.sidebar-icon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+}
+
+/* Text */
+.sidebar-text {
+  overflow: hidden;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+}
+
+/* Hover */
+.sidebar-link:hover {
+  background-color: var(--sruface-color-3);
+}
+
+/* Active */
+.sidebar-link.active {
+  background-color: var(--sruface-color-3);
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.sidebar-text.activeText {
+  display: none;
+}
+
+.sidebar-link.activeLink {
+  gap: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
