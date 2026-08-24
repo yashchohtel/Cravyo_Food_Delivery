@@ -161,7 +161,7 @@ img {
 /* container */
 .container {
   width: 100%;
-  max-width: 480px;
+  max-width: 1536px;
   margin: 0 auto;
   padding: 0 1.5rem;
   box-sizing: border-box;

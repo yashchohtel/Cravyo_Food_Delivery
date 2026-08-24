@@ -11,6 +11,10 @@ import RoleProtectedRoute from "./RoleProtectedRoute";
 import Page404 from "../Pages/Page404/Page404";
 import LocationPage from "../Pages/Location Page/LocationPage";
 import MapPage from "../Pages/Map Page/MapPage";
+import AdminPanel from "../Pages/Admin Panel Pages/Admin Panel/AdminPanel";
+import AdminDashboard from "../Pages/Admin Panel Pages/Admin Dashboard/AdminDashboard";
+import FoodCategories from "../Pages/Admin Panel Pages/Food Categories/FoodCategories";
+import PromotionBanners from "../Pages/Admin Panel Pages/Promotion Banners/PromotionBanners";
 
 function AppRoutes() {
 
@@ -50,6 +54,26 @@ function AppRoutes() {
           <RoleProtectedRoute requiredRole="deliveryBoy"> <DeliveryBoy /> </RoleProtectedRoute>
         </ProtectedRoute>
       } />
+
+      {/* admin panel page */}
+      <Route path="/admin"
+        element={
+          <ProtectedRoute>
+            <RoleProtectedRoute requiredRole="admin"> <AdminPanel /> </RoleProtectedRoute>
+          </ProtectedRoute>
+        }
+      >
+
+        {/* main index page of admin panel */}
+        <Route index element={<AdminDashboard />} />
+
+        {/* promotion banners page */}
+        <Route path="banners" element={<PromotionBanners />} />
+
+        {/* food categories */}
+        <Route path="food-categories" element={<FoodCategories />} />
+
+      </Route>
 
       {/* non existing url 404 */}
       <Route path="*" element={<Page404 />} />

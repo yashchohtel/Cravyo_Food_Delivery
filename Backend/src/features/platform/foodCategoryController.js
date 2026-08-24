@@ -2,7 +2,6 @@ import FoodCategory from "../../models/foodCategoryModel.js";
 import ErrorHandler from "../../utils/errorHandler.js";
 import { deleteFromCloudinary, uploadBufferToCloudinary } from "../../utils/uploadImage.js";
 
-
 // Create Food Categories
 export const createFoodCategories = async (req, res, next) => {
 
