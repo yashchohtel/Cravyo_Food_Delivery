@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../features/auth/authSlice"; 
 import locationReducer from "../features/location/locationSlice" 
+import promotionBannerReducer from '../features/platform/promotionBanners/promotionBannersSlice'
 
 // configure store with 
 const store = configureStore({
@@ -13,6 +14,9 @@ const store = configureStore({
 
         // location reducer for manageing user locations
         location: locationReducer,
+
+        // admin panel promotion banner reducer
+        promotionBanners: promotionBannerReducer,
 
     },
 

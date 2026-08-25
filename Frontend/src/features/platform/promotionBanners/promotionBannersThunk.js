@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import api from "../../api/axios.js";
+import api from "../../../api/axios";
 
 // Get all promotion banners
 export const getPromotionBanners = createAsyncThunk("promotionBanner/getPromotionBanners", async (_, { rejectWithValue }) => {

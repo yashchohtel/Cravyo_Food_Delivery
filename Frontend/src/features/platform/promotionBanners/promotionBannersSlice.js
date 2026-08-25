@@ -21,7 +21,7 @@ const initialState = {
 const promotionBannerSlice = createSlice({
 
     // slice name
-    name: "promotionBanner",
+    name: "promotionBanners",
 
     // initial state
     initialState,
