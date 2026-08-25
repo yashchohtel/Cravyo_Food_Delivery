@@ -5,7 +5,7 @@ import {
     setIsLocationLoading,
     setLocationError,
     setIsLocationErrorDialogOpen
-} from "../features/Location/locationSlice";
+} from "../features/location/locationSlice";
 
 
 // Function to get user's current location and handle errors

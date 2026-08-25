@@ -7,7 +7,7 @@ import "leaflet/dist/leaflet.css";
 import { FaLocationDot } from "react-icons/fa6";
 import { useEffect } from "react";
 import { calculateDistance, getAddressFromCoordinates } from "../../../utils/getLocation";
-import { setIsMapLocationLoading } from "../../../features/Location/locationSlice";
+import { setIsMapLocationLoading } from "../../../features/location/locationSlice";
 
 // map controller component
 const MapController = (props) => {
