@@ -5,7 +5,7 @@ const AdminDashboard = () => {
     return (
 
         <>
-            AdminDashboard
+            
         </>
 
     )

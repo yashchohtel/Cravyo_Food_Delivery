@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { FiCoffee, FiGrid, FiImage } from 'react-icons/fi';
 import './AdminSidebar.css'
 import { NavLink } from "react-router-dom";
 import { RiMenu2Line } from "react-icons/ri";
 import { IoCloseSharp } from "react-icons/io5";
+import { FaImage } from "react-icons/fa";
 import { useState } from 'react';
 
 
@@ -22,7 +24,7 @@ const AdminSidebar = () => {
             <aside className="admin-sidebar">
 
                 {/* sidebar toggle button */}
-                <div
+                {/* <div
                     className="sidebarToggle"
                     onClick={toggleSidebar}
                 >
@@ -37,7 +39,7 @@ const AdminSidebar = () => {
                         </div>
                     )}
 
-                </div>
+                </div> */}
 
                 <nav className="sidebar-nav">
 
@@ -59,7 +61,7 @@ const AdminSidebar = () => {
                         to="/admin/banners"
                         className={`sidebar-link ${showSidebar ? "" : "activeLink"}`}
                     >
-                        <FiImage className="sidebar-icon" />
+                        <FaImage className="sidebar-icon" />
 
                         <span className={`sidebar-text ${showSidebar ? "" : "activeText"}`}>
                             Banners

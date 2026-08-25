@@ -1,0 +1,151 @@
+.admin-search-filter {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+    background: var(--background-color);
+    padding: 1.2rem 1.6rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.03);
+    justify-content: space-between;
+}
+
+/* .admin-search-filter .searchFilterLeft {} */
+
+.admin-search-filter .searchFilterRight {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Search */
+.admin-search-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1.4rem;
+    border-radius: 0.8rem;
+    box-sizing: border-box;
+    width: 32rem;
+    height: 4rem;
+    border: 1.5px solid var(--border-color-dark);
+}
+
+.admin-search-icon {
+    width: 1.8rem;
+    height: 1.8rem;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+}
+
+.admin-search-box input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+.admin-search-box input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Filter */
+.admin-filter-box {
+    position: relative;
+    width: 18rem;
+    height: 4rem;
+}
+
+.admin-filter-box select {
+    width: 100%;
+    height: 100%;
+    padding: 0 3.8rem 0 1.2rem;
+    background-color: #ffffff;
+    border: 0.1rem solid var(--border-color-dark);
+    border-radius: 0.8rem;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    font-family: inherit;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.admin-filter-box select option:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.admin-filter-box .admin-filter-icon {
+    position: absolute;
+    top: 50%;
+    right: 1.2rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Refresh */
+.admin-refresh-btn {
+    height: 4rem;
+    padding: 0 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    background-color: #ffffff;
+    border: 0.1rem solid var(--border-color-dark);
+    border-radius: 0.8rem;
+    font-family: inherit;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.admin-refresh-btn svg {
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
+.admin-refresh-btn:hover {
+    background-color: var(--sruface-color-3);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.admin-add-btn {
+    height: 4rem;
+    padding: 0 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    background-color: var(--primary-color);
+    border: 0.1rem solid var(--primary-color);
+    border-radius: 0.8rem;
+    font-family: inherit;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #ffffff;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.admin-add-btn svg {
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
+.admin-add-btn:hover {
+    opacity: 0.9;
+    background: var(--primary-hover);
+}

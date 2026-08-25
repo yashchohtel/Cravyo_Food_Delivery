@@ -86,6 +86,7 @@ export const createPromotionBanners = async (req, res, next) => {
             return {
                 image: image.secure_url,
                 publicId: image.public_id,
+                title: data.title || "",
                 location: data.location || "home",
                 order: Number(data.order ?? index + 1),
                 isActive: data.isActive !== undefined ? data.isActive : true,

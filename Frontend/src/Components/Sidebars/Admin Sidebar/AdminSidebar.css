@@ -2,7 +2,7 @@
   width: max-content;
   flex-shrink: 0;
   background-color: #ffffff;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   border-right: 0.1rem solid var(--border-color);
   position: relative;
   z-index: 2;

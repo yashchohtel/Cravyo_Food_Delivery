@@ -1,0 +1,66 @@
+.admin-stats-card {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 0.1rem solid var(--border-color);
+  border-radius: 1rem;
+  box-sizing: border-box;
+  box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.03);
+}
+
+/* Icon */
+
+.stats-card-icon {
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.8rem;
+}
+
+/* Info */
+
+.stats-card-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Title */
+
+.stats-card-title {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Value */
+
+.stats-card-value {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Total */
+.admin-stats-card.total .stats-card-icon {
+  background-color: #fff1eb;
+  color: var(--primary-color);
+}
+
+/* Active */
+.admin-stats-card.active .stats-card-icon {
+  background-color: #eaf8ee;
+  color: #22a447;
+}
+
+/* Inactive */
+.admin-stats-card.inactive .stats-card-icon {
+  background-color: #f1f2f4;
+  color: #6b7280;
+}

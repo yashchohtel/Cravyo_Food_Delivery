@@ -16,7 +16,7 @@
 
 .admin-content {
   flex: 1;
-  padding: 25px;
+  padding: 1rem;
   background-color: var(--page-bg);
   overflow-y: auto;
 }

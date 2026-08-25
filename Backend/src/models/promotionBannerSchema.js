@@ -17,6 +17,14 @@ const promotionBannerSchema = new mongoose.Schema({
         trim: true,
     },
 
+    // title
+    title: {
+        type: String,
+        trim: true,
+        maxlength: [100, "Title cannot exceed 100 characters"],
+    },
+
+
     // Where this promotion banner will be displayed
     location: {
         type: String,
