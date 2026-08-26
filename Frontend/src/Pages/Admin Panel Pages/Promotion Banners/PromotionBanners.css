@@ -1,5 +1,54 @@
 .banner-stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.6rem;
+  gap: 1rem;
+}
+
+/* banner list heading */
+
+.banner-list {
+  width: 100%;
+}
+
+.banner-list-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem;
+  border: 2px solid var(--border-color);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.banner-col {
+  flex-shrink: 0;
+}
+
+.banner-col-banner {
+  width: 15%;
+}
+
+.banner-col-title {
+  width: 32%;
+}
+
+.banner-col-order {
+  width: 8%;
+  text-align: center;
+}
+
+.banner-col-status {
+  width: 12%;
+  text-align: center;
+}
+
+.banner-col-created {
+  width: 18%;
+  text-align: center;
+}
+
+.banner-col-actions {
+  width: 15%;
+  text-align: center;
 }

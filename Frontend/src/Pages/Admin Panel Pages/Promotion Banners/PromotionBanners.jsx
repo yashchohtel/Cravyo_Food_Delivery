@@ -12,7 +12,7 @@ const PromotionBanners = () => {
     const { banners, loading, error } = useSelector((state) => state.promotionBanners);
 
     console.log(banners);
-    
+
     /* -------------------------------------- */
 
     // Search state
@@ -56,9 +56,12 @@ const PromotionBanners = () => {
     ];
 
     /* -------------------------------------- */
+
     return (
 
         <>
+
+            {/* banner stats card */}
             <div className="banner-stats-grid">
 
                 <AdminStatsCard
@@ -86,14 +89,51 @@ const PromotionBanners = () => {
 
             {/* Search & Filter */}
             <AdminSearchFilter
+                placeholder="Search banners..."   // place holder value
+
+                filterOptions={filterOptions}    // filter options for banners
+                sortOptions={sortOptions}        // sort options for banners
+
                 searchValue={search}
                 onSearchChange={setSearch}
-                placeholder="Search banners..."
+
                 filterValue={status}
                 onFilterChange={setStatus}
-                filterOptions={filterOptions}
-                sortOptions={sortOptions}
             />
+
+            {/* banner list heading */}
+            <div className="banner-list">
+
+                {/* List Header */}
+                <div className="banner-list-header">
+
+                    <div className="banner-col banner-col-banner">
+                        Banner
+                    </div>
+
+                    <div className="banner-col banner-col-title">
+                        Title
+                    </div>
+
+                    <div className="banner-col banner-col-order">
+                        Order
+                    </div>
+
+                    <div className="banner-col banner-col-status">
+                        Status
+                    </div>
+
+                    <div className="banner-col banner-col-created">
+                        Created At
+                    </div>
+
+                    <div className="banner-col banner-col-actions">
+                        Actions
+                    </div>
+
+                </div>
+
+            </div>
 
         </>
 

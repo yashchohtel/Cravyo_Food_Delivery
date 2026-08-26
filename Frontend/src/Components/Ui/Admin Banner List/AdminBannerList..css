@@ -1,0 +1,108 @@
+.admin-banner-list {
+    width: 100%;
+}
+
+.admin-banner-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1.4rem 2rem;
+    border-left: 0.1rem solid #eeeeee;
+    border-right: 0.1rem solid #eeeeee;
+    border-bottom: 0.1rem solid #eeeeee;
+}
+
+.banner-col {
+    flex-shrink: 0;
+}
+
+
+/* Banner */
+.banner-col-banner {
+    width: 15%;
+}
+
+.banner-image {
+    width: 8rem;
+    height: 4.8rem;
+    object-fit: cover;
+    border-radius: 0.6rem;
+    display: block;
+}
+
+
+/* Title */
+.banner-col-title {
+    width: 32%;
+    min-width: 0;
+}
+
+.banner-title {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+
+/* Order */
+.banner-col-order {
+    width: 8%;
+    text-align: center;
+}
+
+
+/* Status */
+.banner-col-status {
+    width: 12%;
+    text-align: center;
+}
+
+.banner-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.status-active {
+    background-color: #e8f8ee;
+    color: #1f9d55;
+}
+
+.status-inactive {
+    background-color: #f5f5f5;
+    color: #777777;
+}
+
+
+/* Created */
+.banner-col-created {
+    width: 18%;
+    text-align: center;
+}
+
+
+/* Actions */
+.banner-col-actions {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.banner-action-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 0.6rem;
+}

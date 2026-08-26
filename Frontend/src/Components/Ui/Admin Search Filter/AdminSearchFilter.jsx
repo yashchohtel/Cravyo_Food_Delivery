@@ -1,13 +1,16 @@
 import "./AdminSearchFilter.css";
 import { FiSearch, FiRefreshCw, FiChevronDown, FiPlus } from "react-icons/fi";
 
-const AdminSearchFilter = ({
-    searchPlaceholder = "Search...",
-    filterOptions = [],
-    sortOptions = [],
-    showSort = true,
-    showRefresh = true,
-}) => {
+const AdminSearchFilter = (props) => {
+
+    // destructure props
+    const {
+        placeholder = "Search...",
+        filterOptions = [],
+        sortOptions = [],
+        showSort = true,
+        showRefresh = true,
+    } = props;
 
     return (
 
@@ -23,7 +26,7 @@ const AdminSearchFilter = ({
 
                     <input
                         type="text"
-                        placeholder={searchPlaceholder}
+                        placeholder={placeholder}
                     />
 
                 </div>
@@ -89,7 +92,6 @@ const AdminSearchFilter = ({
 
                 )}
 
-
                 {/* Refresh */}
                 {showRefresh && (
 
@@ -115,9 +117,8 @@ const AdminSearchFilter = ({
                 >
                     <FiPlus />
 
-                    <span>
-                        Add Banner
-                    </span>
+                    <span> Add Banner </span>
+                    
                 </button>
 
             </div>
