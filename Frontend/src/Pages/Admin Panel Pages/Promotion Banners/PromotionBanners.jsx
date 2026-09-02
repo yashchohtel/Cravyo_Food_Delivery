@@ -5,6 +5,7 @@ import AdminStatsCard from '../../../Components/Ui/Admin Stats Card/AdminStatsCa
 import './PromotionBanners.css'
 import { FiImage, FiCheckCircle, FiXCircle } from "react-icons/fi";
 import { useSelector } from 'react-redux';
+import AdminBannerList from '../../../Components/Ui/Admin Banner List/AdminBannerList';
 
 const PromotionBanners = () => {
 
@@ -134,6 +135,11 @@ const PromotionBanners = () => {
                 </div>
 
             </div>
+
+            {/* Banner List */}
+            <AdminBannerList
+                banners={banners}
+            />
 
         </>
 

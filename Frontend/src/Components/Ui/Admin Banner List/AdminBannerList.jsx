@@ -1,4 +1,5 @@
 import './AdminBannerList..css'
+import { FiEye, FiEdit2, FiTrash2 } from "react-icons/fi";
 
 const AdminBannerList = ({ banners = [] }) => {
 
@@ -16,11 +17,15 @@ const AdminBannerList = ({ banners = [] }) => {
                     {/* Banner */}
                     <div className="banner-col banner-col-banner">
 
-                        <img
-                            src={banner.image}
-                            alt={banner.title || "Promotion banner"}
-                            className="banner-image"
-                        />
+                        <div className="banner-image-wrapper">
+
+                            <img
+                                src={banner.image}
+                                alt={banner.title || "Promotion banner"}
+                                className="banner-image"
+                            />
+
+                        </div>
 
                     </div>
 
@@ -41,7 +46,7 @@ const AdminBannerList = ({ banners = [] }) => {
                     {/* Order */}
                     <div className="banner-col banner-col-order">
 
-                        <span>
+                        <span className="banner-order">
                             {banner.order}
                         </span>
 
@@ -52,21 +57,17 @@ const AdminBannerList = ({ banners = [] }) => {
                     <div className="banner-col banner-col-status">
 
                         <span
-                            className={`banner-status ${banner.isActive
-                                    ? "status-active"
-                                    : "status-inactive"
-                                }`}
+                            className={`banner-status ${banner.isActive ? "status-active" : "status-inactive"}`}
                         >
                             {banner.isActive ? "Active" : "Inactive"}
                         </span>
 
                     </div>
 
-
                     {/* Created At */}
                     <div className="banner-col banner-col-created">
 
-                        <span>
+                        <span className='banner-createdAt'>
                             {new Date(banner.createdAt).toLocaleDateString()}
                         </span>
 
@@ -76,16 +77,25 @@ const AdminBannerList = ({ banners = [] }) => {
                     {/* Actions */}
                     <div className="banner-col banner-col-actions">
 
-                        <button className="banner-action-btn">
-                            View
+                        <button className="banner-action-btn view-action">
+                            <FiEye />
+                            <span className="action-tooltip">
+                                View Banner
+                            </span>
                         </button>
 
-                        <button className="banner-action-btn">
-                            Edit
+                        <button className="banner-action-btn edit-action">
+                            <FiEdit2 />
+                            <span className="action-tooltip">
+                                Edit Banner
+                            </span>
                         </button>
 
-                        <button className="banner-action-btn">
-                            Delete
+                        <button className="banner-action-btn delete-action">
+                            <FiTrash2 />
+                            <span className="action-tooltip">
+                                Delete Banner
+                            </span>
                         </button>
 
                     </div>
@@ -96,7 +106,7 @@ const AdminBannerList = ({ banners = [] }) => {
 
         </div>
 
-    );
+    )
 
 };
 

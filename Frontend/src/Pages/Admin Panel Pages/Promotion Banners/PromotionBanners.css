@@ -15,7 +15,7 @@
   align-items: center;
   width: 100%;
   padding: 1.5rem;
-  border: 2px solid var(--border-color);
+  border-inline: 0.2rem solid var(--border-color);
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--text-primary);
