@@ -10,6 +10,7 @@ const AdminSearchFilter = (props) => {
         sortOptions = [],
         showSort = true,
         showRefresh = true,
+        onAdd,
     } = props;
 
     return (
@@ -114,11 +115,12 @@ const AdminSearchFilter = (props) => {
                 <button
                     type="button"
                     className="admin-add-btn"
+                    onClick={onAdd}
                 >
                     <FiPlus />
 
                     <span> Add Banner </span>
-                    
+
                 </button>
 
             </div>

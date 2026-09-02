@@ -6,6 +6,7 @@ import './PromotionBanners.css'
 import { FiImage, FiCheckCircle, FiXCircle } from "react-icons/fi";
 import { useSelector } from 'react-redux';
 import AdminBannerList from '../../../Components/Ui/Admin Banner List/AdminBannerList';
+import AdminFormModal from '../../../Components/Ui/Admin Form Modal/AdminFormModal';
 
 const PromotionBanners = () => {
 
@@ -58,9 +59,18 @@ const PromotionBanners = () => {
 
     /* -------------------------------------- */
 
+    // state to manage add, edit, view banner modal open/close
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
 
         <>
+
+            {/* add banner component */}
+            <AdminFormModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
 
             {/* banner stats card */}
             <div className="banner-stats-grid">
@@ -100,6 +110,9 @@ const PromotionBanners = () => {
 
                 filterValue={status}
                 onFilterChange={setStatus}
+
+                onAdd={() => setIsModalOpen(true)} // open add banner modal on click
+
             />
 
             {/* banner list heading */}
