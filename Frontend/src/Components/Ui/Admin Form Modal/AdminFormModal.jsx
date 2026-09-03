@@ -5,13 +5,7 @@ import { FiChevronDown, FiUploadCloud, FiX } from "react-icons/fi";
 const AdminFormModal = (props) => {
 
     // destructure props
-    const {
-        isOpen,
-        onClose,
-        type,
-        mode,
-        data,
-    } = props;
+    const { isOpen, onClose, type, mode, data } = props;
 
     // if modal is not open, return null
     if (!isOpen) return null;
@@ -45,10 +39,6 @@ const AdminFormModal = (props) => {
 
         return "";
     };
-
-    console.log(type)
-    console.log(mode)
-    console.log(data)
 
     return (
 
@@ -180,6 +170,133 @@ const AdminFormModal = (props) => {
                                     className="admin-modal-submit"
                                 >
                                     Add Banner
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                )}
+
+                {/* Edit Banner Form */}
+                {type === "banner" && mode === "edit" && (
+
+                    <form className="admin-banner-form">
+
+                        {/* Left - Current Image */}
+                        <div className="banner-image-section">
+
+                            <label className="admin-form-label">
+                                Banner Image
+                            </label>
+
+                            <div className="banner-edit-image-box">
+
+                                <img
+                                    src={data?.image}
+                                    alt={data?.title || "Banner"}
+                                    className="banner-edit-image"
+                                />
+
+                            </div>
+
+                            <button
+                                type="button"
+                                className="banner-change-image"
+                            >
+                                <FiUploadCloud />
+                                Change Image
+                            </button>
+
+                            <p className="banner-upload-note">
+                                Recommended size: 1920 × 600px
+                            </p>
+
+                        </div>
+
+                        {/* Right - Banner Details */}
+                        <div className="banner-form-details">
+
+                            {/* Title */}
+                            <div className="admin-form-group">
+
+                                <label>
+                                    Title <span>(Optional)</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    defaultValue={data?.title || ""}
+                                    placeholder="e.g. Delivery at ₹1"
+                                />
+
+                            </div>
+
+                            {/* Order */}
+                            <div className="admin-form-group">
+
+                                <label>
+                                    Order
+                                </label>
+
+                                <input
+                                    type="number"
+                                    defaultValue={data?.order ?? ""}
+                                    placeholder="e.g. 1"
+                                />
+
+                            </div>
+
+                            {/* Status */}
+                            <div className="admin-form-group">
+
+                                <label>
+                                    Status
+                                </label>
+
+                                <div className="select-wrapper">
+
+                                    <select
+                                        defaultValue={
+                                            data?.isActive
+                                                ? "active"
+                                                : "inactive"
+                                        }
+                                    >
+
+                                        <option value="active">
+                                            Active
+                                        </option>
+
+                                        <option value="inactive">
+                                            Inactive
+                                        </option>
+
+                                    </select>
+
+                                    <FiChevronDown className="select-arrow" />
+
+                                </div>
+
+                            </div>
+
+                            <div className="createBannerAction">
+
+                                <button
+                                    type="button"
+                                    className="admin-modal-cancel"
+                                    onClick={onClose}
+                                >
+                                    Cancel
+                                </button>
+
+                                <button
+                                    type="button"
+                                    className="admin-modal-submit"
+                                >
+                                    Save Changes
                                 </button>
 
                             </div>

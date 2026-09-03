@@ -223,3 +223,55 @@
 .admin-modal-submit:hover {
     opacity: 0.9;
 }
+
+/* edit banner */
+/* Edit Banner Image */
+
+.banner-edit-image-box {
+    width: 100%;
+    height: 17rem;
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.1rem solid #dddddd;
+    border-radius: 0.8rem;
+    background-color: #f7f7f7;
+    overflow: hidden;
+}
+
+.banner-edit-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.6rem;
+    display: block;
+}
+
+.banner-change-image {
+    width: 100%;
+    height: 4.2rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    border: 0.1rem solid #dddddd;
+    background-color: #ffffff;
+    border-radius: 0.7rem;
+    font-family: inherit;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.banner-change-image:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: var(--sruface-color-3);
+}
+
+.banner-change-image svg {
+    font-size: 1.7rem;
+}
