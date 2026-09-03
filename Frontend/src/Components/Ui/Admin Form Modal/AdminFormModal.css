@@ -2,18 +2,224 @@
     position: fixed;
     inset: 0;
     z-index: 1000;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(0 0 0 / 52%);
+    backdrop-filter: blur(0.1rem);
 }
 
 .admin-modal {
-    width: 60rem;
-    min-height: 30rem;
-
+    width: 80rem;
     background-color: #ffffff;
     border-radius: 1rem;
+    overflow: hidden;
+}
+
+.admin-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.6rem 2rem;
+    border-bottom: 0.1rem solid var(--border-color);
+}
+
+.admin-modal-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.admin-modal-close {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    border-radius: 0.6rem;
+    font-size: 2rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.admin-modal-close:hover {
+    background-color: var(--sruface-color-3);
+    color: var(--text-primary);
+}
+
+
+/* Add Banner Form */
+.admin-banner-form {
+    display: flex;
+    gap: 2.5rem;
+    padding: 2.4rem 2.5rem 2.8rem;
+}
+
+.banner-image-section,
+.banner-form-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.banner-form-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.admin-form-label,
+.admin-form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.admin-form-group label span {
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.banner-upload-box {
+    width: 100%;
+    height: 17rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.1rem dashed #d5d5d5;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+
+.banner-upload-box:hover {
+    border-color: var(--primary-color);
+    background-color: var(--sruface-color-3);
+}
+
+.banner-upload-icon {
+    margin-bottom: 1.2rem;
+    font-size: 3.2rem;
+    color: #777777;
+}
+
+.banner-upload-box span {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+}
+
+.banner-upload-box small {
+    margin-top: 0.7rem;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.banner-upload-note {
+    margin: 0.9rem 0 0;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.admin-form-group {
+    width: 100%;
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-wrapper select {
+    width: 100%;
+    height: 4.2rem;
+    padding: 0 4rem 0 1.2rem;
+    border: 0.1rem solid #dddddd;
+    border-radius: 0.7rem;
+    outline: none;
+    background-color: #ffffff;
+    font-family: inherit;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    appearance: none;
+    cursor: pointer;
+}
+
+.select-wrapper select:focus {
+    border-color: var(--primary-color);
+}
+
+.select-arrow {
+    position: absolute;
+    top: 50%;
+    right: 1.2rem;
+    transform: translateY(-50%);
+    font-size: 1.7rem;
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+.admin-form-group input,
+.admin-form-group select {
+    width: 100%;
+    height: 4.2rem;
+    padding: 0 1.2rem;
+    border: 0.1rem solid #dddddd;
+    border-radius: 0.7rem;
+    outline: none;
+    background-color: #ffffff;
+    font-family: inherit;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+}
+
+.admin-form-group input::placeholder {
+    color: #aaaaaa;
+}
+
+.admin-form-group input:focus,
+.admin-form-group select:focus {
+    border-color: var(--primary-color);
+}
+
+.createBannerAction {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2rem;
+}
+
+.admin-modal-cancel,
+.admin-modal-submit {
+    height: 4.2rem;
+    padding: 0 1.8rem;
+    border-radius: 0.7rem;
+    font-family: inherit;
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+    flex: 1;
+}
+
+.admin-modal-cancel {
+    border: 0.1rem solid var(--border-color);
+    background-color: #ffffff;
+    color: var(--text-primary);
+}
+
+.admin-modal-cancel:hover {
+    background-color: var(--sruface-color-3);
+}
+
+.admin-modal-submit {
+    border: 0.1rem solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.admin-modal-submit:hover {
+    opacity: 0.9;
 }

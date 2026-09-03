@@ -13,8 +13,6 @@ const PromotionBanners = () => {
     // get data from the promotion store
     const { banners, loading, error } = useSelector((state) => state.promotionBanners);
 
-    console.log(banners);
-
     /* -------------------------------------- */
 
     // Search state
@@ -59,8 +57,37 @@ const PromotionBanners = () => {
 
     /* -------------------------------------- */
 
-    // state to manage add, edit, view banner modal open/close
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    // state to manage add, edit, view banner modal
+    const [modal, setModal] = useState({
+        isOpen: false,
+        type: null,
+        mode: null,
+        data: null,
+    });
+
+    // function to open add, edit, view banner modal
+    const openModal = (type, mode, data = null) => {
+
+        setModal({
+            isOpen: true,
+            type,
+            mode,
+            data,
+        });
+
+    };
+
+    // function to close add, edit, view banner modal
+    const closeModal = () => {
+
+        setModal({
+            isOpen: false,
+            type: null,
+            mode: null,
+            data: null,
+        });
+
+    };
 
     return (
 
@@ -68,8 +95,11 @@ const PromotionBanners = () => {
 
             {/* add banner component */}
             <AdminFormModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
+                isOpen={modal.isOpen}
+                type={modal.type}
+                mode={modal.mode}
+                data={modal.data}
+                onClose={closeModal}
             />
 
             {/* banner stats card */}
@@ -111,7 +141,7 @@ const PromotionBanners = () => {
                 filterValue={status}
                 onFilterChange={setStatus}
 
-                onAdd={() => setIsModalOpen(true)} // open add banner modal on click
+                onAdd={() => openModal("banner", "add")} // open add banner modal on click
 
             />
 
