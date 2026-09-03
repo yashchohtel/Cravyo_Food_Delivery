@@ -46,10 +46,14 @@ const AdminFormModal = (props) => {
         return "";
     };
 
+    console.log(type)
+    console.log(mode)
+    console.log(data)
+
     return (
 
         // admin modal overlay
-        <divv className="admin-modal-overlay" >
+        <div className="admin-modal-overlay" >
 
             {/* admin modal */}
             <div className="admin-modal">
@@ -188,7 +192,7 @@ const AdminFormModal = (props) => {
 
             </div>
 
-        </divv>
+        </div>
 
     );
 

@@ -1,7 +1,10 @@
 import './AdminBannerList..css'
 import { FiEye, FiEdit2, FiTrash2 } from "react-icons/fi";
 
-const AdminBannerList = ({ banners = [] }) => {
+const AdminBannerList = (props) => {
+
+    // destructure props
+    const { banners = [], openModal } = props;
 
     return (
 
@@ -84,7 +87,10 @@ const AdminBannerList = ({ banners = [] }) => {
                             </span>
                         </button>
 
-                        <button className="banner-action-btn edit-action">
+                        <button
+                            className="banner-action-btn edit-action"
+                            onClick={() => openModal("banner", "edit", banner)}
+                        >
                             <FiEdit2 />
                             <span className="action-tooltip">
                                 Edit Banner

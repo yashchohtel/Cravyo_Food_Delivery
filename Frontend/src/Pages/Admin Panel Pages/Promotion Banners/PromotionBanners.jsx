@@ -182,6 +182,7 @@ const PromotionBanners = () => {
             {/* Banner List */}
             <AdminBannerList
                 banners={banners}
+                openModal={openModal}
             />
 
         </>
