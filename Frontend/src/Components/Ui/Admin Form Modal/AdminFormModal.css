@@ -275,3 +275,70 @@
 .banner-change-image svg {
     font-size: 1.7rem;
 }
+
+
+/* view banner */
+.view-banner-container {
+    display: flex;
+    gap: 2.5rem;
+    padding: 2.5rem;
+}
+
+.view-banner-image-section {
+    width: 60%;
+}
+
+.view-banner-image-box {
+    width: 100%;
+    height: 30rem;
+    padding: 0.7rem;
+    background-color: #f7f7f7;
+    border: 0.1rem solid #eeeeee;
+    border-radius: 0.8rem;
+    overflow: hidden;
+}
+
+.view-banner-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 0.6rem;
+}
+
+.view-banner-info {
+    width: 40%;
+    padding-top: 0.5rem;
+}
+
+.view-banner-info h3 {
+    margin: 0 0 2rem;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.view-banner-info-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.view-banner-info-item {
+    display: flex;
+    gap: 0.6rem;
+    padding: 1.5rem 0;
+    border-bottom: 0.1rem solid #eeeeee;
+    align-items: center;
+    gap: 1rem;
+}
+
+.view-banner-info-item span {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+}
+
+.view-banner-info-item strong {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import './AdminFormModal.css'
 import { FiChevronDown, FiUploadCloud, FiX } from "react-icons/fi";
 
@@ -7,8 +6,12 @@ const AdminFormModal = (props) => {
     // destructure props
     const { isOpen, onClose, type, mode, data } = props;
 
+    /* -------------------------------------- */
+
     // if modal is not open, return null
     if (!isOpen) return null;
+
+    /* -------------------------------------- */
 
     // function to get modal title based on type and mode
     const getModalTitle = () => {
@@ -39,6 +42,8 @@ const AdminFormModal = (props) => {
 
         return "";
     };
+
+    /* -------------------------------------- */
 
     return (
 
@@ -304,6 +309,80 @@ const AdminFormModal = (props) => {
                         </div>
 
                     </form>
+
+                )}
+
+                {/* View Banner */}
+                {type === "banner" && mode === "view" && (
+
+                    <div className="view-banner-container">
+
+                        {/* Left - Banner Image */}
+                        <div className="view-banner-image-section">
+
+                            <div className="view-banner-image-box">
+
+                                <img
+                                    src={data?.image}
+                                    alt={data?.title || "Banner"}
+                                    className="view-banner-image"
+                                />
+
+                            </div>
+
+                        </div>
+
+                        {/* Right - Banner Information */}
+                        <div className="view-banner-info">
+
+                            <h3>
+                                Banner Information
+                            </h3>
+
+                            <div className="view-banner-info-list">
+
+                                <div className="view-banner-info-item">
+                                    <span>Title</span>
+                                    <strong>
+                                        {data?.title || "Untitled Banner"}
+                                    </strong>
+                                </div>
+
+                                <div className="view-banner-info-item">
+                                    <span>Order</span>
+                                    <strong>
+                                        {data?.order}
+                                    </strong>
+                                </div>
+
+                                <div className="view-banner-info-item">
+                                    <span>Status</span>
+
+                                    <strong
+                                        className={`banner-status ${data?.isActive
+                                            ? "status-active"
+                                            : "status-inactive"
+                                            }`}
+                                    >
+                                        {data?.isActive ? "Active" : "Inactive"}
+                                    </strong>
+                                </div>
+
+                                <div className="view-banner-info-item">
+                                    <span>Created At</span>
+                                    <strong>
+                                        {data?.createdAt
+                                            ? new Date(data.createdAt).toLocaleDateString()
+                                            : "-"
+                                        }
+                                    </strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 )}
 

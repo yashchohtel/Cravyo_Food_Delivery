@@ -16,7 +16,6 @@ const initialState = {
 
 };
 
-
 // create promotion banner slice
 const promotionBannerSlice = createSlice({
 

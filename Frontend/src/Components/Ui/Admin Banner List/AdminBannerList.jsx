@@ -80,7 +80,10 @@ const AdminBannerList = (props) => {
                     {/* Actions */}
                     <div className="banner-col banner-col-actions">
 
-                        <button className="banner-action-btn view-action">
+                        <button
+                            className="banner-action-btn view-action"
+                            onClick={() => openModal("banner", "view", banner)}
+                        >
                             <FiEye />
                             <span className="action-tooltip">
                                 View Banner
