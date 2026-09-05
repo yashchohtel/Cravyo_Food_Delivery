@@ -56,23 +56,6 @@ const AdminFormModal = (props) => {
         // prevent default form submission behavior
         event.preventDefault();
 
-        if (type === "banner" && mode === "add") {
-            const imageInput = event.currentTarget.elements.namedItem("bannerImage");
-            const titleInput = event.currentTarget.elements.namedItem("bannerTitle");
-            const orderInput = event.currentTarget.elements.namedItem("bannerOrder");
-            const statusInput = event.currentTarget.elements.namedItem("bannerStatus");
-
-            const payload = {
-                image: imageInput?.files?.[0],
-                title: titleInput?.value ?? "",
-                order: Number(orderInput?.value ?? 0),
-                isActive: statusInput?.value === "active",
-            };
-
-            if (typeof createBanner === "function") {
-                createBanner(payload);
-            }
-        }
     };
 
     /* -------------------------------------- */
