@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import usePromotionBanner from '../../../hooks/usePromotionBanner';
 import './AdminFormModal.css'
 import { FiChevronDown, FiUploadCloud, FiX } from "react-icons/fi";
@@ -9,6 +10,17 @@ const AdminFormModal = (props) => {
 
     /* -------------------------------------- */
 
+    // ref to get input field refrence to open file dialog
+    const fileInputRef = useRef(null);
+
+    // function to trigger file input click
+    const triggerFileSelect = () => {
+        fileInputRef.current.click();
+    };
+
+    /* -------------------------------------- */
+
+    // get state and function from usePromotionBanner hook
     const { createBanner } = usePromotionBanner();
 
     /* -------------------------------------- */
@@ -72,8 +84,10 @@ const AdminFormModal = (props) => {
                     >
                         <FiX />
                     </button>
-
+                    
                 </div>
+
+                {/* ---------------- modal related to banners ---------------- */}
 
                 {/* Add Banner Form */}
                 {type === "banner" && mode === "add" && (
@@ -87,7 +101,10 @@ const AdminFormModal = (props) => {
                                 Upload Banner Image
                             </label>
 
-                            <div className="banner-upload-box">
+                            <div
+                                className="banner-upload-box"
+                                onClick={triggerFileSelect}
+                            >
 
                                 <FiUploadCloud className="banner-upload-icon" />
 
@@ -102,6 +119,7 @@ const AdminFormModal = (props) => {
                                 {/* input to get image */}
                                 <input
                                     type="file"
+                                    ref={fileInputRef}
                                     accept="image/png, image/jpeg, image/webp"
                                     style={{ display: 'none' }}
                                 />

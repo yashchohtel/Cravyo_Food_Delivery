@@ -1,10 +1,11 @@
-/* eslint-disable no-unused-vars */
 import { useDispatch } from "react-redux";
 
 const usePromotionBanner = () => {
 
     // initilize use dispatch
     const dispatch = useDispatch();
+
+    /* -------------------------------------- */
 
     // Create banner
     const createBanner = ({ image, title, order, isActive }) => {
@@ -30,7 +31,7 @@ const usePromotionBanner = () => {
         for (const [key, value] of formData.entries()) {
             console.log(key, value);
         }
-        
+
     };
 
     return {
