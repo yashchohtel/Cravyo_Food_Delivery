@@ -50,16 +50,6 @@ const AdminFormModal = (props) => {
 
     /* -------------------------------------- */
 
-    // handle form submissions
-    const handleFormSubmit = (event) => {
-
-        // prevent default form submission behavior
-        event.preventDefault();
-
-    };
-
-    /* -------------------------------------- */
-
     return (
 
         // admin modal overlay
@@ -109,10 +99,17 @@ const AdminFormModal = (props) => {
                                     PNG, JPG, WEBP (Max. 2MB)
                                 </small>
 
+                                {/* input to get image */}
+                                <input
+                                    type="file"
+                                    accept="image/png, image/jpeg, image/webp"
+                                    style={{ display: 'none' }}
+                                />
+
                             </div>
 
                             <p className="banner-upload-note">
-                                Recommended size: 1920 × 600px
+                                Recommended size: 1920 x 600px
                             </p>
 
                         </div>
