@@ -1,7 +1,7 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createBanner as createBannerThunk } from "../features/platform/promotionBanners/promotionBannersThunk.js";
+import toast from "react-hot-toast";
 
 const usePromotionBanner = () => {
 
@@ -18,7 +18,6 @@ const usePromotionBanner = () => {
     // Banner form state
     const [bannerForm, setBannerForm] = useState({
         title: "",
-        order: banners.length + 1,   // auto-calculated order
         isActive: true,
         image: null,
         imagePreview: null,
@@ -54,7 +53,6 @@ const usePromotionBanner = () => {
 
         setBannerForm({
             title: "",
-            order: banners.length + 1,   // auto-calculated order
             isActive: true,
             image: null,
             imagePreview: null,
@@ -62,7 +60,6 @@ const usePromotionBanner = () => {
 
         setBannerErrors({
             title: "",
-            order: "",
             image: "",
         });
 
@@ -114,32 +111,36 @@ const usePromotionBanner = () => {
     };
 
     // Create banner - builds FormData from current form state and logs it
-    const createBanner = () => {
+    const createBanner = async () => {
 
-        // Extract fields from current banner form state
-        const { image, title, order, isActive } = bannerForm;
+        const { image, title, isActive } = bannerForm;
+
+        // Calculate order fresh at submit time
+        const order = banners.length + 1;
 
         const formData = new FormData();
-
-        // Image file
-        // Note: field name must match multer config -> "image"
         formData.append("image", image);
+        formData.append("bannersData", JSON.stringify([{
+            title: title || "",
+            order: order,
+            location: "home",
+            isActive: isActive,
+        }]));
 
-        // Banner details as JSON string (backend expects array format)
-        formData.append("bannersData", JSON.stringify(
-            [
-                {
-                    title: title || "",
-                    order: Number(order),
-                    location: "home",
-                    isActive: isActive,
-                }
-            ]
-        ));
+        try {
 
-        // Dispatch the create banner thunk with the FormData
-        dispatch(createBannerThunk(formData));
+            // unwrap() throws if thunk was rejected, so we can catch real errors
+            await dispatch(createBannerThunk(formData)).unwrap();
 
+            toast.success("Banner added successfully");
+
+            resetBannerForm();
+
+        } catch (error) {
+
+            toast.error(error || "Failed to add banner");
+
+        }
     };
 
     // Return all state and functions from the hook

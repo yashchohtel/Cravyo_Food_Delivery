@@ -72,6 +72,7 @@ const promotionBannerSlice = createSlice({
 
             .addCase(createBanner.fulfilled, (state, action) => {
                 state.createLoading = false;
+                
                 // backend returns array of created banners - add them to existing list
                 state.banners = [...state.banners, ...action.payload];
             })

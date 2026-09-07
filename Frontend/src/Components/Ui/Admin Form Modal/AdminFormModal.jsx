@@ -13,7 +13,7 @@ const AdminFormModal = (props) => {
     /* -------------------------------------- */
 
     // Get existing banners list from redux store
-    const { createLoading } = useSelector((state) => state.promotionBanners);
+    const { createLoading, banners } = useSelector((state) => state.promotionBanners);
 
     /* -------------------------------------- */
 
@@ -181,7 +181,7 @@ const AdminFormModal = (props) => {
                                     Order
                                 </label>
                                 <p className="banner-order-display">
-                                    This will be banner # {bannerForm.order}
+                                    This will be banner #{banners.length + 1}
                                 </p>
                             </div>
 
