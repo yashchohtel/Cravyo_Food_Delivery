@@ -104,7 +104,7 @@ const AdminFormModal = (props) => {
                         className="admin-banner-form"
                         onSubmit={(e) => {
                             e.preventDefault();   // prevent default page reload
-                            createBanner();       // create banner using current state from hook
+                            createBanner(onClose);       // create banner using current state from hook
                         }}
                     >
 

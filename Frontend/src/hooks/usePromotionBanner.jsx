@@ -111,7 +111,7 @@ const usePromotionBanner = () => {
     };
 
     // Create banner - builds FormData from current form state and logs it
-    const createBanner = async () => {
+    const createBanner = async (onClose) => {
 
         const { image, title, isActive } = bannerForm;
 
@@ -132,9 +132,11 @@ const usePromotionBanner = () => {
             // unwrap() throws if thunk was rejected, so we can catch real errors
             await dispatch(createBannerThunk(formData)).unwrap();
 
-            toast.success("Banner added successfully");
+            toast.success("Banner added successfully"); // Show success toast
 
-            resetBannerForm();
+            resetBannerForm(); // Reset form after successful creation
+
+            onClose(); // Close the modal after successful creation
 
         } catch (error) {
 
