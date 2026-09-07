@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPromotionBanners } from "./promotionBannersThunk";
+import { createBanner, getPromotionBanners } from "./promotionBannersThunk";
 
 
 // initial state
@@ -10,6 +10,9 @@ const initialState = {
 
     // loading state
     loading: false,
+
+    // loading for creating a new banner
+    createLoading: false,
 
     // error message
     error: null,
@@ -57,6 +60,24 @@ const promotionBannerSlice = createSlice({
             // Rejected
             .addCase(getPromotionBanners.rejected, (state, action) => {
                 state.loading = false;
+                state.error = action.payload;
+            })
+
+            /* ----------- CREATE PROMOTION BANNER ↓ */
+
+            .addCase(createBanner.pending, (state) => {
+                state.createLoading = true;
+                state.error = null;
+            })
+
+            .addCase(createBanner.fulfilled, (state, action) => {
+                state.createLoading = false;
+                // backend returns array of created banners - add them to existing list
+                state.banners = [...state.banners, ...action.payload];
+            })
+
+            .addCase(createBanner.rejected, (state, action) => {
+                state.createLoading = false;
                 state.error = action.payload;
             })
 

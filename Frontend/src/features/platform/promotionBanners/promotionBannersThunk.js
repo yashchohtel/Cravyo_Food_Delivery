@@ -17,3 +17,20 @@ export const getPromotionBanners = createAsyncThunk("promotionBanner/getPromotio
     }
 
 });
+
+// Create a new promotion banner
+export const createBanner = createAsyncThunk("promotionBanner/createBanner", async (formData, { rejectWithValue }) => {
+
+    try {
+
+        const { data } = await api.post("/api/platformAction/createBanner", formData);
+
+        return data.banners;
+
+    } catch (error) {
+
+        return rejectWithValue(error.response?.data?.message || "Something went wrong");
+
+    }
+
+});

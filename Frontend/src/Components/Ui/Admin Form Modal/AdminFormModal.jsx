@@ -2,11 +2,18 @@ import { useRef } from 'react';
 import usePromotionBanner from '../../../hooks/usePromotionBanner';
 import './AdminFormModal.css'
 import { FiChevronDown, FiUploadCloud, FiX } from "react-icons/fi";
+import ButtonLoader from '../../Loaders/ButtonLoader/ButtonLoader';
+import { useSelector } from 'react-redux';
 
 const AdminFormModal = (props) => {
 
     // destructure props
     const { isOpen, onClose, type, mode, data } = props;
+
+    /* -------------------------------------- */
+
+    // Get existing banners list from redux store
+    const { createLoading } = useSelector((state) => state.promotionBanners);
 
     /* -------------------------------------- */
 
@@ -21,12 +28,7 @@ const AdminFormModal = (props) => {
     /* -------------------------------------- */
 
     // get state and function from usePromotionBanner hook
-    const { createBanner } = usePromotionBanner();
-
-    /* -------------------------------------- */
-
-    // if modal is not open, return null
-    if (!isOpen) return null;
+    const { createBanner, bannerForm, handleBannerChange, handleImageChange, bannerErrors, resetBannerForm } = usePromotionBanner();
 
     /* -------------------------------------- */
 
@@ -62,6 +64,9 @@ const AdminFormModal = (props) => {
 
     /* -------------------------------------- */
 
+    // if modal is not open, return null
+    if (!isOpen) return null;
+
     return (
 
         // admin modal overlay
@@ -80,11 +85,14 @@ const AdminFormModal = (props) => {
                     <button
                         type="button"
                         className="admin-modal-close"
-                        onClick={onClose}
+                        onClick={() => {
+                            resetBannerForm();
+                            onClose();
+                        }}
                     >
                         <FiX />
                     </button>
-                    
+
                 </div>
 
                 {/* ---------------- modal related to banners ---------------- */}
@@ -92,7 +100,13 @@ const AdminFormModal = (props) => {
                 {/* Add Banner Form */}
                 {type === "banner" && mode === "add" && (
 
-                    <form className="admin-banner-form">
+                    <form
+                        className="admin-banner-form"
+                        onSubmit={(e) => {
+                            e.preventDefault();   // prevent default page reload
+                            createBanner();       // create banner using current state from hook
+                        }}
+                    >
 
                         {/* Left - Image Upload */}
                         <div className="banner-image-section">
@@ -106,15 +120,19 @@ const AdminFormModal = (props) => {
                                 onClick={triggerFileSelect}
                             >
 
-                                <FiUploadCloud className="banner-upload-icon" />
-
-                                <span>
-                                    Click to upload or drag & drop
-                                </span>
-
-                                <small>
-                                    PNG, JPG, WEBP (Max. 2MB)
-                                </small>
+                                {bannerForm.imagePreview ? (
+                                    <img
+                                        src={bannerForm.imagePreview}
+                                        alt="Banner Preview"
+                                        className="banner-preview-image"
+                                    />
+                                ) : (
+                                    <>
+                                        <FiUploadCloud className="banner-upload-icon" />
+                                        <span>Click to upload or drag & drop</span>
+                                        <small>PNG, JPG, WEBP (Recommended: 2MB, Max: 5MB)</small>
+                                    </>
+                                )}
 
                                 {/* input to get image */}
                                 <input
@@ -122,12 +140,17 @@ const AdminFormModal = (props) => {
                                     ref={fileInputRef}
                                     accept="image/png, image/jpeg, image/webp"
                                     style={{ display: 'none' }}
+                                    onChange={handleImageChange}
                                 />
 
                             </div>
 
                             <p className="banner-upload-note">
                                 Recommended size: 1920 x 600px
+                            </p>
+
+                            <p className="error-text">
+                                {bannerErrors.image}
                             </p>
 
                         </div>
@@ -144,43 +167,39 @@ const AdminFormModal = (props) => {
 
                                 <input
                                     type="text"
+                                    name="title"
+                                    value={bannerForm.title}
+                                    onChange={handleBannerChange}
                                     placeholder="e.g. Delivery at ₹1"
                                 />
 
                             </div>
 
-                            {/* Order */}
+                            {/* Order - auto-calculated, display only */}
                             <div className="admin-form-group">
-
                                 <label>
                                     Order
                                 </label>
-
-                                <input
-                                    type="number"
-                                    placeholder="e.g. 1"
-                                />
-
+                                <p className="banner-order-display">
+                                    This will be banner # {bannerForm.order}
+                                </p>
                             </div>
 
                             {/* Status */}
                             <div className="admin-form-group">
 
-                                <label>
-                                    Status
-                                </label>
+                                <label> Status </label>
 
                                 <div className="select-wrapper">
 
-                                    <select defaultValue="active">
+                                    <select
+                                        name="isActive"
+                                        value={bannerForm.isActive}
+                                        onChange={handleBannerChange}
+                                    >
 
-                                        <option value="active">
-                                            Active
-                                        </option>
-
-                                        <option value="inactive">
-                                            Inactive
-                                        </option>
+                                        <option value={true}>Active</option>
+                                        <option value={false}>Inactive</option>
 
                                     </select>
 
@@ -190,21 +209,26 @@ const AdminFormModal = (props) => {
 
                             </div>
 
+                            {/* banner actions */}
                             <div className="createBannerAction">
 
                                 <button
                                     type="button"
                                     className="admin-modal-cancel"
-                                    onClick={onClose}
+                                    onClick={() => {
+                                        resetBannerForm();
+                                        onClose();
+                                    }}
                                 >
                                     Cancel
                                 </button>
 
                                 <button
-                                    type="button"
+                                    type="submit"
                                     className="admin-modal-submit"
+                                    disabled={createLoading}
                                 >
-                                    Add Banner
+                                    {createLoading ? <ButtonLoader /> : "Add Banner"}
                                 </button>
 
                             </div>
