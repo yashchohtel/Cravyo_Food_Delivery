@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createBanner as createBannerThunk } from "../features/platform/promotionBanners/promotionBannersThunk.js";
+import { createBanner as createBannerThunk, refreshPromotionBanners } from "../features/platform/promotionBanners/promotionBannersThunk.js";
 import { updateBanner as updateBannerThunk } from "../features/platform/promotionBanners/promotionBannersThunk.js";
 import toast from "react-hot-toast";
 
@@ -285,6 +285,9 @@ const usePromotionBanner = () => {
             await dispatch(updateBannerThunk({ id: bannerId, formData })).unwrap();
 
             toast.success("Banner updated successfully");
+
+            // silently refresh full list to sync shifted orders, no skeleton shown
+            dispatch(refreshPromotionBanners());
 
             onClose();
 

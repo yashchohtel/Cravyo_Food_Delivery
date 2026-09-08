@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createBanner, getPromotionBanners, updateBanner } from "./promotionBannersThunk";
+import { createBanner, getPromotionBanners, refreshPromotionBanners, updateBanner } from "./promotionBannersThunk";
 
 
 // initial state
@@ -103,6 +103,18 @@ const promotionBannerSlice = createSlice({
             .addCase(updateBanner.rejected, (state, action) => {
                 state.updateLoading = false;
                 state.error = action.payload;
+            })
+
+            /* ----------- REFRESH PROMOTION BANNERS (silent, no loading) ↓ */
+
+            .addCase(refreshPromotionBanners.fulfilled, (state, action) => {
+                // no loading flag touched - silent update
+                state.banners = action.payload;
+            })
+
+            .addCase(refreshPromotionBanners.rejected, (state, action) => {
+                // silently fail - don't disturb UI with error banner for background refresh
+                console.log("Silent refresh failed:", action.payload);
             })
 
     },

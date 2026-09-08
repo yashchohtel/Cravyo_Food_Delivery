@@ -51,3 +51,20 @@ export const updateBanner = createAsyncThunk("promotionBanner/updateBanner", asy
     }
 
 });
+
+// Silently refetch banners without triggering skeleton loading (used after update/create)
+export const refreshPromotionBanners = createAsyncThunk("promotionBanner/refreshPromotionBanners", async (_, { rejectWithValue }) => {
+
+    try {
+
+        const { data } = await api.get("/api/platformAction/getBanners");
+
+        return data.banners;
+
+    } catch (error) {
+
+        return rejectWithValue(error.response?.data?.message || "Something went wrong");
+
+    }
+
+});
