@@ -1,6 +1,6 @@
 import { IoClose } from 'react-icons/io5';
 import './AllCategoryPage.css'
-import { categories } from '../../../utils/dummyData.js';
+import { categories } from '../../utils/dummyData.js';
 
 const AllCategoryPage = (props) => {
 

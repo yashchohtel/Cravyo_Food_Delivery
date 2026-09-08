@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
-import AdminSearchFilter from '../../../Components/Ui/Admin Search Filter/AdminSearchFilter';
-import AdminStatsCard from '../../../Components/Ui/Admin Stats Card/AdminStatsCard';
+import AdminSearchFilter from '../../../Components/Admin/Admin Search Filter/AdminSearchFilter';
+import AdminStatsCard from '../../../Components/Admin/Admin Stats Card/AdminStatsCard';
 import './PromotionBanners.css'
 import { FiImage, FiCheckCircle, FiXCircle } from "react-icons/fi";
 import { useSelector } from 'react-redux';
-import AdminBannerList from '../../../Components/Ui/Admin Banner List/AdminBannerList';
-import AdminFormModal from '../../../Components/Ui/Admin Form Modal/AdminFormModal';
+import AdminBannerList from '../../../Components/Admin/Admin Banner List/AdminBannerList';
+import AdminFormModal from '../../../Components/Admin/Admin Form Modal/AdminFormModal';
 
 const PromotionBanners = () => {
 

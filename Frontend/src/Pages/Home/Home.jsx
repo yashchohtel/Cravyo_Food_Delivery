@@ -8,10 +8,10 @@ import { handleGetLocation } from '../../utils/getLocation';
 import LocationErrorDialog from '../../Components/Dialogs/Location Error Dialog/LocationErrorDialog';
 import LocationLoadingSplash from '../../Components/Splash Screens/Location Loading Splash/LocationLoadingSplash';
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsLocationErrorDialogOpen } from '../../features/Location/locationSlice.js';
+import { setIsLocationErrorDialogOpen } from '../../features/location/locationSlice.js';
 import HomePromotionSlider from '../../Components/Sliders/Home Promotion Slider/HomePromotionSlider.jsx';
 import FoodCategorySlider from '../../Components/Sliders/Food Category Slider/FoodCategorySlider.jsx';
-import AllCategoryPage from '../../Components/Ui/AllCategoryPage/AllCategoryPage.jsx';
+import AllCategoryPage from '../../Pages/AllCategoryPage/AllCategoryPage.jsx';
 import useFoodCategories from '../../hooks/useFoodCategories.jsx';
 import useFoodPreference from '../../hooks/useFoodPreference.jsx';
 
