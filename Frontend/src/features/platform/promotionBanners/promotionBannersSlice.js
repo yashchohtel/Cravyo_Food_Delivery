@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createBanner, getPromotionBanners, refreshPromotionBanners, updateBanner } from "./promotionBannersThunk";
+import { createBanner, deleteBanner, getPromotionBanners, refreshPromotionBanners, updateBanner } from "./promotionBannersThunk";
 
 
 // initial state
@@ -16,6 +16,9 @@ const initialState = {
 
     // loading for updating a banner
     updateLoading: false,
+
+    // loading for deleting a banner
+    deleteLoading: false,
 
     // error message
     error: null,
@@ -115,6 +118,27 @@ const promotionBannerSlice = createSlice({
             .addCase(refreshPromotionBanners.rejected, (state, action) => {
                 // silently fail - don't disturb UI with error banner for background refresh
                 console.log("Silent refresh failed:", action.payload);
+            })
+
+            /* ----------- DELETE PROMOTION BANNER ↓ */
+
+            .addCase(deleteBanner.pending, (state) => {
+                state.deleteLoading = true;
+                state.error = null;
+            })
+
+            .addCase(deleteBanner.fulfilled, (state, action) => {
+                state.deleteLoading = false;
+
+                // Remove deleted banner from existing list
+                state.banners = state.banners.filter(
+                    (banner) => banner._id !== action.meta.arg
+                );
+            })
+
+            .addCase(deleteBanner.rejected, (state, action) => {
+                state.deleteLoading = false;
+                state.error = action.payload;
             })
 
     },

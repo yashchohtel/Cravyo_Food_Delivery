@@ -290,27 +290,31 @@
     display: flex;
     gap: 2.5rem;
     padding: 2.5rem;
+    align-items: center;
 }
 
 .view-banner-image-section {
-    width: 60%;
+    width: 70%;
 }
 
 .view-banner-image-box {
     width: 100%;
-    height: 30rem;
+    height: 24rem;
     padding: 0.7rem;
     background-color: #f7f7f7;
     border: 0.1rem solid #eeeeee;
     border-radius: 0.8rem;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .view-banner-image {
     width: 100%;
     height: 100%;
     display: block;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 0.6rem;
 }
 
@@ -370,4 +374,61 @@
     color: #6b7280;
     font-size: 14px;
     height: 4.2rem;
+}
+
+/* -------------------------------- */
+
+
+/* delete banner --------------------------------- */
+
+.delete-confirm-box {
+    padding: 3rem;
+}
+
+.delete-confirm-text {
+    margin: 0 0 3rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.deleteBannerAction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.deleteBannerAction button {
+    flex: 0 0 auto;
+    height: 4.2rem;
+    padding: 0 6rem;
+    border-radius: 0.7rem;
+    font-family: inherit;
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.deleteBannerAction .admin-modal-cancel {
+    flex: 0 0 auto;
+    border: 0.1rem solid var(--border-color);
+    background-color: #ffffff;
+    color: var(--text-primary);
+}
+
+.deleteBannerAction .admin-modal-cancel:hover {
+    background-color: var(--sruface-color-3);
+}
+
+.deleteBannerAction .admin-modal-delete {
+    flex: 0 0 auto;
+    border: 0.1rem solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.deleteBannerAction .admin-modal-delete:hover {
+    opacity: 0.9;
 }

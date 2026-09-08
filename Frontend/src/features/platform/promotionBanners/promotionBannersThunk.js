@@ -68,3 +68,22 @@ export const refreshPromotionBanners = createAsyncThunk("promotionBanner/refresh
     }
 
 });
+
+// Delete an existing promotion banner
+export const deleteBanner = createAsyncThunk("promotionBanner/deleteBanner", async (id, { rejectWithValue }) => {
+
+    try {
+
+        const { data } = await api.delete(`/api/platformAction/deleteBanner/${id}`);
+
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Something went wrong"
+        );
+
+    }
+
+});

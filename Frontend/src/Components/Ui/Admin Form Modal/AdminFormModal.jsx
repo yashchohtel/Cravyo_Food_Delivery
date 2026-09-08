@@ -10,10 +10,13 @@ const AdminFormModal = (props) => {
     // destructure props
     const { isOpen, onClose, type, mode, data } = props;
 
+    console.log(data);
+
+
     /* -------------------------------------- */
 
     // Get existing banners list from redux store
-    const { createLoading, updateLoading, banners } = useSelector((state) => state.promotionBanners);
+    const { createLoading, updateLoading, deleteLoading, banners } = useSelector((state) => state.promotionBanners);
 
     /* -------------------------------------- */
 
@@ -28,7 +31,21 @@ const AdminFormModal = (props) => {
     /* -------------------------------------- */
 
     // get state and function from usePromotionBanner hook
-    const { createBanner, bannerForm, handleBannerChange, handleImageChange, bannerErrors, resetBannerForm, initEditBannerForm, handleEditBannerChange, editBannerForm, handleEditImageChange, editBannerErrors, updateBanner } = usePromotionBanner();
+    const {
+        createBanner,
+        bannerForm,
+        handleBannerChange,
+        handleImageChange,
+        bannerErrors,
+        resetBannerForm,
+        initEditBannerForm,
+        handleEditBannerChange,
+        editBannerForm,
+        handleEditImageChange,
+        editBannerErrors,
+        updateBanner,
+        deleteBanner
+    } = usePromotionBanner();
 
     /* -------------------------------------- */
 
@@ -45,6 +62,10 @@ const AdminFormModal = (props) => {
 
         if (type === "banner" && mode === "view") {
             return "View Banner";
+        }
+
+        if (type === "banner" && mode === "delete") {
+            return "Delete Banner";
         }
 
         if (type === "category" && mode === "add") {
@@ -481,6 +502,40 @@ const AdminFormModal = (props) => {
                                 </div>
 
                             </div>
+
+                        </div>
+
+                    </div>
+
+                )}
+
+                {/* Delete Banner Confirmation */}
+                {type === "banner" && mode === "delete" && (
+
+                    <div className="delete-confirm-box">
+
+                        <p className="delete-confirm-text">
+                            Are you sure you want to delete this banner?
+                        </p>
+
+                        <div className="deleteBannerAction">
+
+                            <button
+                                type="button"
+                                className="admin-modal-cancel"
+                                onClick={onClose}
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                type="button"
+                                className="admin-modal-delete"
+                                onClick={() => deleteBanner(data._id, onClose)}
+                                disabled={deleteLoading}
+                            >
+                                {deleteLoading ? <ButtonLoader /> : "Delete"}
+                            </button>
 
                         </div>
 

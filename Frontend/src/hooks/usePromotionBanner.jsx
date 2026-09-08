@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createBanner as createBannerThunk, refreshPromotionBanners } from "../features/platform/promotionBanners/promotionBannersThunk.js";
-import { updateBanner as updateBannerThunk } from "../features/platform/promotionBanners/promotionBannersThunk.js";
+
+import {
+    createBanner as createBannerThunk,
+    updateBanner as updateBannerThunk,
+    deleteBanner as deleteBannerThunk,
+    refreshPromotionBanners
+} from "../features/platform/promotionBanners/promotionBannersThunk.js";
+
 import toast from "react-hot-toast";
 
 const usePromotionBanner = () => {
@@ -263,7 +269,6 @@ const usePromotionBanner = () => {
 
     };
 
-
     // Log edit banner data on submit - temporary check before API integration
     const updateBanner = async (bannerId, onClose) => {
 
@@ -299,7 +304,27 @@ const usePromotionBanner = () => {
 
     };
 
+    /* STATE AND FUNCTIONS RELATED TO DELETE BANNER -------------------------------------- */
 
+    // Delete banner
+    const deleteBanner = async (bannerId, onClose) => {
+
+        try {
+
+            await dispatch(deleteBannerThunk(bannerId)).unwrap();
+
+            toast.success("Banner deleted successfully");
+
+            // Close delete modal
+            onClose();
+
+        } catch (error) {
+
+            toast.error(error || "Failed to delete banner");
+
+        }
+
+    };
 
 
     // Return all state and functions from the hook
@@ -319,7 +344,10 @@ const usePromotionBanner = () => {
         handleEditBannerChange,
         editBannerErrors,
         handleEditImageChange,
-        updateBanner
+        updateBanner,
+
+        // function to delete banner
+        deleteBanner,
 
     };
 };

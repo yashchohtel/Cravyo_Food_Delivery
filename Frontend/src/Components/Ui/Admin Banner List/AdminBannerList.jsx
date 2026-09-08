@@ -100,7 +100,10 @@ const AdminBannerList = (props) => {
                             </span>
                         </button>
 
-                        <button className="banner-action-btn delete-action">
+                        <button
+                            className="banner-action-btn delete-action"
+                            onClick={() => openModal("banner", "delete", banner)}
+                        >
                             <FiTrash2 />
                             <span className="action-tooltip">
                                 Delete Banner
