@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createBanner, getPromotionBanners } from "./promotionBannersThunk";
+import { createBanner, getPromotionBanners, updateBanner } from "./promotionBannersThunk";
 
 
 // initial state
@@ -13,6 +13,9 @@ const initialState = {
 
     // loading for creating a new banner
     createLoading: false,
+
+    // loading for updating a banner
+    updateLoading: false,
 
     // error message
     error: null,
@@ -72,13 +75,33 @@ const promotionBannerSlice = createSlice({
 
             .addCase(createBanner.fulfilled, (state, action) => {
                 state.createLoading = false;
-                
+
                 // backend returns array of created banners - add them to existing list
                 state.banners = [...state.banners, ...action.payload];
             })
 
             .addCase(createBanner.rejected, (state, action) => {
                 state.createLoading = false;
+                state.error = action.payload;
+            })
+
+            /* ----------- UPDATE PROMOTION BANNER ↓ */
+
+            .addCase(updateBanner.pending, (state) => {
+                state.updateLoading = true;
+                state.error = null;
+            })
+
+            .addCase(updateBanner.fulfilled, (state, action) => {
+                state.updateLoading = false;
+                // replace the updated banner in existing list
+                state.banners = state.banners.map((banner) =>
+                    banner._id === action.payload._id ? action.payload : banner
+                );
+            })
+
+            .addCase(updateBanner.rejected, (state, action) => {
+                state.updateLoading = false;
                 state.error = action.payload;
             })
 

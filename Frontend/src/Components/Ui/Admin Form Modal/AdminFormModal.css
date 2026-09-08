@@ -192,7 +192,7 @@
     border-color: var(--primary-color);
 }
 
-.createBannerAction {
+.bannerActions {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -231,13 +231,13 @@
     opacity: 0.9;
 }
 
-/* edit banner */
-/* Edit Banner Image */
+/* edit banner --------------------------------- */
 
+/* Edit Banner Image */
 .banner-edit-image-box {
     width: 100%;
     height: 17rem;
-    padding: 0.7rem;
+    padding: 0.3rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -284,7 +284,8 @@
 }
 
 
-/* view banner */
+/* view banner ----------------------------------------- */
+
 .view-banner-container {
     display: flex;
     gap: 2.5rem;
@@ -352,6 +353,12 @@
 
 .error-text {
     color: var(--error-color);
+    font-size: 1.2rem;
+    margin-top: 0.3rem;
+}
+
+.info-text {
+    color: #2563eb;
     font-size: 1.2rem;
     margin-top: 0.3rem;
 }

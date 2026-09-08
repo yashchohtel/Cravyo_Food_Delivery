@@ -108,21 +108,21 @@ const PromotionBanners = () => {
                 <AdminStatsCard
                     icon={<FiImage />}
                     title="Total Banners"
-                    value={12}
+                    value={banners.length}
                     variant="total"
                 />
 
                 <AdminStatsCard
                     icon={<FiCheckCircle />}
                     title="Active Banners"
-                    value={8}
+                    value={banners.filter((banner) => banner.isActive).length}
                     variant="active"
                 />
 
                 <AdminStatsCard
                     icon={<FiXCircle />}
                     title="Inactive Banners"
-                    value={4}
+                    value={banners.filter((banner) => !banner.isActive).length}
                     variant="inactive"
                 />
 
@@ -142,7 +142,6 @@ const PromotionBanners = () => {
                 onFilterChange={setStatus}
 
                 onAdd={() => openModal("banner", "add")} // open add banner modal on click
-
             />
 
             {/* banner list heading */}

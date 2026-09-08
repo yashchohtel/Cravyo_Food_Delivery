@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import usePromotionBanner from '../../../hooks/usePromotionBanner';
 import './AdminFormModal.css'
 import { FiChevronDown, FiUploadCloud, FiX } from "react-icons/fi";
@@ -13,7 +13,7 @@ const AdminFormModal = (props) => {
     /* -------------------------------------- */
 
     // Get existing banners list from redux store
-    const { createLoading, banners } = useSelector((state) => state.promotionBanners);
+    const { createLoading, updateLoading, banners } = useSelector((state) => state.promotionBanners);
 
     /* -------------------------------------- */
 
@@ -28,7 +28,7 @@ const AdminFormModal = (props) => {
     /* -------------------------------------- */
 
     // get state and function from usePromotionBanner hook
-    const { createBanner, bannerForm, handleBannerChange, handleImageChange, bannerErrors, resetBannerForm } = usePromotionBanner();
+    const { createBanner, bannerForm, handleBannerChange, handleImageChange, bannerErrors, resetBannerForm, initEditBannerForm, handleEditBannerChange, editBannerForm, handleEditImageChange, editBannerErrors, updateBanner } = usePromotionBanner();
 
     /* -------------------------------------- */
 
@@ -64,6 +64,23 @@ const AdminFormModal = (props) => {
 
     /* -------------------------------------- */
 
+    useEffect(() => {
+
+        // reset form when opening in add mode
+        if (isOpen && type === "banner" && mode === "add") {
+            resetBannerForm();
+        }
+
+        // prefill form with existing data when opening in edit mode
+        if (isOpen && type === "banner" && mode === "edit" && data) {
+            initEditBannerForm(data);
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isOpen, type, mode, data]);
+
+    /* -------------------------------------- */
+
     // if modal is not open, return null
     if (!isOpen) return null;
 
@@ -95,7 +112,7 @@ const AdminFormModal = (props) => {
 
                 </div>
 
-                {/* ---------------- modal related to banners ---------------- */}
+                {/* ---------------- modals related to banners ---------------- */}
 
                 {/* Add Banner Form */}
                 {type === "banner" && mode === "add" && (
@@ -210,7 +227,7 @@ const AdminFormModal = (props) => {
                             </div>
 
                             {/* banner actions */}
-                            <div className="createBannerAction">
+                            <div className="bannerActions">
 
                                 <button
                                     type="button"
@@ -242,7 +259,13 @@ const AdminFormModal = (props) => {
                 {/* Edit Banner Form */}
                 {type === "banner" && mode === "edit" && (
 
-                    <form className="admin-banner-form">
+                    <form
+                        className="admin-banner-form"
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            updateBanner(data._id, onClose);
+                        }}
+                    >
 
                         {/* Left - Current Image */}
                         <div className="banner-image-section">
@@ -254,9 +277,18 @@ const AdminFormModal = (props) => {
                             <div className="banner-edit-image-box">
 
                                 <img
-                                    src={data?.image}
-                                    alt={data?.title || "Banner"}
+                                    src={editBannerForm.imagePreview}
+                                    alt={editBannerForm.title || "Banner"}
                                     className="banner-edit-image"
+                                />
+
+                                {/* hidden input, triggered by "Change Image" button click */}
+                                <input
+                                    type="file"
+                                    ref={fileInputRef}
+                                    accept="image/png, image/jpeg, image/webp"
+                                    style={{ display: 'none' }}
+                                    onChange={handleEditImageChange}
                                 />
 
                             </div>
@@ -264,6 +296,7 @@ const AdminFormModal = (props) => {
                             <button
                                 type="button"
                                 className="banner-change-image"
+                                onClick={triggerFileSelect}
                             >
                                 <FiUploadCloud />
                                 Change Image
@@ -272,6 +305,12 @@ const AdminFormModal = (props) => {
                             <p className="banner-upload-note">
                                 Recommended size: 1920 × 600px
                             </p>
+
+                            {editBannerErrors.image && (
+                                <p className="error-text">
+                                    {editBannerErrors.image}
+                                </p>
+                            )}
 
                         </div>
 
@@ -287,7 +326,9 @@ const AdminFormModal = (props) => {
 
                                 <input
                                     type="text"
-                                    defaultValue={data?.title || ""}
+                                    name="title"
+                                    value={editBannerForm.title}
+                                    onChange={handleEditBannerChange}
                                     placeholder="e.g. Delivery at ₹1"
                                 />
 
@@ -302,9 +343,24 @@ const AdminFormModal = (props) => {
 
                                 <input
                                     type="number"
-                                    defaultValue={data?.order ?? ""}
+                                    name="order"
+                                    value={editBannerForm.order}
+                                    onChange={handleEditBannerChange}
                                     placeholder="e.g. 1"
                                 />
+
+                                {editBannerErrors.order && (
+                                    <p className="error-text">
+                                        {editBannerErrors.order}
+                                    </p>
+                                )}
+
+                                {/* show info only when no error and order changed from original */}
+                                {!editBannerErrors.order && Number(editBannerForm.order) !== data?.order && (
+                                    <p className="info-text">
+                                        Other banners order will adjust automatically
+                                    </p>
+                                )}
 
                             </div>
 
@@ -318,21 +374,12 @@ const AdminFormModal = (props) => {
                                 <div className="select-wrapper">
 
                                     <select
-                                        defaultValue={
-                                            data?.isActive
-                                                ? "active"
-                                                : "inactive"
-                                        }
+                                        name="isActive"
+                                        value={editBannerForm.isActive}
+                                        onChange={handleEditBannerChange}
                                     >
-
-                                        <option value="active">
-                                            Active
-                                        </option>
-
-                                        <option value="inactive">
-                                            Inactive
-                                        </option>
-
+                                        <option value={true}>Active</option>
+                                        <option value={false}>Inactive</option>
                                     </select>
 
                                     <FiChevronDown className="select-arrow" />
@@ -341,7 +388,7 @@ const AdminFormModal = (props) => {
 
                             </div>
 
-                            <div className="createBannerAction">
+                            <div className="bannerActions">
 
                                 <button
                                     type="button"
@@ -352,10 +399,11 @@ const AdminFormModal = (props) => {
                                 </button>
 
                                 <button
-                                    type="button"
+                                    type="submit"
                                     className="admin-modal-submit"
+                                    disabled={updateLoading}
                                 >
-                                    Save Changes
+                                    {updateLoading ? <ButtonLoader /> : "Save Changes"}
                                 </button>
 
                             </div>

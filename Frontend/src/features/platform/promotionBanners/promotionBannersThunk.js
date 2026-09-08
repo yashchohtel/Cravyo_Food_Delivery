@@ -34,3 +34,20 @@ export const createBanner = createAsyncThunk("promotionBanner/createBanner", asy
     }
 
 });
+
+// Update an existing promotion banner
+export const updateBanner = createAsyncThunk("promotionBanner/updateBanner", async ({ id, formData }, { rejectWithValue }) => {
+
+    try {
+
+        const { data } = await api.put(`/api/platformAction/updateBanner/${id}`, formData);
+
+        return data.banner;
+
+    } catch (error) {
+
+        return rejectWithValue(error.response?.data?.message || "Something went wrong");
+
+    }
+
+});

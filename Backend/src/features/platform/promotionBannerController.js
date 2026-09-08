@@ -186,6 +186,11 @@ export const updatePromotionBanner = async (req, res, next) => {
             updateData.publicId = newImage.public_id;
         }
 
+        // update title
+        if (req.body.title !== undefined) {
+            updateData.title = req.body.title;
+        }
+
         // update location
         if (req.body.location !== undefined) {
             updateData.location = req.body.location;
