@@ -326,6 +326,46 @@ const usePromotionBanner = () => {
 
     };
 
+    /* STATE AND FUNCTIONS RELATED TO BANNER SEARCH & FILTER ----------------------------- */
+
+    // Search state
+    const [search, setSearch] = useState("");
+
+    // Filter state
+    const [status, setStatus] = useState("all");
+
+    // sort state
+    const [sort, setSort] = useState("latest");
+
+    // searching banners based on title (case-insensitive)
+    const filteredBanners = banners.filter((banner) => {
+
+        // Search condition
+        const matchesSearch = banner.title.toLowerCase().includes(search.toLowerCase());
+
+        // Status condition
+        const matchesStatus = status === "all" || (status === "active" && banner.isActive) || (status === "inactive" && !banner.isActive);
+
+        return matchesSearch && matchesStatus;
+    });
+
+    // Sorting banners based on selected sort option
+    const sortedBanners = [...filteredBanners].sort((a, b) => {
+
+        if (sort === "latest") {
+            return new Date(b.createdAt) - new Date(a.createdAt);
+        }
+
+        if (sort === "oldest") {
+            return new Date(a.createdAt) - new Date(b.createdAt);
+        }
+
+        if (sort === "order") {
+            return a.order - b.order;
+        }
+
+        return 0;
+    });
 
     // Return all state and functions from the hook
     return {
@@ -348,6 +388,15 @@ const usePromotionBanner = () => {
 
         // function to delete banner
         deleteBanner,
+
+        // function and state related to search and filter
+        search,
+        setSearch,
+        status,
+        setStatus,
+        sort,
+        setSort,
+        sortedBanners,
 
     };
 };

@@ -177,3 +177,15 @@
     opacity: 1;
     visibility: visible;
 }
+
+.no-banner-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 15rem;
+    padding: 2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: center;
+}

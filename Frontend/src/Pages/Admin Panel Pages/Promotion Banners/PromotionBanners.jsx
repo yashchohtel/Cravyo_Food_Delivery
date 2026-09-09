@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import AdminBannerList from '../../../Components/Admin/Admin Banner List/AdminBannerList';
 import AdminFormModal from '../../../Components/Admin/Admin Form Modal/AdminFormModal';
 import AdminBannerListSkeleton from '../../../Components/Skeletons/Admin Banner List Skeleton/AdminBannerListSkeleton';
+import usePromotionBanner from '../../../hooks/usePromotionBanner';
 
 const PromotionBanners = () => {
 
@@ -15,11 +16,8 @@ const PromotionBanners = () => {
 
     /* -------------------------------------- */
 
-    // Search state
-    const [search, setSearch] = useState("");
-
-    // Status filter state
-    const [status, setStatus] = useState("all");
+    // get state and functions from the usePromotionBanner hook
+    const { search, setSearch, status, setStatus, sort, setSort, sortedBanners, } = usePromotionBanner();
 
     /* -------------------------------------- */
 
@@ -131,17 +129,22 @@ const PromotionBanners = () => {
             {/* Search & Filter */}
             <AdminSearchFilter
                 placeholder="Search banners..."   // place holder value
+                searchValue={search} // search value for banners
+                onSearchChange={setSearch} // search value change handler
 
                 filterOptions={filterOptions}    // filter options for banners
+                filterValue={status} // filter value for banners
+                onFilterChange={setStatus} // filter value change handler
+
                 sortOptions={sortOptions}        // sort options for banners
+                sortValue={sort}
+                onSortChange={setSort}
 
-                searchValue={search}
-                onSearchChange={setSearch}
-
-                filterValue={status}
-                onFilterChange={setStatus}
+                showSort={true} // hide sort option
+                showRefresh={true} // show refresh button
 
                 onAdd={() => openModal("banner", "add")} // open add banner modal on click
+
             />
 
             {/* banner list heading */}
@@ -190,8 +193,9 @@ const PromotionBanners = () => {
             ) : (
 
                 <AdminBannerList
-                    banners={banners}
+                    banners={sortedBanners}
                     openModal={openModal}
+                    search={search}
                 />
 
             )}

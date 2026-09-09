@@ -8,9 +8,21 @@ const AdminSearchFilter = (props) => {
         placeholder = "Search...",
         filterOptions = [],
         sortOptions = [],
+
+        searchValue,
+        onSearchChange,
+
+        filterValue,
+        onFilterChange,
+
+        sortValue,
+        onSortChange,
+
+        onAdd,
+
         showSort = true,
         showRefresh = true,
-        onAdd,
+
     } = props;
 
     return (
@@ -28,6 +40,8 @@ const AdminSearchFilter = (props) => {
                     <input
                         type="text"
                         placeholder={placeholder}
+                        value={searchValue}
+                        onChange={(e) => onSearchChange(e.target.value)}
                     />
 
                 </div>
@@ -40,23 +54,18 @@ const AdminSearchFilter = (props) => {
                 {/* Filter */}
                 <div className="admin-filter-box">
 
-                    <select defaultValue="">
-
-                        <option value="" disabled>
-                            Select Status
-                        </option>
-
+                    <select
+                        value={filterValue}
+                        onChange={(e) => onFilterChange(e.target.value)}
+                    >
                         {filterOptions.map((option) => (
-
                             <option
                                 key={option.value}
                                 value={option.value}
                             >
                                 {option.label}
                             </option>
-
                         ))}
-
                     </select>
 
                     <FiChevronDown className="admin-filter-icon" />
@@ -68,23 +77,20 @@ const AdminSearchFilter = (props) => {
 
                     <div className="admin-filter-box">
 
-                        <select defaultValue="">
-
+                        <select
+                            value={sortValue}
+                            onChange={(e) => onSortChange(e.target.value)}
+                        >
                             <option value="" disabled>
                                 Sort By
                             </option>
 
                             {sortOptions.map((option) => (
-
-                                <option
-                                    key={option.value}
-                                    value={option.value}
-                                >
+                                <option key={option.value} value={option.value}>
                                     {option.label}
                                 </option>
-
                             ))}
-
+                            
                         </select>
 
                         <FiChevronDown className="admin-filter-icon" />
