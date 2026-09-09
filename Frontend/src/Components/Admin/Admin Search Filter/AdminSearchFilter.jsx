@@ -1,5 +1,6 @@
 import "./AdminSearchFilter.css";
-import { FiSearch, FiRefreshCw, FiChevronDown, FiPlus } from "react-icons/fi";
+import { FiSearch, FiRefreshCw, FiChevronDown, FiPlus, FiRotateCcw } from "react-icons/fi";
+
 
 const AdminSearchFilter = (props) => {
 
@@ -18,10 +19,16 @@ const AdminSearchFilter = (props) => {
         sortValue,
         onSortChange,
 
+        onReset,
+
+        onRefresh,
+
         onAdd,
 
+        showFilter = true,
         showSort = true,
         showRefresh = true,
+        showReset = true,
 
     } = props;
 
@@ -52,25 +59,27 @@ const AdminSearchFilter = (props) => {
             <div className="searchFilterRight">
 
                 {/* Filter */}
-                <div className="admin-filter-box">
+                {showFilter && (
+                    <div className="admin-filter-box">
 
-                    <select
-                        value={filterValue}
-                        onChange={(e) => onFilterChange(e.target.value)}
-                    >
-                        {filterOptions.map((option) => (
-                            <option
-                                key={option.value}
-                                value={option.value}
-                            >
-                                {option.label}
-                            </option>
-                        ))}
-                    </select>
+                        <select
+                            value={filterValue}
+                            onChange={(e) => onFilterChange(e.target.value)}
+                        >
+                            {filterOptions.map((option) => (
+                                <option
+                                    key={option.value}
+                                    value={option.value}
+                                >
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
 
-                    <FiChevronDown className="admin-filter-icon" />
+                        <FiChevronDown className="admin-filter-icon" />
 
-                </div>
+                    </div>
+                )}
 
                 {/* Sort */}
                 {showSort && (
@@ -90,12 +99,31 @@ const AdminSearchFilter = (props) => {
                                     {option.label}
                                 </option>
                             ))}
-                            
+
                         </select>
 
                         <FiChevronDown className="admin-filter-icon" />
 
                     </div>
+
+                )}
+
+                {/* reset */}
+                {showReset && (
+
+                    <button
+                        type="button"
+                        className="admin-refresh-btn"
+                        onClick={onReset}
+                    >
+
+                        <FiRotateCcw />
+
+                        <span>
+                            reset
+                        </span>
+
+                    </button>
 
                 )}
 
@@ -105,6 +133,7 @@ const AdminSearchFilter = (props) => {
                     <button
                         type="button"
                         className="admin-refresh-btn"
+                        onClick={onRefresh}
                     >
 
                         <FiRefreshCw />

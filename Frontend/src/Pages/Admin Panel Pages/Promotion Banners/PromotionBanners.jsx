@@ -17,7 +17,7 @@ const PromotionBanners = () => {
     /* -------------------------------------- */
 
     // get state and functions from the usePromotionBanner hook
-    const { search, setSearch, status, setStatus, sort, setSort, sortedBanners, } = usePromotionBanner();
+    const { search, setSearch, status, setStatus, sort, setSort, sortedBanners, resetSearchFilterSort, refreshBanners} = usePromotionBanner();
 
     /* -------------------------------------- */
 
@@ -128,23 +128,27 @@ const PromotionBanners = () => {
 
             {/* Search & Filter */}
             <AdminSearchFilter
-                placeholder="Search banners..."   // place holder value
-                searchValue={search} // search value for banners
-                onSearchChange={setSearch} // search value change handler
+                placeholder="Search banners..." // Search input ka placeholder
+                searchValue={search}            // Current search value
+                onSearchChange={setSearch}      // Search value change handler
 
-                filterOptions={filterOptions}    // filter options for banners
-                filterValue={status} // filter value for banners
-                onFilterChange={setStatus} // filter value change handler
+                filterOptions={filterOptions}   // Filter dropdown options
+                filterValue={status}            // Current filter value
+                onFilterChange={setStatus}      // Filter value change handler
 
-                sortOptions={sortOptions}        // sort options for banners
-                sortValue={sort}
-                onSortChange={setSort}
+                sortOptions={sortOptions}       // Sort dropdown options
+                sortValue={sort}                // Current sort value
+                onSortChange={setSort}          // Sort value change handler
 
-                showSort={true} // hide sort option
-                showRefresh={true} // show refresh button
+                showFilter={true}                // Show/hide filter
+                showSort={true}                  // Show/hide sort
+                showRefresh={true}               // Show/hide refresh
+                showReset={true}                 // Show/hide reset
 
-                onAdd={() => openModal("banner", "add")} // open add banner modal on click
+                onReset={resetSearchFilterSort}  // Reset search, filter, and sort to default values
+                onRefresh={refreshBanners}       // Refresh banners from server (used after update/create/delete to sync with backend)
 
+                onAdd={() => openModal("banner", "add")} // Add banner handler
             />
 
             {/* banner list heading */}

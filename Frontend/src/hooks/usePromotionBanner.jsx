@@ -5,7 +5,8 @@ import {
     createBanner as createBannerThunk,
     updateBanner as updateBannerThunk,
     deleteBanner as deleteBannerThunk,
-    refreshPromotionBanners
+    refreshPromotionBanners,
+    getPromotionBanners
 } from "../features/platform/promotionBanners/promotionBannersThunk.js";
 
 import toast from "react-hot-toast";
@@ -367,6 +368,18 @@ const usePromotionBanner = () => {
         return 0;
     });
 
+    // reset search filter sort to default
+    const resetSearchFilterSort = () => {
+        setSearch("");
+        setStatus("all");
+        setSort("latest");
+    };
+
+    // Refresh banners from server (used after update/create/delete to sync with backend)
+    const refreshBanners = () => {
+        dispatch(getPromotionBanners());
+    };
+
     // Return all state and functions from the hook
     return {
 
@@ -397,6 +410,8 @@ const usePromotionBanner = () => {
         sort,
         setSort,
         sortedBanners,
+        resetSearchFilterSort,
+        refreshBanners
 
     };
 };
