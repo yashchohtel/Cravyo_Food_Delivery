@@ -10,7 +10,7 @@ const AdminBannerList = (props) => {
 
         <div className="admin-banner-list">
 
-            {banners.map((banner) => (
+            {banners.map((banner, index) => (
 
                 <div
                     className="admin-banner-item"
@@ -50,7 +50,7 @@ const AdminBannerList = (props) => {
                     <div className="banner-col banner-col-order">
 
                         <span className="banner-order">
-                            {banner.order}
+                            {index + 1}
                         </span>
 
                     </div>

@@ -1,0 +1,102 @@
+.bannerLoadingRow {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.2rem 1.2rem;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 1rem;
+    background-color: var(--surface-color);
+    border-radius: 1rem;
+}
+
+/* Common column */
+.bannerLoadingCol {
+    display: flex;
+    align-items: center;
+}
+
+/* Banner Image */
+.bannerLoadingImage {
+    width: 9rem;
+    height: 6rem;
+    border-radius: 0.6rem;
+    flex-shrink: 0;
+}
+
+/* Title */
+.bannerLoadingTitleCol {
+    flex: 2;
+}
+
+.bannerLoadingTitle {
+    width: 70%;
+    height: 1.4rem;
+    border-radius: 0.6rem;
+}
+
+/* Order */
+.bannerLoadingOrderCol {
+    flex: 0.5;
+    justify-content: center;
+}
+
+.bannerLoadingOrder {
+    width: 1.5rem;
+    height: 1.4rem;
+    border-radius: 0.4rem;
+}
+
+/* Status */
+.bannerLoadingStatusCol {
+    flex: 0.8;
+}
+
+.bannerLoadingStatus {
+    width: 5.5rem;
+    height: 2rem;
+    border-radius: 1rem;
+}
+
+/* Created At */
+.bannerLoadingDateCol {
+    flex: 1;
+}
+
+.bannerLoadingDate {
+    width: 6.5rem;
+    height: 1.4rem;
+    border-radius: 0.6rem;
+}
+
+/* Actions */
+.bannerLoadingActionsCol {
+    flex: 1;
+    justify-content: flex-end;
+    gap: 0.7rem;
+}
+
+.bannerLoadingActionIcon {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 0.6rem;
+    flex-shrink: 0;
+}
+
+/* Shimmer */
+.bannerLoadingShimmer {
+    background: linear-gradient(90deg, #e2e5ea 25%, #eef1f5 50%, #e2e5ea 75%);
+    background-size: 200% 100%;
+    animation: bannerLoadingShimmer 1.3s linear infinite;
+}
+
+@keyframes bannerLoadingShimmer {
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
+}

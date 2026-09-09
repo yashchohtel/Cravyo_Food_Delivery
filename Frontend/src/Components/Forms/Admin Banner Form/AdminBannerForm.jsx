@@ -8,21 +8,26 @@ const AdminBannerForm = ({ mode, data, onClose }) => {
 
     // banner hook
     const {
+        
+        // state and functions related to create banner
         createBanner,
         bannerForm,
+        bannerErrors,
         handleBannerChange,
         handleImageChange,
-        bannerErrors,
         resetBannerForm,
 
+        // state and functions related to edit banner
+        editBannerForm,
         initEditBannerForm,
         handleEditBannerChange,
-        editBannerForm,
-        handleEditImageChange,
         editBannerErrors,
-
+        handleEditImageChange,
         updateBanner,
-        deleteBanner
+
+        // function to delete banner
+        deleteBanner,
+
     } = usePromotionBanner();
 
     /* -------------------------------------- */
@@ -45,6 +50,8 @@ const AdminBannerForm = ({ mode, data, onClose }) => {
         fileInputRef.current.click();
     };
 
+    /* -------------------------------------- */
+
     // initialize edit form
     useEffect(() => {
 
@@ -52,7 +59,8 @@ const AdminBannerForm = ({ mode, data, onClose }) => {
             initEditBannerForm(data);
         }
 
-    }, [mode, data, initEditBannerForm]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [mode, data]);
 
     return (
 
@@ -124,7 +132,6 @@ const AdminBannerForm = ({ mode, data, onClose }) => {
                         </p>
 
                     </div>
-
 
                     {/* Right - Banner Details */}
                     <div className="banner-form-details">

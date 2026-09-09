@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import AdminSearchFilter from '../../../Components/Admin/Admin Search Filter/AdminSearchFilter';
 import AdminStatsCard from '../../../Components/Admin/Admin Stats Card/AdminStatsCard';
@@ -7,11 +6,12 @@ import { FiImage, FiCheckCircle, FiXCircle } from "react-icons/fi";
 import { useSelector } from 'react-redux';
 import AdminBannerList from '../../../Components/Admin/Admin Banner List/AdminBannerList';
 import AdminFormModal from '../../../Components/Admin/Admin Form Modal/AdminFormModal';
+import AdminBannerListSkeleton from '../../../Components/Skeletons/Admin Banner List Skeleton/AdminBannerListSkeleton';
 
 const PromotionBanners = () => {
 
     // get data from the promotion store
-    const { banners, loading, error } = useSelector((state) => state.promotionBanners);
+    const { banners, loading } = useSelector((state) => state.promotionBanners);
 
     /* -------------------------------------- */
 
@@ -179,10 +179,22 @@ const PromotionBanners = () => {
             </div>
 
             {/* Banner List */}
-            <AdminBannerList
-                banners={banners}
-                openModal={openModal}
-            />
+            {loading ? (
+
+                <div className="bannerLoadingWrapper">
+                    {Array(5).fill(0).map((_, i) => (
+                        <AdminBannerListSkeleton key={i} />
+                    ))}
+                </div>
+
+            ) : (
+
+                <AdminBannerList
+                    banners={banners}
+                    openModal={openModal}
+                />
+
+            )}
 
         </>
 

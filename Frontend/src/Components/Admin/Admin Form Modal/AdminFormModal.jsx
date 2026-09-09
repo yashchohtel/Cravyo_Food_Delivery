@@ -44,7 +44,6 @@ const AdminFormModal = (props) => {
 
             <div className="admin-modal">
 
-
                 {/* Header */}
                 <div className="admin-modal-header">
 
@@ -61,7 +60,6 @@ const AdminFormModal = (props) => {
                     </button>
 
                 </div>
-
 
                 {/* Banner Forms */}
                 {type === "banner" && (
