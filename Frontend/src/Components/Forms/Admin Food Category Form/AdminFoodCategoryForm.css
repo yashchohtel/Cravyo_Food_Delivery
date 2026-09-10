@@ -1,0 +1,358 @@
+/* add category form */
+.admin-category-form {
+    display: flex;
+    gap: 2.5rem;
+    padding: 2.4rem 2.5rem 2.8rem;
+}
+
+.category-image-section,
+.category-form-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.category-form-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.admin-form-label,
+.admin-form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.admin-form-group {
+    width: 100%;
+}
+
+.category-upload-box {
+    width: 100%;
+    height: 17rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.1rem dashed #d5d5d5;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.category-upload-box:hover {
+    border-color: var(--primary-color);
+    background-color: var(--sruface-color-3);
+}
+
+.category-upload-icon {
+    margin-bottom: 1.2rem;
+    font-size: 3.2rem;
+    color: #777777;
+}
+
+.category-upload-box span {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+}
+
+.category-upload-box small {
+    margin-top: 0.7rem;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.category-upload-note {
+    margin: 0.9rem 0 0;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-wrapper select {
+    width: 100%;
+    height: 4.2rem;
+    padding: 0 4rem 0 1.2rem;
+    border: 0.1rem solid #dddddd;
+    border-radius: 0.7rem;
+    outline: none;
+    background-color: #ffffff;
+    font-family: inherit;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    appearance: none;
+    cursor: pointer;
+}
+
+.select-wrapper select:focus {
+    border-color: var(--primary-color);
+}
+
+.select-arrow {
+    position: absolute;
+    top: 50%;
+    right: 1.2rem;
+    transform: translateY(-50%);
+    font-size: 1.7rem;
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+.admin-form-group input,
+.admin-form-group select {
+    width: 100%;
+    height: 4.2rem;
+    padding: 0 1.2rem;
+    border: 0.1rem solid #dddddd;
+    border-radius: 0.7rem;
+    outline: none;
+    background-color: #ffffff;
+    font-family: inherit;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+}
+
+.admin-form-group input::placeholder {
+    color: #aaaaaa;
+}
+
+.admin-form-group input:focus,
+.admin-form-group select:focus {
+    border-color: var(--primary-color);
+}
+
+.category-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2rem;
+    margin-top: auto;
+}
+
+.category-modal-cancel,
+.category-modal-submit {
+    height: 4.2rem;
+    padding: 0 1.8rem;
+    border-radius: 0.7rem;
+    font-family: inherit;
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+    flex: 1;
+}
+
+.category-modal-cancel {
+    border: 0.1rem solid var(--border-color);
+    background-color: #ffffff;
+    color: var(--text-primary);
+}
+
+.category-modal-cancel:hover {
+    background-color: var(--sruface-color-3);
+}
+
+.category-modal-submit {
+    border: 0.1rem solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.category-modal-submit:hover {
+    opacity: 0.9;
+}
+
+/* edit category */
+.category-edit-image-box {
+    width: 100%;
+    height: 17rem;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.1rem solid #dddddd;
+    border-radius: 0.8rem;
+    background-color: #f7f7f7;
+    overflow: hidden;
+}
+
+.category-edit-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0.6rem;
+    display: block;
+}
+
+.category-change-image {
+    width: 100%;
+    height: 4.2rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    border: 0.1rem solid #dddddd;
+    background-color: #ffffff;
+    border-radius: 0.7rem;
+    font-family: inherit;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.category-change-image:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    background-color: var(--sruface-color-3);
+}
+
+.category-change-image svg {
+    font-size: 1.7rem;
+}
+
+/* view category */
+.view-category-container {
+    display: flex;
+    gap: 2.5rem;
+    padding: 2.5rem;
+    align-items: center;
+}
+
+.view-category-image-section {
+    width: 55%;
+}
+
+.view-category-image-box {
+    width: 100%;
+    height: 24rem;
+    padding: 0.7rem;
+    background-color: #f7f7f7;
+    border: 0.1rem solid #eeeeee;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-category-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    border-radius: 0.6rem;
+}
+
+.view-category-info {
+    width: 45%;
+    padding-top: 0.5rem;
+}
+
+.view-category-info h3 {
+    margin: 0 0 2rem;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.view-category-info-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.view-category-info-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-bottom: 0.1rem solid #eeeeee;
+}
+
+.view-category-info-item span {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+}
+
+.view-category-info-item strong {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.category-status.status-active {
+    color: #16a34a;
+}
+
+.category-status.status-inactive {
+    color: #dc2626;
+}
+
+/* delete category */
+.delete-category-box {
+    padding: 3rem;
+}
+
+.delete-category-text {
+    margin: 0 0 3rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.delete-category-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.delete-category-actions button {
+    flex: 0 0 auto;
+    height: 4.2rem;
+    padding: 0 6rem;
+    border-radius: 0.7rem;
+    font-family: inherit;
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.delete-category-actions .category-modal-cancel {
+    flex: 0 0 auto;
+    border: 0.1rem solid var(--border-color);
+    background-color: #ffffff;
+    color: var(--text-primary);
+}
+
+.category-modal-delete {
+    flex: 0 0 auto;
+    border: 0.1rem solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.category-modal-delete:hover {
+    opacity: 0.9;
+}
+
+.category-order-display {
+    height: 4.2rem;
+    padding: 1.2rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    background-color: #f3f4f6;
+    border-radius: 0.7rem;
+    color: #6b7280;
+    font-size: 1.4rem;
+}

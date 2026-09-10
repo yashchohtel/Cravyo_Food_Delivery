@@ -125,11 +125,7 @@ const AdminFoodCategoryList = (props) => {
                                 type="button"
                                 className="category-action-btn view-action"
                                 onClick={() =>
-                                    openModal(
-                                        "category",
-                                        "view",
-                                        category
-                                    )
+                                    openModal("category", "view", category)
                                 }
                             >
                                 <FiEye />
@@ -143,11 +139,7 @@ const AdminFoodCategoryList = (props) => {
                                 type="button"
                                 className="category-action-btn edit-action"
                                 onClick={() =>
-                                    openModal(
-                                        "category",
-                                        "edit",
-                                        category
-                                    )
+                                    openModal("category", "edit", category)
                                 }
                             >
                                 <FiEdit2 />
@@ -161,11 +153,7 @@ const AdminFoodCategoryList = (props) => {
                                 type="button"
                                 className="category-action-btn delete-action"
                                 onClick={() =>
-                                    openModal(
-                                        "category",
-                                        "delete",
-                                        category
-                                    )
+                                    openModal("category", "delete", category)
                                 }
                             >
                                 <FiTrash2 />

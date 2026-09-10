@@ -1,11 +1,18 @@
 import { FiX } from "react-icons/fi";
 import "./AdminFormModal.css";
 import AdminBannerForm from "../../Forms/Admin Banner Form/AdminBannerForm.jsx";
+import AdminFoodCategoryForm from "../../Forms/Admin Food Category Form/AdminFoodCategoryForm.jsx";
 
 const AdminFormModal = (props) => {
 
     // destructure props
-    const { isOpen, onClose, type, mode, data } = props;
+    const {
+        isOpen,
+        type,
+        mode,
+        data,
+        onClose,
+    } = props;
 
     /* -------------------------------------- */
 
@@ -26,6 +33,22 @@ const AdminFormModal = (props) => {
 
         if (type === "banner" && mode === "delete") {
             return "Delete Banner";
+        }
+
+        if (type === "category" && mode === "add") {
+            return "Add New Category";
+        }
+
+        if (type === "category" && mode === "edit") {
+            return "Edit Category";
+        }
+
+        if (type === "category" && mode === "view") {
+            return "View Category";
+        }
+
+        if (type === "category" && mode === "delete") {
+            return "Delete Category";
         }
 
         return "";
@@ -72,6 +95,13 @@ const AdminFormModal = (props) => {
 
                 )}
 
+                {type === "category" && (
+                    <AdminFoodCategoryForm
+                        mode={mode}
+                        data={data}
+                        onClose={onClose}
+                    />
+                )}
 
             </div>
 

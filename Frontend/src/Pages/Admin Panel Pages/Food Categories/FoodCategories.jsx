@@ -6,6 +6,8 @@ import AdminSearchFilter from '../../../Components/Admin/Admin Search Filter/Adm
 import AdminFoodCategoryList from '../../../Components/Admin/Admin Food Category List/AdminFoodCategoryList';
 import AdminFoodCategoryListSkeleton from '../../../Components/Skeletons/Admin Food Category List Skeleton/AdminFoodCategoryListSkeleton';
 import useAdminFoodCategory from '../../../hooks/useAdminFoodCategory';
+import { useState } from 'react';
+import AdminFormModal from '../../../Components/Admin/Admin Form Modal/AdminFormModal';
 
 const FoodCategories = () => {
 
@@ -87,9 +89,43 @@ const FoodCategories = () => {
 
     /* -------------------------------------- */
 
+    const [modal, setModal] = useState({
+        isOpen: false,
+        type: null,
+        mode: null,
+        data: null,
+    });
+
+    const openModal = (type, mode, data = null) => {
+        setModal({
+            isOpen: true,
+            type,
+            mode,
+            data,
+        });
+    };
+
+    const closeModal = () => {
+        setModal({
+            isOpen: false,
+            type: null,
+            mode: null,
+            data: null,
+        });
+    };
+
     return (
 
         <>
+
+            {/* Admin form Modal */}
+            <AdminFormModal
+                isOpen={modal.isOpen}
+                type={modal.type}
+                mode={modal.mode}
+                data={modal.data}
+                onClose={closeModal}
+            />
 
             {/* food category stats card */}
             <div className="foodCategories-stats-grid">
@@ -154,7 +190,7 @@ const FoodCategories = () => {
                 onReset={resetSearchFilterSort}           // Reset search, filters, and sort
                 onRefresh={refreshCategories}             // Refresh categories
 
-                onAdd={() => { }}                         // Add category handler
+                onAdd={() => openModal("category", "add")} // Add banner handler
 
             />
 
@@ -210,7 +246,7 @@ const FoodCategories = () => {
                 <AdminFoodCategoryList
                     categories={sortedCategories}
                     search={search}
-                    openModal={() => { }}
+                    openModal={openModal}
                 />
 
             )}

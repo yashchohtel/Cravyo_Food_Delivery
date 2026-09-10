@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { FiChevronDown, FiUploadCloud } from "react-icons/fi";
 import { useSelector } from "react-redux";
+import './AdminBannerForm.css';
 import ButtonLoader from "../../Loaders/ButtonLoader/ButtonLoader";
 import usePromotionBanner from "../../../hooks/usePromotionBanner";
 
