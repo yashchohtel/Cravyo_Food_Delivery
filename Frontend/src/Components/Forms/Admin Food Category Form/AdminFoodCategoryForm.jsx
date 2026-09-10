@@ -1,12 +1,40 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FiChevronDown, FiUploadCloud } from "react-icons/fi";
 import "./AdminFoodCategoryForm.css";
 import { useSelector } from "react-redux";
+import ButtonLoader from "../../Loaders/ButtonLoader/ButtonLoader";
+import useAdminFoodCategory from "../../../hooks/useAdminFoodCategory";
 
 const AdminFoodCategoryForm = ({ mode, data, onClose }) => {
 
     // get data from food categories store
-    const { categories } = useSelector((state) => state.foodCategories);
+    const {
+        createLoading,
+        updateLoading,
+        deleteLoading,
+        categories,
+    } = useSelector((state) => state.foodCategories);
+
+    /* -------------------------------------- */
+
+    // get state and functions from the useAdminFoodCategory hook
+    const {
+        categoryForm,
+        categoryErrors,
+        handleCategoryChange,
+        handleCategoryImageChange,
+        resetCategoryForm,
+        createFoodCategory,
+
+        editCategoryForm,
+        editCategoryErrors,
+        initEditCategoryForm,
+        handleEditCategoryChange,
+        handleEditCategoryImageChange,
+        updateFoodCategory,
+
+        deleteFoodCategory,
+    } = useAdminFoodCategory();
 
     /* -------------------------------------- */
 
@@ -20,6 +48,15 @@ const AdminFoodCategoryForm = ({ mode, data, onClose }) => {
 
     /* -------------------------------------- */
 
+    useEffect(() => {
+
+        if (mode === "edit" && data) {
+            initEditCategoryForm(data);
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [mode, data]);
+
     return (
 
         <>
@@ -27,7 +64,13 @@ const AdminFoodCategoryForm = ({ mode, data, onClose }) => {
             {/* Add Category Form */}
             {mode === "add" && (
 
-                <form className="admin-category-form">
+                <form
+                    className="admin-category-form"
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        createFoodCategory(onClose);
+                    }}
+                >
 
                     {/* Left - Image Upload */}
                     <div className="category-image-section">
@@ -41,21 +84,36 @@ const AdminFoodCategoryForm = ({ mode, data, onClose }) => {
                             onClick={triggerFileSelect}
                         >
 
-                            <FiUploadCloud className="category-upload-icon" />
+                            {categoryForm.imagePreview ? (
 
-                            <span>
-                                Click to upload or drag & drop
-                            </span>
+                                <img
+                                    src={categoryForm.imagePreview}
+                                    alt="Category Preview"
+                                    className="category-preview-image"
+                                />
 
-                            <small>
-                                PNG, JPG, WEBP (Recommended: 2MB, Max: 5MB)
-                            </small>
+                            ) : (
+
+                                <>
+                                    <FiUploadCloud className="category-upload-icon" />
+
+                                    <span>
+                                        Click to upload or drag & drop
+                                    </span>
+
+                                    <small>
+                                        PNG, JPG, WEBP (Recommended: 2MB, Max: 5MB)
+                                    </small>
+                                </>
+
+                            )}
 
                             <input
                                 type="file"
                                 ref={fileInputRef}
                                 accept="image/png, image/jpeg, image/webp"
                                 style={{ display: "none" }}
+                                onChange={handleCategoryImageChange}
                             />
 
                         </div>
@@ -63,6 +121,12 @@ const AdminFoodCategoryForm = ({ mode, data, onClose }) => {
                         <p className="category-upload-note">
                             Recommended size: 500 × 500px
                         </p>
+
+                        {categoryErrors.image && (
+                            <p className="error-text">
+                                {categoryErrors.image}
+                            </p>
+                        )}
 
                     </div>
 
@@ -79,8 +143,16 @@ const AdminFoodCategoryForm = ({ mode, data, onClose }) => {
                             <input
                                 type="text"
                                 name="name"
+                                value={categoryForm.name}
+                                onChange={handleCategoryChange}
                                 placeholder="e.g. Pizza"
                             />
+
+                            {categoryErrors.name && (
+                                <p className="error-text">
+                                    {categoryErrors.name}
+                                </p>
+                            )}
 
                         </div>
 
@@ -106,171 +178,16 @@ const AdminFoodCategoryForm = ({ mode, data, onClose }) => {
 
                             <div className="select-wrapper">
 
-                                <select name="isTopCategory">
-                                    <option value={true}>
-                                        Top Category
-                                    </option>
-
-                                    <option value={false}>
-                                        Normal Category
-                                    </option>
-                                </select>
-
-                                <FiChevronDown className="select-arrow" />
-
-                            </div>
-
-                        </div>
-
-                        {/* Status */}
-                        <div className="admin-form-group">
-
-                            <label>
-                                Status
-                            </label>
-
-                            <div className="select-wrapper">
-
-                                <select name="isActive">
-                                    <option value={true}>
-                                        Active
-                                    </option>
-
-                                    <option value={false}>
-                                        Inactive
-                                    </option>
-                                </select>
-
-                                <FiChevronDown className="select-arrow" />
-
-                            </div>
-
-                        </div>
-
-                        {/* Actions */}
-                        <div className="category-actions">
-
-                            <button
-                                type="button"
-                                className="category-modal-cancel"
-                                onClick={onClose}
-                            >
-                                Cancel
-                            </button>
-
-                            <button
-                                type="submit"
-                                className="category-modal-submit"
-                            >
-                                Add Category
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </form>
-
-            )}
-
-
-            {/* Edit Category Form */}
-            {mode === "edit" && (
-
-                <form className="admin-category-form">
-
-                    {/* Left - Current Image */}
-                    <div className="category-image-section">
-
-                        <label className="admin-form-label">
-                            Category Image
-                        </label>
-
-                        <div className="category-edit-image-box">
-
-                            <img
-                                src={data?.image}
-                                alt={data?.name || "Category"}
-                                className="category-edit-image"
-                            />
-
-                        </div>
-
-                        <button
-                            type="button"
-                            className="category-change-image"
-                            onClick={triggerFileSelect}
-                        >
-                            <FiUploadCloud />
-                            Change Image
-                        </button>
-
-                        <input
-                            type="file"
-                            ref={fileInputRef}
-                            accept="image/png, image/jpeg, image/webp"
-                            style={{ display: "none" }}
-                        />
-
-                        <p className="category-upload-note">
-                            Recommended size: 500 × 500px
-                        </p>
-
-                    </div>
-
-                    {/* Right - Category Details */}
-                    <div className="category-form-details">
-
-                        {/* Name */}
-                        <div className="admin-form-group">
-
-                            <label>
-                                Category Name
-                            </label>
-
-                            <input
-                                type="text"
-                                name="name"
-                                defaultValue={data?.name || ""}
-                                placeholder="e.g. Pizza"
-                            />
-
-                        </div>
-
-                        {/* Order */}
-                        <div className="admin-form-group">
-
-                            <label>
-                                Order
-                            </label>
-
-                            <input
-                                type="number"
-                                name="order"
-                                defaultValue={data?.order || ""}
-                                placeholder="e.g. 1"
-                            />
-
-                        </div>
-
-                        {/* Top Category */}
-                        <div className="admin-form-group">
-
-                            <label>
-                                Category Type
-                            </label>
-
-                            <div className="select-wrapper">
-
                                 <select
                                     name="isTopCategory"
-                                    defaultValue={String(data?.isTopCategory)}
+                                    value={categoryForm.isTopCategory}
+                                    onChange={handleCategoryChange}
                                 >
-                                    <option value="true">
+                                    <option value={true}>
                                         Top Category
                                     </option>
 
-                                    <option value="false">
+                                    <option value={false}>
                                         Normal Category
                                     </option>
                                 </select>
@@ -292,16 +209,16 @@ const AdminFoodCategoryForm = ({ mode, data, onClose }) => {
 
                                 <select
                                     name="isActive"
-                                    defaultValue={String(data?.isActive)}
+                                    value={categoryForm.isActive}
+                                    onChange={handleCategoryChange}
                                 >
-                                    <option value="true">
+                                    <option value={true}>
                                         Active
                                     </option>
 
-                                    <option value="false">
+                                    <option value={false}>
                                         Inactive
                                     </option>
-
                                 </select>
 
                                 <FiChevronDown className="select-arrow" />
@@ -316,7 +233,10 @@ const AdminFoodCategoryForm = ({ mode, data, onClose }) => {
                             <button
                                 type="button"
                                 className="category-modal-cancel"
-                                onClick={onClose}
+                                onClick={() => {
+                                    resetCategoryForm();
+                                    onClose();
+                                }}
                             >
                                 Cancel
                             </button>
@@ -324,8 +244,210 @@ const AdminFoodCategoryForm = ({ mode, data, onClose }) => {
                             <button
                                 type="submit"
                                 className="category-modal-submit"
+                                disabled={createLoading}
                             >
-                                Save Changes
+                                {createLoading
+                                    ? <ButtonLoader />
+                                    : "Add Category"
+                                }
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            )}
+
+
+            {/* Edit Category Form */}
+            {mode === "edit" && (
+
+                <form
+                    className="admin-category-form"
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        updateFoodCategory(data._id, onClose);
+                    }}
+                >
+
+                    {/* Left - Current Image */}
+                    <div className="category-image-section">
+
+                        <label className="admin-form-label">
+                            Category Image
+                        </label>
+
+                        <div className="category-edit-image-box">
+
+                            <img
+                                src={editCategoryForm.imagePreview}
+                                alt={editCategoryForm.name || "Category"}
+                                className="category-edit-image"
+                            />
+
+                        </div>
+
+                        <button
+                            type="button"
+                            className="category-change-image"
+                            onClick={triggerFileSelect}
+                        >
+                            <FiUploadCloud />
+                            Change Image
+                        </button>
+
+                        <input
+                            type="file"
+                            ref={fileInputRef}
+                            accept="image/png, image/jpeg, image/webp"
+                            style={{ display: "none" }}
+                            onChange={handleEditCategoryImageChange}
+                        />
+
+                        <p className="category-upload-note">
+                            Recommended size: 500 × 500px
+                        </p>
+
+                        {editCategoryErrors.image && (
+                            <p className="error-text">
+                                {editCategoryErrors.image}
+                            </p>
+                        )}
+
+                    </div>
+
+                    {/* Right - Category Details */}
+                    <div className="category-form-details">
+
+                        {/* Name */}
+                        <div className="admin-form-group">
+
+                            <label>
+                                Category Name
+                            </label>
+
+                            <input
+                                type="text"
+                                name="name"
+                                value={editCategoryForm.name}
+                                onChange={handleEditCategoryChange}
+                                placeholder="e.g. Pizza"
+                            />
+
+                            {editCategoryErrors.name && (
+                                <p className="error-text">
+                                    {editCategoryErrors.name}
+                                </p>
+                            )}
+
+                        </div>
+
+                        {/* Order */}
+                        <div className="admin-form-group">
+
+                            <label>
+                                Order
+                            </label>
+
+                            <input
+                                type="number"
+                                name="order"
+                                value={editCategoryForm.order}
+                                onChange={handleEditCategoryChange}
+                                placeholder="e.g. 1"
+                            />
+
+                            {editCategoryErrors.order && (
+                                <p className="error-text">
+                                    {editCategoryErrors.order}
+                                </p>
+                            )}
+
+                        </div>
+
+                        {/* Top Category */}
+                        <div className="admin-form-group">
+
+                            <label>
+                                Category Type
+                            </label>
+
+                            <div className="select-wrapper">
+
+                                <select
+                                    name="isTopCategory"
+                                    value={editCategoryForm.isTopCategory}
+                                    onChange={handleEditCategoryChange}
+                                >
+                                    <option value={true}>
+                                        Top Category
+                                    </option>
+
+                                    <option value={false}>
+                                        Normal Category
+                                    </option>
+                                </select>
+
+                                <FiChevronDown className="select-arrow" />
+
+                            </div>
+
+                        </div>
+
+                        {/* Status */}
+                        <div className="admin-form-group">
+
+                            <label>
+                                Status
+                            </label>
+
+                            <div className="select-wrapper">
+
+                                <select
+                                    name="isActive"
+                                    value={editCategoryForm.isActive}
+                                    onChange={handleEditCategoryChange}
+                                >
+                                    <option value={true}>
+                                        Active
+                                    </option>
+
+                                    <option value={false}>
+                                        Inactive
+                                    </option>
+                                </select>
+
+                                <FiChevronDown className="select-arrow" />
+
+                            </div>
+
+                        </div>
+
+                        {/* Actions */}
+                        <div className="category-actions">
+
+                            <button
+                                type="button"
+                                className="category-modal-cancel"
+                                onClick={() => {
+                                    resetCategoryForm();
+                                    onClose();
+                                }}
+                            >
+                                Cancel
+                            </button>
+
+                            <button
+                                type="submit"
+                                className="category-modal-submit"
+                                disabled={updateLoading}
+                            >
+                                {updateLoading
+                                    ? <ButtonLoader />
+                                    : "Save Changes"
+                                }
                             </button>
 
                         </div>
@@ -440,7 +562,10 @@ const AdminFoodCategoryForm = ({ mode, data, onClose }) => {
                         <button
                             type="button"
                             className="category-modal-cancel"
-                            onClick={onClose}
+                            onClick={() => {
+                                resetCategoryForm();
+                                onClose();
+                            }}
                         >
                             Cancel
                         </button>
@@ -448,8 +573,15 @@ const AdminFoodCategoryForm = ({ mode, data, onClose }) => {
                         <button
                             type="button"
                             className="category-modal-delete"
+                            onClick={() =>
+                                deleteFoodCategory(data._id, onClose)
+                            }
+                            disabled={deleteLoading}
                         >
-                            Delete
+                            {deleteLoading
+                                ? <ButtonLoader />
+                                : "Delete"
+                            }
                         </button>
 
                     </div>

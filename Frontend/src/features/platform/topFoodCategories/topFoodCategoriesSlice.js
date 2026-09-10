@@ -1,22 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getFoodCategories } from "./topFoodCategoriesThunk";
 
-// initial state
+import {
+    getFoodCategories,
+    createFoodCategory,
+    updateFoodCategory,
+    refreshFoodCategories,
+    deleteFoodCategory,
+} from "./topFoodCategoriesThunk";
+
 const initialState = {
-
-    // store food categories
     categories: [],
-
-    // loading state
     loading: false,
-
-    // error message
+    createLoading: false,
+    updateLoading: false,
+    deleteLoading: false,
     error: null,
-
 };
 
-
-// create food category slice
 const foodCategorySlice = createSlice({
 
     name: "foodCategories",
@@ -25,7 +25,6 @@ const foodCategorySlice = createSlice({
 
     reducers: {
 
-        // clear category error
         clearCategoryError: (state) => {
             state.error = null;
         },
@@ -36,23 +35,89 @@ const foodCategorySlice = createSlice({
 
         builder
 
-            /* ----------- GET FOOD CATEGORIES ↓ */
-
-            // Pending
+            /* GET FOOD CATEGORIES */
             .addCase(getFoodCategories.pending, (state) => {
                 state.loading = true;
                 state.error = null;
             })
 
-            // Fulfilled
             .addCase(getFoodCategories.fulfilled, (state, action) => {
                 state.loading = false;
                 state.categories = action.payload;
             })
 
-            // Rejected
             .addCase(getFoodCategories.rejected, (state, action) => {
                 state.loading = false;
+                state.error = action.payload;
+            })
+
+
+            /* CREATE FOOD CATEGORY */
+            .addCase(createFoodCategory.pending, (state) => {
+                state.createLoading = true;
+                state.error = null;
+            })
+
+            .addCase(createFoodCategory.fulfilled, (state, action) => {
+                state.createLoading = false;
+                state.categories = [
+                    ...state.categories,
+                    ...action.payload,
+                ];
+            })
+
+            .addCase(createFoodCategory.rejected, (state, action) => {
+                state.createLoading = false;
+                state.error = action.payload;
+            })
+
+
+            /* UPDATE FOOD CATEGORY */
+            .addCase(updateFoodCategory.pending, (state) => {
+                state.updateLoading = true;
+                state.error = null;
+            })
+
+            .addCase(updateFoodCategory.fulfilled, (state, action) => {
+                state.updateLoading = false;
+
+                state.categories = state.categories.map(
+                    (category) => category._id === action.payload._id ? action.payload : category
+                );
+            })
+
+            .addCase(updateFoodCategory.rejected, (state, action) => {
+                state.updateLoading = false;
+                state.error = action.payload;
+            })
+
+
+            /* REFRESH FOOD CATEGORIES */
+            .addCase(refreshFoodCategories.fulfilled, (state, action) => {
+                state.categories = action.payload;
+            })
+
+            .addCase(refreshFoodCategories.rejected, (state, action) => {
+                console.log("Silent category refresh failed:", action.payload);
+            })
+
+
+            /* DELETE FOOD CATEGORY */
+            .addCase(deleteFoodCategory.pending, (state) => {
+                state.deleteLoading = true;
+                state.error = null;
+            })
+
+            .addCase(deleteFoodCategory.fulfilled, (state, action) => {
+                state.deleteLoading = false;
+
+                state.categories = state.categories.filter(
+                    (category) => category._id !== action.meta.arg
+                );
+            })
+
+            .addCase(deleteFoodCategory.rejected, (state, action) => {
+                state.deleteLoading = false;
                 state.error = action.payload;
             });
 
@@ -60,12 +125,8 @@ const foodCategorySlice = createSlice({
 
 });
 
-
-// export actions
 export const {
-    clearCategoryError
+    clearCategoryError,
 } = foodCategorySlice.actions;
 
-
-// export reducer
 export default foodCategorySlice.reducer;
