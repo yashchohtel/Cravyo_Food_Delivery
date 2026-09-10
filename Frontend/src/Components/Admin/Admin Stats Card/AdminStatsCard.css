@@ -64,3 +64,9 @@
   background-color: #f1f2f4;
   color: #6b7280;
 }
+
+/* Top */
+.admin-stats-card.top .stats-card-icon {
+  background-color: #fff7e6;
+  color: #f59e0b;
+}

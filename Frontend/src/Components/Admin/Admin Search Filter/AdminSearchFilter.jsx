@@ -1,34 +1,39 @@
 import "./AdminSearchFilter.css";
 import { FiSearch, FiRefreshCw, FiChevronDown, FiPlus, FiRotateCcw } from "react-icons/fi";
 
-
 const AdminSearchFilter = (props) => {
 
     // destructure props
     const {
-        placeholder = "Search...",
-        filterOptions = [],
-        sortOptions = [],
 
-        searchValue,
-        onSearchChange,
+        entityType,                   // Entity type 
 
-        filterValue,
-        onFilterChange,
+        placeholder = "Search...",    // Search input ka placeholder
+        filterOptions = [],           // Filter dropdown options
+        sortOptions = [],             // Sort dropdown options
+        typeFilterOptions = [],       // Type filter dropdown options
 
-        sortValue,
-        onSortChange,
+        searchValue,                  // Current search value
+        onSearchChange,               // Search value change handler
 
-        onReset,
+        filterValue,                  // Current filter value
+        onFilterChange,               // Filter value change handler
 
-        onRefresh,
+        sortValue,                    // Current sort value
+        onSortChange,                 // Sort value change handler
 
-        onAdd,
+        typeFilterValue,              // Current type filter value
+        onTypeFilterChange,           // Type filter value change handler
 
-        showFilter = true,
-        showSort = true,
-        showRefresh = true,
-        showReset = true,
+        onReset,                      // Reset search, filter, and sort handler 
+        onRefresh,                    // Refresh data handler
+        onAdd,                        // Add item handler
+
+        showFilter = true,            // Show/hide filter
+        showSort = true,              // Show/hide sort
+        showRefresh = true,           // Show/hide refresh
+        showReset = true,             // Show/hide reset
+        showTypeFilter = false,       // Show/hide type filter
 
     } = props;
 
@@ -81,6 +86,29 @@ const AdminSearchFilter = (props) => {
                     </div>
                 )}
 
+                {/* Type Filter */}
+                {showTypeFilter && (
+                    <div className="admin-filter-box">
+
+                        <select
+                            value={typeFilterValue}
+                            onChange={(e) => onTypeFilterChange(e.target.value)}
+                        >
+                            {typeFilterOptions.map((option) => (
+                                <option
+                                    key={option.value}
+                                    value={option.value}
+                                >
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
+
+                        <FiChevronDown className="admin-filter-icon" />
+
+                    </div>
+                )}
+
                 {/* Sort */}
                 {showSort && (
 
@@ -90,9 +118,6 @@ const AdminSearchFilter = (props) => {
                             value={sortValue}
                             onChange={(e) => onSortChange(e.target.value)}
                         >
-                            <option value="" disabled>
-                                Sort By
-                            </option>
 
                             {sortOptions.map((option) => (
                                 <option key={option.value} value={option.value}>
@@ -146,17 +171,29 @@ const AdminSearchFilter = (props) => {
 
                 )}
 
-                {/* add banner button */}
-                <button
-                    type="button"
-                    className="admin-add-btn"
-                    onClick={onAdd}
-                >
-                    <FiPlus />
+                {/* add food category button */}
+                {entityType === "food-category" && (
+                    <button
+                        type="button"
+                        className="admin-add-btn"
+                        onClick={onAdd}
+                    >
+                        <FiPlus />
+                        <span>Add Category</span>
+                    </button>
+                )}
 
-                    <span> Add Banner </span>
-
-                </button>
+                {/* add promotion banner button */}
+                {entityType === "promotion-banner" && (
+                    <button
+                        type="button"
+                        className="admin-add-btn"
+                        onClick={onAdd}
+                    >
+                        <FiPlus />
+                        <span>Add Banner</span>
+                    </button>
+                )}
 
             </div>
 

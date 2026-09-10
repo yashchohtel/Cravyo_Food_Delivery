@@ -5,6 +5,7 @@ import './AdminPanel.css'
 import { Outlet } from "react-router-dom";
 import { useEffect } from 'react';
 import { getPromotionBanners } from '../../../features/platform/promotionBanners/promotionBannersThunk';
+import { getFoodCategories } from '../../../features/platform/topFoodCategories/topFoodCategoriesThunk';
 
 const AdminPanel = () => {
 
@@ -16,6 +17,9 @@ const AdminPanel = () => {
 
         // dispatch get promotion banners 
         dispatch(getPromotionBanners());
+
+        // dispatch get food categories
+        dispatch(getFoodCategories());
 
     }, [dispatch]);
 

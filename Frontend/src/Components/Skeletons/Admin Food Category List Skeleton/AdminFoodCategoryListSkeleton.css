@@ -1,0 +1,83 @@
+.categoryLoadingRow {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 1rem;
+    background-color: var(--surface-color);
+    border-radius: 1rem;
+}
+
+/* shimmer blocks - centered within their column via margin auto where needed */
+
+.categoryLoadingImage {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 0.8rem;
+}
+
+.categoryLoadingName {
+    width: 70%;
+    height: 1.4rem;
+    border-radius: 0.6rem;
+}
+
+.categoryLoadingOrder {
+    width: 1.5rem;
+    height: 1.4rem;
+    border-radius: 0.4rem;
+    margin: 0 auto;
+}
+
+.categoryLoadingTop {
+    width: 4rem;
+    height: 2rem;
+    border-radius: 1rem;
+    margin: 0 auto;
+}
+
+.categoryLoadingStatus {
+    width: 5.5rem;
+    height: 2rem;
+    border-radius: 1rem;
+    margin: 0 auto;
+}
+
+.categoryLoadingDate {
+    width: 6.5rem;
+    height: 1.4rem;
+    border-radius: 0.6rem;
+    margin: 0 auto;
+}
+
+.categoryLoadingActionsCol {
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+}
+
+.categoryLoadingActionIcon {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 0.6rem;
+    flex-shrink: 0;
+}
+
+/* Shimmer animation */
+.categoryLoadingShimmer {
+    background: linear-gradient(90deg, #e2e5ea 25%, #eef1f5 50%, #e2e5ea 75%);
+    background-size: 200% 100%;
+    animation: categoryLoadingShimmer 1.3s linear infinite;
+}
+
+@keyframes categoryLoadingShimmer {
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
+}
