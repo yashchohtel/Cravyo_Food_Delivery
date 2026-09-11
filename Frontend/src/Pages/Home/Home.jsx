@@ -14,6 +14,8 @@ import FoodCategorySlider from '../../Components/Sliders/Food Category Slider/Fo
 import AllCategoryPage from '../../Pages/AllCategoryPage/AllCategoryPage.jsx';
 import useFoodCategories from '../../hooks/useFoodCategories.jsx';
 import useFoodPreference from '../../hooks/useFoodPreference.jsx';
+import { getPromotionBanners } from '../../features/platform/promotionBanners/promotionBannersThunk.js';
+import { getFoodCategories } from '../../features/platform/topFoodCategories/topFoodCategoriesThunk.js';
 
 const Home = () => {
 
@@ -65,6 +67,12 @@ const Home = () => {
     handleGetLocation(dispatch);
 
   }, [dispatch]);
+
+  // effect to get banner and food category
+  useEffect(() => {
+    dispatch(getPromotionBanners());
+    dispatch(getFoodCategories());
+}, [dispatch]);
 
   // If the location is still loading, show the LocationLoadingSplash component
   if (isLocationLoading) {

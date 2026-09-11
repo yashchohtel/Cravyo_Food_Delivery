@@ -52,7 +52,6 @@ export const savedAddresses = [
   },
 ];
 
-
 // categories.js
 export const categories = [
   {

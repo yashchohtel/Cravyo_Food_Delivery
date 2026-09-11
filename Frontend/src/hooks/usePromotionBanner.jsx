@@ -336,7 +336,7 @@ const usePromotionBanner = () => {
     const [status, setStatus] = useState("all");
 
     // sort state
-    const [sort, setSort] = useState("latest");
+    const [sort, setSort] = useState("order");
 
     // searching banners based on title (case-insensitive)
     const filteredBanners = banners.filter((banner) => {

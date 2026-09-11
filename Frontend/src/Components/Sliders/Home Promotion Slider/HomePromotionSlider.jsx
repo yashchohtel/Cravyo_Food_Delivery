@@ -1,62 +1,54 @@
-import './HomePromotionSlider.css'
+import "./HomePromotionSlider.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+import { useSelector } from "react-redux";
+
 import "swiper/css";
 import "swiper/css/pagination";
 
 const HomePromotionSlider = () => {
 
-    const images = [
-        "/heroBanner (2).png",
-        "/heroBanner (1).png",
-        "/heroBanner (3).png",
-        "/heroBanner (4).png",
-        "/heroBanner (5).png",
-    ];
+    // getting data from the state
+    const { banners } = useSelector((state) => state.promotionBanners);
 
+    const activeBanners = [...banners].filter((banner) => banner.isActive).sort((a, b) => a.order - b.order);
+    
     return (
 
-        <>
+        <div className="promotionSlideCont container">
 
-            {/* slide container */}
-            <div className="promotionSlideCont container">
+            <section className="promotion-slider-wrapper">
 
-                <section className="promotion-slider-wrapper">
+                <Swiper
+                    modules={[Autoplay, Pagination]}
+                    slidesPerView={1}
+                    spaceBetween={16}
+                    loop={activeBanners.length > 1}
+                    autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    }}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    className="promotion-slider"
+                >
+                    {activeBanners.map((banner) => (
+                        <SwiperSlide key={banner._id}>
+                            <div className="promotion-slide">
+                                <img
+                                    src={banner.image}
+                                    alt={banner.title}
+                                />
+                            </div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
 
-                    <Swiper
-                        modules={[Autoplay, Pagination]}
-                        slidesPerView={1}
-                        spaceBetween={16}
-                        loop={true}
-                        autoplay={{
-                            delay: 3000,
-                            disableOnInteraction: false,
-                        }}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        className="promotion-slider"
-                    >
-                        {images.map((image, index) => (
-                            <SwiperSlide key={index}>
-                                <div className="promotion-slide">
-                                    <img
-                                        src={image}
-                                        alt={`Promotion ${index + 1}`}
-                                    />
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+            </section>
 
-                </section>
-
-            </div>
-
-        </>
-
-    )
-
-}
+        </div>
+    );
+};
 
 export default HomePromotionSlider;
