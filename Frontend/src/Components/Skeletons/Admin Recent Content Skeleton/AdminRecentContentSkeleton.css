@@ -1,0 +1,53 @@
+.recent-content-skeleton {
+    display: flex;
+    flex-direction: column;
+}
+
+.recent-skeleton-row {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr) 5rem 7.5rem;
+    align-items: center;
+    gap: 1.75rem;
+    min-height: 8.5rem;
+    padding: 0 0.5rem;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.recent-skeleton-image {
+    width: 6.5rem;
+    height: 6.5rem;
+    border-radius: 0.75rem;
+    background: #eeeeee;
+}
+
+.recent-skeleton-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.recent-skeleton-line {
+    background: #eeeeee;
+    border-radius: 0.3rem;
+}
+
+.recent-skeleton-name {
+    width: 65%;
+    height: 1.1rem;
+}
+
+.recent-skeleton-date {
+    width: 35%;
+    height: 0.85rem;
+}
+
+.recent-skeleton-small {
+    width: 2.5rem;
+    height: 1rem;
+}
+
+.recent-skeleton-status {
+    width: 5rem;
+    height: 2rem;
+    border-radius: 999px;
+}
