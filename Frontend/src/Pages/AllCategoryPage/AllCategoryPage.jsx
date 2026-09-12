@@ -1,11 +1,14 @@
 import { IoClose } from 'react-icons/io5';
 import './AllCategoryPage.css'
-import { categories } from '../../utils/dummyData.js';
+import useFoodCategories from '../../hooks/useFoodCategories.jsx';
 
 const AllCategoryPage = (props) => {
 
     // destructure props
     const { onClose, handleCategoryClick, selectedCategory } = props;
+
+    // get elements of use food categoires hook
+    const { allCategories } = useFoodCategories();
 
     return (
 
@@ -35,7 +38,7 @@ const AllCategoryPage = (props) => {
 
                         <div className="allCategoriesGrid">
 
-                            {categories.slice(1).map((category) => (
+                            {allCategories.map((category) => (
 
                                 <div
                                     className="allCategoryItem"

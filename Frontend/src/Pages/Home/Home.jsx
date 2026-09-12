@@ -16,6 +16,8 @@ import useFoodCategories from '../../hooks/useFoodCategories.jsx';
 import useFoodPreference from '../../hooks/useFoodPreference.jsx';
 import { getPromotionBanners } from '../../features/platform/promotionBanners/promotionBannersThunk.js';
 import { getFoodCategories } from '../../features/platform/topFoodCategories/topFoodCategoriesThunk.js';
+import HomeBannerSkeleton from '../../Components/Skeletons/Home Banner Skeleton/HomeBannerSkeleton.jsx';
+import FoodCategorySkeleton from '../../Components/Skeletons/Food Category Skeleton/FoodCategorySkeleton.jsx';
 
 const Home = () => {
 
@@ -26,6 +28,8 @@ const Home = () => {
 
   // Get location state from Redux store
   const { isLocationErrorDialogOpen, locationError, isLocationLoading } = useSelector((state) => state.location);
+  const { loading: bannerLoading } = useSelector((state) => state.promotionBanners);
+  const { loading: categoryLoading } = useSelector((state) => state.foodCategories);
 
   /* FOOD PREFRENCE ↓ -------------------------------------- */
 
@@ -72,7 +76,15 @@ const Home = () => {
   useEffect(() => {
     dispatch(getPromotionBanners());
     dispatch(getFoodCategories());
-}, [dispatch]);
+  }, [dispatch]);
+
+  // stop home scroll if 
+  useEffect(() => {
+    document.body.style.overflow = showAllCategories ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [showAllCategories]);
 
   // If the location is still loading, show the LocationLoadingSplash component
   if (isLocationLoading) {
@@ -128,16 +140,16 @@ const Home = () => {
         />
 
         {/* home promotional slides */}
-        <HomePromotionSlider />
+        {bannerLoading ? <HomeBannerSkeleton /> : <HomePromotionSlider />}
 
         {/* food category slider */}
-        <FoodCategorySlider
+        {categoryLoading ? <FoodCategorySkeleton /> : <FoodCategorySlider
           onClick={() => setShowAllCategories(true)}
           handleCategoryClick={handleCategoryClick}
           selectedCategory={selectedCategory}
           hiddenCategoryItem={hiddenCategoryItem}
           swiperRef={swiperRef}
-        />
+        />}
 
         {/* all food category */}
         {showAllCategories && (

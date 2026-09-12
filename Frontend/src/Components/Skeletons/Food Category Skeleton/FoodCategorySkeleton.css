@@ -1,0 +1,42 @@
+.foodCategorySkeletonList {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 0.5rem;
+}
+
+.foodCategorySkeletonItem {
+    width: 7.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.foodCategorySkeletonImage {
+    width: 6.5rem;
+    height: 6.5rem;
+    border-radius: 50%;
+}
+
+.foodCategorySkeletonText {
+    width: 5rem;
+    height: 1.1rem;
+    border-radius: 0.6rem;
+}
+
+.shimmer {
+    background: linear-gradient(90deg, #e2e5ea 25%, #eef1f5 50%, #e2e5ea 75%);
+    background-size: 200% 100%;
+    animation: foodCategoryShimmer 1.3s linear infinite;
+}
+
+@keyframes foodCategoryShimmer {
+    from {
+        background-position: 200% 0;
+    }
+    to {
+        background-position: -200% 0;
+    }
+}

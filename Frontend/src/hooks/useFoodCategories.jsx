@@ -1,7 +1,37 @@
 import { useRef, useState } from "react";
-import { categories } from "../utils/dummyData.js";
+import { useSelector } from "react-redux";
 
 const useFoodCategories = () => {
+
+    // get data from the redux store =
+    const { categories } = useSelector((state) => state.foodCategories);
+
+    // creating top category to show on home slider
+    const topCategories = [
+        {
+            id: "all",
+            name: "All",
+            image: "/all.png",
+        },
+        ...categories
+            .filter((category) => category.isTopCategory && category.isActive)
+            .map((category) => ({
+                id: category._id,
+                name: category.name,
+                image: category.image,
+            })),
+    ];
+
+    // all categories 
+    const allCategories = categories
+        .filter((category) => category.isActive)
+        .map((category) => ({
+            id: category._id,
+            name: category.name,
+            image: category.image,
+        }));
+
+    /* -------------------------------------- */
 
     // state to store see all categories 
     const [showAllCategories, setShowAllCategories] = useState(false);
@@ -22,19 +52,17 @@ const useFoodCategories = () => {
         setSelectedCategory(categoryId);
 
         // get selected item object
-        const selectedItem = categories.find(category => category.id === categoryId);
+        const selectedItem = allCategories.find(category => category.id === categoryId);
 
         // find if its visible item or hidden item
-        const isVisible = categories.slice(0, 10).some((category) => category.id === categoryId);
+        const isVisible = topCategories.some((category) => category.id === categoryId);
 
         // if hidden item set it in hidden item category
         setHiddenCategoryItem(isVisible ? null : selectedItem);
 
         // move swiper to selected category
         if (isVisible && swiperRef.current) {
-
-            const index = categories.slice(0, 10).findIndex((category) => category.id === categoryId);
-
+            const index = topCategories.findIndex((category) => category.id === categoryId);
             swiperRef.current.slideTo(index);
         }
 
@@ -42,6 +70,8 @@ const useFoodCategories = () => {
 
     // return all required things
     return {
+        topCategories,
+        allCategories,
         showAllCategories,      // show/hide all categories
         setShowAllCategories,   // update show/hide all categories state
         selectedCategory,       // selected category id

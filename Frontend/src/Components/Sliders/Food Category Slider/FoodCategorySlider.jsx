@@ -2,19 +2,16 @@ import './FoodCategorySlider.css'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { BsForkKnife } from "react-icons/bs";
-import { categories } from '../../../utils/dummyData';
-import { useSelector } from 'react-redux';
+import useFoodCategories from '../../../hooks/useFoodCategories';
 
 const FoodCategorySlider = (props) => {
 
     // destructure props
     const { onClick, handleCategoryClick, selectedCategory, hiddenCategoryItem, swiperRef } = props;
 
-    // get data from food categories store
-    // const { categories } = useSelector((state) => state.foodCategories);
+    // get elements of use food categoires hook
+    const { topCategories } = useFoodCategories();
 
-    // console.log(categories);
-    
     return (
 
         <>
@@ -34,7 +31,7 @@ const FoodCategorySlider = (props) => {
                     className="categorySwiper"
                 >
 
-                    {categories.slice(0, 10).map((category) => (
+                    {topCategories.map((category) => (
 
                         <SwiperSlide key={category.name}>
 
@@ -83,6 +80,7 @@ const FoodCategorySlider = (props) => {
 
                         </SwiperSlide>
                     )}
+
 
                     <SwiperSlide>
 
