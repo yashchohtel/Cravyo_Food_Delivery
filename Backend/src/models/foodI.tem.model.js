@@ -6,7 +6,7 @@ const foodItemSchema = new mongoose.Schema({
     // Name of the food item
     name: {
         type: String,
-        required: true,
+        required: [true, "Food item name is required"],
         trim: true
     },
 
@@ -26,22 +26,22 @@ const foodItemSchema = new mongoose.Schema({
     // Description of the food item
     description: {
         type: String,
-        required: true,
+        required: [true, "Food item description is required"],
         trim: true
     },
 
     // Price of the food item
     price: {
         type: Number,
-        required: true,
+        required: [true, "Food item price is required"],
         min: 0
     },
 
     // Category of the food item
     category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Category",
-        required: true
+        type: String,
+        required: [true, "Food item category is required"],
+        trim: true
     },
 
     // Whether the food item is vegetarian
@@ -70,12 +70,6 @@ const foodItemSchema = new mongoose.Schema({
         max: 100
     },
 
-    // Number of times the food item has been ordered
-    totalOrders: {
-        type: Number,
-        default: 0
-    },
-
     // Average rating of the food item
     rating: {
         type: Number,
@@ -88,10 +82,18 @@ const foodItemSchema = new mongoose.Schema({
     totalReviews: {
         type: Number,
         default: 0
-    }
+    },
 
-}, {timestamps: true});
+    // Total number of orders
+    totalOrders: {
+        type: Number,
+        default: 0
+    },
 
+}, { timestamps: true });
+
+// Create food item model
 const FoodItem = mongoose.model("FoodItem", foodItemSchema);
 
+// Export model
 export default FoodItem;
