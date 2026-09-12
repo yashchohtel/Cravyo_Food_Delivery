@@ -1,4 +1,4 @@
-import User from "../../models/user.modal.js"; // Import User model
+import User from "../../models/user.model.js"; // Import User model
 import ErrorHandler from "../../utils/errorHandler.js"; // Import custom error handler
 import { sendToken } from "../../utils/sendJwtToken.js"; // import sendToken utility 
 import sendEmail from "../../utils/sendEmail.js"; // send email function to send email to suer

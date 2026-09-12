@@ -1,5 +1,5 @@
 import ErrorHandler from "../../utils/errorHandler.js";
-import PromotionBanner from "../../models/promotionBannerSchema.js";
+import PromotionBanner from "../../models/promotion.banner.model.js";
 import { deleteFromCloudinary, uploadBufferToCloudinary } from "../../utils/uploadImage.js";
 
 /* PROMOTION BANNEER API'S ↓ ------------------------------------- */

@@ -1,4 +1,4 @@
-import FoodCategory from "../../models/foodCategoryModel.js";
+import FoodCategory from "../../models/food.category.model.js";
 import ErrorHandler from "../../utils/errorHandler.js";
 import { deleteFromCloudinary, uploadBufferToCloudinary } from "../../utils/uploadImage.js";
 

@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"; // Import JWT for authentication
 import catchAsyncError from './catchAsyncError.js' // Importing catchAsyncError middleware
-import User from "../models/user.modal.js"; // Importing User model
+import User from "../models/user.model.js"; // Importing User model
 
 // Middleware to handle authentication
 export const isUserAuth = catchAsyncError(async (req, res, next) => {
