@@ -7,6 +7,8 @@ import connectDB from "./config/dataBase.js"; // Import the function to connect 
 import errorMiddleware from "./middleware/error.js"; // Import errorMIddleware
 import authRouter from "./features/auth/authRoutes.js"; // import auth router
 import platformActionRouter from "./features/platform/platformActionRoutes.js"; // import platform action router
+import shopRouter from "./features/shop/shopRoutes.js";
+import foodItemRouter from "./features/foodItem/foodItemRoutes.js";
 
 // -------------------- CONFIGURATION -------------------- //
 
@@ -47,7 +49,13 @@ connectDB() // Call the function to connect to MongoDB
 app.use("/api/auth", authRouter);
 
 // platform action routes `/api/platformAction` - use platformActionRouter for handling platform-related routes
-app.use("/api/platformAction", platformActionRouter);  
+app.use("/api/platformAction", platformActionRouter);
+
+// shop routes `/api/shop` - Use shopRouter for handling shop-related routes
+app.use("/api/shop", shopRouter);
+
+// food item routes `/api/foodItem` - Use foodItemRouter for handling food item-related routes
+app.use("/api/foodItem", foodItemRouter);
 
 // -------------------- ERROR MIDDLEWARES -------------------- //
 

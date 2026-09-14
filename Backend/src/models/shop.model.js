@@ -30,6 +30,12 @@ const shopSchema = new mongoose.Schema({
         required: true
     },
 
+    // Food items of the shop
+    foodItems: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "FoodItem"
+    }],
+
     // Address of the shop
     address: {
 

@@ -3,6 +3,13 @@ import mongoose from "mongoose";
 // Creating a food item schema
 const foodItemSchema = new mongoose.Schema({
 
+    // Shop that owns this food item
+    shop: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Shop",
+        required: true
+    },
+
     // Name of the food item
     name: {
         type: String,

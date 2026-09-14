@@ -140,7 +140,7 @@ const FoodCategories = () => {
                 <AdminStatsCard
                     icon={<FiStar />}
                     title="Top Categories"
-                    value={categories.filter(category => category.isTop).length}
+                    value={categories.filter(category => category.isTopCategory).length}
                     variant="top"
                 />
 
