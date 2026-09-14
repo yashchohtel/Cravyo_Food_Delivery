@@ -15,6 +15,7 @@ import AdminPanel from "../Pages/Admin Panel Pages/Admin Panel/AdminPanel";
 import AdminDashboard from "../Pages/Admin Panel Pages/Admin Dashboard/AdminDashboard";
 import FoodCategories from "../Pages/Admin Panel Pages/Food Categories/FoodCategories";
 import PromotionBanners from "../Pages/Admin Panel Pages/Promotion Banners/PromotionBanners";
+import CreateRestaurant from "../Pages/Restaurant Pages/Create Restaurant/CreateRestaurant.jsx";
 
 function AppRoutes() {
 
@@ -74,6 +75,13 @@ function AppRoutes() {
         <Route path="food-categories" element={<FoodCategories />} />
 
       </Route>
+
+      {/* create restaurant route */}
+      <Route path="/restaurant/create" element={
+        <ProtectedRoute>
+          <CreateRestaurant />
+        </ProtectedRoute>
+      } />
 
       {/* non existing url 404 */}
       <Route path="*" element={<Page404 />} />
