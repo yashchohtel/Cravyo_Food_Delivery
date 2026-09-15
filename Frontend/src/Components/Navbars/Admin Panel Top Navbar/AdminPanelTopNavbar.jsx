@@ -15,11 +15,12 @@ const AdminPanelTopNavbar = () => {
     // state to set profile image error
     const [isProfileImageError, setIsProfileImageError] = useState(false);
 
-    // lookup object for page names
+    // lookup object for page names 
     const pageNames = {
         "/admin": "Dashboard",
         "/admin/banners": "Banners",
         "/admin/food-categories": "Food Categories",
+        "/restaurant/create": "Create Restaurant",
     };
 
     // get current page name

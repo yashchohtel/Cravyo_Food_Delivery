@@ -1,0 +1,353 @@
+.createRestuarant {
+    width: 100%;
+    padding: 0rem 0 3rem;
+}
+
+/* restaurant banner */
+.restaurantHero {
+    width: 100%;
+    height: 14rem;
+    border-radius: 1.6rem;
+    background: url("/restaurantImg.png") right center / 100% auto no-repeat;
+    background-color: #fff0e6;
+    display: flex;
+    align-items: center;
+    padding: 2rem 4rem;
+    margin: 1rem 0;
+}
+
+/* banner content */
+.restaurantHeroContent {
+    width: 48%;
+}
+
+.restaurantHeroContent span {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.restaurantHeroContent span::before {
+    content: "";
+    display: inline-block;
+    width: 3.5rem;
+    height: 0.2rem;
+    background: var(--primary-color);
+    vertical-align: middle;
+    margin-right: 1rem;
+}
+
+.restaurantHeroContent h1 {
+    margin-top: 1.2rem;
+    font-size: 3rem;
+    line-height: 1.15;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.restaurantHeroContent h1 strong {
+    color: var(--primary-color);
+}
+
+/* restaurant form */
+.restaurantForm {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    background: var(--background-color);
+    border-radius: 1.6rem 1.6rem 0 0;
+    padding: 1.8rem;
+    box-shadow: var(--shadow-big);
+    margin-top: 3rem;
+}
+
+.restaurantFormCard {
+    width: 100%;
+    padding: 0.2rem 0;
+}
+
+/* form card header */
+.formCardHeader {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 1.8rem;
+}
+
+.formCardIcon {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 1.4rem;
+    background: var(--sruface-color-3);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.formCardIcon svg {
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
+.formCardHeader h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+}
+
+.formCardHeader p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+/* form group */
+.formGroup {
+    width: 100%;
+    margin-bottom: 1.4rem;
+}
+
+.formGroup label {
+    display: inline-flex;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.7rem;
+}
+
+.formGroup label span {
+    color: var(--error-color);
+}
+
+/* image upload */
+.imageUploadBox {
+    width: 100%;
+    height: 16rem;
+    border: 1.5px dashed var(--border-color-dark);
+    border-radius: 0.8rem;
+    background: var(--surface-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    cursor: pointer;
+    overflow: hidden;
+    color: #64748b;
+    transition: var(--transition-fast);
+    text-align: center;
+}
+
+.imageUploadBox:hover {
+    border-color: var(--primary-color);
+    background: var(--sruface-color-3);
+}
+
+.imageUploadBox svg {
+    width: 4rem;
+    height: 4rem;
+    color: #64748b;
+}
+
+.imageUploadBox strong {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.imageUploadBox p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.imageUploadBox.hasImage {
+    padding: 0;
+    border-style: solid;
+}
+
+.imageUploadBox.hasImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 0.8rem;
+}
+
+/* input */
+.inputBox {
+    width: 100%;
+    height: 4.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1.2rem;
+    transition: var(--transition-fast);
+}
+
+.inputBox:focus-within {
+    border-color: var(--primary-color);
+}
+
+.inputBox svg {
+    color: #64748b;
+    flex-shrink: 0;
+}
+
+.inputBox input {
+    width: 100%;
+    height: 100%;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+}
+
+.inputBox input::placeholder {
+    color: #94a3b8;
+}
+
+/* textarea */
+.textareaBox {
+    width: 100%;
+    height: 7.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.8rem;
+    padding: 1rem 1.2rem;
+    position: relative;
+    transition: var(--transition-fast);
+}
+
+.textareaBox:focus-within {
+    border-color: var(--primary-color);
+}
+
+.textareaBox textarea {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    padding-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+}
+
+.textareaBox textarea::placeholder {
+    color: #94a3b8;
+}
+
+.textareaBox small {
+    position: absolute;
+    right: 1rem;
+    bottom: 0.6rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+/* form row */
+.formRow {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+}
+
+.formRow .formGroup {
+    min-width: 0;
+}
+
+/* food type */
+.foodTypeRow {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+}
+
+.foodTypeButton {
+    width: 100%;
+    height: 4.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.foodTypeButton.veg {
+    border-color: #86c99b;
+    color: var(--veg-dark);
+}
+
+.foodTypeButton.veg svg {
+    color: var(--veg-color);
+}
+
+.foodTypeButton.all {
+    border-color: #ffb08f;
+    color: var(--text-primary);
+}
+
+.foodTypeButton.all svg {
+    color: var(--primary-color);
+}
+
+/* map */
+.mapBox {
+    width: 100%;
+    height: 25rem;
+    border-radius: 0.8rem;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+/* form actions */
+.restaurantFormActions {
+    width: 100%;
+    min-height: 7rem;
+    background: var(--background-color);
+    border-radius: 0 0 1.6rem 1.6rem;
+    box-shadow: var(--shadow-big);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.5rem 1.8rem;
+}
+
+.cancelButton {
+    width: 11rem;
+    height: 4.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.8rem;
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    font-weight: 600;
+    background: var(--background-color);
+    transition: var(--transition-fast);
+}
+
+.cancelButton:hover {
+    background: var(--surface-color);
+}
+
+.createRestaurantButton {
+    width: 17rem;
+    height: 4.2rem;
+    border-radius: 0.8rem;
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.createRestaurantButton:hover {
+    background: var(--primary-hover);
+}
