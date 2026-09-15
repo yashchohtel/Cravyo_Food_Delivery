@@ -276,16 +276,21 @@
     padding: 0 1.2rem;
     font-size: 1.3rem;
     font-weight: 600;
+    cursor: pointer;
     transition: var(--transition-fast);
+}
+
+.foodTypeButton input {
+    width: 1.8rem;
+    height: 1.8rem;
+    margin: 0;
+    accent-color: currentColor;
+    cursor: pointer;
 }
 
 .foodTypeButton.veg {
     border-color: #86c99b;
     color: var(--veg-dark);
-}
-
-.foodTypeButton.veg svg {
-    color: var(--veg-color);
 }
 
 .foodTypeButton.all {
@@ -295,6 +300,10 @@
 
 .foodTypeButton.all svg {
     color: var(--primary-color);
+}
+
+.formGroupFoodType {
+    margin-bottom: 0;
 }
 
 /* map */

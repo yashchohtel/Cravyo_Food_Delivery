@@ -2,6 +2,7 @@ import AdminPanelTopNavbar from "../../../Components/Navbars/Admin Panel Top Nav
 import './CreateRestaurant.css'
 import { useState } from "react";
 import { Upload, Image as Store, MapPin, Clock, Leaf, Utensils } from "lucide-react";
+import CreateRestaurantMap from "../../../Components/Ui/Create Restaurant Map/CreateRestaurantMap";
 
 const CreateRestaurant = () => {
 
@@ -59,6 +60,7 @@ const CreateRestaurant = () => {
 
               {/* restaurant image */}
               <div className="formGroup">
+
                 <label>Restaurant Image / Logo <span>*</span></label>
 
                 <input
@@ -80,20 +82,24 @@ const CreateRestaurant = () => {
                     </>
                   )}
                 </label>
+
               </div>
 
               {/* restaurant name */}
               <div className="formGroup">
+
                 <label>Restaurant Name <span>*</span></label>
 
                 <div className="inputBox">
                   <Store size={19} />
                   <input type="text" placeholder="e.g. The Spice House" />
                 </div>
+
               </div>
 
               {/* description */}
               <div className="formGroup">
+
                 <label>Description <span>*</span></label>
 
                 <div className="textareaBox">
@@ -103,48 +109,57 @@ const CreateRestaurant = () => {
                   ></textarea>
                   <small>0/500</small>
                 </div>
+
               </div>
 
               {/* opening closing time */}
               <div className="formRow">
 
                 <div className="formGroup">
+
                   <label>Opening Time <span>*</span></label>
 
                   <div className="inputBox">
                     <Clock size={19} />
                     <input type="time" />
                   </div>
+
                 </div>
 
                 <div className="formGroup">
+
                   <label>Closing Time <span>*</span></label>
 
                   <div className="inputBox">
                     <Clock size={19} />
                     <input type="time" />
                   </div>
+
                 </div>
 
               </div>
 
               {/* food type */}
-              <div className="formGroup">
+              <div className="formGroup formGroupFoodType">
+
                 <label>Food Type <span>*</span></label>
 
                 <div className="foodTypeRow">
 
-                  <button type="button" className="foodTypeButton veg">
+                  <label className="foodTypeButton veg">
+                    <input type="radio" name="foodType" value="pureVeg" />
                     <Leaf size={22} />
                     <span>Pure Veg</span>
-                  </button>
+                  </label>
 
-                  <button type="button" className="foodTypeButton all">
+                  <label className="foodTypeButton all">
+                    <input type="radio" name="foodType" value="all" />
                     <Utensils size={21} />
                     <span>All</span>
-                  </button>
+                  </label>
 
                 </div>
+
               </div>
 
             </div>
@@ -197,7 +212,9 @@ const CreateRestaurant = () => {
               </div>
 
               {/* map */}
-              <div className="mapBox"></div>
+              <div className="mapBox">
+                <CreateRestaurantMap />
+              </div>
 
             </div>
 

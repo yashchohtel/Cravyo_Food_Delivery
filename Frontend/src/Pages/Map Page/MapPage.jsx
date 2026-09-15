@@ -8,7 +8,7 @@ import { FaLocationCrosshairs } from "react-icons/fa6";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import LocationDataSkeleton from '../../Components/Skeletons/Location Data Skeleton/LocationDataSkeleton';
-import { setSelectedLocation } from '../../features/Location/locationSlice';
+import { setSelectedLocation } from '../../features/location/locationSlice';
 import { calculateDistance } from '../../utils/getLocation';
 
 const MapPage = () => {

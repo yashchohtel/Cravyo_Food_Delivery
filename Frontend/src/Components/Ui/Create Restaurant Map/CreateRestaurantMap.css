@@ -1,0 +1,7 @@
+.createRestaurantMap {
+    width: 100%;
+    height: 25rem;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
