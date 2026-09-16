@@ -1,7 +1,94 @@
 .createRestaurantMap {
     width: 100%;
-    height: 25rem;
     border-radius: 0.8rem;
     overflow: hidden;
     border: 1px solid var(--border-color);
+    position: relative;
+    flex: 1;
+}
+
+.createRestaurantMapPin {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    z-index: 400;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.createRestaurantMapPin svg {
+    width: 3.2rem;
+    height: 3.2rem;
+    color: var(--primary-color);
+}
+
+.createRestaurantCurrentLocationMarker {
+    background: transparent;
+    border: none;
+}
+
+.createRestaurantLocationDot {
+    width: 12px;
+    height: 12px;
+    background: #007bff;
+    border-radius: 50%;
+    border: 2px solid white;
+    position: relative;
+}
+
+.createRestaurantLocationDot::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    background: rgb(0 123 255 / 92%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: createRestaurantLocationPulse 1.5s ease-out infinite;
+}
+
+@keyframes createRestaurantLocationPulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.createRestaurantCurrentLocationButton {
+    position: absolute;
+    right: 1.2rem;
+    bottom: 1.2rem;
+    z-index: 500;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.8rem;
+    background: var(--background-color);
+    color: var(--primary-color);
+    box-shadow: var(--shadow-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+
+.createRestaurantCurrentLocationButton:hover {
+    background: var(--surface-color);
+}
+
+.createRestaurantCurrentLocationButton svg {
+    width: 2rem;
+    height: 2rem;
 }

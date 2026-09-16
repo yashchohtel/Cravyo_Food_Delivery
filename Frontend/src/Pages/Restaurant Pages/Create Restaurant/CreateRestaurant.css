@@ -65,6 +65,8 @@
 .restaurantFormCard {
     width: 100%;
     padding: 0.2rem 0;
+    display: flex;
+    flex-direction: column;
 }
 
 /* form card header */
@@ -303,6 +305,10 @@
 }
 
 .formGroupFoodType {
+    margin-bottom: 0;
+}
+
+.formGroupFoodType label{
     margin-bottom: 0;
 }
 

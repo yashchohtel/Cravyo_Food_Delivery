@@ -1,23 +1,53 @@
 import AdminPanelTopNavbar from "../../../Components/Navbars/Admin Panel Top Navbar/AdminPanelTopNavbar"
 import './CreateRestaurant.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Upload, Image as Store, MapPin, Clock, Leaf, Utensils } from "lucide-react";
 import CreateRestaurantMap from "../../../Components/Ui/Create Restaurant Map/CreateRestaurantMap";
+import useCreateRestaurant from "../../../hooks/useCreateRestaurant";
 
 const CreateRestaurant = () => {
+
+  // get state and function form use create restaurant hook
+  const {
+    latitude,
+    setLatitude,
+    longitude,
+    setLongitude
+  } = useCreateRestaurant();
+
+  /* -------------------------------------- */
 
   const [imagePreview, setImagePreview] = useState(null);
 
   // handle restaurant image
   const handleImageChange = (e) => {
+
     const file = e.target.files[0];
 
-    if (!file) {
+    if (!file) return;
+
+    setImagePreview(URL.createObjectURL(file));
+
+  };
+
+  /* -------------------------------------- */
+
+  // effect to set use current location longitue and latitude
+  useEffect(() => {
+
+    const savedCurrentLocation = localStorage.getItem("userCurrentLocation");
+
+    if (!savedCurrentLocation) {
       return;
     }
 
-    setImagePreview(URL.createObjectURL(file));
-  };
+    const userCurrentLocation = JSON.parse(savedCurrentLocation);
+
+    setLatitude(userCurrentLocation.latitude);
+    setLongitude(userCurrentLocation.longitude);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
 
@@ -34,7 +64,7 @@ const CreateRestaurant = () => {
           <div className="restaurantHero">
             <div className="restaurantHeroContent">
               <span>LET'S BRING GREAT FOOD ONLINE</span>
-              <h1>List Your Restaurant on <strong>Cravyo</strong></h1>
+              <h1>List Your Restaurant on <strong>Crayvo</strong></h1>
             </div>
           </div>
         </div>
@@ -196,7 +226,12 @@ const CreateRestaurant = () => {
 
                   <div className="inputBox">
                     <MapPin size={19} />
-                    <input type="text" placeholder="22.7196" />
+                    <input
+                      type="text"
+                      placeholder="22.7196"
+                      value={latitude}
+                      readOnly
+                    />
                   </div>
                 </div>
 
@@ -205,16 +240,25 @@ const CreateRestaurant = () => {
 
                   <div className="inputBox">
                     <MapPin size={19} />
-                    <input type="text" placeholder="75.8577" />
+                    <input
+                      type="text"
+                      placeholder="75.8577"
+                      value={longitude}
+                      readOnly
+                    />
                   </div>
                 </div>
 
               </div>
 
               {/* map */}
-              <div className="mapBox">
-                <CreateRestaurantMap />
-              </div>
+              <CreateRestaurantMap
+                latitude={latitude}
+                longitude={longitude}
+                setLatitude={setLatitude}
+                setLongitude={setLongitude}
+              />
+
 
             </div>
 
