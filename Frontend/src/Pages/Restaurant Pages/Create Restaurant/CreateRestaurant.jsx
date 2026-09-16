@@ -1,6 +1,6 @@
 import AdminPanelTopNavbar from "../../../Components/Navbars/Admin Panel Top Navbar/AdminPanelTopNavbar"
 import './CreateRestaurant.css'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Upload, Image as Store, MapPin, Clock, Leaf, Utensils } from "lucide-react";
 import CreateRestaurantMap from "../../../Components/Ui/Create Restaurant Map/CreateRestaurantMap";
 import useCreateRestaurant from "../../../hooks/useCreateRestaurant";
@@ -9,10 +9,8 @@ const CreateRestaurant = () => {
 
   // get state and function form use create restaurant hook
   const {
-    latitude,
-    setLatitude,
-    longitude,
-    setLongitude
+    formData,
+    handleMapLocation
   } = useCreateRestaurant();
 
   /* -------------------------------------- */
@@ -30,25 +28,6 @@ const CreateRestaurant = () => {
 
   };
 
-  /* -------------------------------------- */
-
-  // effect to set use current location longitue and latitude
-  useEffect(() => {
-
-    const savedCurrentLocation = localStorage.getItem("userCurrentLocation");
-
-    if (!savedCurrentLocation) {
-      return;
-    }
-
-    const userCurrentLocation = JSON.parse(savedCurrentLocation);
-
-    setLatitude(userCurrentLocation.latitude);
-    setLongitude(userCurrentLocation.longitude);
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
 
     <>
@@ -64,7 +43,7 @@ const CreateRestaurant = () => {
           <div className="restaurantHero">
             <div className="restaurantHeroContent">
               <span>LET'S BRING GREAT FOOD ONLINE</span>
-              <h1>List Your Restaurant on <strong>Crayvo</strong></h1>
+              <h1>List Your Restaurant on <strong>Cravyo</strong></h1>
             </div>
           </div>
         </div>
@@ -208,57 +187,79 @@ const CreateRestaurant = () => {
                 </div>
               </div>
 
-              {/* address */}
+              {/* street / area */}
               <div className="formGroup">
-                <label>Address <span>*</span></label>
+
+                <label>Street / Area <span>*</span></label>
 
                 <div className="inputBox">
                   <MapPin size={19} />
                   <input type="text" placeholder="e.g. 123, MG Road, Vijay Nagar" />
                 </div>
+
               </div>
 
-              {/* latitude longitude */}
+              {/* city state */}
+
               <div className="formRow">
 
                 <div className="formGroup">
-                  <label>Latitude <span>*</span></label>
+
+                  <label>City <span>*</span></label>
 
                   <div className="inputBox">
                     <MapPin size={19} />
-                    <input
-                      type="text"
-                      placeholder="22.7196"
-                      value={latitude}
-                      readOnly
-                    />
+                    <input type="text" placeholder="e.g. Indore" />
                   </div>
+
                 </div>
 
                 <div className="formGroup">
-                  <label>Longitude <span>*</span></label>
+
+                  <label>State <span>*</span></label>
 
                   <div className="inputBox">
                     <MapPin size={19} />
-                    <input
-                      type="text"
-                      placeholder="75.8577"
-                      value={longitude}
-                      readOnly
-                    />
+                    <input type="text" placeholder="e.g. Madhya Pradesh" />
                   </div>
+
+                </div>
+
+              </div>
+
+              {/* pincode */}
+              <div className="formGroup">
+
+                <label>Pincode <span>*</span></label>
+
+                <div className="inputBox">
+                  <MapPin size={19} />
+                  <input type="text" placeholder="e.g. 452001" />
+                </div>
+
+              </div>
+
+              {/* selected location */}
+              <div className="formGroup">
+
+                <label>Selected Location <span>*</span></label>
+
+                <div className="inputBox">
+                  <MapPin size={19} />
+                  <input
+                    type="text"
+                    placeholder="Select restaurant location from map"
+                    value={formData.mapLocation}
+                    readOnly
+                  />
                 </div>
 
               </div>
 
               {/* map */}
               <CreateRestaurantMap
-                latitude={latitude}
-                longitude={longitude}
-                setLatitude={setLatitude}
-                setLongitude={setLongitude}
+                handleMapLocation={handleMapLocation}
               />
-
 
             </div>
 
@@ -274,11 +275,10 @@ const CreateRestaurant = () => {
             <button type="button" className="createRestaurantButton">
               Create Restaurant
             </button>
+
           </div>
 
         </div>
-
-
 
       </div>
 

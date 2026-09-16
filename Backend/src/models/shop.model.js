@@ -23,6 +23,35 @@ const shopSchema = new mongoose.Schema({
         required: true,
     },
 
+    // Description of the shop
+    description: {
+        type: String,
+        required: true,
+        trim: true,
+        maxlength: 500
+    },
+
+    // Opening time of the shop
+    openingTime: {
+        type: String,
+        required: true,
+        trim: true
+    },
+
+    // Closing time of the shop
+    closingTime: {
+        type: String,
+        required: true,
+        trim: true
+    },
+
+    // Food type of the shop
+    foodType: {
+        type: String,
+        enum: ["pureVeg", "all"],
+        required: true
+    },
+
     // Owner of the shop
     owner: {
         type: mongoose.Schema.Types.ObjectId,
@@ -62,6 +91,13 @@ const shopSchema = new mongoose.Schema({
 
         // Pincode of the shop
         pincode: {
+            type: String,
+            required: true,
+            trim: true
+        },
+
+        // Selected location from map
+        mapLocation: {
             type: String,
             required: true,
             trim: true

@@ -40,7 +40,7 @@ const CurrentLocationButton = ({ userCurrentLocation }) => {
 };
 
 // Handle map movement
-const MapController = ({ setLatitude, setLongitude }) => {
+const MapController = ({ handleMapLocation }) => {
 
     const map = useMap();
 
@@ -51,8 +51,7 @@ const MapController = ({ setLatitude, setLongitude }) => {
 
             const center = map.getCenter();
 
-            setLatitude(center.lat);
-            setLongitude(center.lng);
+            handleMapLocation(center.lat, center.lng);
         };
 
         map.on("moveend", handleMapMoveEnd);
@@ -61,16 +60,16 @@ const MapController = ({ setLatitude, setLongitude }) => {
             map.off("moveend", handleMapMoveEnd);
         };
 
-    }, [map, setLatitude, setLongitude]);
+    }, [map, handleMapLocation]);
 
     return null;
 };
 
 // map component 
-const CreateRestaurantMap = (props) => {
+const CreateRestaurantMap = (props) => { 
 
     // destructure props
-    const { setLatitude, setLongitude } = props;
+    const { handleMapLocation } = props;
 
     // Get user current location
     const savedCurrentLocation = localStorage.getItem("userCurrentLocation");
@@ -102,8 +101,7 @@ const CreateRestaurantMap = (props) => {
             >
 
                 <MapController
-                    setLatitude={setLatitude}
-                    setLongitude={setLongitude}
+                    handleMapLocation={handleMapLocation}
                 />
 
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -118,6 +116,7 @@ const CreateRestaurantMap = (props) => {
 
                 <CurrentLocationButton
                     userCurrentLocation={userCurrentLocation}
+                    handleMapLocation={handleMapLocation}
                 />
 
             </MapContainer>
