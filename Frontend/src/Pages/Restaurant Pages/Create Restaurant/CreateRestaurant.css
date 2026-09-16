@@ -174,8 +174,8 @@
 .imageUploadBox.hasImage img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    padding: 0.8rem;
+    object-fit: cover;
+    padding: 0.5rem;
 }
 
 /* input */
@@ -308,7 +308,7 @@
     margin-bottom: 0;
 }
 
-.formGroupFoodType label{
+.formGroupFoodType label {
     margin-bottom: 0;
 }
 
@@ -365,4 +365,22 @@
 
 .createRestaurantButton:hover {
     background: var(--primary-hover);
+}
+
+/* validation error */
+.formError {
+    margin-top: 0.5rem;
+    color: var(--error-color);
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.inputBox.inputError,
+.textareaBox.inputError {
+    border-color: var(--error-color);
+}
+
+.inputBox.inputError:focus-within,
+.textareaBox.inputError:focus-within {
+    border-color: var(--error-color);
 }
