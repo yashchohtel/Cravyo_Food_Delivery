@@ -1,5 +1,6 @@
 import FoodItem from "../../models/food.item.model.js";
 import Shop from "../../models/shop.model.js";
+import User from "../../models/user.model.js";
 import ErrorHandler from "../../utils/errorHandler.js";
 import { deleteFromCloudinary, uploadBufferToCloudinary } from "../../utils/uploadImage.js";
 
@@ -11,36 +12,58 @@ export const createShop = async (req, res, next) => {
         return next(new ErrorHandler("Shop image is required", 400));
     }
 
-    // Check shop data
+    // Check shop name
     if (!req.body.name) {
         return next(new ErrorHandler("Shop name is required", 400));
     }
 
+    // Check if user already has a shop
+    const existingShop = await Shop.findOne({ owner: req.user._id });
+
+    if (existingShop) {
+        return next(new ErrorHandler("You can create only one shop", 400));
+    }
+
+    let image;
+
     try {
 
         // Upload shop image to Cloudinary
-        const image = await uploadBufferToCloudinary(req.file.buffer, "cravyo/shops");
+        image = await uploadBufferToCloudinary(req.file.buffer, "cravyo/shops");
 
         // Create shop
         const shop = await Shop.create({
             name: req.body.name,
             image: image.secure_url,
             imagePublicId: image.public_id,
+            description: req.body.description,
+            openingTime: req.body.openingTime,
+            closingTime: req.body.closingTime,
+            foodType: req.body.foodType,
             owner: req.user._id,
             address: {
                 street: req.body.street,
                 city: req.body.city,
                 state: req.body.state,
                 pincode: req.body.pincode,
+                mapLocation: req.body.mapLocation,
                 latitude: Number(req.body.latitude),
                 longitude: Number(req.body.longitude)
             }
         });
 
+        // update user role when resturent is created successfully
+        const user = await User.findByIdAndUpdate(
+            req.user._id,
+            { roles: ["restaurantOwner"] },
+            { new: true }
+        );
+
         res.status(201).json({
             success: true,
             message: "Shop created successfully",
-            shop
+            shop,
+            user
         });
 
     } catch (error) {

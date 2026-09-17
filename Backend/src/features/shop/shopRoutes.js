@@ -9,7 +9,7 @@ import { createShop, deleteShop, getShop, updateShop } from "./shopController.js
 const shopRouter = express.Router();
 
 // Create Shop [POST] - "http://localhost:5000/api/shop/createShop"
-shopRouter.post("/createShop", isUserAuth, authorizeRole("restaurantOwner"), upload.single("image"), catchAsyncError(createShop));
+shopRouter.post("/createShop", isUserAuth, upload.single("image"), catchAsyncError(createShop));
 
 // Get Single Shop [GET] - "http://localhost:5000/api/shop/getShop/SHOP_ID"
 shopRouter.get("/getShop/:id", catchAsyncError(getShop));
@@ -20,4 +20,4 @@ shopRouter.put("/updateShop/:id", isUserAuth, authorizeRole("restaurantOwner"), 
 // Delete Shop [DELETE] - "http://localhost:5000/api/shop/deleteShop/SHOP_ID"
 shopRouter.delete("/deleteShop/:id", isUserAuth, authorizeRole("restaurantOwner"), catchAsyncError(deleteShop));
 
-export default shopRouter; // export shop router
+export default shopRouter; // export shop routerrt

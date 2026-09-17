@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { getAddressFromCoordinates } from "../utils/getLocation";
+import { useDispatch } from "react-redux";
+import { createRestaurant } from "../features/restaurant/restaurantThunk";
+import { useNavigate } from "react-router-dom";
+import { updateUser } from "../features/auth/authSlice";
 
 const useCreateRestaurant = () => {
+
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     // create restaurant form data
     const [formData, setFormData] = useState({
@@ -227,16 +235,41 @@ const useCreateRestaurant = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    // Create restaurant
-    const handleCreateRestaurant = (e) => {
-
+    const handleCreateRestaurant = async (e) => {
         e.preventDefault();
 
         const isValid = validateForm();
 
         if (!isValid) return;
 
-        console.log("Restaurant Data:", formData);
+        const restaurantData = new FormData();
+
+        restaurantData.append("name", formData.name);
+        restaurantData.append("description", formData.description);
+        restaurantData.append("openingTime", formData.openingTime);
+        restaurantData.append("closingTime", formData.closingTime);
+        restaurantData.append("foodType", formData.foodType);
+        restaurantData.append("street", formData.street);
+        restaurantData.append("city", formData.city);
+        restaurantData.append("state", formData.state);
+        restaurantData.append("pincode", formData.pincode);
+        restaurantData.append("mapLocation", formData.mapLocation);
+        restaurantData.append("latitude", formData.latitude);
+        restaurantData.append("longitude", formData.longitude);
+        restaurantData.append("image", formData.image);
+
+        try {
+
+            const data = await dispatch(createRestaurant(restaurantData)).unwrap();
+
+            dispatch(updateUser(data.user));
+
+            navigate("/restaurant/dashboard");
+
+        } catch (error) {
+            console.log(error);
+        }
+        
     };
 
     // Get saved current location

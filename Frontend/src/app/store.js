@@ -3,6 +3,7 @@ import authReducer from "../features/auth/authSlice";
 import locationReducer from "../features/location/locationSlice" 
 import promotionBannerReducer from '../features/platform/promotionBanners/promotionBannersSlice'
 import foodCategoriesReducer from '../features/platform/topFoodCategories/topFoodCategoriesSlice'
+import restaurantReducer from "../features/restaurant/restaurantSlice";
 
 // configure store with 
 const store = configureStore({
@@ -21,6 +22,9 @@ const store = configureStore({
 
         // admin panel top food categories reducer
         foodCategories: foodCategoriesReducer,
+
+        // restuer creation reducer
+        restaurant: restaurantReducer,
 
     },
 

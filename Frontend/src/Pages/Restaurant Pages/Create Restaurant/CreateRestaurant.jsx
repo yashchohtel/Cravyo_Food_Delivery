@@ -3,8 +3,18 @@ import './CreateRestaurant.css'
 import { Upload, Image as Store, MapPin, Clock, Leaf, Utensils } from "lucide-react";
 import CreateRestaurantMap from "../../../Components/Ui/Create Restaurant Map/CreateRestaurantMap";
 import useCreateRestaurant from "../../../hooks/useCreateRestaurant";
+import { useSelector } from "react-redux";
+import ButtonLoader from "../../../Components/Loaders/ButtonLoader/ButtonLoader";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreateRestaurant = () => {
+
+  const navigate = useNavigate();
+
+  // getting state from redux store
+  const { user } = useSelector((state) => state.auth);
+  const { loading } = useSelector((state) => state.restaurant);
 
   // get state and function form use create restaurant hook
   const {
@@ -15,6 +25,14 @@ const CreateRestaurant = () => {
     handleChange,
     handleCreateRestaurant
   } = useCreateRestaurant();
+
+  /* -------------------------------------- */
+
+  useEffect(() => {
+    if (user?.roles?.includes("restaurantOwner")) {
+      navigate("/", { replace: true });
+    }
+  }, [user, navigate]);
 
   /* -------------------------------------- */
 
@@ -345,12 +363,21 @@ const CreateRestaurant = () => {
             {/* form actions */}
             <div className="restaurantFormActions">
 
-              <button type="button" className="cancelButton">
+              <button
+                type="button"
+                className="cancelButton"
+                disabled={loading}
+              >
                 Cancel
               </button>
 
-              <button type="submit" className="createRestaurantButton">
-                Create Restaurant
+              <button
+                type="submit"
+                className="createRestaurantButton"
+                disabled={loading}
+              >
+                {loading ? <ButtonLoader /> : "Create Restaurant"}
+
               </button>
 
             </div>

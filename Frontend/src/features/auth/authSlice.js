@@ -39,6 +39,11 @@ const authSlice = createSlice({
             state.successMessage = null;
         },
 
+        // update user
+        updateUser: (state, action) => {
+            state.user = action.payload;
+        },
+
     },
 
     // Extra reducers to handle async actions
@@ -273,6 +278,6 @@ const authSlice = createSlice({
 });
 
 // Export actions for use in components
-export const { clearMessages, clearAuth } = authSlice.actions;
+export const { clearMessages, clearAuth, updateUser } = authSlice.actions;
 
 export default authSlice.reducer;
