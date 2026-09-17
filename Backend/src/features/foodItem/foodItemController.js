@@ -1,7 +1,7 @@
 import FoodItem from "../../models/food.item.model.js";
 import Shop from "../../models/shop.model.js";
 import ErrorHandler from "../../utils/errorHandler.js";
-import { uploadBufferToCloudinary } from "../../utils/uploadImage.js";
+import { deleteFromCloudinary, uploadBufferToCloudinary } from "../../utils/uploadImage.js";
 
 // Create Food Item
 export const createFoodItem = async (req, res, next) => {
@@ -102,17 +102,23 @@ export const getAllFoodItems = async (req, res, next) => {
 // Update Food Item
 export const updateFoodItem = async (req, res, next) => {
 
-    const shop = await Shop.findById(foodItem.shop);
-
-    if (shop.owner.toString() !== req.user._id.toString()) {
-        return next(new ErrorHandler("You are not authorized to update this food item", 403));
-    }
-
     // Find food item
     const foodItem = await FoodItem.findById(req.params.id);
 
     if (!foodItem) {
         return next(new ErrorHandler("Food item not found", 404));
+    }
+
+    // Find shop
+    const shop = await Shop.findById(foodItem.shop);
+
+    if (!shop) {
+        return next(new ErrorHandler("Shop not found", 404));
+    }
+
+    // Check shop ownership
+    if (shop.owner.toString() !== req.user._id.toString()) {
+        return next(new ErrorHandler("You are not authorized to update this food item", 403));
     }
 
     // Update food item name
@@ -183,7 +189,7 @@ export const updateFoodItem = async (req, res, next) => {
     res.status(200).json({
         success: true,
         message: "Food item updated successfully",
-        foodItem,
+        foodItem
     });
 
 };
@@ -191,18 +197,23 @@ export const updateFoodItem = async (req, res, next) => {
 // Delete Food Item
 export const deleteFoodItem = async (req, res, next) => {
 
-    // find shop
-    const shop = await Shop.findById(foodItem.shop);
-
-    if (shop.owner.toString() !== req.user._id.toString()) {
-        return next(new ErrorHandler("You are not authorized to delete this food item", 403));
-    }
-
     // Find food item
     const foodItem = await FoodItem.findById(req.params.id);
 
     if (!foodItem) {
         return next(new ErrorHandler("Food item not found", 404));
+    }
+
+    // Find shop
+    const shop = await Shop.findById(foodItem.shop);
+
+    if (!shop) {
+        return next(new ErrorHandler("Shop not found", 404));
+    }
+
+    // Check shop ownership
+    if (shop.owner.toString() !== req.user._id.toString()) {
+        return next(new ErrorHandler("You are not authorized to delete this food item", 403));
     }
 
     // Delete food item image from Cloudinary
@@ -225,7 +236,7 @@ export const deleteFoodItem = async (req, res, next) => {
 
     res.status(200).json({
         success: true,
-        message: "Food item deleted successfully",
+        message: "Food item deleted successfully"
     });
 
 };
