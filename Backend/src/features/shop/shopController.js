@@ -101,67 +101,102 @@ export const getShop = async (req, res, next) => {
 // Update Shop
 export const updateShop = async (req, res, next) => {
 
-    // Find shop
-    const shop = await Shop.findById(req.params.id);
+    try {
 
-    if (!shop) {
-        return next(new ErrorHandler("Shop not found", 404));
-    }
+        // Find shop
+        const shop = await Shop.findById(req.params.id);
 
-    // Update shop name
-    if (req.body.name !== undefined) {
-        shop.name = req.body.name;
-    }
-
-    // Update address
-    if (req.body.street !== undefined) {
-        shop.address.street = req.body.street;
-    }
-
-    if (req.body.city !== undefined) {
-        shop.address.city = req.body.city;
-    }
-
-    if (req.body.state !== undefined) {
-        shop.address.state = req.body.state;
-    }
-
-    if (req.body.pincode !== undefined) {
-        shop.address.pincode = req.body.pincode;
-    }
-
-    if (req.body.latitude !== undefined) {
-        shop.address.latitude = Number(req.body.latitude);
-    }
-
-    if (req.body.longitude !== undefined) {
-        shop.address.longitude = Number(req.body.longitude);
-    }
-
-    // Replace shop image
-    if (req.file) {
-
-        const oldPublicId = shop.imagePublicId;
-
-        const newImage = await uploadBufferToCloudinary(req.file.buffer, "cravyo/shops");
-
-        shop.image = newImage.secure_url;
-        shop.imagePublicId = newImage.public_id;
-
-        // Delete old image
-        if (oldPublicId) {
-            await deleteFromCloudinary(oldPublicId);
+        if (!shop) {
+            return next(new ErrorHandler("Shop not found", 404));
         }
+
+        // Check shop ownership
+        if (shop.owner.toString() !== req.user._id.toString()) {
+            return next(new ErrorHandler("You are not authorized to update this shop", 403));
+        }
+
+        // Update shop name
+        if (req.body.name !== undefined) {
+            shop.name = req.body.name;
+        }
+
+        // Update shop description
+        if (req.body.description !== undefined) {
+            shop.description = req.body.description;
+        }
+
+        // Update opening time
+        if (req.body.openingTime !== undefined) {
+            shop.openingTime = req.body.openingTime;
+        }
+
+        // Update closing time
+        if (req.body.closingTime !== undefined) {
+            shop.closingTime = req.body.closingTime;
+        }
+
+        // Update food type
+        if (req.body.foodType !== undefined) {
+            shop.foodType = req.body.foodType;
+        }
+
+        // Update address
+        if (req.body.street !== undefined) {
+            shop.address.street = req.body.street;
+        }
+
+        if (req.body.city !== undefined) {
+            shop.address.city = req.body.city;
+        }
+
+        if (req.body.state !== undefined) {
+            shop.address.state = req.body.state;
+        }
+
+        if (req.body.pincode !== undefined) {
+            shop.address.pincode = req.body.pincode;
+        }
+
+        if (req.body.mapLocation !== undefined) {
+            shop.address.mapLocation = req.body.mapLocation;
+        }
+
+        if (req.body.latitude !== undefined) {
+            shop.address.latitude = Number(req.body.latitude);
+        }
+
+        if (req.body.longitude !== undefined) {
+            shop.address.longitude = Number(req.body.longitude);
+        }
+
+        // Replace shop image
+        if (req.file) {
+
+            const oldPublicId = shop.imagePublicId;
+
+            const newImage = await uploadBufferToCloudinary(req.file.buffer, "cravyo/shops");
+
+            shop.image = newImage.secure_url;
+            shop.imagePublicId = newImage.public_id;
+
+            // Delete old image
+            if (oldPublicId) {
+                await deleteFromCloudinary(oldPublicId);
+            }
+        }
+
+        await shop.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Shop updated successfully",
+            shop
+        });
+
+    } catch (error) {
+
+        return next(new ErrorHandler("Shop update failed. Please try again.", 500));
     }
-
-    await shop.save();
-
-    res.status(200).json({
-        success: true,
-        message: "Shop updated successfully",
-        shop,
-    });
-
 };
 
 // Delete Shop
