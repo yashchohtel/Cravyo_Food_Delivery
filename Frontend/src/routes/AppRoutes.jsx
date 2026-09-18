@@ -15,7 +15,8 @@ import AdminDashboard from "../Pages/Admin Panel Pages/Admin Dashboard/AdminDash
 import FoodCategories from "../Pages/Admin Panel Pages/Food Categories/FoodCategories";
 import PromotionBanners from "../Pages/Admin Panel Pages/Promotion Banners/PromotionBanners";
 import CreateRestaurant from "../Pages/Restaurant Pages/Create Restaurant/CreateRestaurant.jsx";
-import ResturantOwnerDashboard from "../Pages/Restaurant Pages/Restaurant Owner Dashboard/ResturantOwnerDashboard.jsx";
+import RestaurantCreateProtectedRoute from "./RestaurantCreateProtectedRoute.jsx";
+import RestaurantOwnerAdminPenal from "../Pages/Restaurant Pages/Restaurant Owner Admin Penal/RestaurantOwnerAdminPenal.jsx";
 
 function AppRoutes() {
 
@@ -69,15 +70,22 @@ function AppRoutes() {
 
       </Route>
 
-      {/* create restaurant route */}
-      <Route path="/restaurant/create" element={
-        <ProtectedRoute> <CreateRestaurant /> </ProtectedRoute>
-      } />
+      {/* restaurant create route */}
+      <Route
+        path="/restaurant/create"
+        element={
+          <ProtectedRoute>
+            <RestaurantCreateProtectedRoute>
+              <CreateRestaurant />
+            </RestaurantCreateProtectedRoute>
+          </ProtectedRoute>
+        }
+      />
 
       {/* restaurant route */}
       <Route path="/restaurant/dashboard" element={
         <ProtectedRoute>
-          <RoleProtectedRoute requiredRole="restaurantOwner"> <ResturantOwnerDashboard /> </RoleProtectedRoute>
+          <RoleProtectedRoute requiredRole="restaurantOwner"> <RestaurantOwnerAdminPenal /> </RoleProtectedRoute>
         </ProtectedRoute>
       } />
 

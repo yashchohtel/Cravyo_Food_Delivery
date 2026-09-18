@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import api from "../../api/axios.js";
+import api from "../../../api/axios.js";
 
 // Thunk to create a new restaurant
 export const createRestaurant = createAsyncThunk("restaurant/createRestaurant", async (formData, { rejectWithValue }) => {

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { getAddressFromCoordinates } from "../utils/getLocation";
 import { useDispatch } from "react-redux";
-import { createRestaurant } from "../features/restaurant/restaurantThunk";
+import { createRestaurant } from "../features/restaurant dashboard/restaurant/restaurantThunk";
 import { useNavigate } from "react-router-dom";
-import { updateUser } from "../features/auth/authSlice";
+import { updateUser } from "../features/auth/authSlice.js";
 
 const useCreateRestaurant = () => {
 
@@ -263,6 +263,8 @@ const useCreateRestaurant = () => {
             const data = await dispatch(createRestaurant(restaurantData)).unwrap();
 
             dispatch(updateUser(data.user));
+
+            console.log(data.user)
 
             navigate("/restaurant/dashboard");
 

@@ -55,10 +55,10 @@ export const createShop = async (req, res, next) => {
         // update user role when resturent is created successfully
         const user = await User.findByIdAndUpdate(
             req.user._id,
-            { roles: ["restaurantOwner"] },
+            { $addToSet: { roles: "restaurantOwner" } },
             { new: true }
         );
-
+        
         res.status(201).json({
             success: true,
             message: "Shop created successfully",

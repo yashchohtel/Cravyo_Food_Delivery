@@ -5,15 +5,9 @@ import CreateRestaurantMap from "../../../Components/Ui/Create Restaurant Map/Cr
 import useCreateRestaurant from "../../../hooks/useCreateRestaurant";
 import { useSelector } from "react-redux";
 import ButtonLoader from "../../../Components/Loaders/ButtonLoader/ButtonLoader";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 const CreateRestaurant = () => {
 
-  const navigate = useNavigate();
-
-  // getting state from redux store
-  const { user } = useSelector((state) => state.auth);
   const { loading } = useSelector((state) => state.restaurant);
 
   // get state and function form use create restaurant hook
@@ -25,16 +19,6 @@ const CreateRestaurant = () => {
     handleChange,
     handleCreateRestaurant
   } = useCreateRestaurant();
-
-  /* -------------------------------------- */
-
-  useEffect(() => {
-    if (user?.roles?.includes("restaurantOwner")) {
-      navigate("/", { replace: true });
-    }
-  }, [user, navigate]);
-
-  /* -------------------------------------- */
 
   return (
 
