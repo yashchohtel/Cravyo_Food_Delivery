@@ -83,7 +83,7 @@ function AppRoutes() {
       />
 
       {/* restaurant route */}
-      <Route path="/restaurant/dashboard" element={
+      <Route path="/restaurant/admin-panel" element={
         <ProtectedRoute>
           <RoleProtectedRoute requiredRole="restaurantOwner"> <RestaurantOwnerAdminPenal /> </RoleProtectedRoute>
         </ProtectedRoute>

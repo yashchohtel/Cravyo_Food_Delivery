@@ -44,7 +44,6 @@ const AdminPanelTopNavbar = () => {
 
                 </div>
 
-
                 {/* Right */}
                 <div className="navbar-right">
 

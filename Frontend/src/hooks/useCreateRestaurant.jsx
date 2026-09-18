@@ -266,12 +266,12 @@ const useCreateRestaurant = () => {
 
             console.log(data.user)
 
-            navigate("/restaurant/dashboard");
+            navigate("/restaurant/admin-panel");
 
         } catch (error) {
             console.log(error);
         }
-        
+
     };
 
     // Get saved current location
