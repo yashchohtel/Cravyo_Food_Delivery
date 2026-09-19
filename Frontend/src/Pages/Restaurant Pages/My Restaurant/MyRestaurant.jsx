@@ -1,23 +1,17 @@
 import { useSelector } from "react-redux";
 import { Store, MapPin, Clock, Leaf, Utensils, Edit, Power, Map, Sun, Moon } from "lucide-react";
-
 import "./MyRestaurant.css";
+import RestaurantOwnerFormModal from "../Restaurant Owner Form Modal/RestaurantOwnerFormModal";
+import { useState } from "react";
 
 const MyRestaurant = () => {
 
   // get restaurant from redux
   const { restaurant } = useSelector((state) => state.restaurant);
 
-  // if no resturant
-  if (!restaurant) {
-    return (
-      <div className="myRestaurantEmpty">
-        <Store size={40} />
-        <h2>Restaurant not found</h2>
-        <p>Restaurant information is not available.</p>
-      </div>
-    );
-  }
+  console.log(restaurant);
+
+  /* -------------------------------------- */
 
   // destructure restaurant object
   const { name, image, description, foodType, openingTime, closingTime, isOpen, address } = restaurant;
@@ -40,9 +34,61 @@ const MyRestaurant = () => {
 
   };
 
+  /* -------------------------------------- */
+
+  // modal state
+  const [modal, setModal] = useState({
+    isOpen: false,
+    type: null,
+    mode: null,
+    data: null,
+  });
+
+  // open modal
+  const openModal = (type, mode, data = null) => {
+    setModal({
+      isOpen: true,
+      type,
+      mode,
+      data,
+    });
+  };
+
+  // close modal
+  const closeModal = () => {
+    setModal({
+      isOpen: false,
+      type: null,
+      mode: null,
+      data: null,
+    });
+  };
+
+  /* -------------------------------------- */
+
+  // if no resturant
+  if (!restaurant) {
+    return (
+      <div className="myRestaurantEmpty">
+        <Store size={40} />
+        <h2>Restaurant not found</h2>
+        <p>Restaurant information is not available.</p>
+      </div>
+    );
+  }
+
   return (
 
     <div className="myRestaurant">
+
+      {/* add banner component */}
+      <RestaurantOwnerFormModal
+        isOpen={modal.isOpen}
+        type={modal.type}
+        mode={modal.mode}
+        data={modal.data}
+        onClose={closeModal}
+      />
 
       {/* restaurant overview */}
       <div className="restaurantOverview">
@@ -54,7 +100,6 @@ const MyRestaurant = () => {
             alt={name}
           />
         </div>
-
 
         {/* restaurant overview content */}
         <div className="restaurantOverviewContent">
@@ -85,6 +130,7 @@ const MyRestaurant = () => {
               <button
                 className="editRestaurantButton"
                 type="button"
+                onClick={() => openModal("restaurant", "edit", restaurant)}
               >
                 <Edit size={18} />
                 Edit Restaurant
@@ -169,7 +215,6 @@ const MyRestaurant = () => {
         </div>
 
       </div>
-
 
       {/* information grid */}
       <div className="restaurantInfoGrid">
@@ -293,7 +338,6 @@ const MyRestaurant = () => {
               </div>
 
             </div>
-
 
             {/* map preview */}
             <div className="restaurantMapPreview">
