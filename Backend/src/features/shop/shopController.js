@@ -58,7 +58,7 @@ export const createShop = async (req, res, next) => {
             { $addToSet: { roles: "restaurantOwner" } },
             { new: true }
         );
-        
+
         res.status(201).json({
             success: true,
             message: "Shop created successfully",
@@ -77,25 +77,23 @@ export const createShop = async (req, res, next) => {
     }
 };
 
-// Get Single Shop
-export const getShop = async (req, res, next) => {
+// Get My Shop
+export const getMyShop = async (req, res, next) => {
 
-    // Find shop
-    // Find shop
-    const shop = await Shop.findById(req.params.id)
+    const shop = await Shop.findOne({ owner: req.user._id })
         .populate("owner", "name")
         .populate("foodItems");
 
     if (!shop) {
-        return next(new ErrorHandler("Shop not found", 404));
+        return next(new ErrorHandler("Restaurant not found", 404));
     }
 
     res.status(200).json({
         success: true,
-        message: "Shop fetched successfully",
-        shop,
+        message: "Restaurant fetched successfully",
+        shop
     });
-
+    
 };
 
 // Update Shop

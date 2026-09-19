@@ -12,8 +12,8 @@ import { setIsLocationErrorDialogOpen } from '../../features/location/locationSl
 import HomePromotionSlider from '../../Components/Sliders/Home Promotion Slider/HomePromotionSlider.jsx';
 import FoodCategorySlider from '../../Components/Sliders/Food Category Slider/FoodCategorySlider.jsx';
 import AllCategoryPage from '../../Pages/AllCategoryPage/AllCategoryPage.jsx';
-import useFoodCategories from '../../hooks/useFoodCategories.jsx';
-import useFoodPreference from '../../hooks/useFoodPreference.jsx';
+import useFoodCategories from '../../hooks/Home Hooks/useFoodCategories.jsx';
+import useFoodPreference from '../../hooks/Home Hooks/useFoodPreference.jsx';
 import { getPromotionBanners } from '../../features/platform/promotionBanners/promotionBannersThunk.js';
 import { getFoodCategories } from '../../features/platform/topFoodCategories/topFoodCategoriesThunk.js';
 import HomeBannerSkeleton from '../../Components/Skeletons/Home Banner Skeleton/HomeBannerSkeleton.jsx';

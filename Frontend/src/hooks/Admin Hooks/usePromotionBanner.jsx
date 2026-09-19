@@ -7,9 +7,10 @@ import {
     deleteBanner as deleteBannerThunk,
     refreshPromotionBanners,
     getPromotionBanners
-} from "../features/platform/promotionBanners/promotionBannersThunk.js";
+} from "../../features/platform/promotionBanners/promotionBannersThunk.js";
 
 import toast from "react-hot-toast";
+
 
 const usePromotionBanner = () => {
 

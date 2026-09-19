@@ -6,9 +6,13 @@ import { RiMenu2Line } from "react-icons/ri";
 import { IoCloseSharp } from "react-icons/io5";
 import { FaImage } from "react-icons/fa";
 import { useState } from 'react';
+import { ClipboardList, LayoutDashboard, Pizza, Store } from 'lucide-react';
 
 
-const AdminSidebar = () => {
+const AdminSidebar = (props) => {
+
+    // destructure props
+    const { panel } = props
 
     // state to store sidevar show hide status
     const [showSidebar, setShowSidebar] = useState(true);
@@ -43,43 +47,53 @@ const AdminSidebar = () => {
 
                 <nav className="sidebar-nav">
 
-                    <NavLink
-                        to="/admin"
-                        end
-                        className={`sidebar-link ${showSidebar ? "" : "activeLink"}`}
-                    >
-                        <FiGrid className="sidebar-icon" />
+                    {panel === "admin" && (
 
-                        <span className={`sidebar-text ${showSidebar ? "" : "activeText"}`}>
-                            Dashboard
-                        </span>
+                        <>
+                            <NavLink to="/admin" end className="sidebar-link">
+                                <FiGrid className="sidebar-icon" />
+                                <span className="sidebar-text">Dashboard</span>
+                            </NavLink>
 
-                    </NavLink>
+                            <NavLink to="/admin/banners" className="sidebar-link">
+                                <FaImage className="sidebar-icon" />
+                                <span className="sidebar-text">Banners</span>
+                            </NavLink>
 
+                            <NavLink to="/admin/food-categories" className="sidebar-link">
+                                <FiCoffee className="sidebar-icon" />
+                                <span className="sidebar-text">Food Categories</span>
+                            </NavLink>
+                        </>
+                    )}
 
-                    <NavLink
-                        to="/admin/banners"
-                        className={`sidebar-link ${showSidebar ? "" : "activeLink"}`}
-                    >
-                        <FaImage className="sidebar-icon" />
+                    {panel === "restaurant" && (
+                        <>
+                            {/* restaurant dashboard */}
+                            <NavLink to="/restaurant/admin-panel" end className="sidebar-link">
+                                <LayoutDashboard className="sidebar-icon" />
+                                <span>Dashboard</span>
+                            </NavLink>
 
-                        <span className={`sidebar-text ${showSidebar ? "" : "activeText"}`}>
-                            Banners
-                        </span>
+                            {/* my restaurant */}
+                            <NavLink to="/restaurant/admin-panel/my-restaurant" className="sidebar-link">
+                                <Store className="sidebar-icon" />
+                                <span>My Restaurant</span>
+                            </NavLink>
 
-                    </NavLink>
+                            {/* food items */}
+                            <NavLink to="/restaurant/admin-panel/food-items" className="sidebar-link">
+                                <Pizza className="sidebar-icon" />
+                                <span>Food Items</span>
+                            </NavLink>
 
-                    <NavLink
-                        to="/admin/food-categories"
-                        className={`sidebar-link ${showSidebar ? "" : "activeLink"}`}
-                    >
-                        <FiCoffee className="sidebar-icon" />
-
-                        <span className={`sidebar-text ${showSidebar ? "" : "activeText"}`}>
-                            Food Categories
-                        </span>
-
-                    </NavLink>
+                            {/* orders */}
+                            <NavLink to="/restaurant/admin-panel/orders" className="sidebar-link">
+                                <ClipboardList className="sidebar-icon" />
+                                <span>Orders</span>
+                            </NavLink>
+                        </>
+                    )}
 
                 </nav>
 

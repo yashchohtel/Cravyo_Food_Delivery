@@ -21,3 +21,25 @@ export const createRestaurant = createAsyncThunk("restaurant/createRestaurant", 
     }
 
 });
+
+// Thunk to get current user's restaurant
+export const getMyRestaurant = createAsyncThunk("restaurant/getMyRestaurant", async (_, { rejectWithValue }) => {
+
+    try {
+
+        // Get restaurant API call
+        const { data } = await api.get("/api/shop/getMyShop");
+
+        // Return success response
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Something went wrong"
+        );
+
+    }
+
+});
+

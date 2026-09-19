@@ -7,7 +7,7 @@ import {
     updateFoodCategory as updateFoodCategoryThunk,
     deleteFoodCategory as deleteFoodCategoryThunk,
     getFoodCategories, refreshFoodCategories,
-} from "../features/platform/topFoodCategories/topFoodCategoriesThunk";
+} from "../../features/platform/topFoodCategories/topFoodCategoriesThunk";
 
 const useAdminFoodCategory = () => {
 

@@ -1,0 +1,606 @@
+.myRestaurant {
+    width: 100%;
+    padding: 0 0 3rem;
+}
+
+/* restaurant overview */
+
+.restaurantOverview {
+    width: 100%;
+    min-height: 29rem;
+    display: grid;
+    grid-template-columns: 30rem 1fr;
+    gap: 3rem;
+    background: var(--background-color);
+    border-radius: 1.6rem;
+    padding: 1.6rem;
+    box-shadow: var(--shadow-big);
+    margin-bottom: 1.8rem;
+}
+
+.restaurantOverviewImage {
+    width: 100%;
+    height: 25rem;
+    border-radius: 1.2rem;
+    overflow: hidden;
+}
+
+.restaurantOverviewImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* overview content */
+
+.restaurantOverviewContent {
+    padding: 0.8rem 1rem 0.8rem 0;
+}
+
+.restaurantOverviewTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.restaurantStatus {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.4rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.restaurantStatus span {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+}
+
+.restaurantStatus.open {
+    color: #008a4b;
+    background: #e5f8ed;
+}
+
+.restaurantStatus.open span {
+    background: #12a85b;
+}
+
+.restaurantStatus.closed {
+    color: #d84315;
+    background: #fff0eb;
+}
+
+.restaurantStatus.closed span {
+    background: var(--primary-color);
+}
+
+
+/* action buttons */
+
+.restaurantActions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.restaurantActions button {
+    height: 4.2rem;
+    border-radius: 0.8rem;
+    padding: 0 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.closeRestaurantButton {
+    color: #d61f1f;
+    background: #fff0f0;
+}
+
+.closeRestaurantButton:hover {
+    background: #ffe1e1;
+}
+
+.openRestaurantButton {
+    color: #008a4b;
+    background: #e8f8ef;
+}
+
+.openRestaurantButton:hover {
+    background: #d9f3e5;
+}
+
+.editRestaurantButton {
+    color: #fff;
+    background: var(--primary-color);
+}
+
+.editRestaurantButton:hover {
+    background: var(--primary-hover);
+}
+
+
+/* restaurant title */
+
+.restaurantOverviewContent h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 1.5rem 0 0.7rem;
+}
+
+.restaurantDescription {
+    max-width: 70rem;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+
+/* overview details */
+
+.restaurantOverviewDetails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2.5rem;
+}
+
+.overviewDetail {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 2rem;
+    border-right: 1px solid var(--border-color);
+}
+
+.overviewDetail:first-child {
+    padding-left: 0;
+}
+
+.overviewDetail:last-child {
+    border-right: none;
+}
+
+.overviewDetailIcon {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    background: var(--sruface-color-3);
+    flex-shrink: 0;
+}
+
+.overviewDetail span {
+    display: block;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+.overviewDetail strong {
+    display: block;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+}
+
+
+/* information grid */
+
+.restaurantInfoGrid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+    margin-bottom: 1.8rem;
+}
+
+.restaurantInfoCard {
+    background: var(--background-color);
+    border-radius: 1.4rem;
+    padding: 1.8rem;
+    box-shadow: var(--shadow-big);
+}
+
+
+/* card header */
+
+.infoCardHeader {
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.infoCardTitle {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.infoCardIcon {
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    background: var(--sruface-color-3);
+    flex-shrink: 0;
+}
+
+.infoCardTitle h3 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+}
+
+.infoCardTitle p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+
+/* info rows */
+
+.infoRows {
+    padding-top: 0.5rem;
+}
+
+.infoRow {
+    min-height: 4.4rem;
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    align-items: center;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.infoRow:last-child {
+    border-bottom: none;
+}
+
+.infoRow>span {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.infoRow>strong {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.descriptionRow {
+    min-height: 9rem;
+    align-items: start;
+    padding: 1.3rem 0;
+}
+
+.descriptionRow strong {
+    line-height: 1.6;
+}
+
+.foodTypeValue {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--text-primary) !important;
+}
+
+
+/* location */
+
+.locationContent {
+    display: grid;
+    grid-template-columns: 1fr 25rem;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+}
+
+.locationDetails .infoRow {
+    grid-template-columns: 12rem 1fr;
+}
+
+
+/* map preview */
+
+.restaurantMapPreview {
+    height: 28rem;
+    border-radius: 1rem;
+    background:
+        linear-gradient(rgba(255, 240, 230, 0.5), rgba(255, 240, 230, 0.5)),
+        repeating-linear-gradient(45deg,
+            #edf0ed 0,
+            #edf0ed 1px,
+            transparent 1px,
+            transparent 25px);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mapPreviewContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--primary-color);
+}
+
+.mapPreviewContent strong {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.mapPreviewContent span {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.restaurantMapPreview button {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    height: 3.6rem;
+    padding: 0 1.2rem;
+    border-radius: 0.7rem;
+    background: var(--background-color);
+    color: #1473d4;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+
+/* business hours */
+
+.businessHoursCard {
+    width: 100%;
+    background: var(--background-color);
+    border-radius: 1.4rem;
+    padding: 1.8rem;
+    box-shadow: var(--shadow-big);
+    overflow: hidden;
+}
+
+.businessHoursHeader {
+    margin-bottom: 1.5rem;
+}
+
+.businessHoursContent {
+    min-height: 12rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.2fr;
+    gap: 1rem;
+}
+
+.timeCard {
+    min-height: 10rem;
+    border-radius: 1.2rem;
+    padding: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+}
+
+.timeCard.opening {
+    background: #ebfaf1;
+}
+
+.timeCard.closing {
+    background: #fff1eb;
+}
+
+.timeCardIcon {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.opening .timeCardIcon {
+    color: #008a4b;
+}
+
+.closing .timeCardIcon {
+    color: var(--primary-color);
+}
+
+.timeCard span {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+}
+
+.opening span {
+    color: #006f3c;
+}
+
+.closing span {
+    color: #c44519;
+}
+
+.timeCard strong {
+    display: block;
+    font-size: 1.6rem;
+    color: var(--text-primary);
+}
+
+
+/* decorative bottom image */
+
+.businessHoursImage {
+    min-height: 10rem;
+    border-radius: 1.2rem;
+    background:
+        url("/restaurantImg.png") center bottom / cover no-repeat;
+    background-color: #fff0e6;
+}
+
+
+/* empty */
+
+.myRestaurantEmpty {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+}
+
+.myRestaurantEmpty h2 {
+    margin: 1rem 0 0.5rem;
+    color: var(--text-primary);
+}
+
+.myRestaurantEmpty p {
+    font-size: 1.3rem;
+}
+
+
+/* responsive */
+
+/* @media (max-width: 1200px) {
+
+    .restaurantOverview {
+        grid-template-columns: 24rem 1fr;
+        gap: 2rem;
+    }
+
+    .restaurantOverviewImage {
+        height: 23rem;
+    }
+
+    .restaurantOverviewDetails {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 1.5rem;
+    }
+
+    .overviewDetail:nth-child(2) {
+        border-right: none;
+    }
+
+    .overviewDetail:last-child {
+        grid-column: span 2;
+        padding-left: 0;
+    }
+
+    .businessHoursContent {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .businessHoursImage {
+        grid-column: span 2;
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    .restaurantOverview {
+        grid-template-columns: 1fr;
+    }
+
+    .restaurantOverviewImage {
+        height: 24rem;
+    }
+
+    .restaurantOverviewContent {
+        padding: 0;
+    }
+
+    .restaurantInfoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .locationContent {
+        grid-template-columns: 1fr;
+    }
+
+    .restaurantMapPreview {
+        height: 22rem;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .myRestaurantHeader h1 {
+        font-size: 2.3rem;
+    }
+
+    .restaurantOverviewTop {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .restaurantActions {
+        width: 100%;
+    }
+
+    .restaurantActions button {
+        flex: 1;
+        padding: 0 1rem;
+    }
+
+    .restaurantOverviewContent h2 {
+        font-size: 2.4rem;
+    }
+
+    .restaurantOverviewDetails {
+        grid-template-columns: 1fr;
+    }
+
+    .overviewDetail,
+    .overviewDetail:last-child {
+        padding: 0;
+        border-right: none;
+    }
+
+    .overviewDetail:last-child {
+        grid-column: auto;
+    }
+
+    .infoRow,
+    .locationDetails .infoRow {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 1rem 0;
+    }
+
+    .descriptionRow {
+        min-height: auto;
+    }
+
+    .businessHoursContent {
+        grid-template-columns: 1fr;
+    }
+
+    .businessHoursImage {
+        grid-column: auto;
+        min-height: 12rem;
+    }
+} */

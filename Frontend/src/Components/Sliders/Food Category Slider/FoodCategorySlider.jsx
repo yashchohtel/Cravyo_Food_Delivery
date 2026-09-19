@@ -2,7 +2,7 @@ import './FoodCategorySlider.css'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { BsForkKnife } from "react-icons/bs";
-import useFoodCategories from '../../../hooks/useFoodCategories';
+import useFoodCategories from '../../../hooks/Home Hooks/useFoodCategories';
 
 const FoodCategorySlider = (props) => {
 

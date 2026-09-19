@@ -3,7 +3,7 @@ import { FiChevronDown, FiUploadCloud } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import './AdminBannerForm.css';
 import ButtonLoader from "../../Loaders/ButtonLoader/ButtonLoader";
-import usePromotionBanner from "../../../hooks/usePromotionBanner";
+import usePromotionBanner from "../../../hooks/Admin Hooks/usePromotionBanner";
 
 const AdminBannerForm = ({ mode, data, onClose }) => {
 

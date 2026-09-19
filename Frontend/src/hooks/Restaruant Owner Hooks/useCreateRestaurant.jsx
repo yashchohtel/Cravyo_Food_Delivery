@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getAddressFromCoordinates } from "../utils/getLocation";
+import { getAddressFromCoordinates } from "../../utils/getLocation.js";
 import { useDispatch } from "react-redux";
-import { createRestaurant } from "../features/restaurant dashboard/restaurant/restaurantThunk";
+import { createRestaurant } from "../../features/restaurant dashboard/restaurant/restaurantThunk.js";
 import { useNavigate } from "react-router-dom";
-import { updateUser } from "../features/auth/authSlice.js";
+import { updateUser } from "../../features/auth/authSlice.js";
 
 const useCreateRestaurant = () => {
 

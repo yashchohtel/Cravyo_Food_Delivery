@@ -34,7 +34,7 @@ const AdminPanel = () => {
 
                 <div className="admin-body container">
 
-                    <AdminSidebar />
+                    <AdminSidebar panel="admin" />
 
                     <main className="admin-content">
                         <Outlet />

@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createRestaurant } from "./restaurantThunk";
+import { createRestaurant, getMyRestaurant } from "./restaurantThunk";
 
 const initialState = {
     restaurant: null,
     loading: false,
+    getRestaurantLoading: false,
     errorMessage: null,
     successMessage: null
 };
@@ -43,6 +44,23 @@ const restaurantSlice = createSlice({
 
             .addCase(createRestaurant.rejected, (state, action) => {
                 state.loading = false;
+                state.errorMessage = action.payload;
+            })
+
+            /* ----------- GET RESTAURANT ↓ */
+
+            .addCase(getMyRestaurant.pending, (state) => {
+                state.getRestaurantLoading = true;
+                state.errorMessage = null;
+            })
+
+            .addCase(getMyRestaurant.fulfilled, (state, action) => {
+                state.getRestaurantLoading = false;
+                state.restaurant = action.payload.shop;
+            })
+
+            .addCase(getMyRestaurant.rejected, (state, action) => {
+                state.getRestaurantLoading = false;
                 state.errorMessage = action.payload;
             });
 

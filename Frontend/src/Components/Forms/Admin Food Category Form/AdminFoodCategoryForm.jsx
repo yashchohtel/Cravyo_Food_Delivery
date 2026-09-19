@@ -3,7 +3,7 @@ import { FiChevronDown, FiUploadCloud } from "react-icons/fi";
 import "./AdminFoodCategoryForm.css";
 import { useSelector } from "react-redux";
 import ButtonLoader from "../../Loaders/ButtonLoader/ButtonLoader";
-import useAdminFoodCategory from "../../../hooks/useAdminFoodCategory";
+import useAdminFoodCategory from "../../../hooks/Admin Hooks/useAdminFoodCategory";
 
 const AdminFoodCategoryForm = ({ mode, data, onClose }) => {
 

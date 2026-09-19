@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import AdminBannerList from '../../../Components/Admin/Admin Banner List/AdminBannerList';
 import AdminFormModal from '../../../Components/Admin/Admin Form Modal/AdminFormModal';
 import AdminBannerListSkeleton from '../../../Components/Skeletons/Admin Banner List Skeleton/AdminBannerListSkeleton';
-import usePromotionBanner from '../../../hooks/usePromotionBanner';
+import usePromotionBanner from '../../../hooks/Admin Hooks/usePromotionBanner';
 
 const PromotionBanners = () => {
 

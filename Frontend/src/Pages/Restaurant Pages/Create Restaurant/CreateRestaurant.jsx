@@ -2,7 +2,7 @@ import AdminPanelTopNavbar from "../../../Components/Navbars/Admin Panel Top Nav
 import './CreateRestaurant.css'
 import { Upload, Image as Store, MapPin, Clock, Leaf, Utensils } from "lucide-react";
 import CreateRestaurantMap from "../../../Components/Ui/Create Restaurant Map/CreateRestaurantMap";
-import useCreateRestaurant from "../../../hooks/useCreateRestaurant";
+import useCreateRestaurant from "../../../hooks/Restaruant Owner Hooks/useCreateRestaurant";
 import { useSelector } from "react-redux";
 import ButtonLoader from "../../../Components/Loaders/ButtonLoader/ButtonLoader";
 

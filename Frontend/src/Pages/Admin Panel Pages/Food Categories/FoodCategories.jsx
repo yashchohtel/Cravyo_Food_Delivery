@@ -5,9 +5,9 @@ import { FiCheckCircle, FiGrid, FiStar, FiXCircle } from 'react-icons/fi';
 import AdminSearchFilter from '../../../Components/Admin/Admin Search Filter/AdminSearchFilter';
 import AdminFoodCategoryList from '../../../Components/Admin/Admin Food Category List/AdminFoodCategoryList';
 import AdminFoodCategoryListSkeleton from '../../../Components/Skeletons/Admin Food Category List Skeleton/AdminFoodCategoryListSkeleton';
-import useAdminFoodCategory from '../../../hooks/useAdminFoodCategory';
 import { useState } from 'react';
 import AdminFormModal from '../../../Components/Admin/Admin Form Modal/AdminFormModal';
+import useAdminFoodCategory from '../../../hooks/Admin Hooks/useAdminFoodCategory';
 
 const FoodCategories = () => {
 

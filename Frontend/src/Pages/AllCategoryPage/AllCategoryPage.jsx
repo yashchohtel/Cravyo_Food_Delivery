@@ -1,6 +1,6 @@
 import { IoClose } from 'react-icons/io5';
 import './AllCategoryPage.css'
-import useFoodCategories from '../../hooks/useFoodCategories.jsx';
+import useFoodCategories from '../../hooks/Home Hooks/useFoodCategories.jsx';
 
 const AllCategoryPage = (props) => {
 

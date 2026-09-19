@@ -45,6 +45,12 @@ const shopSchema = new mongoose.Schema({
         trim: true
     },
 
+    // Current status of the shop
+    isOpen: {
+        type: Boolean,
+        default: false
+    },
+
     // Food type of the shop
     foodType: {
         type: String,

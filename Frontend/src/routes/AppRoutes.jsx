@@ -17,6 +17,10 @@ import PromotionBanners from "../Pages/Admin Panel Pages/Promotion Banners/Promo
 import CreateRestaurant from "../Pages/Restaurant Pages/Create Restaurant/CreateRestaurant.jsx";
 import RestaurantCreateProtectedRoute from "./RestaurantCreateProtectedRoute.jsx";
 import RestaurantOwnerAdminPenal from "../Pages/Restaurant Pages/Restaurant Owner Admin Penal/RestaurantOwnerAdminPenal.jsx";
+import RestaurantOwnerDashboard from "../Pages/Restaurant Pages/Restaurant Owner Dashboard/RestaurantOwnerDashboard.jsx";
+import Orders from "../Pages/Restaurant Pages/Orders/Orders.jsx";
+import FoodItems from "../Pages/Restaurant Pages/Food Items/FoodItems.jsx";
+import MyRestaurant from "../Pages/Restaurant Pages/My Restaurant/MyRestaurant.jsx";
 
 function AppRoutes() {
 
@@ -82,12 +86,31 @@ function AppRoutes() {
         }
       />
 
-      {/* restaurant route */}
-      <Route path="/restaurant/admin-panel" element={
-        <ProtectedRoute>
-          <RoleProtectedRoute requiredRole="restaurantOwner"> <RestaurantOwnerAdminPenal /> </RoleProtectedRoute>
-        </ProtectedRoute>
-      } />
+      {/* restaurant owner admin panel */}
+      <Route
+        path="/restaurant/admin-panel"
+        element={
+          <ProtectedRoute>
+            <RoleProtectedRoute requiredRole="restaurantOwner">
+              <RestaurantOwnerAdminPenal />
+            </RoleProtectedRoute>
+          </ProtectedRoute>
+        }
+      >
+
+        {/* default page */}
+        <Route index element={<RestaurantOwnerDashboard />} />
+
+        {/* my restaurant */}
+        <Route path="my-restaurant" element={<MyRestaurant />} />
+
+        {/* food items */}
+        <Route path="food-items" element={<FoodItems />} />
+
+        {/* orders */}
+        <Route path="orders" element={<Orders />} />
+
+      </Route>
 
       {/* non existing url 404 */}
       <Route path="*" element={<Page404 />} />

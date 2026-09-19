@@ -17,10 +17,18 @@ const AdminPanelTopNavbar = () => {
 
     // lookup object for page names 
     const pageNames = {
+        
+        // Admin panel
         "/admin": "Dashboard",
-        "/admin/banners": "Banners",
+        "/admin/banners": "Promotion Banners",
         "/admin/food-categories": "Food Categories",
-        "/restaurant/create": "Create Restaurant",
+
+        // Restaurant owner panel
+        "/restaurant/admin-panel": "Dashboard",
+        "/restaurant/admin-panel/my-restaurant": "My Restaurant",
+        "/restaurant/admin-panel/food-items": "Food Items",
+        "/restaurant/admin-panel/orders": "Orders",
+        
     };
 
     // get current page name
