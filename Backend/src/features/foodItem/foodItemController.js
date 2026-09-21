@@ -240,3 +240,95 @@ export const deleteFoodItem = async (req, res, next) => {
     });
 
 };
+
+// Add Food Item Review
+export const addFoodItemReview = async (req, res, next) => {
+
+    const foodItem = await FoodItem.findById(req.params.id);
+
+    if (!foodItem) {
+        return next(new ErrorHandler("Food item not found", 404));
+    }
+
+    if (!req.body.rating) {
+        return next(new ErrorHandler("Rating is required", 400));
+    }
+
+    const rating = Number(req.body.rating);
+
+    if (rating < 1 || rating > 5) {
+        return next(new ErrorHandler("Rating must be between 1 and 5", 400));
+    }
+
+    foodItem.reviews.push({
+        user: req.user._id,
+        rating,
+        comment: req.body.comment || ""
+    });
+
+    const totalRating = foodItem.reviews.reduce((sum, review) => sum + review.rating, 0);
+
+    foodItem.totalReviews = foodItem.reviews.length;
+    foodItem.rating = totalRating / foodItem.totalReviews;
+
+    await foodItem.save();
+
+    res.status(201).json({
+        success: true,
+        message: "Review added successfully",
+        foodItem
+    });
+
+};
+
+// Get Food Item Reviews
+export const getFoodItemReviews = async (req, res, next) => {
+
+    const foodItem = await FoodItem.findById(req.params.id).populate("reviews.user", "name");
+
+    if (!foodItem) {
+        return next(new ErrorHandler("Food item not found", 404));
+    }
+
+    res.status(200).json({
+        success: true,
+        message: "Reviews fetched successfully",
+        reviews: foodItem.reviews
+    });
+
+};
+
+// Delete Food Item Review
+export const deleteFoodItemReview = async (req, res, next) => {
+
+    const foodItem = await FoodItem.findById(req.params.id);
+
+    if (!foodItem) {
+        return next(new ErrorHandler("Food item not found", 404));
+    }
+
+    const review = foodItem.reviews.id(req.params.reviewId);
+
+    if (!review) {
+        return next(new ErrorHandler("Review not found", 404));
+    }
+
+    if (review.user.toString() !== req.user._id.toString()) {
+        return next(new ErrorHandler("You are not authorized to delete this review", 403));
+    }
+
+    review.deleteOne();
+
+    const totalRating = foodItem.reviews.reduce((sum, review) => sum + review.rating, 0);
+
+    foodItem.totalReviews = foodItem.reviews.length;
+    foodItem.rating = foodItem.totalReviews > 0 ? totalRating / foodItem.totalReviews : 0;
+
+    await foodItem.save();
+
+    res.status(200).json({
+        success: true,
+        message: "Review deleted successfully"
+    });
+
+};
