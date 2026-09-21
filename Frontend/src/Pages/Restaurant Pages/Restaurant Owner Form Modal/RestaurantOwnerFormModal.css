@@ -9,7 +9,7 @@
     backdrop-filter: blur(0.1rem);
 }
 
-.admin-modal {
+.restaurant-admin-form-modal {
     width: 80rem;
     height: 40rem;
     background-color: #ffffff;

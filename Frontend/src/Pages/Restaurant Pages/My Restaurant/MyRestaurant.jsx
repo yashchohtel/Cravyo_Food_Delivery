@@ -3,36 +3,20 @@ import { Store, MapPin, Clock, Leaf, Utensils, Edit, Power, Map, Sun, Moon } fro
 import "./MyRestaurant.css";
 import RestaurantOwnerFormModal from "../Restaurant Owner Form Modal/RestaurantOwnerFormModal";
 import { useState } from "react";
+import MyRestaurantSkeleton from "../../../Components/Skeletons/My Restaurant Skeleton/MyRestaurantSkeleton";
+import useEditRestaurant from "../../../hooks/Restaruant Owner Hooks/useEditRestaurant";
+import ButtonLoader from "../../../Components/Loaders/ButtonLoader/ButtonLoader";
 
 const MyRestaurant = () => {
 
   // get restaurant from redux
-  const { restaurant } = useSelector((state) => state.restaurant);
+  const { restaurant, getRestaurantLoading } = useSelector((state) => state.restaurant);
 
-  console.log(restaurant);
-
-  /* -------------------------------------- */
-
-  // destructure restaurant object
-  const { name, image, description, foodType, openingTime, closingTime, isOpen, address } = restaurant;
-
-  // formet time
-  const formatTime = (time) => {
-
-    if (!time) return "--";
-
-    const [hours, minutes] = time.split(":");
-
-    const date = new Date();
-    date.setHours(hours, minutes);
-
-    return date.toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "2-digit",
-      hour12: true
-    });
-
-  };
+  // getting state and funciton form hook
+  const {
+    restaurantStatusLoading,
+    handleRestaurantStatus
+  } = useEditRestaurant({ restaurant });
 
   /* -------------------------------------- */
 
@@ -66,6 +50,11 @@ const MyRestaurant = () => {
 
   /* -------------------------------------- */
 
+  // Loading ke time skeleton
+  if (getRestaurantLoading) {
+    return <MyRestaurantSkeleton />;
+  }
+
   // if no resturant
   if (!restaurant) {
     return (
@@ -76,6 +65,31 @@ const MyRestaurant = () => {
       </div>
     );
   }
+
+  /* -------------------------------------- */
+
+  // destructure restaurant object
+  const { name, image, description, foodType, openingTime, closingTime, isOpen, address } = restaurant;
+
+  // formet time
+  const formatTime = (time) => {
+
+    if (!time) return "--";
+
+    const [hours, minutes] = time.split(":");
+
+    const date = new Date();
+    date.setHours(hours, minutes);
+
+    return date.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true
+    });
+
+  };
+
+  /* -------------------------------------- */
 
   return (
 
@@ -118,19 +132,23 @@ const MyRestaurant = () => {
               <button
                 className={isOpen ? "closeRestaurantButton" : "openRestaurantButton"}
                 type="button"
+                onClick={handleRestaurantStatus}
+                disabled={restaurantStatusLoading}
               >
-                <Power size={18} />
-
-                {isOpen
-                  ? "Close Restaurant"
-                  : "Open Restaurant"
-                }
+                {restaurantStatusLoading ? (
+                  <ButtonLoader />
+                ) : (
+                  <>
+                    <Power size={18} />
+                    {isOpen ? "Close Restaurant" : "Open Restaurant"}
+                  </>
+                )}
               </button>
 
               <button
                 className="editRestaurantButton"
                 type="button"
-                onClick={() => openModal("restaurant", "edit", restaurant)}
+                onClick={() => openModal("editRestaurant", "edit", restaurant)}
               >
                 <Edit size={18} />
                 Edit Restaurant
@@ -146,7 +164,6 @@ const MyRestaurant = () => {
           <p className="restaurantDescription">
             {description}
           </p>
-
 
           {/* overview details */}
           <div className="restaurantOverviewDetails">

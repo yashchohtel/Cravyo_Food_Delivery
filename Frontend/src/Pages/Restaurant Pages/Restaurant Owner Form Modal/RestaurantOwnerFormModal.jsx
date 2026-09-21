@@ -1,15 +1,10 @@
+import EditRestaurantForm from '../../../Components/Forms/Edit Restaurant Form/EditRestaurantForm';
 import './RestaurantOwnerFormModal.css'
 
 const RestaurantOwnerFormModal = (props) => {
 
     // destructure console
-    const {
-        isOpen,
-        type,
-        mode,
-        data,
-        onClose
-    } = props
+    const { isOpen, onClose, type, mode, data, } = props
 
     // if modal closed
     if (!isOpen) {
@@ -21,9 +16,20 @@ const RestaurantOwnerFormModal = (props) => {
         <>
             <div className="restaurantOwner-modal-overlay">
 
-                <div className="admin-modal">
+                {/* if form is edit restaurant form */}
+                {type === "editRestaurant" && mode === "edit" && (
+                    <EditRestaurantForm
+                        onClose={onClose}
+                        data={data}
+                    />
+                )}
 
-                </div>
+                {/* if type is not equal to exit restaurant */}
+                {type != "editRestaurant" && (
+                    <div className="restaurant-admin-form-modal">
+
+                    </div>
+                )}
 
             </div>
         </>

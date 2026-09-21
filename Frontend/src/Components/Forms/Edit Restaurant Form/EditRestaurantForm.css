@@ -1,0 +1,456 @@
+/* Main Form */
+
+.edit-restaurant-form {
+    width: 90%;
+    background: var(--background-color);
+    border-radius: 1.2rem;
+    overflow: hidden;
+}
+
+
+/* Header */
+
+.edit-restaurant-form-header {
+    width: 100%;
+    min-height: 7.5rem;
+    padding: 1.8rem 2.4rem;
+    border-bottom: 1px solid var(--border-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit-restaurant-form-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+}
+
+.edit-restaurant-form-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.edit-restaurant-close-btn {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.8rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    color: var(--text-secondary);
+
+    font-size: 2rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.edit-restaurant-close-btn:hover {
+    background: var(--surface-color);
+    color: var(--text-primary);
+}
+
+
+/* Body */
+
+.edit-restaurant-form-body {
+    width: 100%;
+    padding: 2.2rem 2.4rem;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4rem;
+
+    max-height: 65vh;
+    overflow-y: auto;
+}
+
+
+/* Sections */
+
+.edit-form-section {
+    width: 100%;
+}
+
+.edit-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+}
+
+.edit-section-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+
+    border-radius: 1.2rem;
+    background: var(--sruface-color-3);
+    color: var(--primary-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.8rem;
+}
+
+.edit-section-heading h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+}
+
+.edit-section-heading p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+}
+
+
+/* Form Group */
+
+.edit-form-group {
+    width: 100%;
+    margin-bottom: 1.4rem;
+}
+
+.edit-form-group>label {
+    display: flex;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.6rem;
+}
+
+.edit-form-group>label span {
+    color: #ef4444;
+    margin-left: 0.2rem;
+}
+
+
+/* Image */
+
+.edit-image-upload {
+    width: 100%;
+    min-height: 11rem;
+
+    border: 1px dashed var(--border-color-dark);
+    border-radius: 0.8rem;
+
+    padding: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.edit-image-upload img {
+    width: 13rem;
+    height: 9rem;
+
+    border-radius: 0.7rem;
+    object-fit: cover;
+}
+
+.edit-image-upload input {
+    display: none;
+}
+
+.edit-image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.edit-image-placeholder span {
+    font-size: 2rem;
+}
+
+.edit-image-placeholder strong {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.edit-image-placeholder small {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+
+/* Inputs */
+
+.edit-form-group input[type="text"],
+.edit-form-group input[type="time"] {
+    width: 100%;
+    height: 4.4rem;
+
+    border: 1px solid var(--border-color);
+    border-radius: 0.7rem;
+
+    padding: 0 1.1rem;
+
+    font-size: 1.2rem;
+    color: var(--text-primary);
+
+    background: var(--background-color);
+
+    transition: var(--transition-fast);
+}
+
+.edit-form-group input:focus,
+.edit-form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+
+/* Textarea */
+
+.edit-form-group textarea {
+    width: 100%;
+    height: 8rem;
+
+    border: 1px solid var(--border-color);
+    border-radius: 0.7rem;
+
+    padding: 1rem;
+
+    resize: none;
+
+    font-size: 1.2rem;
+    color: var(--text-primary);
+
+    background: var(--background-color);
+}
+
+.edit-description-count {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 0.3rem;
+
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+
+/* Rows */
+
+.edit-form-row {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+
+/* Food Type */
+
+.edit-food-type-row {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.edit-food-option {
+    height: 4.4rem;
+
+    border: 1px solid var(--border-color);
+    border-radius: 0.7rem;
+
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+
+    padding: 0 1rem;
+
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: var(--transition-fast);
+}
+
+.edit-food-option input {
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
+.edit-food-option.selected {
+    border-color: var(--primary-color);
+    background: var(--sruface-color-3);
+    color: var(--primary-color);
+}
+
+
+/* Map */
+
+.edit-map-wrapper {
+    width: 100%;
+    height: 22rem;
+
+    border-radius: 0.8rem;
+    overflow: hidden;
+}
+
+.edit-map-wrapper>* {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Errors */
+
+.edit-form-error {
+    display: block;
+
+    margin-top: 0.4rem;
+
+    font-size: 1rem;
+    color: #ef4444;
+}
+
+.input-error {
+    border-color: #ef4444 !important;
+}
+
+
+/* Footer */
+
+.edit-restaurant-form-footer {
+    width: 100%;
+    min-height: 7rem;
+
+    border-top: 1px solid var(--border-color);
+
+    padding: 1.4rem 2.4rem;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+}
+
+.edit-cancel-btn,
+.edit-save-btn {
+    height: 4.2rem;
+
+    padding: 0 2rem;
+
+    border-radius: 0.7rem;
+
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.edit-cancel-btn {
+    min-width: 10rem;
+
+    border: 1px solid var(--border-color);
+    background: var(--background-color);
+    color: var(--text-primary);
+}
+
+.edit-cancel-btn:hover {
+    background: var(--surface-color);
+}
+
+.edit-save-btn {
+    min-width: 14rem;
+
+    border: none;
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.edit-save-btn:hover {
+    background: var(--primary-hover);
+}
+
+.edit-save-btn:disabled,
+.edit-cancel-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* Scrollbar */
+
+.edit-restaurant-form::-webkit-scrollbar {
+    width: 9px;
+}
+
+.edit-restaurant-form::-webkit-scrollbar-thumb {
+    background: #ff6b35;
+    border-radius: 10px;
+    border: 3px solid var(--page-bg);
+}
+
+.edit-restaurant-form::-webkit-scrollbar-thumb:hover {
+    background: #f4511e;
+}
+
+.edit-restaurant-form::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+/* Responsive */
+
+@media (max-width: 900px) {
+
+    .edit-restaurant-form-body {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .edit-restaurant-form {
+        width: 95%;
+    }
+
+    .edit-restaurant-form-header {
+        padding: 1.5rem;
+    }
+
+    .edit-restaurant-form-body {
+        padding: 1.5rem;
+    }
+
+    .edit-restaurant-form-footer {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .edit-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-food-type-row {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-image-upload {
+        align-items: flex-start;
+    }
+}

@@ -93,7 +93,7 @@ export const getMyShop = async (req, res, next) => {
         message: "Restaurant fetched successfully",
         shop
     });
-    
+
 };
 
 // Update Shop
@@ -177,10 +177,17 @@ export const updateShop = async (req, res, next) => {
             shop.image = newImage.secure_url;
             shop.imagePublicId = newImage.public_id;
 
-            // Delete old image
+            await shop.save();
+
+            // Delete old image after successful save
             if (oldPublicId) {
                 await deleteFromCloudinary(oldPublicId);
             }
+
+        } else {
+
+            await shop.save();
+
         }
 
         await shop.save();
@@ -236,5 +243,46 @@ export const deleteShop = async (req, res, next) => {
         success: true,
         message: "Shop deleted successfully",
     });
+
+};
+
+// Update Shop Status
+export const updateShopStatus = async (req, res, next) => {
+
+    try {
+
+        const shop = await Shop.findById(req.params.id);
+
+        if (!shop) {
+            return next(new ErrorHandler("Shop not found", 404));
+        }
+
+        // Check shop ownership
+        if (shop.owner.toString() !== req.user._id.toString()) {
+            return next(new ErrorHandler("You are not authorized to update this shop", 403));
+        }
+
+        // Check status value
+        if (typeof req.body.isOpen !== "boolean") {
+            return next(new ErrorHandler("Valid restaurant status is required", 400));
+        }
+
+        shop.isOpen = req.body.isOpen;
+
+        await shop.save();
+
+        res.status(200).json({
+            success: true,
+            message: shop.isOpen
+                ? "Restaurant opened successfully"
+                : "Restaurant closed successfully",
+            shop
+        });
+
+    } catch (error) {
+
+        return next(new ErrorHandler("Restaurant status update failed. Please try again.", 500));
+
+    }
 
 };
