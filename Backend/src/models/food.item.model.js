@@ -91,6 +91,27 @@ const foodItemSchema = new mongoose.Schema({
         default: 0
     },
 
+    // Reviews of the food item
+    reviews: [
+        {
+            user: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "User",
+                required: true
+            },
+            rating: {
+                type: Number,
+                required: true,
+                min: 1,
+                max: 5
+            },
+            comment: {
+                type: String,
+                trim: true
+            }
+        }
+    ],
+
     // Total number of orders
     totalOrders: {
         type: Number,
