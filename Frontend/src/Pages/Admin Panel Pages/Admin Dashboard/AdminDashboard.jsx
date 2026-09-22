@@ -19,6 +19,7 @@ const AdminDashboard = () => {
 
                 {/* dashboard states grid */}
                 <div className="dashboard-stats-grid">
+
                     <AdminStatsCard
                         icon={<FiImage />}
                         title="Total Banners"
@@ -50,6 +51,7 @@ const AdminDashboard = () => {
                         variant="active"
                         link="/admin/food-categories"
                     />
+                    
                 </div>
 
                 {/* recent banners and categories */}
@@ -66,4 +68,4 @@ const AdminDashboard = () => {
 
 }
 
-export default AdminDashboard
+export default AdminDashboard;
