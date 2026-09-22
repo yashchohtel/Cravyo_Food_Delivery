@@ -142,6 +142,13 @@ const AddFoodItemForm = ({ onClose }) => {
 
                             <span>min</span>
                         </div>
+
+                        {errors.preparationTime && (
+                            <span className="add-food-error">
+                                {errors.preparationTime}
+                            </span>
+                        )}
+
                     </div>
 
                 </div>
@@ -160,10 +167,18 @@ const AddFoodItemForm = ({ onClose }) => {
                             onChange={handleChange}
                             placeholder="e.g. Margherita Pizza"
                         />
+
+                        {errors.name && (
+                            <span className="add-food-error">
+                                {errors.name}
+                            </span>
+                        )}
+
                     </div>
 
                     {/* Category */}
                     <div className="add-food-field">
+
                         <label>Category</label>
 
                         <div className="category-type-toggle">
@@ -226,6 +241,12 @@ const AddFoodItemForm = ({ onClose }) => {
                                 placeholder="e.g. Special Combos"
                             />
                         )}
+
+                        {errors.category && (
+                            <span className="add-food-error">
+                                {errors.category}
+                            </span>
+                        )}
                     </div>
 
                     {/* Description */}
@@ -238,6 +259,11 @@ const AddFoodItemForm = ({ onClose }) => {
                             placeholder="Describe your food item..."
                             rows="3"
                         />
+                        {errors.description && (
+                            <span className="add-food-error">
+                                {errors.description}
+                            </span>
+                        )}
                     </div>
 
                     {/* Prices */}
@@ -253,6 +279,11 @@ const AddFoodItemForm = ({ onClose }) => {
                                 onChange={handleChange}
                                 placeholder="249"
                             />
+                            {errors.price && (
+                                <span className="add-food-error">
+                                    {errors.price}
+                                </span>
+                            )}
                         </div>
 
                         <div className="add-food-field">
