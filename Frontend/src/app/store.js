@@ -4,6 +4,7 @@ import locationReducer from "../features/location/locationSlice"
 import promotionBannerReducer from '../features/platform/promotionBanners/promotionBannersSlice'
 import foodCategoriesReducer from '../features/platform/topFoodCategories/topFoodCategoriesSlice'
 import restaurantReducer from "../features/restaurant dashboard/restaurant/restaurantSlice";
+import foodItemReducer from '../features/restaurant dashboard/foodItems/foodItemSlice'
 
 // configure store with 
 const store = configureStore({
@@ -25,6 +26,9 @@ const store = configureStore({
 
         // restuer creation reducer
         restaurant: restaurantReducer,
+
+        // food item reducer
+        foodItem: foodItemReducer,
 
     },
 

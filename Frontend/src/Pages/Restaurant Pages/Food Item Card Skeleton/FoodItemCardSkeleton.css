@@ -1,0 +1,119 @@
+.food-item-card-skeleton {
+    width: 100%;
+    overflow: hidden;
+    background: var(--surface-color, #fff);
+    border: 0.1rem solid #eeeeee;
+    border-radius: 1.2rem;
+}
+
+.food-item-skeleton-shimmer {
+    background: linear-gradient(90deg,
+            #e2e5ea 25%,
+            #eef1f5 50%,
+            #e2e5ea 75%);
+    background-size: 200% 100%;
+    animation: foodItemSkeletonShimmer 1.3s linear infinite;
+}
+
+/* Image */
+
+.food-item-skeleton-image {
+    width: 100%;
+    height: 18rem;
+}
+
+/* Content */
+
+.food-item-skeleton-content {
+    padding: 1.5rem;
+}
+
+/* Top */
+
+.food-item-skeleton-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+}
+
+.food-item-skeleton-category {
+    width: 7rem;
+    height: 2rem;
+    border-radius: 1rem;
+}
+
+.food-item-skeleton-type {
+    width: 5.5rem;
+    height: 2rem;
+    border-radius: 1rem;
+}
+
+/* Name */
+
+.food-item-skeleton-name {
+    width: 75%;
+    height: 1.7rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Description */
+
+.food-item-skeleton-description {
+    width: 100%;
+    height: 1.2rem;
+    border-radius: 0.4rem;
+    margin-bottom: 0.7rem;
+}
+
+.food-item-skeleton-description.short {
+    width: 65%;
+}
+
+/* Price + Rating */
+
+.food-item-skeleton-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.food-item-skeleton-price {
+    width: 6rem;
+    height: 1.7rem;
+    border-radius: 0.5rem;
+}
+
+.food-item-skeleton-rating {
+    width: 5.5rem;
+    height: 1.7rem;
+    border-radius: 0.5rem;
+}
+
+/* Actions */
+
+.food-item-skeleton-actions {
+    display: flex;
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+}
+
+.food-item-skeleton-action {
+    flex: 1;
+    height: 3.4rem;
+    border-radius: 0.6rem;
+}
+
+/* Shimmer */
+
+@keyframes foodItemSkeletonShimmer {
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
+}

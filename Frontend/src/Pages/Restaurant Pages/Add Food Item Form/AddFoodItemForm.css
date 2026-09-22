@@ -1,0 +1,408 @@
+.add-food-form {
+    width: 88rem;
+    max-width: 100%;
+    background: #fff;
+    border-radius: 1.2rem;
+    overflow: hidden;
+}
+
+/* Header */
+
+.add-food-header {
+    height: 6.2rem;
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.1rem solid #eeeeee;
+}
+
+.add-food-header h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary, #292929);
+}
+
+.add-food-header button {
+    width: 3.4rem;
+    height: 3.4rem;
+    border: none;
+    background: transparent;
+    color: #777;
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.6rem;
+}
+
+.add-food-header button:hover {
+    background: #f5f5f5;
+}
+
+/* Main */
+
+.add-food-content {
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 30rem 1fr;
+    gap: 3rem;
+}
+
+/* Left */
+
+.add-food-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+/* Right */
+
+.add-food-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Fields */
+
+.add-food-field label,
+.add-food-image-section label {
+    display: flex;
+    margin-bottom: 0.7rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #292929;
+}
+
+.add-food-field input,
+.add-food-field select,
+.add-food-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 0.1rem solid #dddddd;
+    border-radius: 0.7rem;
+    outline: none;
+    background: #fff;
+    font-family: inherit;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.add-food-field input,
+.add-food-field select {
+    height: 4rem;
+    padding: 0 1.2rem;
+}
+
+.add-food-field textarea {
+    min-height: 7rem;
+    padding: 1rem 1.2rem;
+    resize: none;
+}
+
+.add-food-field input:focus,
+.add-food-field select:focus,
+.add-food-field textarea:focus {
+    border-color: #ff5a1f;
+}
+
+.add-food-field input::placeholder,
+.add-food-field textarea::placeholder {
+    color: #aaa;
+}
+
+/* Image */
+
+.add-food-upload {
+    height: 22rem;
+    border: 0.1rem dashed #d5d5d5;
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.add-food-upload:hover {
+    border-color: #ff5a1f;
+    background: #fffaf7;
+}
+
+.add-food-upload svg {
+    font-size: 2.8rem;
+    color: #888;
+    margin-bottom: 1.2rem;
+}
+
+.add-food-upload p {
+    margin: 0 0 0.5rem;
+    font-size: 1.4rem;
+    color: #444;
+}
+
+.add-food-upload span {
+    font-size: 1.2rem;
+    color: #999;
+}
+
+.add-food-image-section small {
+    display: block;
+    margin-top: 0.7rem;
+    font-size: 1.2rem;
+    color: #888;
+}
+
+/* Category */
+
+.category-type-toggle {
+    display: flex;
+    gap: 0.7rem;
+    margin-bottom: 0.7rem;
+}
+
+.category-type-toggle button {
+    height: 3.4rem;
+    padding: 0 1.3rem;
+    border: 0.1rem solid #dddddd;
+    border-radius: 0.6rem;
+    background: #fff;
+    color: #666;
+    font-family: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.category-type-toggle button.active {
+    background: #fff5ef;
+    border-color: #ff5a1f;
+    color: #ff5a1f;
+    font-weight: 600;
+}
+
+/* Food Type */
+
+.food-type-options {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 4rem;
+}
+
+.food-type-option {
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center;
+    gap: 0.7rem;
+    cursor: pointer;
+    font-size: 1.3rem !important;
+    font-weight: 500 !important;
+    /* background: var(--location-blue-bg); */
+    padding: 1rem;
+    border: 0.1rem solid #dddddd;
+    border-radius: 5px;
+}
+
+.food-type-option input {
+    display: none;
+}
+
+.food-type-radio {
+    width: 1.7rem;
+    height: 1.7rem;
+    border: 0.1rem solid #bdbdbd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.food-type-option input:checked+.food-type-radio {
+    border-color: #ff5a1f;
+}
+
+.food-type-option input:checked+.food-type-radio::after {
+    content: "";
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 50%;
+    background: #ff5a1f;
+}
+
+.veg-icon {
+    color: #208b48;
+    font-size: 1.5rem;
+}
+
+.nonveg-icon {
+    color: #c83b32;
+    font-size: 1.5rem;
+}
+
+/* Preparation */
+
+.preparation-input {
+    height: 4rem;
+    border: 0.1rem solid #dddddd;
+    border-radius: 0.7rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1.2rem;
+    box-sizing: border-box;
+    color: #888;
+}
+
+.preparation-input:focus-within {
+    border-color: #ff5a1f;
+}
+
+.preparation-input svg {
+    font-size: 1.6rem;
+    margin-right: 0.8rem;
+}
+
+.preparation-input input {
+    height: 100%;
+    border: none;
+    padding: 0;
+}
+
+.preparation-input input:focus {
+    border: none;
+}
+
+.preparation-input span {
+    font-size: 1.3rem;
+    margin-left: auto;
+}
+
+/* Price Row */
+
+.add-food-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.add-food-row.three {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Footer */
+
+.add-food-footer {
+    height: 6.5rem;
+    padding: 0 2.5rem;
+    border-top: 0.1rem solid #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.add-food-footer button {
+    height: 4rem;
+    padding: 0 2.2rem;
+    border-radius: 0.7rem;
+    font-family: inherit;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.add-food-footer .cancel {
+    background: #fff;
+    border: 0.1rem solid #ddd;
+    color: #333;
+}
+
+.add-food-footer .submit {
+    border: none;
+    background: #ff5a1f;
+    color: #fff;
+}
+
+/* Responsive */
+
+@media (max-width: 750px) {
+    .add-food-content {
+        grid-template-columns: 1fr;
+    }
+
+    .add-food-upload {
+        height: 18rem;
+    }
+
+    .add-food-form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .add-food-row,
+    .add-food-row.three {
+        grid-template-columns: 1fr;
+    }
+
+    .add-food-content {
+        padding: 2rem;
+    }
+
+    .add-food-footer {
+        padding: 0 2rem;
+    }
+}
+
+.add-food-upload {
+    height: 22rem;
+    border: 0.1rem dashed #d5d5d5;
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.add-food-upload:hover {
+    border-color: #ff5a1f;
+    background: #fffaf7;
+}
+
+.add-food-upload svg {
+    font-size: 2.8rem;
+    color: #888;
+    margin-bottom: 1.2rem;
+}
+
+.add-food-upload p {
+    margin: 0 0 0.5rem;
+    font-size: 1.4rem;
+    color: #444;
+}
+
+.add-food-upload span {
+    font-size: 1.2rem;
+    color: #999;
+}
+
+.food-image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.add-food-error {
+    margin: 0.5rem 0 0;
+    color: #d83232;
+    font-size: 1.2rem;
+}

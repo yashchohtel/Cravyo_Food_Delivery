@@ -121,7 +121,7 @@ export const updateFoodItem = async (req, res, next) => {
         return next(new ErrorHandler("You are not authorized to update this food item", 403));
     }
 
-    // Update food item name
+    // Update name
     if (req.body.name !== undefined) {
         foodItem.name = req.body.name;
     }
@@ -133,7 +133,14 @@ export const updateFoodItem = async (req, res, next) => {
 
     // Update price
     if (req.body.price !== undefined) {
-        foodItem.price = Number(req.body.price);
+
+        const price = Number(req.body.price);
+
+        if (price < 0) {
+            return next(new ErrorHandler("Price cannot be negative", 400));
+        }
+
+        foodItem.price = price;
     }
 
     // Update category
@@ -153,7 +160,14 @@ export const updateFoodItem = async (req, res, next) => {
 
     // Update preparation time
     if (req.body.preparationTime !== undefined) {
-        foodItem.preparationTime = Number(req.body.preparationTime);
+
+        const preparationTime = Number(req.body.preparationTime);
+
+        if (preparationTime < 0) {
+            return next(new ErrorHandler("Preparation time cannot be negative", 400));
+        }
+
+        foodItem.preparationTime = preparationTime;
     }
 
     // Update discount
@@ -168,30 +182,34 @@ export const updateFoodItem = async (req, res, next) => {
         foodItem.discount = discount;
     }
 
-    // Replace food item image
+    // Replace image
+    let oldPublicId = null;
+
     if (req.file) {
 
-        const oldPublicId = foodItem.imagePublicId;
+        const newImage = await uploadBufferToCloudinary(
+            req.file.buffer,
+            "cravyo/food-items"
+        );
 
-        const newImage = await uploadBufferToCloudinary(req.file.buffer, "cravyo/food-items");
+        oldPublicId = foodItem.imagePublicId;
 
         foodItem.image = newImage.secure_url;
         foodItem.imagePublicId = newImage.public_id;
-
-        // Delete old image
-        if (oldPublicId) {
-            await deleteFromCloudinary(oldPublicId);
-        }
     }
 
     await foodItem.save();
+
+    // Delete old image only after successful save
+    if (req.file && oldPublicId) {
+        await deleteFromCloudinary(oldPublicId);
+    }
 
     res.status(200).json({
         success: true,
         message: "Food item updated successfully",
         foodItem
     });
-
 };
 
 // Delete Food Item

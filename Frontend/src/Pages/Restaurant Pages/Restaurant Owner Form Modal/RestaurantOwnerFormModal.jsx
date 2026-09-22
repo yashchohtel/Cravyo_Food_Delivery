@@ -1,4 +1,5 @@
 import EditRestaurantForm from '../../../Components/Forms/Edit Restaurant Form/EditRestaurantForm';
+import AddFoodItemForm from '../Add Food Item Form/AddFoodItemForm';
 import './RestaurantOwnerFormModal.css'
 
 const RestaurantOwnerFormModal = (props) => {
@@ -25,10 +26,10 @@ const RestaurantOwnerFormModal = (props) => {
                 )}
 
                 {/* if type is not equal to exit restaurant */}
-                {type != "editRestaurant" && (
-                    <div className="restaurant-admin-form-modal">
-
-                    </div>
+                {type === "addFoodItem" && mode === "add" && (
+                    <AddFoodItemForm
+                        onClose={onClose}
+                    />
                 )}
 
             </div>
