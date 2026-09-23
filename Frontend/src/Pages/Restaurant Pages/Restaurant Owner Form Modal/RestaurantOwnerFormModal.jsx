@@ -26,9 +26,11 @@ const RestaurantOwnerFormModal = (props) => {
                 )}
 
                 {/* if type is not equal to exit restaurant */}
-                {type === "addFoodItem" && mode === "add" && (
+                {type === "addFoodItem" && (
                     <AddFoodItemForm
                         onClose={onClose}
+                        mode={mode}
+                        data={data}
                     />
                 )}
 

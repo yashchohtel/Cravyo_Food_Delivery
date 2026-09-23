@@ -188,37 +188,45 @@ const FoodItems = () => {
         )}
 
         {/* food item card */}
-        {getFoodItemsLoading ? (
-          <div className="food-items-grid">
-            {Array.from({ length: 6 }).map((_, index) => (
-              <FoodItemCardSkeleton key={index} />
-            ))}
-          </div>
-        ) : (
-          <div className="food-items-grid">
-            {foodItems.map((item) => (
-              <FoodItemCard
-                key={item._id}
-                item={item}
-                onView={(item) => {
-                  console.log("View:", item);
-                }}
-                onReviews={(item) => {
-                  console.log("Reviews:", item);
-                }}
-                onEdit={(item) => {
-                  console.log("Edit:", item);
-                }}
-                onDelete={(item) => {
-                  console.log("Delete:", item);
-                }}
-              />
-            ))}
-          </div>
+        {getFoodItemsLoading ?
 
-        )}
+          (
+
+            <div className="food-items-grid">
+              {Array.from({ length: 6 }).map((_, index) => (
+                <FoodItemCardSkeleton key={index} />
+              ))}
+            </div>
+
+          )
+
+          :
+
+          (
+            <div className="food-items-grid">
+
+              {foodItems.map((item) => (
+
+                <FoodItemCard
+                  key={item._id}
+                  item={item}
+
+                  onEdit={(item) => openModal("addFoodItem", "edit", item)}
+
+                // onView={(item) => { console.log("View:", item) }}
+                // onReviews={(item) => { console.log("Reviews:", item) }}
+                // onDelete={(item) => { console.log("Delete:", item) }}
+
+                />
+
+              ))}
+
+            </div>
+
+          )}
 
       </div>
+
     </>
 
   )

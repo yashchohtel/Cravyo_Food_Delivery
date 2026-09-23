@@ -4,29 +4,36 @@ import "./AddFoodItemForm.css";
 import useAddFoodItem from "../../../hooks/Restaruant Owner Hooks/useFoodItems";
 import ButtonLoader from "../../../Components/Loaders/ButtonLoader/ButtonLoader";
 
-const AddFoodItemForm = ({ onClose }) => {
+const AddFoodItemForm = ({ onClose, mode, data }) => {
 
     const {
         formData,
         errors,
         categoryType,
         createFoodItemLoading,
+        updateFoodItemLoading,
         handleChange,
         handleFoodTypeChange,
         handleCategoryTypeChange,
         handleImageChange,
-        handleCreateFoodItem
-    } = useAddFoodItem({ onClose });
+        handleCreateFoodItem,
+        handleUpdateFoodItem
+    } = useAddFoodItem({ onClose, mode, data });
 
     return (
+
         <form
             className="add-food-form"
-            onSubmit={handleCreateFoodItem}
+            onSubmit={
+                mode === "edit" ? handleUpdateFoodItem : handleCreateFoodItem
+            }
         >
 
             {/* Header */}
             <div className="add-food-header">
-                <h2>Add New Food Item</h2>
+                <h2>
+                    {mode === "edit" ? "Edit Food Item" : "Add New Food Item"}
+                </h2>
 
                 <button type="button" onClick={onClose}>
                     <FiX />
@@ -337,7 +344,7 @@ const AddFoodItemForm = ({ onClose }) => {
                     type="button"
                     className="cancel"
                     onClick={onClose}
-                    disabled={createFoodItemLoading}
+                    disabled={createFoodItemLoading || updateFoodItemLoading}
                 >
                     Cancel
                 </button>
@@ -345,12 +352,15 @@ const AddFoodItemForm = ({ onClose }) => {
                 <button
                     type="submit"
                     className="submit"
-                    disabled={createFoodItemLoading}
+                    disabled={createFoodItemLoading || updateFoodItemLoading}
                 >
-                    {createFoodItemLoading
-                        ? <ButtonLoader />
-                        : "Add Food Item"
-                    }
+                    {createFoodItemLoading || updateFoodItemLoading ? (
+                        <ButtonLoader />
+                    ) : mode === "edit" ? (
+                        "Update Food Item"
+                    ) : (
+                        "Add Food Item"
+                    )}
                 </button>
 
             </div>

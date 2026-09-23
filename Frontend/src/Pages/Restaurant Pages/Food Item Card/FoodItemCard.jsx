@@ -1,7 +1,9 @@
 import { FaStar, FaClock, FaEye, FaCommentDots, FaEdit, FaTrash, FaLeaf, FaDrumstickBite } from "react-icons/fa";
 import "./FoodItemCard.css";
 
-const FoodItemCard = ({ item }) => {
+const FoodItemCard = (props) => {
+
+    const { item, onEdit } = props;
 
     return (
 
@@ -60,7 +62,7 @@ const FoodItemCard = ({ item }) => {
                     <div className="food-item-price">
                         ₹{item.price}
 
-                        {item.originalPrice &&item.originalPrice > item.price && (<del>₹{item.originalPrice}</del>)}
+                        {item.originalPrice && item.originalPrice > item.price && (<del>₹{item.originalPrice}</del>)}
                     </div>
 
                     {item.discount > 0 && (
@@ -100,6 +102,7 @@ const FoodItemCard = ({ item }) => {
                         type="button"
                         className="icon-action-button"
                         title="Edit"
+                        onClick={() => onEdit(item)}
                     >
                         <FaEdit />
                     </button>

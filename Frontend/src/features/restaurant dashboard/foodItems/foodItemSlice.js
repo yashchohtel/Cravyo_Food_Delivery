@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createFoodItem, getAllFoodItems } from "./foodItemThunk";
+import { createFoodItem, getAllFoodItems, updateFoodItem } from "./foodItemThunk";
 
 const initialState = {
     foodItems: [],
     createLoading: false,
     getLoading: false,
+    updateLoading: false,
     errorMessage: null,
     successMessage: null
 };
@@ -54,6 +55,8 @@ const foodItemSlice = createSlice({
                 state.errorMessage = action.payload;
             })
 
+
+            /* ----------- GET ALL FOOD ITEM ↓ */
             .addCase(getAllFoodItems.pending, (state) => {
                 state.getLoading = true;
                 state.errorMessage = null;
@@ -66,6 +69,28 @@ const foodItemSlice = createSlice({
 
             .addCase(getAllFoodItems.rejected, (state, action) => {
                 state.getLoading = false;
+                state.errorMessage = action.payload;
+            })
+
+            /* ----------- UPDAE FOOD ITEM ↓ */
+
+            .addCase(updateFoodItem.pending, (state) => {
+                state.updateLoading = true;
+                state.errorMessage = null;
+                state.successMessage = null;
+            })
+
+            .addCase(updateFoodItem.fulfilled, (state, action) => {
+                state.updateLoading = false;
+                state.successMessage = action.payload.message;
+
+                state.foodItems = state.foodItems.map((item) =>
+                    item._id === action.payload.foodItem._id ? action.payload.foodItem : item
+                );
+            })
+
+            .addCase(updateFoodItem.rejected, (state, action) => {
+                state.updateLoading = false;
                 state.errorMessage = action.payload;
             })
 

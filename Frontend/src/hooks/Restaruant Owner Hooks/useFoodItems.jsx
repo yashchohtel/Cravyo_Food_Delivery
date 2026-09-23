@@ -1,14 +1,16 @@
-import { useState } from "react";
+/* eslint-disable react-hooks/set-state-in-effect */
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createFoodItem } from "../../features/restaurant dashboard/foodItems/foodItemThunk";
+import { createFoodItem, updateFoodItem } from "../../features/restaurant dashboard/foodItems/foodItemThunk";
 
-const useAddFoodItem = ({ onClose }) => {
+const useAddFoodItem = ({ onClose, mode, data }) => {
+
 
     const dispatch = useDispatch();
 
     const restaurant = useSelector((state) => state.restaurant.restaurant);
 
-    const { createLoading: createFoodItemLoading, errorMessage, successMessage } = useSelector((state) => state.foodItem);
+    const { createLoading: createFoodItemLoading, updateLoading: updateFoodItemLoading, errorMessage, successMessage } = useSelector((state) => state.foodItem);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -23,6 +25,27 @@ const useAddFoodItem = ({ onClose }) => {
         image: null,
         imagePreview: null
     });
+
+    useEffect(() => {
+
+        if (mode === "edit" && data) {
+
+            setFormData({
+                name: data.name || "",
+                description: data.description || "",
+                price: data.price || "",
+                originalPrice: data.originalPrice || "",
+                discount: data.discount || "",
+                category: data.category || "",
+                isVeg: data.isVeg ?? true,
+                isAvailable: data.isAvailable ?? true,
+                preparationTime: data.preparationTime || "",
+                image: null,
+                imagePreview: data.image || null
+            });
+        }
+
+    }, [mode, data]);
 
     const [categoryType, setCategoryType] = useState("existing");
 
@@ -116,7 +139,7 @@ const useAddFoodItem = ({ onClose }) => {
 
         const newErrors = {};
 
-        if (!formData.image) {
+        if (mode === "add" && !formData.image) {
             newErrors.image = "Food item image is required";
         }
 
@@ -194,18 +217,64 @@ const useAddFoodItem = ({ onClose }) => {
         }
     };
 
+    // Update food item
+    const handleUpdateFoodItem = async (e) => {
+
+        e.preventDefault();
+
+        const isValid = validateForm();
+
+        if (!isValid) return;
+
+        const foodItemData = new FormData();
+
+        foodItemData.append("name", formData.name.trim());
+        foodItemData.append("description", formData.description.trim());
+        foodItemData.append("price", formData.price);
+        foodItemData.append("category", formData.category.trim());
+        foodItemData.append("isVeg", formData.isVeg);
+        foodItemData.append("isAvailable", formData.isAvailable);
+        foodItemData.append("preparationTime", formData.preparationTime);
+        foodItemData.append(
+            "discount",
+            formData.discount === "" ? 0 : formData.discount
+        );
+
+        // Send image only if user selected a new image
+        if (formData.image) {
+            foodItemData.append("image", formData.image);
+        }
+
+        try {
+
+            await dispatch(
+                updateFoodItem({
+                    id: data._id,
+                    formData: foodItemData
+                })
+            ).unwrap();
+
+            onClose();
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return {
         formData,
         errors,
         categoryType,
         createFoodItemLoading,
+        updateFoodItemLoading,
         errorMessage,
         successMessage,
         handleChange,
         handleFoodTypeChange,
         handleCategoryTypeChange,
         handleImageChange,
-        handleCreateFoodItem
+        handleCreateFoodItem,
+        handleUpdateFoodItem
     };
 };
 
