@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createFoodItem, getAllFoodItems, updateFoodItem } from "./foodItemThunk";
+import { createFoodItem, deleteFoodItem, getAllFoodItems, updateFoodItem } from "./foodItemThunk";
 
 const initialState = {
     foodItems: [],
@@ -43,7 +43,7 @@ const foodItemSlice = createSlice({
             })
 
             .addCase(createFoodItem.fulfilled, (state, action) => {
-                state.createLoading = true;
+                state.createLoading = false;
                 state.successMessage = action.payload.message;
 
                 if (action.payload.foodItem) {
@@ -52,12 +52,12 @@ const foodItemSlice = createSlice({
             })
 
             .addCase(createFoodItem.rejected, (state, action) => {
-                state.createLoading = true;
+                state.createLoading = false;
                 state.errorMessage = action.payload;
             })
 
-
             /* ----------- GET ALL FOOD ITEM ↓ */
+
             .addCase(getAllFoodItems.pending, (state) => {
                 state.getLoading = true;
                 state.errorMessage = null;
@@ -94,6 +94,23 @@ const foodItemSlice = createSlice({
                 state.updateLoading = false;
                 state.errorMessage = action.payload;
             })
+
+            /* ----------- DELETE FOOD ITEM ↓ */
+
+            .addCase(deleteFoodItem.pending, (state) => {
+                state.deleteLoading = true;
+            })
+            .addCase(deleteFoodItem.fulfilled, (state, action) => {
+                state.deleteLoading = false;
+
+                state.foodItems = state.foodItems.filter(
+                    (item) => item._id !== action.meta.arg
+                );
+            })
+            .addCase(deleteFoodItem.rejected, (state, action) => {
+                state.deleteLoading = false;
+                state.errorMessage = action.payload;
+            });
 
     }
 

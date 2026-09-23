@@ -14,6 +14,8 @@ const FoodItems = () => {
   // get food item data from redux store
   const foodItems = useSelector((state) => state.foodItem.foodItems);
 
+  /* -------------------------------------- */
+
   // total food item
   const totalFoodItems = foodItems.length;
 
@@ -27,6 +29,8 @@ const FoodItems = () => {
   const averageRating = foodItems.length ? (
     foodItems.reduce((sum, item) => sum + (item.rating || 0), 0) / foodItems.length
   ).toFixed(1) : 0;
+
+  /* -------------------------------------- */
 
   // modal state
   const [modal, setModal] = useState({
@@ -56,6 +60,36 @@ const FoodItems = () => {
     });
   };
 
+  /* -------------------------------------- */
+
+  // state related to fearch filter feater
+  const [search, setSearch] = useState("");
+  const [foodType, setFoodType] = useState("");
+  const [category, setCategory] = useState("");
+  const [availability, setAvailability] = useState("");
+
+  const filteredFoodItems = foodItems.filter((item) => {
+
+    const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase());
+
+    const matchesFoodType = foodType === "" || foodType === "all" || (foodType === "veg" && item.isVeg) || (foodType === "nonVeg" && !item.isVeg);
+
+    const matchesCategory = category === "" || item.category.toLowerCase() === category.toLowerCase();
+
+    const matchesAvailability =
+      availability === "" ||
+      (availability === "available" && item.isAvailable) ||
+      (availability === "unavailable" && !item.isAvailable);
+
+    return (
+      matchesSearch &&
+      matchesFoodType &&
+      matchesCategory &&
+      matchesAvailability
+    );
+
+  });
+
   return (
 
     <>
@@ -69,7 +103,6 @@ const FoodItems = () => {
           data={modal.data}
           onClose={closeModal}
         />
-
 
         {/* food items stats */}
         <div className="food-items-stats-grid">
@@ -112,6 +145,8 @@ const FoodItems = () => {
             <input
               type="text"
               placeholder="Search food items..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </div>
 
@@ -119,7 +154,10 @@ const FoodItems = () => {
 
             <div className="admin-filter-box">
 
-              <select>
+              <select
+                value={foodType}
+                onChange={(e) => setFoodType(e.target.value)}
+              >
                 <option value="">Food Type</option>
                 <option value="all">All</option>
                 <option value="veg">Veg</option>
@@ -131,18 +169,40 @@ const FoodItems = () => {
             </div>
 
             <div className="admin-filter-box">
-              <select>
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
                 <option value="">Category</option>
-                <option value="pizza">Pizza</option>
-                <option value="burger">Burger</option>
-                <option value="biryani">Biryani</option>
-                <option value="chinese">Chinese</option>
+                <option>Pizza</option>
+                <option>Burger</option>
+                <option>Biryani</option>
+                <option>Chinese</option>
+                <option>North Indian</option>
+                <option>South Indian</option>
+                <option>Rolls</option>
+                <option>Momos</option>
+                <option>Sandwich</option>
+                <option>Pasta</option>
+                <option>Dosa</option>
+                <option>Thali</option>
+                <option>Healthy Food</option>
+                <option>Desserts</option>
+                <option>Cakes</option>
+                <option>Ice Cream</option>
+                <option>Beverages</option>
+                <option>Breakfast</option>
+                <option>Fast Food</option>
+                <option>Street Food</option>
               </select>
               <FiChevronDown className="admin-filter-icon" />
             </div>
 
             <div className="admin-filter-box">
-              <select>
+              <select
+                value={availability}
+                onChange={(e) => setAvailability(e.target.value)}
+              >
                 <option value="">Availability</option>
                 <option value="available">Available</option>
                 <option value="unavailable">Unavailable</option>
@@ -187,6 +247,11 @@ const FoodItems = () => {
           </div>
         )}
 
+        {/* no searched result */}
+        {foodItems.length !== 0 && filteredFoodItems.length === 0 && !getFoodItemsLoading && (
+          <h2 className='noSearch'>No Searched Item Found.</h2>
+        )}
+
         {/* food item card */}
         {getFoodItemsLoading ?
 
@@ -205,7 +270,7 @@ const FoodItems = () => {
           (
             <div className="food-items-grid">
 
-              {foodItems.map((item) => (
+              {filteredFoodItems.map((item) => (
 
                 <FoodItemCard
                   key={item._id}

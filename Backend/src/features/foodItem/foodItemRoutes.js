@@ -32,6 +32,6 @@ foodItemRouter.post("/addReview/:id", isUserAuth, catchAsyncError(addFoodItemRev
 foodItemRouter.get("/getReviews/:id", catchAsyncError(getFoodItemReviews));
 
 // Delete Food Item Review [DELETE] - "http://localhost:5000/api/foodItem/deleteReview/FOOD_ITEM_ID/REVIEW_ID"
-foodItemRouter.delete("/deleteReview/:id/:reviewId", isUserAuth, authorizeRole("restaurantOwner"), catchAsyncError(deleteFoodItemReview));
+foodItemRouter.delete("/deleteReview/:id/:reviewId", isUserAuth, catchAsyncError(deleteFoodItemReview));
 
 export default foodItemRouter; // export food item router

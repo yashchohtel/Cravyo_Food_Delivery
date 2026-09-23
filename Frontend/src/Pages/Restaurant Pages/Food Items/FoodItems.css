@@ -189,3 +189,10 @@
         grid-template-columns: 1fr;
     }
 }
+
+.noSearch {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 2rem;
+    margin-top: 12rem;
+}

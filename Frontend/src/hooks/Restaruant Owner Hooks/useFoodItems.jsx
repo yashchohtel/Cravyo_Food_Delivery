@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createFoodItem, updateFoodItem } from "../../features/restaurant dashboard/foodItems/foodItemThunk";
+import { createFoodItem, deleteFoodItem, updateFoodItem } from "../../features/restaurant dashboard/foodItems/foodItemThunk";
+import toast from "react-hot-toast";
 
-const useAddFoodItem = ({ onClose, mode, data }) => {
+const useAddFoodItem = ({ onClose, mode, data } = {}) => {
 
-    console.log(mode,data);
-    
     const dispatch = useDispatch();
 
     const restaurant = useSelector((state) => state.restaurant.restaurant);
@@ -14,6 +13,7 @@ const useAddFoodItem = ({ onClose, mode, data }) => {
     const {
         createLoading: createFoodItemLoading,
         updateLoading: updateFoodItemLoading,
+        deleteLoading: deleteFoodItemLoading,
         errorMessage,
         successMessage
     } = useSelector((state) => state.foodItem);
@@ -193,14 +193,18 @@ const useAddFoodItem = ({ onClose, mode, data }) => {
 
         try {
 
-            await dispatch(
+            const result = await dispatch(
                 createFoodItem(foodItemData)
             ).unwrap();
+
+            toast.success(result.message);
 
             onClose();
 
         } catch (error) {
-            console.log(error);
+
+            toast.error(error?.message || "Failed to create food item");
+
         }
     };
 
@@ -257,21 +261,39 @@ const useAddFoodItem = ({ onClose, mode, data }) => {
 
         try {
 
-            await dispatch(
+            const result = await dispatch(
                 updateFoodItem({
                     id: data._id,
                     formData: foodItemData
                 })
             ).unwrap();
 
+            toast.success(result.message);
+
             onClose();
 
         } catch (error) {
-            console.log(error);
+
+            toast.error(error?.message || "Failed to update food item");
+
         }
+
     };
 
     // LOGIC RELATED TO DELETE FOOD ITME ----------------------------------
+
+    const handleDeleteFoodItem = async (id) => {
+        try {
+            const result = await dispatch(deleteFoodItem(id)).unwrap();
+
+            toast.success(result.message);
+
+            onClose();
+
+        } catch (error) {
+            toast.error(error?.message || "Failed to delete food item");
+        }
+    };
 
     return {
         formData,
@@ -279,6 +301,7 @@ const useAddFoodItem = ({ onClose, mode, data }) => {
         categoryType,
         createFoodItemLoading,
         updateFoodItemLoading,
+        deleteFoodItemLoading,
         errorMessage,
         successMessage,
         handleChange,
@@ -286,7 +309,9 @@ const useAddFoodItem = ({ onClose, mode, data }) => {
         handleCategoryTypeChange,
         handleImageChange,
         handleCreateFoodItem,
-        handleUpdateFoodItem
+        handleUpdateFoodItem,
+        handleDeleteFoodItem,
+
     };
 };
 

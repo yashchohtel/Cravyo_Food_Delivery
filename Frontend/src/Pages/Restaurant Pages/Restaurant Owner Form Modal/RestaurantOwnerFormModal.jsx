@@ -1,4 +1,6 @@
 import EditRestaurantForm from '../../../Components/Forms/Edit Restaurant Form/EditRestaurantForm';
+import ButtonLoader from '../../../Components/Loaders/ButtonLoader/ButtonLoader';
+import useAddFoodItem from '../../../hooks/Restaruant Owner Hooks/useFoodItems';
 import AddFoodItemForm from '../Add Food Item Form/AddFoodItemForm';
 import ViewFoodItem from '../View Food Item/ViewFoodItem';
 import './RestaurantOwnerFormModal.css'
@@ -8,7 +10,10 @@ const RestaurantOwnerFormModal = (props) => {
     // destructure console
     const { isOpen, onClose, type, mode, data, } = props
 
-    console.log(mode,data);
+    const {
+        handleDeleteFoodItem,
+        deleteFoodItemLoading
+    } = useAddFoodItem({ onClose, mode, data });
 
     // if modal closed
     if (!isOpen) {
@@ -20,19 +25,19 @@ const RestaurantOwnerFormModal = (props) => {
         <>
             <div className="restaurantOwner-modal-overlay">
 
-                {/* if form is edit restaurant form */}
-                {type === "editRestaurant" && mode === "edit" && (
-                    <EditRestaurantForm
-                        onClose={onClose}
-                        data={data}
-                    />
-                )}
-
                 {/* if type is not equal to exit restaurant */}
                 {type === "addFoodItem" && (
                     <AddFoodItemForm
                         onClose={onClose}
                         mode={mode}
+                        data={data}
+                    />
+                )}
+
+                {/* if form is edit restaurant form */}
+                {type === "editRestaurant" && mode === "edit" && (
+                    <EditRestaurantForm
+                        onClose={onClose}
                         data={data}
                     />
                 )}
@@ -76,6 +81,7 @@ const RestaurantOwnerFormModal = (props) => {
                                 <button
                                     type="button"
                                     className="delete-food-cancel"
+                                    disabled={deleteFoodItemLoading}
                                     onClick={onClose}
                                 >
                                     Cancel
@@ -84,8 +90,10 @@ const RestaurantOwnerFormModal = (props) => {
                                 <button
                                     type="button"
                                     className="delete-food-confirm"
+                                    onClick={() => handleDeleteFoodItem(data._id)}
+                                    disabled={deleteFoodItemLoading}
                                 >
-                                    Delete
+                                    {deleteFoodItemLoading ? <ButtonLoader /> : "Delete"}
                                 </button>
 
                             </div>

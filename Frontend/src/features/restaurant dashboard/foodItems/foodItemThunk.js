@@ -54,3 +54,21 @@ export const updateFoodItem = createAsyncThunk("foodItem/updateFoodItem", async 
 
 });
 
+// delete food item
+export const deleteFoodItem = createAsyncThunk("foodItem/deleteFoodItem", async (id , { rejectWithValue }) => {
+
+    try {
+
+        const { data } = await api.delete(`/api/foodItem/deleteFoodItem/${id}`)
+
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message ||
+            "Failed to delete food itme"
+        );
+    }
+
+});
