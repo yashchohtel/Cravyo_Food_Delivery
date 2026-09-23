@@ -211,11 +211,16 @@ const FoodItems = () => {
                   key={item._id}
                   item={item}
 
+                  // open eidt form
                   onEdit={(item) => openModal("addFoodItem", "edit", item)}
 
-                // onView={(item) => { console.log("View:", item) }}
+                  // open view modal
+                  onView={(item) => openModal("viewFoodItem", "view", item)}
+
+                  // deleteion food item
+                  onDelete={(item) => openModal("deleteFoodItem", "delete", item)}
+
                 // onReviews={(item) => { console.log("Reviews:", item) }}
-                // onDelete={(item) => { console.log("Delete:", item) }}
 
                 />
 

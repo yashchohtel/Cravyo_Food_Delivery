@@ -35,6 +35,7 @@ export const getAllFoodItems = createAsyncThunk("foodItem/getAllFoodItems", asyn
     }
 });
 
+// update food item
 export const updateFoodItem = createAsyncThunk("foodItem/updateFoodItem", async ({ id, formData }, { rejectWithValue }) => {
 
     try {
@@ -52,3 +53,4 @@ export const updateFoodItem = createAsyncThunk("foodItem/updateFoodItem", async 
     }
 
 });
+

@@ -5,12 +5,20 @@ import { createFoodItem, updateFoodItem } from "../../features/restaurant dashbo
 
 const useAddFoodItem = ({ onClose, mode, data }) => {
 
-
+    console.log(mode,data);
+    
     const dispatch = useDispatch();
 
     const restaurant = useSelector((state) => state.restaurant.restaurant);
 
-    const { createLoading: createFoodItemLoading, updateLoading: updateFoodItemLoading, errorMessage, successMessage } = useSelector((state) => state.foodItem);
+    const {
+        createLoading: createFoodItemLoading,
+        updateLoading: updateFoodItemLoading,
+        errorMessage,
+        successMessage
+    } = useSelector((state) => state.foodItem);
+
+    // LOGIC RELATED TO CREATE FOOD ITME ----------------------------------
 
     const [formData, setFormData] = useState({
         name: "",
@@ -25,27 +33,6 @@ const useAddFoodItem = ({ onClose, mode, data }) => {
         image: null,
         imagePreview: null
     });
-
-    useEffect(() => {
-
-        if (mode === "edit" && data) {
-
-            setFormData({
-                name: data.name || "",
-                description: data.description || "",
-                price: data.price || "",
-                originalPrice: data.originalPrice || "",
-                discount: data.discount || "",
-                category: data.category || "",
-                isVeg: data.isVeg ?? true,
-                isAvailable: data.isAvailable ?? true,
-                preparationTime: data.preparationTime || "",
-                image: null,
-                imagePreview: data.image || null
-            });
-        }
-
-    }, [mode, data]);
 
     const [categoryType, setCategoryType] = useState("existing");
 
@@ -217,6 +204,29 @@ const useAddFoodItem = ({ onClose, mode, data }) => {
         }
     };
 
+    // LOGIC RELATED TO EDIT FOOD ITME ----------------------------------
+
+    useEffect(() => {
+
+        if (mode === "edit" && data) {
+
+            setFormData({
+                name: data.name || "",
+                description: data.description || "",
+                price: data.price || "",
+                originalPrice: data.originalPrice || "",
+                discount: data.discount || "",
+                category: data.category || "",
+                isVeg: data.isVeg ?? true,
+                isAvailable: data.isAvailable ?? true,
+                preparationTime: data.preparationTime || "",
+                image: null,
+                imagePreview: data.image || null
+            });
+        }
+
+    }, [mode, data]);
+
     // Update food item
     const handleUpdateFoodItem = async (e) => {
 
@@ -260,6 +270,8 @@ const useAddFoodItem = ({ onClose, mode, data }) => {
             console.log(error);
         }
     };
+
+    // LOGIC RELATED TO DELETE FOOD ITME ----------------------------------
 
     return {
         formData,

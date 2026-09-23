@@ -3,7 +3,7 @@ import "./FoodItemCard.css";
 
 const FoodItemCard = (props) => {
 
-    const { item, onEdit } = props;
+    const { item, onEdit, onView, onDelete } = props;
 
     return (
 
@@ -88,7 +88,10 @@ const FoodItemCard = (props) => {
                 {/* Actions */}
                 <div className="food-item-actions">
 
-                    <button type="button">
+                    <button
+                        type="button"
+                        onClick={() => onView(item)}
+                    >
                         <FaEye />
                         View
                     </button>
@@ -111,6 +114,7 @@ const FoodItemCard = (props) => {
                         type="button"
                         className="icon-action-button delete-action"
                         title="Delete"
+                        onClick={() => onDelete(item)}
                     >
                         <FaTrash />
                     </button>

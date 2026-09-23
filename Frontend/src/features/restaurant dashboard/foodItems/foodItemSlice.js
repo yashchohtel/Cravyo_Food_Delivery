@@ -6,6 +6,7 @@ const initialState = {
     createLoading: false,
     getLoading: false,
     updateLoading: false,
+    deleteLoading: false,
     errorMessage: null,
     successMessage: null
 };
