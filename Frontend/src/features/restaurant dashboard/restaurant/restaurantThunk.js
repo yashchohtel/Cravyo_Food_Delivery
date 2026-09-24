@@ -105,3 +105,24 @@ export const getNearbyRestaurants = createAsyncThunk("restaurant/getNearbyRestau
     }
 
 });
+
+// Thunk to get a restaurant and its populated food items by ID
+export const getShopById = createAsyncThunk("restaurant/getShopById", async (id, { rejectWithValue }) => {
+
+    try {
+
+        const { data } = await api.get("/api/shop/getShopById/" + id);
+        
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Failed to fetch restaurant"
+        );
+
+    }
+
+});
+
+

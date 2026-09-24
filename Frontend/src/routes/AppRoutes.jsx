@@ -23,6 +23,7 @@ import FoodItems from "../Pages/Restaurant Pages/Food Items/FoodItems.jsx";
 import MyRestaurant from "../Pages/Restaurant Pages/My Restaurant/MyRestaurant.jsx";
 import AllRestaurants from "../Pages/Restaurant Pages/All Restaurants/AllRestaurants.jsx";
 import AllPopularFood from "../Pages/All Popular Food/AllPopularFood.jsx";
+import RestaurantDetail from "../Pages/Restaurant Pages/Restaurant Detail/RestaurantDetail.jsx";
 
 function AppRoutes() {
 
@@ -54,6 +55,9 @@ function AppRoutes() {
 
       {/* pupular restaurent near you */}
       <Route path="/popular-food" element={<ProtectedRoute> <AllPopularFood /> </ProtectedRoute>} />
+
+      {/* restaurant detail page */}
+      <Route path="/restaurant/:restaurantId" element={<ProtectedRoute> <RestaurantDetail /> </ProtectedRoute>} />
 
       {/* delivery route */}
       <Route path="/delivery" element={

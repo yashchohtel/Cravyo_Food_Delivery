@@ -36,7 +36,6 @@ const Home = () => {
   const { loading: categoryLoading } = useSelector((state) => state.foodCategories);
   const { popularFood } = useSelector((state) => state.foodItem);
 
-
   /* FOOD PREFRENCE ↓ -------------------------------------- */
 
   // get element of useFoodPrefrence hook
@@ -85,12 +84,12 @@ const Home = () => {
   }, [dispatch]);
 
   // stop home scroll if 
-  // useEffect(() => {
-  //   document.body.style.overflow = showAllCategories ? "hidden" : "auto";
-  //   return () => {
-  //     document.body.style.overflow = "auto";
-  //   };
-  // }, [showAllCategories]);
+  useEffect(() => {
+    document.body.style.overflow = showAllCategories ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [showAllCategories]);
 
   // Get restaurants based on user's location
   useEffect(() => {

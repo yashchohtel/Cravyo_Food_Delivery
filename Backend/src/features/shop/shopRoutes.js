@@ -3,7 +3,7 @@ import { isUserAuth } from "../../middleware/auth.js";
 import { authorizeRole } from "../../middleware/authorizeRole.js";
 import catchAsyncError from "../../middleware/catchAsyncError.js";
 import { upload } from "../../middleware/multer.js";
-import { createShop, deleteShop, getMyShop, getNearbyRestaurants, updateShop, updateShopStatus } from "./shopController.js";
+import { createShop, deleteShop, getMyShop, getNearbyRestaurants, getShopById, updateShop, updateShopStatus } from "./shopController.js";
 
 // Creating an instance of Express Router
 const shopRouter = express.Router();
@@ -25,5 +25,8 @@ shopRouter.put("/updateStatus/:id", isUserAuth, authorizeRole("restaurantOwner")
 
 // Get Nearby Restaurants [GET] - "/api/shop/getNearbyRestaurants"
 shopRouter.get("/getNearbyRestaurants", isUserAuth, catchAsyncError(getNearbyRestaurants));
+
+// Get Restaurant Details By ID (includes populated food items) [GET] - "/api/shop/getShopById/SHOP_ID"
+shopRouter.get("/getShopById/:id", isUserAuth, catchAsyncError(getShopById));
 
 export default shopRouter; // export shop routerrt

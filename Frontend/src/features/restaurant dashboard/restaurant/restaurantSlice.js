@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createRestaurant, getMyRestaurant, getNearbyRestaurants, updateRestaurantStatus, updateShop } from "./restaurantThunk";
+import { createRestaurant, getMyRestaurant, getNearbyRestaurants, getShopById, updateRestaurantStatus, updateShop } from "./restaurantThunk";
 
 const initialState = {
     restaurant: null,
@@ -9,6 +9,9 @@ const initialState = {
     restaurantStatusLoading: false,
     nearbyRestaurants: [],
     nearbyRestaurantsLoading: false,
+    selectedRestaurant: null,
+    selectedRestaurantLoading: false,
+    selectedRestaurantError: null,
     errorMessage: null,
     successMessage: null
 };
@@ -101,6 +104,24 @@ const restaurantSlice = createSlice({
                 state.errorMessage = action.payload;
             })
 
+            /* ----------- GET RESTAURANT BY ID ↓ */
+
+            .addCase(getShopById.pending, (state) => {
+                state.selectedRestaurantLoading = true;
+                state.selectedRestaurant = null;
+                state.selectedRestaurantError = null;
+            })
+
+            .addCase(getShopById.fulfilled, (state, action) => {
+                state.selectedRestaurantLoading = false;
+                state.selectedRestaurant = action.payload.shop;
+            })
+
+            .addCase(getShopById.rejected, (state, action) => {
+                state.selectedRestaurantLoading = false;
+                state.selectedRestaurantError = action.payload;
+            })
+
             /* ----------- GET NEARBY RESTAURANTS ↓ */
 
             .addCase(getNearbyRestaurants.pending, (state) => {
@@ -125,3 +146,5 @@ const restaurantSlice = createSlice({
 export const { clearRestaurantMessages } = restaurantSlice.actions;
 
 export default restaurantSlice.reducer;
+
+

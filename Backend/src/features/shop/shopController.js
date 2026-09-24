@@ -97,6 +97,25 @@ export const getMyShop = async (req, res, next) => {
 
 };
 
+// Get Shop By ID (restaurant details with food items)
+export const getShopById = async (req, res, next) => {
+
+    const shop = await Shop.findById(req.params.id)
+        .populate("owner", "name")
+        .populate("foodItems");
+
+    if (!shop) {
+        return next(new ErrorHandler("Restaurant not found", 404));
+    }
+
+    res.status(200).json({
+        success: true,
+        message: "Restaurant fetched successfully",
+        shop
+    });
+
+};
+
 // Update Shop
 export const updateShop = async (req, res, next) => {
 
@@ -337,3 +356,5 @@ export const getNearbyRestaurants = async (req, res, next) => {
 
     }
 };
+
+

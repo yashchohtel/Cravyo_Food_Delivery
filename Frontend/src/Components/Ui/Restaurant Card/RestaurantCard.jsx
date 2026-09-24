@@ -1,8 +1,27 @@
+import { useNavigate } from "react-router-dom";
 import "./RestaurantCard.css";
 
 const RestaurantCard = ({ restaurant }) => {
+
+    const navigate = useNavigate();
+
+    // open restaurent funciton to navitate to restaruent
+    const openRestaurant = () => {
+        navigate("/restaurant/" + restaurant._id);
+    };
+
     return (
-        <div className="restaurantCard">
+
+        <div
+
+            className="restaurantCard"
+            onClick={openRestaurant}
+            onKeyDown={(event) => {
+                if (event.key === "Enter") openRestaurant()
+            }}
+            role="link"
+            tabIndex={0}
+        >
             <div className="restaurantImage">
                 <img src={restaurant.image} alt={restaurant.name} />
 
@@ -39,3 +58,4 @@ const RestaurantCard = ({ restaurant }) => {
 };
 
 export default RestaurantCard;
+

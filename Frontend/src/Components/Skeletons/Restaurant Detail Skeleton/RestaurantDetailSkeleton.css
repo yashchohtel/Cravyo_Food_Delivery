@@ -1,0 +1,175 @@
+.restaurantDetailSkeleton {
+    margin: -1.5rem -1.5rem 0;
+}
+
+.restaurantDetailSkeletonHero {
+    position: relative;
+    height: 28rem;
+    background: #e5e7eb;
+}
+
+.restaurantDetailSkeletonBack {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 50%;
+}
+
+.restaurantDetailSkeletonCard {
+    position: relative;
+    z-index: 2;
+    width: calc(100% - 3rem);
+    max-width: 92rem;
+    margin: -5.2rem auto 0;
+    padding: 1.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 1.8rem;
+    background: var(--background-color);
+    box-shadow: var(--shadow-mild);
+}
+
+.restaurantDetailSkeletonTop {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+}
+
+.restaurantDetailSkeletonLogo {
+    width: 7.4rem;
+    height: 7.4rem;
+    flex: 0 0 7.4rem;
+    border-radius: 1.3rem;
+}
+
+.restaurantDetailSkeletonHeading {
+    flex: 1;
+}
+
+.restaurantDetailSkeletonTitle {
+    width: 65%;
+    height: 2rem;
+    border-radius: 0.6rem;
+}
+
+.restaurantDetailSkeletonRating {
+    width: 48%;
+    height: 1.2rem;
+    margin-top: 0.8rem;
+    border-radius: 0.5rem;
+}
+
+.restaurantDetailSkeletonType {
+    width: 58%;
+    height: 1.1rem;
+    margin-top: 0.7rem;
+    border-radius: 0.5rem;
+}
+
+.restaurantDetailSkeletonStatus {
+    width: 5rem;
+    height: 2.4rem;
+    flex: 0 0 5rem;
+    border-radius: 999px;
+}
+
+.restaurantDetailSkeletonDescription {
+    width: 90%;
+    height: 1.2rem;
+    margin-top: 1.6rem;
+    border-radius: 0.5rem;
+}
+
+.restaurantDetailSkeletonStats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 1.6rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.restaurantDetailSkeletonStat {
+    padding: 0 1rem;
+    border-right: 1px solid var(--border-color);
+}
+
+.restaurantDetailSkeletonStat:first-child {
+    padding-left: 0;
+}
+
+.restaurantDetailSkeletonStat:last-child {
+    padding-right: 0;
+    border-right: 0;
+}
+
+.restaurantDetailSkeletonLabel {
+    width: 75%;
+    height: 1rem;
+    border-radius: 0.5rem;
+}
+
+.restaurantDetailSkeletonValue {
+    width: 60%;
+    height: 1.4rem;
+    margin-top: 0.7rem;
+    border-radius: 0.5rem;
+}
+
+.restaurantDetailSkeletonAddress {
+    width: 85%;
+    height: 1.1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
+    border-radius: 0.5rem;
+}
+
+.restaurantDetailSkeletonShimmer {
+    background: linear-gradient(90deg, #e2e5ea 25%, #eef1f5 50%, #e2e5ea 75%);
+    background-size: 200% 100%;
+    animation: restaurantDetailSkeletonShimmer 1.3s linear infinite;
+}
+
+@keyframes restaurantDetailSkeletonShimmer {
+    from {
+        background-position: 200% 0;
+    }
+
+    to {
+        background-position: -200% 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .restaurantDetailSkeletonHero {
+        height: 34rem;
+    }
+
+    .restaurantDetailSkeletonCard {
+        padding: 2.4rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .restaurantDetailSkeletonHero {
+        height: 23rem;
+    }
+
+    .restaurantDetailSkeletonCard {
+        padding: 1.4rem;
+    }
+
+    .restaurantDetailSkeletonLogo {
+        width: 6.4rem;
+        height: 6.4rem;
+        flex-basis: 6.4rem;
+    }
+
+    .restaurantDetailSkeletonTop {
+        gap: 1rem;
+    }
+
+    .restaurantDetailSkeletonStat {
+        padding: 0 0.6rem;
+    }
+}
