@@ -72,6 +72,7 @@ export const handleGetLocation = async (dispatch) => {
                 const locationData = {
                     latitude,
                     longitude,
+                    city,
                     addressTitle,
                     address,
                 };

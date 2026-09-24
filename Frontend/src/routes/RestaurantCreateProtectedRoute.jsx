@@ -7,7 +7,7 @@ const RestaurantCreateProtectedRoute = ({ children }) => {
 
     // Already restaurant owner
     if (user?.roles?.includes("restaurantOwner")) {
-        return <Navigate to="/restaurant/dashboard" replace />;
+        return <Navigate to="/restaurant/admin-panel" replace />;
     }
 
     // Allow restaurant creation

@@ -1,0 +1,75 @@
+.allRestaurants {
+    min-height: 100vh;
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.allRestaurantsHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    margin-bottom: 2rem;
+}
+
+.allRestaurantsBack {
+    width: 3.5rem;
+    height: 3.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--text-primary);
+}
+
+.allRestaurantsBack svg {
+    font-size: 2.4rem;
+}
+
+.allRestaurantsHeader h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* ================================
+   RESTAURANT GRID
+================================ */
+
+.allRestaurantsGrid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .allRestaurants {
+        padding-top: 1.2rem;
+    }
+
+    .allRestaurantsHeader {
+        margin-bottom: 1.5rem;
+    }
+
+    .allRestaurantsHeader h2 {
+        font-size: 1.6rem;
+    }
+
+    .allRestaurantsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+  .allRestaurantsGrid {
+    grid-template-columns: 1fr;
+  }
+}

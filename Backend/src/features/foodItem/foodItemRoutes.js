@@ -3,7 +3,7 @@ import catchAsyncError from "../../middleware/catchAsyncError.js";
 import { isUserAuth } from "../../middleware/auth.js";
 import { authorizeRole } from "../../middleware/authorizeRole.js";
 import { upload } from "../../middleware/multer.js";
-import { addFoodItemReview, createFoodItem, deleteFoodItem, deleteFoodItemReview, getAllFoodItems, getFoodItem, getFoodItemReviews, updateFoodItem } from "./foodItemController.js";
+import { addFoodItemReview, createFoodItem, deleteFoodItem, deleteFoodItemReview, getAllFoodItems, getFoodItem, getFoodItemReviews, getPopularFoodNearYou, updateFoodItem } from "./foodItemController.js";
 
 // Creating an instance of Express Router
 const foodItemRouter = express.Router();
@@ -33,5 +33,8 @@ foodItemRouter.get("/getReviews/:id", catchAsyncError(getFoodItemReviews));
 
 // Delete Food Item Review [DELETE] - "http://localhost:5000/api/foodItem/deleteReview/FOOD_ITEM_ID/REVIEW_ID"
 foodItemRouter.delete("/deleteReview/:id/:reviewId", isUserAuth, catchAsyncError(deleteFoodItemReview));
+
+// Get Popular Food Near You [GET] - "http://localhost:5000/api/foodItem/getPopularFoodNearYou"
+foodItemRouter.get("/getPopularFoodNearYou", isUserAuth, catchAsyncError(getPopularFoodNearYou));
 
 export default foodItemRouter; // export food item router

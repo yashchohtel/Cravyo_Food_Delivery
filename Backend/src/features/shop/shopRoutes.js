@@ -3,7 +3,7 @@ import { isUserAuth } from "../../middleware/auth.js";
 import { authorizeRole } from "../../middleware/authorizeRole.js";
 import catchAsyncError from "../../middleware/catchAsyncError.js";
 import { upload } from "../../middleware/multer.js";
-import { createShop, deleteShop, getMyShop, updateShop, updateShopStatus } from "./shopController.js";
+import { createShop, deleteShop, getMyShop, getNearbyRestaurants, updateShop, updateShopStatus } from "./shopController.js";
 
 // Creating an instance of Express Router
 const shopRouter = express.Router();
@@ -22,5 +22,8 @@ shopRouter.delete("/deleteShop/:id", isUserAuth, authorizeRole("restaurantOwner"
 
 // Update Shop Status [PUT] - "http://localhost:5000/api/shop/updateStatus/SHOP_ID"
 shopRouter.put("/updateStatus/:id", isUserAuth, authorizeRole("restaurantOwner"), catchAsyncError(updateShopStatus));
+
+// Get Nearby Restaurants [GET] - "/api/shop/getNearbyRestaurants"
+shopRouter.get("/getNearbyRestaurants", isUserAuth, catchAsyncError(getNearbyRestaurants));
 
 export default shopRouter; // export shop routerrt

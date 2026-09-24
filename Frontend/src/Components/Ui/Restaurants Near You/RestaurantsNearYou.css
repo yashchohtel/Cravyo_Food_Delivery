@@ -1,0 +1,39 @@
+.restaurantsNearYou {
+    margin-top: 2.5rem;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.restaurantsNearYouHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1.2rem;
+}
+
+.restaurantsNearYouHeader h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.seeAllRestaurants {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* ================================
+   SWIPER
+================================ */
+
+.restaurantSwiper {
+    width: 100%;
+}
+
+.restaurantSwiper .swiper-slide {
+    width: 24rem;
+}

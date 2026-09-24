@@ -1,14 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createFoodItem, deleteFoodItem, getAllFoodItems, updateFoodItem } from "./foodItemThunk";
+import { createFoodItem, deleteFoodItem, getAllFoodItems, getPopularFoodNearYou, updateFoodItem } from "./foodItemThunk";
 
 const initialState = {
     foodItems: [],
+    popularFood: [],
     createLoading: false,
     getLoading: false,
     updateLoading: false,
+    popularFoodLoading: false,
     deleteLoading: false,
     errorMessage: null,
     successMessage: null
+
 };
 
 const foodItemSlice = createSlice({
@@ -110,7 +113,24 @@ const foodItemSlice = createSlice({
             .addCase(deleteFoodItem.rejected, (state, action) => {
                 state.deleteLoading = false;
                 state.errorMessage = action.payload;
-            });
+            })
+
+            /* ----------- GET POPULAR FOOD NEAR YOU ↓ */
+
+            .addCase(getPopularFoodNearYou.pending, (state) => {
+                state.popularFoodLoading = true;
+                state.errorMessage = null;
+            })
+
+            .addCase(getPopularFoodNearYou.fulfilled, (state, action) => {
+                state.popularFoodLoading = false;
+                state.popularFood = action.payload.foodItems;
+            })
+
+            .addCase(getPopularFoodNearYou.rejected, (state, action) => {
+                state.popularFoodLoading = false;
+                state.errorMessage = action.payload;
+            })
 
     }
 

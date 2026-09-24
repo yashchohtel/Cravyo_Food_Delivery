@@ -3,6 +3,7 @@ import Shop from "../../models/shop.model.js";
 import User from "../../models/user.model.js";
 import ErrorHandler from "../../utils/errorHandler.js";
 import { deleteFromCloudinary, uploadBufferToCloudinary } from "../../utils/uploadImage.js";
+import { calculateDistance } from "../../utils/utilityFunctions.js";
 
 // Create Shop
 export const createShop = async (req, res, next) => {
@@ -285,4 +286,54 @@ export const updateShopStatus = async (req, res, next) => {
 
     }
 
+};
+
+// Get Nearby Restaurants
+export const getNearbyRestaurants = async (req, res, next) => {
+
+    try {
+
+        const { city, latitude, longitude } = req.query;
+
+        // Check user location
+        if (!city || !latitude || !longitude) {
+            return next(new ErrorHandler("User location is required", 400));
+        }
+
+        // Get all restaurants from user's city
+        const shops = await Shop.find({
+            "address.city": {
+                $regex: `^${city}$`,
+                $options: "i"
+            }
+        }).populate("owner", "name").lean();
+
+        // Add distance to every restaurant
+        const restaurants = shops.map((shop) => {
+
+            const distance = calculateDistance(
+                Number(latitude),
+                Number(longitude),
+                Number(shop.address.latitude),
+                Number(shop.address.longitude)
+            );
+
+            return {
+                ...shop,
+                distance: Number(distance.toFixed(1))
+            };
+
+        });
+
+        res.status(200).json({
+            success: true,
+            message: "Nearby restaurants fetched successfully",
+            restaurants
+        });
+
+    } catch (error) {
+
+        return next(new ErrorHandler("Failed to fetch nearby restaurants", 500));
+
+    }
 };

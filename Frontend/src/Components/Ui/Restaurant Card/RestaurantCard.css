@@ -1,0 +1,105 @@
+.restaurantCard {
+  width: 100%;
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 1.4rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-mild);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+/* .restaurantCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-mid);
+} */
+
+/* ================================
+   IMAGE
+================================ */
+
+.restaurantImage {
+  width: 100%;
+  height: 14rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.restaurantImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.restaurantOpenBadge {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+
+  padding: 0.4rem 0.8rem;
+
+  border-radius: 0.6rem;
+
+  background: var(--veg-color);
+  color: #fff;
+
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* ================================
+   CONTENT
+================================ */
+
+.restaurantContent {
+  padding: 1rem;
+}
+
+.restaurantContent h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.restaurantDescription {
+  margin-top: 0.4rem;
+
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ================================
+   INFO
+================================ */
+
+.restaurantInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  margin-top: 0.8rem;
+
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+}
+
+.restaurantRating {
+  color: var(--veg-dark);
+  font-weight: 600;
+}
+
+.restaurantLocation {
+  margin-top: 0.5rem;
+
+  font-size: 1rem;
+  color: var(--text-light);
+}

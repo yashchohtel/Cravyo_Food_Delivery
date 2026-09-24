@@ -55,7 +55,7 @@ export const updateFoodItem = createAsyncThunk("foodItem/updateFoodItem", async 
 });
 
 // delete food item
-export const deleteFoodItem = createAsyncThunk("foodItem/deleteFoodItem", async (id , { rejectWithValue }) => {
+export const deleteFoodItem = createAsyncThunk("foodItem/deleteFoodItem", async (id, { rejectWithValue }) => {
 
     try {
 
@@ -68,6 +68,25 @@ export const deleteFoodItem = createAsyncThunk("foodItem/deleteFoodItem", async 
         return rejectWithValue(
             error.response?.data?.message ||
             "Failed to delete food itme"
+        );
+    }
+
+});
+
+// Get popular food near you
+export const getPopularFoodNearYou = createAsyncThunk("foodItem/getPopularFoodNearYou", async (city, { rejectWithValue }) => {
+
+    try {
+
+        const { data } = await api.get(`/api/foodItem/getPopularFoodNearYou?city=${city}`);
+
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message ||
+            "Popular food fetch failed"
         );
     }
 

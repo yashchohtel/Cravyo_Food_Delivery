@@ -1,0 +1,106 @@
+/* =========================
+   SECTION
+========================= */
+
+.popularFoodNearYou {
+    width: 100%;
+    margin-top: 2.5rem;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.popularFoodNearYouHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1.2rem;
+}
+
+.popularFoodNearYouHeader h2 {
+    margin: 0;
+    font-family: var(--font-heading);
+    line-height: 1.2;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.popularFoodSeeAll {
+    border: none;
+    outline: none;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.popularFoodSeeAll:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   SWIPER
+========================= */
+
+.popularFoodSlider {
+    width: 100%;
+    overflow: visible;
+}
+
+.popularFoodSlider .swiper-wrapper {
+    align-items: stretch;
+}
+
+.popularFoodSlider .swiper-slide {
+    height: auto;
+    display: flex;
+}
+
+.popularFoodSlider .swiper-slide>* {
+    width: 100%;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+/* @media (max-width: 600px) {
+
+    .popularFoodNearYou {
+        margin-top: 1.5rem;
+    }
+
+    .popularFoodNearYouHeader {
+        margin-bottom: 0.75rem;
+    }
+
+    .popularFoodNearYouHeader h2 {
+        font-size: 1.15rem;
+    }
+
+    .popularFoodSeeAll {
+        font-size: 0.82rem;
+    }
+
+} */
+
+/* =========================
+   VERY SMALL MOBILE
+========================= */
+/* 
+@media (max-width: 399px) {
+
+    .popularFoodNearYouHeader h2 {
+        font-size: 1.05rem;
+    }
+
+    .popularFoodSeeAll {
+        font-size: 0.78rem;
+    }
+
+} */

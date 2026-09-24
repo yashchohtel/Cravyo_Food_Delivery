@@ -21,6 +21,8 @@ import RestaurantOwnerDashboard from "../Pages/Restaurant Pages/Restaurant Owner
 import Orders from "../Pages/Restaurant Pages/Orders/Orders.jsx";
 import FoodItems from "../Pages/Restaurant Pages/Food Items/FoodItems.jsx";
 import MyRestaurant from "../Pages/Restaurant Pages/My Restaurant/MyRestaurant.jsx";
+import AllRestaurants from "../Pages/Restaurant Pages/All Restaurants/AllRestaurants.jsx";
+import AllPopularFood from "../Pages/All Popular Food/AllPopularFood.jsx";
 
 function AppRoutes() {
 
@@ -46,6 +48,12 @@ function AppRoutes() {
 
       {/* Map Page */}
       <Route path="/map" element={<ProtectedRoute> <MapPage /> </ProtectedRoute>} />
+
+      {/* pupular restaurent near you */}
+      <Route path="/restaurants" element={<ProtectedRoute> <AllRestaurants /> </ProtectedRoute>} />
+
+      {/* pupular restaurent near you */}
+      <Route path="/popular-food" element={<ProtectedRoute> <AllPopularFood /> </ProtectedRoute>} />
 
       {/* delivery route */}
       <Route path="/delivery" element={

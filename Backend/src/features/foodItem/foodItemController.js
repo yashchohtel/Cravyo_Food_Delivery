@@ -350,3 +350,47 @@ export const deleteFoodItemReview = async (req, res, next) => {
     });
 
 };
+
+// Get Popular Food Near You
+export const getPopularFoodNearYou = async (req, res, next) => {
+
+    try {
+
+        const { city } = req.query;
+
+        // Check user city
+        if (!city) {
+            return next(new ErrorHandler("User city is required", 400));
+        }
+
+        // Find restaurants from user's city
+        const shops = await Shop.find({
+            "address.city": {
+                $regex: `^${city}$`,
+                $options: "i"
+            }
+        }).select("_id");
+
+        const shopIds = shops.map((shop) => shop._id);
+
+        // Find available food items from those restaurants
+        const foodItems = await FoodItem.find({
+            shop: { $in: shopIds },
+            isAvailable: true
+        })
+            .populate("shop", "name")
+            .sort({ rating: -1, totalReviews: -1 })
+            .limit(10);
+
+        res.status(200).json({
+            success: true,
+            message: "Popular food fetched successfully",
+            foodItems
+        });
+
+    } catch (error) {
+
+        return next(new ErrorHandler("Failed to fetch popular food", 500));
+
+    }
+};

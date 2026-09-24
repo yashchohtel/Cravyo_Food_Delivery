@@ -71,6 +71,27 @@ const shopSchema = new mongoose.Schema({
         ref: "FoodItem"
     }],
 
+    // Restaurant rating
+    rating: {
+        type: Number,
+        default: 0,
+        min: 0,
+        max: 5
+    },
+
+    // Total number of restaurant reviews
+    totalReviews: {
+        type: Number,
+        default: 0
+    },
+
+    // Estimated delivery time
+    deliveryTime: {
+        type: String,
+        default: "30-40 min",
+        trim: true
+    },
+
     // Address of the shop
     address: {
 

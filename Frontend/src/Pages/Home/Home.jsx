@@ -18,6 +18,10 @@ import { getPromotionBanners } from '../../features/platform/promotionBanners/pr
 import { getFoodCategories } from '../../features/platform/topFoodCategories/topFoodCategoriesThunk.js';
 import HomeBannerSkeleton from '../../Components/Skeletons/Home Banner Skeleton/HomeBannerSkeleton.jsx';
 import FoodCategorySkeleton from '../../Components/Skeletons/Food Category Skeleton/FoodCategorySkeleton.jsx';
+import RestaurantsNearYou from '../../Components/Ui/Restaurants Near You/RestaurantsNearYou.jsx';
+import { getNearbyRestaurants } from '../../features/restaurant dashboard/restaurant/restaurantThunk.js';
+import PopularFoodNearYou from '../../Components/Ui/Popular Food Near You/PopularFoodNearYou.jsx';
+import { getPopularFoodNearYou } from '../../features/restaurant dashboard/foodItems/foodItemThunk.js';
 
 const Home = () => {
 
@@ -27,9 +31,11 @@ const Home = () => {
   /* -------------------------------------- */
 
   // Get location state from Redux store
-  const { isLocationErrorDialogOpen, locationError, isLocationLoading } = useSelector((state) => state.location);
+  const { isLocationErrorDialogOpen, locationError, isLocationLoading, userCurrentLocation } = useSelector((state) => state.location);
   const { loading: bannerLoading } = useSelector((state) => state.promotionBanners);
   const { loading: categoryLoading } = useSelector((state) => state.foodCategories);
+  const { popularFood } = useSelector((state) => state.foodItem);
+
 
   /* FOOD PREFRENCE ↓ -------------------------------------- */
 
@@ -79,12 +85,40 @@ const Home = () => {
   }, [dispatch]);
 
   // stop home scroll if 
+  // useEffect(() => {
+  //   document.body.style.overflow = showAllCategories ? "hidden" : "auto";
+  //   return () => {
+  //     document.body.style.overflow = "auto";
+  //   };
+  // }, [showAllCategories]);
+
+  // Get restaurants based on user's location
   useEffect(() => {
-    document.body.style.overflow = showAllCategories ? "hidden" : "auto";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [showAllCategories]);
+
+    if (!userCurrentLocation) return;
+
+    const { city, latitude, longitude } = userCurrentLocation;
+
+    if (!city || !latitude || !longitude) return;
+
+    dispatch(
+      getNearbyRestaurants({ city, latitude, longitude })
+    );
+
+  }, [userCurrentLocation, dispatch]);
+
+  // get popular food based on your location 
+  useEffect(() => {
+
+    if (popularFood?.length > 0) {
+      return;
+    }
+
+    if (userCurrentLocation?.city) {
+      dispatch(getPopularFoodNearYou(userCurrentLocation.city));
+    }
+
+  }, [userCurrentLocation, dispatch, popularFood]);
 
   // If the location is still loading, show the LocationLoadingSplash component
   if (isLocationLoading) {
@@ -159,6 +193,12 @@ const Home = () => {
             selectedCategory={selectedCategory}
           />
         )}
+
+        {/* pupular food near you */}
+        <PopularFoodNearYou />
+
+        {/* restaurent near you  */}
+        <RestaurantsNearYou />
 
       </div>
 

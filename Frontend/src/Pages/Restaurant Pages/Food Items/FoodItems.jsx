@@ -11,8 +11,9 @@ const FoodItems = () => {
 
   const { getLoading: getFoodItemsLoading } = useSelector((state) => state.foodItem);
 
-  // get food item data from redux store
-  const foodItems = useSelector((state) => state.foodItem.foodItems);
+  const restaurant = useSelector((state) => state.restaurant.restaurant);
+
+  const foodItems = restaurant?.foodItems || [];
 
   /* -------------------------------------- */
 
@@ -250,7 +251,7 @@ const FoodItems = () => {
         {/* no searched result */}
         {foodItems.length !== 0 && filteredFoodItems.length === 0 && !getFoodItemsLoading && (
           <h2 className='noSearch'>No Searched Item Found.</h2>
-        )}
+        )}  
 
         {/* food item card */}
         {getFoodItemsLoading ?

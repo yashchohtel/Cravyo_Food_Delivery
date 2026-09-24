@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createRestaurant, getMyRestaurant, updateRestaurantStatus, updateShop } from "./restaurantThunk";
+import { createRestaurant, getMyRestaurant, getNearbyRestaurants, updateRestaurantStatus, updateShop } from "./restaurantThunk";
 
 const initialState = {
     restaurant: null,
@@ -7,6 +7,8 @@ const initialState = {
     getRestaurantLoading: false,
     restaurantEditLoading: false,
     restaurantStatusLoading: false,
+    nearbyRestaurants: [],
+    nearbyRestaurantsLoading: false,
     errorMessage: null,
     successMessage: null
 };
@@ -96,6 +98,23 @@ const restaurantSlice = createSlice({
 
             .addCase(updateRestaurantStatus.rejected, (state, action) => {
                 state.restaurantStatusLoading = false;
+                state.errorMessage = action.payload;
+            })
+
+            /* ----------- GET NEARBY RESTAURANTS ↓ */
+
+            .addCase(getNearbyRestaurants.pending, (state) => {
+                state.nearbyRestaurantsLoading = true;
+                state.errorMessage = null;
+            })
+
+            .addCase(getNearbyRestaurants.fulfilled, (state, action) => {
+                state.nearbyRestaurantsLoading = false;
+                state.nearbyRestaurants = action.payload.restaurants;
+            })
+
+            .addCase(getNearbyRestaurants.rejected, (state, action) => {
+                state.nearbyRestaurantsLoading = false;
                 state.errorMessage = action.payload;
             })
 

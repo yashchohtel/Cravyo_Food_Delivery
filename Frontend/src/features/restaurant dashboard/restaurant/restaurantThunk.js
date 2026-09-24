@@ -29,7 +29,7 @@ export const getMyRestaurant = createAsyncThunk("restaurant/getMyRestaurant", as
 
         // Get restaurant API call
         const { data } = await api.get("/api/shop/getMyShop");
-
+        
         // Return success response
         return data;
 
@@ -79,6 +79,27 @@ export const updateRestaurantStatus = createAsyncThunk("restaurant/updateRestaur
 
         return rejectWithValue(
             error.response?.data?.message || "Restaurant status update failed"
+        );
+
+    }
+
+});
+
+// Thunk to get nearby restaurants
+export const getNearbyRestaurants = createAsyncThunk("restaurant/getNearbyRestaurants", async ({ city, latitude, longitude }, { rejectWithValue }) => {
+
+    try {
+
+        // Get nearby restaurants API call
+        const { data } = await api.get(`/api/shop/getNearbyRestaurants?city=${encodeURIComponent(city)}&latitude=${latitude}&longitude=${longitude}`);
+
+        // Return success response
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Failed to fetch nearby restaurants"
         );
 
     }
