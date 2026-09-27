@@ -7,7 +7,6 @@ import {
 
 import "./AddToCartBottomSheet.css";
 
-
 const AddToCartBottomSheet = ({ food, onClose }) => {
 
     // sta t troe 
@@ -125,6 +124,5 @@ const AddToCartBottomSheet = ({ food, onClose }) => {
         </div>
     );
 };
-
 
 export default AddToCartBottomSheet;
