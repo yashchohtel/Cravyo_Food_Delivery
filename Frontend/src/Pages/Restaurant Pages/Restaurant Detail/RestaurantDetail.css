@@ -1,18 +1,467 @@
-.restaurantDetailPage {
-    min-height: 100vh;
-    padding-top: 1.5rem;
-    padding-bottom: 3rem;
+.restaurantDetail {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
 }
 
-.restaurantOverview {
-    position: relative;
-    margin: -1.5rem -1.5rem 0;
-}
 
-.restaurantHero {
+/* =========================
+   RESTAURANT HEADER
+========================= */
+
+.restaurantDetail .restaurantDetailHeader {
     position: relative;
-    height: 28rem;
+
+    width: 100%;
+    height: 25rem;
+
     overflow: hidden;
-    background: var(--surface-color-2);
+
+    border-radius: 0 0 1rem 1rem;
 }
 
+
+.restaurantDetail .restaurantDetailHeaderImage {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.restaurantDetail .restaurantDetailBackButton {
+    position: absolute;
+
+    top: 1.2rem;
+    left: 1.2rem;
+
+    width: 4rem;
+    height: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: #ffffff;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.15);
+}
+
+
+.restaurantDetail .restaurantDetailBackButton svg {
+    width: 2rem;
+    height: 2rem;
+
+    color: #111111;
+}
+
+
+/* =========================
+   RESTAURANT INFO
+========================= */
+
+.restaurantDetail .restaurantDetailInfo {
+    position: absolute;
+
+    left: 1.2rem;
+    right: 1.2rem;
+    bottom: 1rem;
+
+    padding: 1.3rem 1.4rem;
+
+    background-color: #ffffff;
+
+    border-radius: 1.3rem;
+
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.18);
+
+    z-index: 4;
+}
+
+
+/* =========================
+   INFO TOP
+========================= */
+
+.restaurantDetail .restaurantDetailInfoTop {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 1rem;
+}
+
+
+.restaurantDetail .restaurantDetailBasicInfo {
+    min-width: 0;
+}
+
+
+/* =========================
+   RESTAURANT NAME
+========================= */
+
+.restaurantDetail .restaurantDetailName {
+    margin: 0;
+
+    font-size: 1.9rem;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    color: #111827;
+}
+
+
+/* =========================
+   META
+========================= */
+
+.restaurantDetail .restaurantDetailMeta {
+    display: flex;
+    align-items: center;
+
+    gap: 0.5rem;
+
+    margin-top: 0.4rem;
+
+    font-size: 1.15rem;
+    font-weight: 400;
+
+    color: #777777;
+}
+
+
+.restaurantDetail .restaurantDetailDot {
+    color: #999999;
+}
+
+
+/* =========================
+   RATING
+========================= */
+
+.restaurantDetail .restaurantDetailRatingBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 5.2rem;
+    height: 2.8rem;
+
+    padding: 0 0.7rem;
+
+    flex-shrink: 0;
+
+    border-radius: 1.4rem;
+
+    background-color: #18a56b;
+
+    color: #ffffff;
+}
+
+
+.restaurantDetail .restaurantDetailRating {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+
+.restaurantDetail .restaurantDetailStar {
+    margin-left: 0.3rem;
+
+    font-size: 1rem;
+}
+
+
+/* =========================
+   REVIEWS
+========================= */
+
+.restaurantDetail .restaurantDetailReviews {
+    margin-top: 0.3rem;
+
+    margin-left: auto;
+
+    width: fit-content;
+
+    font-size: 0.95rem;
+
+    color: #777777;
+}
+
+
+/* =========================
+   SEARCH & FILTERS
+========================= */
+
+.restaurantDetail .restaurantDetailFilters {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    padding: 1rem 1rem 1rem 1rem;
+    background-color: #ffffff;
+    border-bottom: 0.1rem solid var(--border-color);
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.restaurantDetail .restaurantDetailSearch {
+    width: 100%;
+    height: 4rem;
+
+    display: flex;
+    align-items: center;
+
+    gap: 0.9rem;
+
+    padding: 0 1.2rem;
+
+    background-color: #f1f2f4;
+
+    border-radius: 0.9rem;
+}
+
+
+.restaurantDetail .restaurantDetailSearch svg {
+    width: 1.8rem;
+    height: 1.8rem;
+
+    flex-shrink: 0;
+
+    color: #777777;
+}
+
+
+.restaurantDetail .restaurantDetailSearch input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-family: inherit;
+
+    font-size: 1.3rem;
+
+    color: #222222;
+}
+
+
+.restaurantDetail .restaurantDetailSearch input::placeholder {
+    color: #777777;
+}
+
+
+/* =========================
+   FILTER BUTTONS
+========================= */
+
+.restaurantDetail .restaurantDetailFilterButtons {
+    display: flex;
+    align-items: center;
+
+    gap: 0.7rem;
+
+    margin-top: 0.8rem;
+
+    overflow-x: auto;
+}
+
+
+.restaurantDetail .restaurantDetailFilterButtons::-webkit-scrollbar {
+    display: none;
+}
+
+
+.restaurantDetail .restaurantDetailFilterButton {
+    height: 3.6rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.5rem;
+
+    flex-shrink: 0;
+
+    padding: 0 1rem;
+
+    border: 2px solid #dddddd;
+    border-radius: 0.9rem;
+
+    background-color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 1.15rem;
+
+    color: #333333;
+
+    cursor: pointer;
+}
+
+.restaurantDetail .restaurantDetailFilterButton.active {
+    background-color: #e8f7f2;
+    border-color: #19a974;
+    color: #087f5b;
+    font-weight: 600;
+}
+
+
+/* =========================
+   VEG ICON
+========================= */
+
+.restaurantDetail .restaurantDetailVegIcon {
+    width: 1.6rem;
+    height: 1.6rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #0b9b67;
+    border-radius: 0.3rem;
+
+    font-size: 0.8rem;
+
+    color: #0b9b67;
+}
+
+
+/* =========================
+   NON VEG ICON
+========================= */
+
+.restaurantDetail .restaurantDetailNonVegIcon {
+    width: 1.6rem;
+    height: 1.6rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #e5484d;
+    border-radius: 0.3rem;
+
+    font-size: 0.8rem;
+
+    color: #e5484d;
+}
+
+
+/* =========================
+   PRICE FILTER
+========================= */
+
+.restaurantDetail .restaurantDetailPriceFilter {
+    padding-left: 1.2rem;
+    padding-right: 0.8rem;
+}
+
+
+.restaurantDetail .restaurantDetailPriceFilter svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #555555;
+}
+
+.restaurentFoods {
+    padding: 1.5rem;
+}
+
+
+.restaurentFoodsTitle {
+    margin-bottom: 0.5rem;
+}
+
+
+.noFood {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 5rem;
+    color: var(--text-secondary);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (min-width: 601px) {
+
+    .restaurantDetail {
+        max-width: 760px;
+    }
+
+    .restaurantDetail .restaurantDetailHeader {
+        height: 42rem;
+    }
+
+    .restaurantDetail .restaurantDetailName {
+        font-size: 2.2rem;
+    }
+
+    .restaurantDetail .restaurantDetailMeta {
+        font-size: 1.3rem;
+    }
+
+    .restaurantDetail .restaurantDetailRatingBox {
+        min-width: 6rem;
+        height: 3.2rem;
+    }
+
+    .restaurantDetail .restaurantDetailRating {
+        font-size: 1.4rem;
+    }
+
+    .restaurantDetail .restaurantDetailFilters {
+        padding: 1.2rem 1.2rem 0;
+    }
+
+    .restaurantDetail .restaurantDetailSearch {
+        height: 4.2rem;
+    }
+
+    .restaurantDetail .restaurantDetailSearch input {
+        font-size: 1.35rem;
+    }
+
+    .restaurantDetail .restaurantDetailFilterButton {
+        height: 3.8rem;
+
+        padding: 0 1.1rem;
+
+        font-size: 1.2rem;
+    }
+}
+
+
+/* =========================
+   LARGE SCREEN
+========================= */
+
+@media (min-width: 1000px) {
+
+    .restaurantDetail {
+        max-width: 900px;
+    }
+}

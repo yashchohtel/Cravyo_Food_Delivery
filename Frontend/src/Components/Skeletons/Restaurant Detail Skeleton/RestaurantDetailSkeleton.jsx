@@ -2,42 +2,107 @@ import "./RestaurantDetailSkeleton.css";
 
 const RestaurantDetailSkeleton = () => {
     return (
-        <section className="restaurantDetailSkeleton" role="status" aria-label="Loading restaurant details">
-            <div className="restaurantDetailSkeletonHero">
-                <div className="restaurantDetailSkeletonBack restaurantDetailSkeletonShimmer"></div>
-            </div>
+        <div className="restaurantDetailSkeleton container">
 
-            <div className="restaurantDetailSkeletonCard">
-                <div className="restaurantDetailSkeletonTop">
-                    <div className="restaurantDetailSkeletonLogo restaurantDetailSkeletonShimmer"></div>
-                    <div className="restaurantDetailSkeletonHeading">
-                        <div className="restaurantDetailSkeletonTitle restaurantDetailSkeletonShimmer"></div>
-                        <div className="restaurantDetailSkeletonRating restaurantDetailSkeletonShimmer"></div>
-                        <div className="restaurantDetailSkeletonType restaurantDetailSkeletonShimmer"></div>
-                    </div>
-                    <div className="restaurantDetailSkeletonStatus restaurantDetailSkeletonShimmer"></div>
+            {/* Restaurant Header */}
+            <div className="restaurantDetailSkeletonHeader">
+
+                <div className="restaurantDetailSkeletonHero shimmer">
+
+                    <div className="restaurantDetailSkeletonBack shimmer"></div>
+
+                    <div className="restaurantDetailSkeletonFavorite shimmer"></div>
+
                 </div>
 
-                <div className="restaurantDetailSkeletonDescription restaurantDetailSkeletonShimmer"></div>
 
-                <div className="restaurantDetailSkeletonStats">
-                    <div className="restaurantDetailSkeletonStat">
-                        <div className="restaurantDetailSkeletonLabel restaurantDetailSkeletonShimmer"></div>
-                        <div className="restaurantDetailSkeletonValue restaurantDetailSkeletonShimmer"></div>
+                <div className="restaurantDetailSkeletonInfo">
+
+                    <div className="restaurantDetailSkeletonInfoTop">
+
+                        <div className="restaurantDetailSkeletonName shimmer"></div>
+
+                        <div className="restaurantDetailSkeletonRating shimmer"></div>
+
                     </div>
-                    <div className="restaurantDetailSkeletonStat">
-                        <div className="restaurantDetailSkeletonLabel restaurantDetailSkeletonShimmer"></div>
-                        <div className="restaurantDetailSkeletonValue restaurantDetailSkeletonShimmer"></div>
+
+
+                    <div className="restaurantDetailSkeletonMeta shimmer"></div>
+
+                    <div className="restaurantDetailSkeletonReviews shimmer"></div>
+
+
+                    <div className="restaurantDetailSkeletonDivider"></div>
+
+
+                    <div className="restaurantDetailSkeletonDescription">
+
+                        <div className="shimmer"></div>
+
+                        <div className="shimmer"></div>
+
                     </div>
-                    <div className="restaurantDetailSkeletonStat">
-                        <div className="restaurantDetailSkeletonLabel restaurantDetailSkeletonShimmer"></div>
-                        <div className="restaurantDetailSkeletonValue restaurantDetailSkeletonShimmer"></div>
-                    </div>
+
                 </div>
 
-                <div className="restaurantDetailSkeletonAddress restaurantDetailSkeletonShimmer"></div>
             </div>
-        </section>
+
+
+            {/* Search */}
+            <div className="restaurantDetailSkeletonSearch shimmer"></div>
+
+
+            {/* Filters */}
+            <div className="restaurantDetailSkeletonFilters">
+
+                <div className="restaurantDetailSkeletonFilter shimmer"></div>
+
+                <div className="restaurantDetailSkeletonFilter shimmer"></div>
+
+                <div className="restaurantDetailSkeletonFilterWide shimmer"></div>
+
+            </div>
+
+
+            {/* Food Items */}
+            <div className="restaurantDetailSkeletonFoodList">
+
+                <div className="restaurantDetailSkeletonFoodTitle shimmer"></div>
+
+
+                {Array.from({ length: 3 }).map((_, index) => (
+                    <div
+                        className="restaurantDetailSkeletonFood"
+                        key={index}
+                    >
+
+                        <div className="restaurantDetailSkeletonFoodContent">
+
+                            <div className="restaurantDetailSkeletonFoodName shimmer"></div>
+
+                            <div className="restaurantDetailSkeletonFoodPrice shimmer"></div>
+
+                            <div className="restaurantDetailSkeletonFoodRating shimmer"></div>
+
+                            <div className="restaurantDetailSkeletonFoodDescription">
+
+                                <div className="shimmer"></div>
+
+                                <div className="shimmer"></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div className="restaurantDetailSkeletonFoodImage shimmer"></div>
+
+                    </div>
+                ))}
+
+            </div>
+
+        </div>
     );
 };
 

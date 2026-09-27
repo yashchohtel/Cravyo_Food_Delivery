@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./RestaurantCard.css";
 
 const RestaurantCard = ({ restaurant }) => {
-
+    
     const navigate = useNavigate();
 
     // open restaurent funciton to navitate to restaruent
@@ -46,7 +46,7 @@ const RestaurantCard = ({ restaurant }) => {
 
                     <span>{restaurant.deliveryTime}</span>
 
-                    <span>{restaurant.distance}</span>
+                    <span>{restaurant.distance} Km</span>
                 </div>
 
                 <p className="restaurantLocation">
