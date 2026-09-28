@@ -10,6 +10,7 @@ import RestaurantFoodCard from "../Restaurant Food Card/RestaurantFoodCard";
 import useRestaurantDetailHook from "../../../hooks/Restaruant Owner Hooks/useRestaurantDetailHook";
 import AddToCartBottomSheet from "../../../Components/Ui/Add To Cart Bottom Sheet/AddToCartBottomSheet";
 import useAddToCartHook from "../../../hooks/Order Placing Hooks/useAddToCartHook";
+import CartBottomBar from "../../../Components/Ui/Cart Bottom Bar/CartBottomBar";
 
 const RestaurantDetail = () => {
 
@@ -22,8 +23,18 @@ const RestaurantDetail = () => {
 
     // calling api
     useEffect(() => {
-        if (restaurantId) dispatch(getShopById(restaurantId))
-    }, [dispatch, restaurantId]);
+
+        // restaurant already store mein hai
+        if (selectedRestaurant?._id === restaurantId) {
+            return;
+        }
+
+        // restaurant store mein nahi hai
+        if (restaurantId) {
+            dispatch(getShopById(restaurantId));
+        }
+
+    }, [dispatch, restaurantId, selectedRestaurant?._id]);
 
     // get selectd restaurent data
     const restaurant = selectedRestaurant?._id === restaurantId ? selectedRestaurant : null;
@@ -43,9 +54,12 @@ const RestaurantDetail = () => {
     const {
         selectedFood,
         isAddToCartOpen,
+        showRestaurantAlert,
         openAddToCart,
+        handleAddToCart,
+        clearCartAndAdd,
         closeAddToCart
-    } = useAddToCartHook();
+    } = useAddToCartHook(restaurant);
 
     // show skelton if loading
     if (selectedRestaurantLoading || !restaurant) {
@@ -56,10 +70,14 @@ const RestaurantDetail = () => {
 
         <>
 
+            {/* add to cart bottom sheet */}
             {isAddToCartOpen && (
                 <AddToCartBottomSheet
                     food={selectedFood}
                     onClose={closeAddToCart}
+                    onAddToCart={handleAddToCart}
+                    showRestaurantAlert={showRestaurantAlert}
+                    onClearCartAndAdd={clearCartAndAdd}
                 />
             )}
 
@@ -222,6 +240,10 @@ const RestaurantDetail = () => {
                 </div>
 
             </div>
+
+            <CartBottomBar
+                onViewCart={() => navigate("/cart")}
+            />
 
         </>
 

@@ -22,7 +22,11 @@
     position: relative;
 
     width: 100%;
+    max-height: 90vh;
+
     padding: 1.6rem;
+
+    overflow-y: auto;
 
     background: var(--bg-primary, #ffffff);
 
@@ -99,6 +103,8 @@
     display: flex;
     align-items: center;
     gap: 0.8rem;
+
+    padding-right: 4rem;
 }
 
 
@@ -113,6 +119,8 @@
 
 
 .addToCartFoodType {
+    flex-shrink: 0;
+
     font-size: 1.5rem;
 }
 
@@ -123,7 +131,7 @@
 
 
 .addToCartNonVegIcon {
-    color: #ef4444;
+    color: #e5484d;
 }
 
 
@@ -158,6 +166,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+
     overflow: hidden;
 }
 
@@ -232,19 +241,139 @@
     color: #ffffff;
 
     cursor: pointer;
+
+    transition: opacity 0.2s ease;
 }
 
 
-/* Veg */
+.addToCartButton:hover {
+    opacity: 0.9;
+}
+
+
+/* =========================
+   VEG BUTTON
+========================= */
 
 .addToCartVeg .addToCartButton {
     background: #00a86b;
 }
 
 
-/* Non-Veg */
+/* =========================
+   NON-VEG BUTTON
+========================= */
 
 .addToCartNonVeg .addToCartButton {
+    background: #e5484d;
+}
+
+
+/* =========================
+   RESTAURANT ALERT
+========================= */
+
+.addToCartRestaurantAlert {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    margin-top: 1.6rem;
+    padding: 1.2rem;
+
+    border-radius: 1.2rem;
+
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+}
+
+
+.addToCartAlertIcon {
+    width: 3.6rem;
+    height: 3.6rem;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ffedd5;
+    color: #ea580c;
+
+    font-size: 2rem;
+}
+
+
+.addToCartAlertContent {
+    flex: 1;
+}
+
+
+.addToCartAlertContent h3 {
+    margin: 0;
+
+    font-size: 1.6rem;
+    font-weight: 700;
+
+    color: #1f2937;
+}
+
+
+.addToCartAlertContent p {
+    margin: 0.4rem 0 0;
+
+    font-size: 1.3rem;
+    line-height: 1.45;
+
+    color: #6b7280;
+}
+
+
+/* =========================
+   ALERT ACTIONS
+========================= */
+
+.addToCartAlertActions {
+    display: flex;
+    gap: 0.8rem;
+
+    margin-top: 1.2rem;
+}
+
+
+.addToCartCancelButton,
+.addToCartClearButton {
+    height: 4.6rem;
+
+    border-radius: 1rem;
+
+    font-size: 1.4rem;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.addToCartCancelButton {
+    flex: 0.8;
+
+    border: 1px solid #dddddd;
+
+    background: #ffffff;
+    color: #444444;
+}
+
+
+.addToCartClearButton {
+    flex: 1.4;
+
+    border: none;
+
+    color: #ffffff;
+
     background: #e5484d;
 }
 

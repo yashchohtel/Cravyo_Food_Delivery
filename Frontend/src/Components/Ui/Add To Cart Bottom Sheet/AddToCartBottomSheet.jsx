@@ -1,15 +1,28 @@
 import { useState } from "react";
+
 import {
     IoClose,
     IoAdd,
-    IoRemove
+    IoRemove,
+    IoWarningOutline
 } from "react-icons/io5";
 
 import "./AddToCartBottomSheet.css";
 
-const AddToCartBottomSheet = ({ food, onClose }) => {
 
-    // sta t troe 
+const AddToCartBottomSheet = (props) => {
+
+    // destructure props
+    const {
+        food,
+        onClose,
+        onAddToCart,
+        showRestaurantAlert,
+        onClearCartAndAdd
+    } = props;
+
+
+    // state to store quantity
     const [quantity, setQuantity] = useState(1);
 
     // increase quantity
@@ -22,7 +35,9 @@ const AddToCartBottomSheet = ({ food, onClose }) => {
         setQuantity((prev) => Math.max(1, prev - 1));
     };
 
+    // total price
     const totalPrice = food.price * quantity;
+
 
     return (
 
@@ -32,7 +47,10 @@ const AddToCartBottomSheet = ({ food, onClose }) => {
         >
 
             <div
-                className={`addToCartBottomSheet ${food.isVeg ? "addToCartVeg" : "addToCartNonVeg"}`}
+                className={`addToCartBottomSheet ${food.isVeg
+                        ? "addToCartVeg"
+                        : "addToCartNonVeg"
+                    }`}
                 onClick={(e) => e.stopPropagation()}
             >
 
@@ -56,10 +74,11 @@ const AddToCartBottomSheet = ({ food, onClose }) => {
 
                 </div>
 
+
                 {/* food information */}
                 <div className="addToCartFoodInfo">
 
-                    {/* food type */}
+                    {/* food type and name */}
                     <div className="addToCartFoodName">
 
                         <span
@@ -75,10 +94,12 @@ const AddToCartBottomSheet = ({ food, onClose }) => {
 
                     </div>
 
+
                     {/* price */}
                     <p className="addToCartFoodPrice">
                         ₹{food.price}
                     </p>
+
 
                     {/* rating */}
                     {food.rating > 0 && (
@@ -87,12 +108,14 @@ const AddToCartBottomSheet = ({ food, onClose }) => {
                         </p>
                     )}
 
+
                     {/* description */}
                     <p className="addToCartFoodDescription">
                         {food.description}
                     </p>
 
                 </div>
+
 
                 {/* quantity */}
                 <div className="addToCartQuantity">
@@ -114,15 +137,76 @@ const AddToCartBottomSheet = ({ food, onClose }) => {
 
                 </div>
 
-                {/* add button */}
-                <button className="addToCartButton">
-                    Add to Cart&nbsp; | &nbsp;₹{totalPrice}
-                </button>
+
+                {/* different restaurant alert */}
+                {showRestaurantAlert && (
+
+                    <div className="addToCartRestaurantAlert">
+
+                        <div className="addToCartAlertIcon">
+                            <IoWarningOutline />
+                        </div>
+
+
+                        <div className="addToCartAlertContent">
+
+                            <h3>
+                                Different Restaurant
+                            </h3>
+
+                            <p>
+                                Your cart contains items from another
+                                restaurant.
+                            </p>
+
+                            <p>
+                                Clear your current cart and add this item?
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                )}
+
+                {/* action buttons */}
+                {showRestaurantAlert ? (
+
+                    <div className="addToCartAlertActions">
+
+                        <button
+                            className="addToCartCancelButton"
+                            onClick={onClose}
+                        >
+                            Cancel
+                        </button>
+
+
+                        <button
+                            className="addToCartClearButton"
+                            onClick={() => onClearCartAndAdd(quantity)}
+                        >
+                            Clear Cart & Add
+                        </button>
+
+                    </div>
+
+                ) : (
+
+                    <button
+                        className="addToCartButton"
+                        onClick={() => onAddToCart(quantity)}
+                    >
+                        Add to Cart&nbsp; | &nbsp;₹{totalPrice}
+                    </button>
+
+                )}
 
             </div>
 
         </div>
     );
 };
+
 
 export default AddToCartBottomSheet;

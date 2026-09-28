@@ -1,0 +1,261 @@
+/* =========================
+   CART BOTTOM BAR WRAPPER
+========================= */
+
+.cartBottomBarWrapper {
+    position: fixed;
+    left: 50%;
+    bottom: 1rem;
+
+    transform: translateX(-50%);
+
+    width: calc(100% - 2rem);
+    max-width: 40rem;
+
+    z-index: 900;
+}
+
+
+/* =========================
+   CART BOTTOM BAR
+========================= */
+
+.cartBottomBar {
+    width: 100%;
+    min-height: 6.8rem;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0.8rem;
+
+    background: #008f62;
+
+    border-radius: 1.6rem;
+
+    box-shadow:
+        0 0.8rem 2.5rem rgba(0, 0, 0, 0.22);
+
+    animation: cartBarSlideUp 0.3s ease-out;
+}
+
+
+/* =========================
+   CART IMAGES
+========================= */
+
+.cartBottomBarImages {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    padding-left: 0.4rem;
+    padding-right: 0.8rem;
+}
+
+
+.cartBottomBarImage {
+    position: relative;
+
+    width: 4.6rem;
+    height: 4.6rem;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border: 0.2rem solid #ffffff;
+    border-radius: 1.2rem;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0.2rem 0.6rem rgba(0, 0, 0, 0.18);
+}
+
+
+.cartBottomBarImage img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================
+   ITEM BADGE
+========================= */
+
+.cartBottomBarBadge {
+    position: absolute;
+
+    top: -0.5rem;
+    right: 0;
+
+    min-width: 2.3rem;
+    height: 2.3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 0.5rem;
+
+    border: 0.2rem solid #008f62;
+    border-radius: 50%;
+
+    background: #ff6b1a;
+    color: #ffffff;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    z-index: 10;
+}
+
+
+/* =========================
+   CART INFO
+========================= */
+
+.cartBottomBarInfo {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 0 0.8rem;
+}
+
+
+.cartBottomBarCount {
+    overflow: hidden;
+
+    color: #ffffff;
+
+    font-size: 1.45rem;
+    font-weight: 700;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.cartBottomBarSubText {
+    margin-top: 0.2rem;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    font-size: 1.15rem;
+}
+
+
+/* =========================
+   VIEW CART BUTTON
+========================= */
+
+.cartBottomBarButton {
+    min-width: 10.2rem;
+    height: 4.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+
+    flex-shrink: 0;
+
+    padding: 0 1rem;
+
+    border: none;
+    border-radius: 1.1rem;
+
+    background: #ffffff;
+    color: #007b55;
+
+    font-size: 1.35rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.cartBottomBarButton svg {
+    font-size: 1.8rem;
+}
+
+
+.cartBottomBarButton:active {
+    transform: scale(0.96);
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes cartBarSlideUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(2rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 360px) {
+
+    .cartBottomBar {
+        min-height: 6.2rem;
+
+        padding: 0.6rem;
+    }
+
+
+    .cartBottomBarImage {
+        width: 4rem;
+        height: 4rem;
+
+        border-radius: 1rem;
+    }
+
+
+    .cartBottomBarCount {
+        font-size: 1.25rem;
+    }
+
+
+    .cartBottomBarSubText {
+        font-size: 1.05rem;
+    }
+
+
+    .cartBottomBarButton {
+        min-width: 8.8rem;
+        height: 4.1rem;
+
+        font-size: 1.2rem;
+    }
+
+}

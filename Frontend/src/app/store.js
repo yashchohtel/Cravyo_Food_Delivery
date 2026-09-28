@@ -5,6 +5,7 @@ import promotionBannerReducer from '../features/platform/promotionBanners/promot
 import foodCategoriesReducer from '../features/platform/topFoodCategories/topFoodCategoriesSlice'
 import restaurantReducer from "../features/restaurant dashboard/restaurant/restaurantSlice";
 import foodItemReducer from '../features/restaurant dashboard/foodItems/foodItemSlice'
+import cartReducer from "../features/cart/cartSlice";
 
 // configure store with 
 const store = configureStore({
@@ -29,6 +30,9 @@ const store = configureStore({
 
         // food item reducer
         foodItem: foodItemReducer,
+
+        // cart reducer
+        cart: cartReducer,
 
     },
 

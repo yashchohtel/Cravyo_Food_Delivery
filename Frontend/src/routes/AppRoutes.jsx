@@ -24,6 +24,8 @@ import MyRestaurant from "../Pages/Restaurant Pages/My Restaurant/MyRestaurant.j
 import AllRestaurants from "../Pages/Restaurant Pages/All Restaurants/AllRestaurants.jsx";
 import AllPopularFood from "../Pages/All Popular Food/AllPopularFood.jsx";
 import RestaurantDetail from "../Pages/Restaurant Pages/Restaurant Detail/RestaurantDetail.jsx";
+import CartPage from "../Pages/Cart Page/CartPage.jsx";
+import CheckoutPage from "../Pages/Checkout Page/CheckoutPage.jsx";
 
 function AppRoutes() {
 
@@ -58,6 +60,12 @@ function AppRoutes() {
 
       {/* restaurant detail page */}
       <Route path="/restaurant/:restaurantId" element={<ProtectedRoute> <RestaurantDetail /> </ProtectedRoute>} />
+
+      {/* cart page */}
+      <Route path="/cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
+
+      {/* checkout page */}
+      <Route path="/checkout" element={<ProtectedRoute> <CheckoutPage /> </ProtectedRoute>} />
 
       {/* delivery route */}
       <Route path="/delivery" element={
