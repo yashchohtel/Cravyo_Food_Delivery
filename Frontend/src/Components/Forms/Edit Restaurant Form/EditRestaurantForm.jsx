@@ -268,8 +268,8 @@ const EditRestaurantForm = ({ onClose, data }) => {
 
                                 <label
                                     className={`edit-food-option ${formData.foodType === "pureVeg"
-                                            ? "selected"
-                                            : ""
+                                        ? "selected"
+                                        : ""
                                         }`}
                                 >
 
@@ -294,8 +294,8 @@ const EditRestaurantForm = ({ onClose, data }) => {
 
                                 <label
                                     className={`edit-food-option ${formData.foodType === "all"
-                                            ? "selected"
-                                            : ""
+                                        ? "selected"
+                                        : ""
                                         }`}
                                 >
 
@@ -508,12 +508,9 @@ const EditRestaurantForm = ({ onClose, data }) => {
 
 
                         {/* Map */}
-
                         <div className="edit-map-wrapper">
 
                             <CreateRestaurantMap
-                                latitude={Number(formData.latitude)}
-                                longitude={Number(formData.longitude)}
                                 handleMapLocation={handleMapLocation}
                             />
 

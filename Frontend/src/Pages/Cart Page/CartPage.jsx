@@ -295,7 +295,6 @@ const CartPage = () => {
 
             </div>
 
-
             {/* Checkout */}
             <div className="cartPage__checkout">
 

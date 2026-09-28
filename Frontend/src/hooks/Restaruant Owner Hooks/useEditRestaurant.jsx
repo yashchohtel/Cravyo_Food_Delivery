@@ -111,6 +111,7 @@ const useEditRestaurant = ({ data, onClose }) => {
         } catch (error) {
             console.error("Failed to get address:", error);
         }
+        
     };
 
     // Validate form

@@ -93,7 +93,7 @@ const CreateRestaurantMap = (props) => {
                 center={mapCenter}
                 zoom={15}
                 scrollWheelZoom={true}
-                zoomControl={false}
+                zoomControl={true}
                 style={{
                     width: "100%",
                     height: "100%"

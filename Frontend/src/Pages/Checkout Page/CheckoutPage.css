@@ -1,0 +1,127 @@
+.checkoutPage {
+    min-height: 100vh;
+    padding-bottom: 8rem;
+    background: #f8faf9;
+    color: #151515;
+}
+
+.checkoutPage__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+.checkoutPage__backButton {
+    width: 4rem;
+    height: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f4f6f5;
+
+    color: #151515;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.checkoutPage__backButton:active {
+    transform: scale(0.94);
+}
+
+
+.checkoutPage__header h1 {
+    margin: 0;
+
+    color: #151515;
+
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.checkoutPage__addAddressCard {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+
+    margin-top: 1.2rem;
+    padding: 1.1rem;
+
+    border: none;
+    border-radius: 1.3rem;
+
+    background: #f0faf6;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+
+.checkoutPage__addAddressCard:active {
+    transform: scale(0.98);
+
+    background: #e8f7f1;
+}
+
+
+.checkoutPage__addAddressIcon {
+    width: 3.8rem;
+    height: 3.8rem;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #009b6d;
+
+    color: #ffffff;
+
+    font-size: 2rem;
+}
+
+
+.checkoutPage__addAddressContent {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.25rem;
+}
+
+
+.checkoutPage__addAddressContent h3 {
+    margin: 0;
+
+    color: #008f68;
+
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+
+.checkoutPage__addAddressContent p {
+    margin: 0;
+
+    color: #6f7975;
+
+    font-size: 0.95rem;
+}

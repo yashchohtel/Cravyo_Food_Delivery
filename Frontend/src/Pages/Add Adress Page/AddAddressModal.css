@@ -1,0 +1,160 @@
+.addAddressModal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    width: 100%;
+    height: 100vh;
+
+    background: #ffffff;
+
+    animation: addAddressSlideIn 0.3s ease forwards;
+}
+
+.addAddressModal.container {
+    padding: 1rem;
+}
+
+
+.addAddressModal__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eeeeee;
+}
+
+
+.addAddressModal__backButton {
+    width: 4rem;
+    height: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f4f6f5;
+
+    color: #151515;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+}
+
+
+.addAddressModal__header h2 {
+    margin: 0;
+
+    color: #151515;
+
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+
+.chckoutMapContainer {
+    width: 100%;
+    height: 22rem;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+
+.addAddressModal__form {
+    margin-top: 1.8rem;
+    padding-bottom: 2rem;
+}
+
+.addAddressModal__formTitle {
+    margin: 0 0 1.5rem;
+
+    font-size: 1.6rem;
+    font-weight: 700;
+
+    color: #151515;
+}
+
+.addAddressModal__inputGroup {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.6rem;
+
+    margin-bottom: 1.3rem;
+}
+
+.addAddressModal__inputGroup label {
+    font-size: 1.15rem;
+    font-weight: 600;
+
+    color: #333;
+}
+
+.addAddressModal__inputGroup input {
+    width: 100%;
+
+    padding: 1.2rem 1.3rem;
+
+    border: 1px solid #dedede;
+    border-radius: 1rem;
+
+    outline: none;
+
+    font-size: 1.3rem;
+
+    background: #fafafa;
+}
+
+.addAddressModal__inputGroup input:focus {
+    border-color: #009b6d;
+    background: #fff;
+}
+
+.addAddressModal__inputRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 1rem;
+}
+
+.addAddressModal__saveButton {
+    width: 100%;
+
+    margin-top: 0.5rem;
+    padding: 1.3rem;
+
+    border: none;
+    border-radius: 1rem;
+
+    background: var(--primary-color);
+    color: #fff;
+
+    font-size: 1.4rem;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+
+
+
+@keyframes addAddressSlideIn {
+
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+
+}
