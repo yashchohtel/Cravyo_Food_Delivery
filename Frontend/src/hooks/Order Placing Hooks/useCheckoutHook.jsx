@@ -66,6 +66,18 @@ const useCheckoutHook = () => {
     // Save address
     const handleSaveAddress = () => {
 
+        // Check all address fields
+        if (
+            addressForm.latitude === null ||
+            addressForm.longitude === null ||
+            !addressForm.houseNumber.trim() ||
+            !addressForm.area.trim() ||
+            !addressForm.city.trim() ||
+            !addressForm.pincode.trim()
+        ) {
+            return;
+        }
+
         // get saved data from local storage
         let savedAddresses = JSON.parse(localStorage.getItem("userSavedData")) || [];
 

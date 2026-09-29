@@ -152,6 +152,13 @@ const orderSchema = new mongoose.Schema({
 
     },
 
+    // Payment method
+    paymentMethod: {
+        type: String,
+        enum: ["COD", "ONLINE"],
+        required: true
+    },
+
     // Current order status
     status: {
         type: String,
@@ -166,7 +173,7 @@ const orderSchema = new mongoose.Schema({
         default: "pending"
     }
 
-}, {timestamps: true});
+}, { timestamps: true });
 
 // Creating Order model
 const Order = mongoose.model("Order", orderSchema);
