@@ -2,10 +2,17 @@ import { IoArrowBack } from "react-icons/io5";
 import "./AddAddressModal.css";
 import CreateRestaurantMap from "../../Components/Ui/Create Restaurant Map/CreateRestaurantMap";
 
-const AddAddressModal = ({
-    isAddressModalOpen,
-    closeAddressModal
-}) => {
+const AddAddressModal = (props) => {
+
+    const {
+        isAddressModalOpen,
+        closeAddressModal,
+
+        addressForm,
+        handleAddressChange,
+        handleMapLocation,
+        handleSaveAddress
+    } = props
 
     if (!isAddressModalOpen) return null;
 
@@ -13,6 +20,7 @@ const AddAddressModal = ({
 
         <div className="addAddressModal container">
 
+            {/* header */}
             <div className="addAddressModal__header">
 
                 <button
@@ -28,10 +36,19 @@ const AddAddressModal = ({
 
             </div>
 
+            {/* map container */}
             <div className="chckoutMapContainer">
-                <CreateRestaurantMap />
+
+                <CreateRestaurantMap
+                    latitude={Number(addressForm.latitude)}
+                    longitude={Number(addressForm.longitude)}
+                    handleMapLocation={handleMapLocation}
+                    setInitialLocation={true}
+                />
+
             </div>
 
+            {/* address form */}
             <div className="addAddressModal__form">
 
                 <h3 className="addAddressModal__formTitle">
@@ -45,12 +62,13 @@ const AddAddressModal = ({
                     </label>
 
                     <input
-                        type="text"
+                        name="houseNumber"
+                        value={addressForm.houseNumber}
+                        onChange={handleAddressChange}
                         placeholder="Enter house or flat number"
                     />
 
                 </div>
-
 
                 <div className="addAddressModal__inputGroup">
 
@@ -59,12 +77,13 @@ const AddAddressModal = ({
                     </label>
 
                     <input
-                        type="text"
+                        name="area"
+                        value={addressForm.area}
+                        onChange={handleAddressChange}
                         placeholder="Enter area or street"
                     />
 
                 </div>
-
 
                 <div className="addAddressModal__inputRow">
 
@@ -75,7 +94,9 @@ const AddAddressModal = ({
                         </label>
 
                         <input
-                            type="text"
+                            name="city"
+                            value={addressForm.city}
+                            onChange={handleAddressChange}
                             placeholder="City"
                         />
 
@@ -89,7 +110,9 @@ const AddAddressModal = ({
                         </label>
 
                         <input
-                            type="text"
+                            name="pincode"
+                            value={addressForm.pincode}
+                            onChange={handleAddressChange}
                             placeholder="Pincode"
                         />
 
@@ -97,8 +120,24 @@ const AddAddressModal = ({
 
                 </div>
 
+                {(
+                    !addressForm.latitude ||
+                    !addressForm.longitude ||
+                    !addressForm.houseNumber ||
+                    !addressForm.area ||
+                    !addressForm.city ||
+                    !addressForm.pincode
+                ) && (
+                        <p className="addAddressModal__error">
+                            Please fill all the fields
+                        </p>
+                    )}
 
-                <button className="addAddressModal__saveButton">
+
+                <button
+                    className="addAddressModal__saveButton"
+                    onClick={handleSaveAddress}
+                >
                     Save Address
                 </button>
 
@@ -107,7 +146,7 @@ const AddAddressModal = ({
         </div>
 
     );
-    
+
 };
 
 export default AddAddressModal;

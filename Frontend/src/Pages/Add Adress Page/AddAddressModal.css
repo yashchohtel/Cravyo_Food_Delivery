@@ -143,7 +143,22 @@
     cursor: pointer;
 }
 
+.addAddressModal__error {
+    margin: 0 0 1rem;
+    padding: 0.9rem 1.1rem;
 
+    border-radius: 0.8rem;
+
+    background: #fff1f0;
+    border: 1px solid #ffd5d2;
+
+    color: #d93025;
+
+    font-size: 1.3rem;
+    font-weight: 500;
+
+    text-align: center;
+}
 
 
 

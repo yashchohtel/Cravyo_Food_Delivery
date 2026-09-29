@@ -3,7 +3,7 @@ import L from "leaflet";
 import { FaLocationDot } from "react-icons/fa6";
 import "leaflet/dist/leaflet.css";
 import "./CreateRestaurantMap.css";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 
 // Recenter map to current location
 const CurrentLocationButton = ({ userCurrentLocation }) => {
@@ -40,18 +40,28 @@ const CurrentLocationButton = ({ userCurrentLocation }) => {
 };
 
 // Handle map movement
-const MapController = ({ handleMapLocation }) => {
+const MapController = ({ handleMapLocation, userCurrentLocation, setInitialLocation }) => {
 
     const map = useMap();
 
     useEffect(() => {
 
-        // Handle map movement end
+        if (setInitialLocation && userCurrentLocation) {
+
+            handleMapLocation(
+                userCurrentLocation.latitude,
+                userCurrentLocation.longitude
+            );
+        }
+
         const handleMapMoveEnd = () => {
 
             const center = map.getCenter();
 
-            handleMapLocation(center.lat, center.lng);
+            handleMapLocation(
+                center.lat,
+                center.lng
+            );
         };
 
         map.on("moveend", handleMapMoveEnd);
@@ -60,21 +70,28 @@ const MapController = ({ handleMapLocation }) => {
             map.off("moveend", handleMapMoveEnd);
         };
 
-    }, [map, handleMapLocation]);
+    }, [map, handleMapLocation, userCurrentLocation, setInitialLocation]);
 
     return null;
 };
 
 // map component 
-const CreateRestaurantMap = (props) => { 
+const CreateRestaurantMap = (props) => {
 
     // destructure props
-    const { handleMapLocation } = props;
+    const {
+        handleMapLocation,
+        setInitialLocation = false
+    } = props;
 
     // Get user current location
-    const savedCurrentLocation = localStorage.getItem("userCurrentLocation");
+    const userCurrentLocation = useMemo(() => {
 
-    const userCurrentLocation = savedCurrentLocation ? JSON.parse(savedCurrentLocation) : null;
+        const savedCurrentLocation = localStorage.getItem("userCurrentLocation");
+
+        return savedCurrentLocation ? JSON.parse(savedCurrentLocation) : null;
+
+    }, []);
 
     // Map center
     const mapCenter = userCurrentLocation ? [userCurrentLocation.latitude, userCurrentLocation.longitude] : [20.5937, 78.9629];
@@ -102,6 +119,8 @@ const CreateRestaurantMap = (props) => {
 
                 <MapController
                     handleMapLocation={handleMapLocation}
+                    userCurrentLocation={userCurrentLocation}
+                    setInitialLocation={setInitialLocation}
                 />
 
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
