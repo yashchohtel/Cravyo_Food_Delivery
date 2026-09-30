@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 
 import useCheckoutHook from '../../hooks/Order Placing Hooks/useCheckoutHook';
 import AddAddressModal from '../Add Adress Page/AddAddressModal';
+import ButtonLoader from '../../Components/Loaders/ButtonLoader/ButtonLoader';
 
 const CheckoutPage = () => {
 
@@ -24,6 +25,9 @@ const CheckoutPage = () => {
 
     // cart data
     const { restaurant, items, totalItems, totalPrice } = useSelector((state) => state.cart);
+
+    // order data
+    const { loading: orderLoading } = useSelector((state) => state.order);
 
     // saved addresses
     const [savedAddresses, setSavedAddresses] = useState([]);
@@ -40,7 +44,9 @@ const CheckoutPage = () => {
         handleSaveAddress,
 
         paymentMethod,
-        setPaymentMethod
+        setPaymentMethod,
+
+        placeOrder
 
     } = useCheckoutHook();
 
@@ -50,12 +56,16 @@ const CheckoutPage = () => {
 
     // get saved addresses
     useEffect(() => {
-
         const savedData = JSON.parse(localStorage.getItem("userSavedData")) || [];
-
         setSavedAddresses(savedData);
-
     }, [isAddressModalOpen]);
+
+    // navigate to cart if no item in cart
+    useEffect(() => {
+        if (!items || items.length === 0) {
+            navigate("/cart", { replace: true });
+        }
+    }, [items, navigate]);
 
     // selected address
     const selectedAddress = savedAddresses[savedAddresses.length - 1];
@@ -115,7 +125,6 @@ const CheckoutPage = () => {
                         )}
 
                     </div>
-
 
                     {selectedAddress ? (
 
@@ -471,9 +480,22 @@ const CheckoutPage = () => {
 
                     </div>
 
-                    <button className="checkoutPage__placeOrderButton">
-                        {paymentMethod === "COD" ? "Place Order" : "Pay & Place Order"}
-                        <IoChevronForward />
+                    <button
+                        className="checkoutPage__placeOrderButton"
+                        onClick={placeOrder}
+                        disabled={orderLoading}
+                    >
+                        {orderLoading ? (
+                            <ButtonLoader />
+                        ) : (
+                            <>
+                                {paymentMethod === "COD"
+                                    ? "Place Order"
+                                    : "Pay & Place Order"
+                                }
+                                <IoChevronForward />
+                            </>
+                        )}
                     </button>
 
                 </div>

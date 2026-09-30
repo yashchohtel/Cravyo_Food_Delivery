@@ -9,6 +9,7 @@ import authRouter from "./features/auth/authRoutes.js"; // import auth router
 import platformActionRouter from "./features/platform/platformActionRoutes.js"; // import platform action router
 import shopRouter from "./features/shop/shopRoutes.js";
 import foodItemRouter from "./features/foodItem/foodItemRoutes.js";
+import orderRouter from "./features/order/orderRoute.js";
 
 // -------------------- CONFIGURATION -------------------- //
 
@@ -56,6 +57,9 @@ app.use("/api/shop", shopRouter);
 
 // food item routes `/api/foodItem` - Use foodItemRouter for handling food item-related routes
 app.use("/api/foodItem", foodItemRouter);
+
+// order Router `/api/order` - Use orderRouter for handling order related routes
+app.use("/api/order", orderRouter);
 
 // -------------------- ERROR MIDDLEWARES -------------------- //
 

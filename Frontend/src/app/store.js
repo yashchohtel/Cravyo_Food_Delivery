@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "../features/auth/authSlice"; 
-import locationReducer from "../features/location/locationSlice" 
+import authReducer from "../features/auth/authSlice";
+import locationReducer from "../features/location/locationSlice"
 import promotionBannerReducer from '../features/platform/promotionBanners/promotionBannersSlice'
 import foodCategoriesReducer from '../features/platform/topFoodCategories/topFoodCategoriesSlice'
 import restaurantReducer from "../features/restaurant dashboard/restaurant/restaurantSlice";
 import foodItemReducer from '../features/restaurant dashboard/foodItems/foodItemSlice'
 import cartReducer from "../features/cart/cartSlice";
+import orderReducer from "../features/order/orderSlice";
 
 // configure store with 
 const store = configureStore({
@@ -33,6 +34,9 @@ const store = configureStore({
 
         // cart reducer
         cart: cartReducer,
+
+        // order reducer
+        order: orderReducer,
 
     },
 

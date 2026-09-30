@@ -26,6 +26,7 @@ import AllPopularFood from "../Pages/All Popular Food/AllPopularFood.jsx";
 import RestaurantDetail from "../Pages/Restaurant Pages/Restaurant Detail/RestaurantDetail.jsx";
 import CartPage from "../Pages/Cart Page/CartPage.jsx";
 import CheckoutPage from "../Pages/Checkout Page/CheckoutPage.jsx";
+import OrderSuccess from "../Pages/Order Success/OrderSuccess.jsx";
 
 function AppRoutes() {
 
@@ -66,6 +67,9 @@ function AppRoutes() {
 
       {/* checkout page */}
       <Route path="/checkout" element={<ProtectedRoute> <CheckoutPage /> </ProtectedRoute>} />
+
+      {/* order success page */}
+      <Route path="/order-success" element={<ProtectedRoute> <OrderSuccess /> </ProtectedRoute>} />
 
       {/* delivery route */}
       <Route path="/delivery" element={
