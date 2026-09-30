@@ -21,25 +21,3 @@ export const createOrder = createAsyncThunk("order/createOrder", async (orderDat
     }
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
