@@ -143,3 +143,50 @@ export const createOrder = async (req, res, next) => {
     });
 
 };
+
+// Get logged-in user's orders
+export const getMyOrders = async (req, res, next) => {
+
+    // Fetch orders for the logged-in user
+    const orders = await Order.find({ user: req.user._id })
+        .populate({
+            path: "restaurant.restaurantId",
+            select: "name image owner",
+            populate: {
+                path: "owner",
+                select: "fullName email mobileNumber"
+            }
+        })
+        .sort({ createdAt: -1 });
+
+    // Return the orders
+    return res.status(200).json({
+        success: true,
+        message: "Orders fetched successfully",
+        orders
+    });
+
+};
+
+// Get restaurant owner's orders
+export const getRestaurantOrders = async (req, res, next) => {
+
+    const restaurant = await Shop.findOne({ owner: req.user._id }).select("_id");
+
+    if (!restaurant) {
+        return next(new ErrorHandler("Restaurant not found", 404));
+    }
+
+    const orders = await Order.find({
+        "restaurant.restaurantId": restaurant._id
+    })
+        .populate("user", "fullName email mobileNumber")
+        .sort({ createdAt: -1 });
+
+    return res.status(200).json({
+        success: true,
+        message: "Restaurant orders fetched successfully",
+        orders
+    });
+    
+};

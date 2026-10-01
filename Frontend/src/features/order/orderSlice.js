@@ -1,9 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createOrder } from "./orderThunk";
+import { createOrder, getMyOrders, getRestaurantOrders } from "./orderThunk";
 
 const initialState = {
     order: null,
+    orders: [],
+    restaurantOrders: [],
     loading: false,
+    ordersLoading: false,
+    restaurantOrdersLoading: false,
     errorMessage: null,
     successMessage: null
 };
@@ -38,17 +42,44 @@ const orderSlice = createSlice({
                 state.errorMessage = null;
                 state.successMessage = null;
             })
-
             .addCase(createOrder.fulfilled, (state, action) => {
                 state.loading = false;
                 state.order = action.payload.order;
                 state.successMessage = action.payload.message;
             })
-
             .addCase(createOrder.rejected, (state, action) => {
                 state.loading = false;
                 state.errorMessage = action.payload;
-            });
+            })
+
+            /* ----------- GET MY ORDER ↓ */
+            .addCase(getMyOrders.pending, (state) => {
+                state.ordersLoading = true;
+                state.errorMessage = null;
+            })
+            .addCase(getMyOrders.fulfilled, (state, action) => {
+                state.ordersLoading = false;
+                state.orders = action.payload.orders;
+            })
+            .addCase(getMyOrders.rejected, (state, action) => {
+                state.ordersLoading = false;
+                state.errorMessage = action.payload;
+            })
+
+            /* ----------- GET RESTAURANT ORDER ↓ */
+            .addCase(getRestaurantOrders.pending, (state) => {
+                state.restaurantOrdersLoading = true;
+                state.errorMessage = null;
+            })
+            .addCase(getRestaurantOrders.fulfilled, (state, action) => {
+                state.restaurantOrdersLoading = false;
+                state.restaurantOrders = action.payload.orders;
+            })
+            .addCase(getRestaurantOrders.rejected, (state, action) => {
+                state.restaurantOrdersLoading = false;
+                state.errorMessage = action.payload;
+            })
+
 
     },
 

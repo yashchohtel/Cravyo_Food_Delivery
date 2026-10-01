@@ -21,3 +21,39 @@ export const createOrder = createAsyncThunk("order/createOrder", async (orderDat
     }
 
 });
+
+// Thunk to get logged-in user's orders
+export const getMyOrders = createAsyncThunk("order/getMyOrders", async (_, { rejectWithValue }) => {
+
+    try {
+
+        const { data } = await api.get("/api/order/myOrders");
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Something went wrong"
+        );
+
+    }
+
+});
+
+// Thunk to get restaurant owner's orders
+export const getRestaurantOrders = createAsyncThunk("order/getRestaurantOrders", async (_, { rejectWithValue }) => {
+
+    try {
+
+        const { data } = await api.get("/api/order/restaurantOrders");
+        return data;
+        
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Something went wrong"
+        );
+        
+    }
+
+});
