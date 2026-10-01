@@ -65,7 +65,8 @@ const CheckoutPage = () => {
         if (!items || items.length === 0) {
             navigate("/cart", { replace: true });
         }
-    }, [items, navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [navigate]);
 
     // selected address
     const selectedAddress = savedAddresses[savedAddresses.length - 1];

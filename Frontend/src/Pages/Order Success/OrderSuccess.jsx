@@ -10,6 +10,18 @@ const OrderSuccess = () => {
         window.scrollTo(0, 0);
     }, []);
 
+
+    useEffect(() => {
+        const orderJustPlaced = sessionStorage.getItem("orderJustPlaced");
+
+        if (!orderJustPlaced) {
+            navigate("/", { replace: true });
+            return;
+        }
+
+        sessionStorage.removeItem("orderJustPlaced");
+    }, [navigate]);
+
     return (
         <main className="orderSuccess">
 
@@ -72,7 +84,7 @@ const OrderSuccess = () => {
 
                     <button
                         className="orderSuccessOrdersButton"
-                        onClick={() => navigate("/orders")}
+                        onClick={() => navigate("/my-order")}
                     >
                         Your Orders
                     </button>

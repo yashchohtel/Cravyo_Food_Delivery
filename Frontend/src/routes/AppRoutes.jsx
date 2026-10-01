@@ -27,6 +27,7 @@ import RestaurantDetail from "../Pages/Restaurant Pages/Restaurant Detail/Restau
 import CartPage from "../Pages/Cart Page/CartPage.jsx";
 import CheckoutPage from "../Pages/Checkout Page/CheckoutPage.jsx";
 import OrderSuccess from "../Pages/Order Success/OrderSuccess.jsx";
+import MyOrders from "../Pages/My Orders/MyOrders.jsx";
 
 function AppRoutes() {
 
@@ -70,6 +71,9 @@ function AppRoutes() {
 
       {/* order success page */}
       <Route path="/order-success" element={<ProtectedRoute> <OrderSuccess /> </ProtectedRoute>} />
+
+      {/* order My orders page */}
+      <Route path="/my-order" element={<ProtectedRoute> <MyOrders /> </ProtectedRoute>} />
 
       {/* delivery route */}
       <Route path="/delivery" element={

@@ -184,8 +184,9 @@ const useCheckoutHook = () => {
         const result = await dispatch(createOrder(orderData));
 
         if (createOrder.fulfilled.match(result)) {
-            dispatch(clearCart());
+            sessionStorage.setItem("orderJustPlaced", "true");
             navigate("/order-success");
+            dispatch(clearCart());
         }
     };
 
