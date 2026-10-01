@@ -188,5 +188,6 @@ export const getRestaurantOrders = async (req, res, next) => {
         message: "Restaurant orders fetched successfully",
         orders
     });
-    
+
 };
+

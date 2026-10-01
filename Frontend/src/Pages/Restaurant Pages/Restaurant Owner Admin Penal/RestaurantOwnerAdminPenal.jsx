@@ -5,6 +5,7 @@ import './RestaurantOwnerAdminPenal.css'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { getMyRestaurant } from '../../../features/restaurant dashboard/restaurant/restaurantThunk'
+import { getRestaurantOrders } from '../../../features/order/orderThunk'
 
 const RestaurantOwnerAdminPenal = () => {
 
@@ -16,6 +17,9 @@ const RestaurantOwnerAdminPenal = () => {
 
     // dispatch get restaurant
     dispatch(getMyRestaurant());
+
+    // dispatch get restaurant orders
+    dispatch(getRestaurantOrders());
 
   }, [dispatch]);
 

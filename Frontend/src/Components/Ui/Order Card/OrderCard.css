@@ -1,0 +1,250 @@
+.order-card {
+    padding: 1.4rem;
+    background: var(--background-color);
+    border: 0.1rem solid var(--border-color);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-mild);
+}
+
+.order-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.order-card-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.order-card-header p {
+    margin: 0.4rem 0 0;
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.order-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.order-status>span {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.order-status-pending {
+    color: #f97316;
+    background: #fff1e8;
+}
+
+.order-status-confirmed {
+    color: #d97706;
+    background: #fff7df;
+}
+
+.order-status-preparing {
+    color: #2563eb;
+    background: #eff6ff;
+}
+
+.order-status-out_for_delivery {
+    color: #7c3aed;
+    background: #f3e8ff;
+}
+
+.order-status-delivered {
+    color: var(--success-color);
+    background: var(--veg-light);
+}
+
+.order-status-cancelled {
+    color: var(--error-color);
+    background: #feecec;
+}
+
+/* Customer */
+
+.order-customer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.order-customer-avatar {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--surface-color-2);
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.order-customer h4 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.order-customer p {
+    margin: 0.3rem 0 0;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+/* Food */
+
+.order-food-images {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+}
+
+.order-food-image {
+    width: 4.2rem;
+    height: 4.2rem;
+    overflow: hidden;
+    border-radius: 0.7rem;
+}
+
+.order-food-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.order-more-items {
+    width: 4.2rem;
+    height: 4.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--surface-color-2);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Info */
+
+.order-card-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.3rem;
+    padding-top: 1.2rem;
+    border-top: 0.1rem solid var(--border-color);
+}
+
+.order-items-count {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.order-card-info strong {
+    font-size: 1.5rem;
+}
+
+.order-payment {
+    padding: 0.5rem 0.8rem;
+    border-radius: 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.order-payment-cod {
+    color: #d97706;
+    background: #fff7df;
+}
+
+.order-payment-online {
+    color: var(--success-color);
+    background: var(--veg-light);
+}
+
+/* Actions */
+
+.order-card-actions {
+    display: grid;
+    grid-template-columns: 1fr 12rem;
+    gap: 0.7rem;
+    margin-top: 1.2rem;
+}
+
+.order-view-btn,
+.order-status-change {
+    height: 3.8rem;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 0.8rem;
+    background: var(--background-color);
+}
+
+.order-view-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    font-family: inherit;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.order-view-btn:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.order-status-change {
+    position: relative;
+}
+
+.order-status-change select {
+    width: 100%;
+    height: 100%;
+    padding: 0 2.5rem 0 0.9rem;
+    border: none;
+    outline: none;
+    appearance: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.order-status-change svg {
+    position: absolute;
+    top: 50%;
+    right: 0.7rem;
+    width: 1.4rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+@media (max-width: 500px) {
+
+    .order-card-actions {
+        grid-template-columns: 1fr;
+    }
+}
