@@ -47,13 +47,32 @@ export const getRestaurantOrders = createAsyncThunk("order/getRestaurantOrders",
 
         const { data } = await api.get("/api/order/restaurantOrders");
         return data;
-        
+
     } catch (error) {
 
         return rejectWithValue(
             error.response?.data?.message || "Something went wrong"
         );
-        
+
+    }
+
+});
+
+export const updateOrderStatus = createAsyncThunk("order/updateOrderStatus", async ({ orderId, status }, { rejectWithValue }) => {
+
+    try {
+
+        const { data } = await api.patch(`/api/order/updateOrderStatus/${orderId}`, { status });
+
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message ||
+            "Something went wrong"
+        );
+
     }
 
 });

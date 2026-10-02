@@ -1,8 +1,10 @@
-import { FiCheckCircle, FiChevronDown, FiClock, FiGrid, FiPackage, FiRefreshCw, FiSearch, FiTruck} from "react-icons/fi";
+import { FiCheckCircle, FiChevronDown, FiClock, FiGrid, FiPackage, FiRefreshCw, FiSearch, FiTruck } from "react-icons/fi";
 import AdminStatsCard from "../../../Components/Admin/Admin Stats Card/AdminStatsCard";
 import OrderCard from "../../../Components/Ui/Order Card/OrderCard";
 import useManageOrder from "../../../hooks/Restaruant Owner Hooks/useManageOrder";
 import "./Orders.css";
+import RestaurantOwnerFormModal from "../Restaurant Owner Form Modal/RestaurantOwnerFormModal";
+import { useState } from "react";
 
 const Orders = () => {
 
@@ -32,9 +34,47 @@ const Orders = () => {
     resetFilters
   } = useManageOrder();
 
+  /* -------------------------------------- */
+
+  // modal state
+  const [modal, setModal] = useState({
+    isOpen: false,
+    type: null,
+    mode: null,
+    data: null,
+  });
+
+  // open modal
+  const openModal = (type, mode, data = null) => {
+    setModal({
+      isOpen: true,
+      type,
+      mode,
+      data,
+    });
+  };
+
+  // close modal
+  const closeModal = () => {
+    setModal({
+      isOpen: false,
+      type: null,
+      mode: null,
+      data: null,
+    });
+  };
+
   return (
-    
+
     <div className="orders-page">
+
+      <RestaurantOwnerFormModal
+        isOpen={modal.isOpen}
+        type={modal.type}
+        mode={modal.mode}
+        data={modal.data}
+        onClose={closeModal}
+      />
 
       {/* Stats */}
       <div className="orders-stats-grid">
@@ -80,6 +120,7 @@ const Orders = () => {
       <div className="orders-search-filter">
 
         <div className="orders-search-box">
+
           <FiSearch className="orders-search-icon" />
 
           <input
@@ -88,6 +129,7 @@ const Orders = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
+
         </div>
 
         <div className="orders-filter-right">
@@ -100,9 +142,7 @@ const Orders = () => {
               <option value="">All Status</option>
               <option value="pending">New / Pending</option>
               <option value="preparing">Preparing</option>
-              <option value="out_for_delivery">
-                Out for Delivery
-              </option>
+              <option value="out_for_delivery"> Out for Delivery </option>
               <option value="delivered">Delivered</option>
               <option value="cancelled">Cancelled</option>
             </select>
@@ -152,20 +192,25 @@ const Orders = () => {
 
       {/* Orders */}
       {!restaurantOrdersLoading && filteredOrders.length > 0 && (
+
         <div className="orders-grid">
 
           {filteredOrders.map((order) => (
             <OrderCard
               key={order._id}
               order={order}
+              onView={(order) => openModal("viewOrder", "view", order)}
+              onChangeStatus={(order) => openModal("changeOrderStatus", "edit", order)}
             />
           ))}
 
         </div>
+
       )}
 
       {!restaurantOrdersLoading && filteredOrders.length === 0 && (
         <div className="orders-empty-state">
+
           <FiPackage />
 
           <h2>No Orders Found</h2>
@@ -175,6 +220,7 @@ const Orders = () => {
               ? "No orders match your current filters."
               : "Orders will appear here when customers place orders."}
           </p>
+
         </div>
       )}
 

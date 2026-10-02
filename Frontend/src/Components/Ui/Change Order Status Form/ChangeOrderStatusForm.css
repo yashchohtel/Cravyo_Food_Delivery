@@ -1,0 +1,272 @@
+.change-order-status-form {
+    width: 62rem;
+    max-width: 95%;
+    max-height: 90vh;
+    background: var(--background-color);
+    border-radius: 1.2rem;
+    overflow: hidden;
+}
+
+
+/* Header */
+
+.change-order-status-header {
+    padding: 1.8rem 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.1rem solid var(--border-color);
+}
+
+.change-order-status-header h2 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--text-primary);
+}
+
+.change-order-status-header p {
+    margin: 0.4rem 0 0;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.change-order-status-close {
+    width: 3.6rem;
+    height: 3.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 0.7rem;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.change-order-status-close:hover {
+    background: var(--surface-color-2);
+}
+
+
+/* Content */
+
+.change-order-status-content {
+    padding: 2rem 2.2rem;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.change-order-status-title h3 {
+    margin: 0;
+    font-size: 1.6rem;
+    color: var(--text-primary);
+}
+
+.change-order-status-title p {
+    margin: 0.4rem 0 1.8rem;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+
+/* Progress */
+
+.order-status-progress {
+    position: relative;
+}
+
+.order-status-step-wrapper {
+    position: relative;
+}
+
+.order-status-step {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 6.5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 0.9rem;
+    background: var(--background-color);
+    text-align: left;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.order-status-step:hover {
+    border-color: var(--text-secondary);
+}
+
+.order-status-step.selected {
+    border-color: var(--primary-color);
+    background: #fff8f4;
+}
+
+.order-status-step.completed {
+    border-color: var(--success-color);
+    background: var(--veg-light);
+}
+
+
+/* Icon */
+
+.order-status-step-icon {
+    width: 3.8rem;
+    height: 3.8rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--surface-color-2);
+    color: var(--text-secondary);
+    font-size: 1.6rem;
+}
+
+.order-status-step.selected .order-status-step-icon {
+    background: var(--primary-color);
+    color: var(--background-color);
+}
+
+.order-status-step.completed .order-status-step-icon {
+    background: var(--success-color);
+    color: var(--background-color);
+}
+
+.order-status-step.cancelled-step {
+    border-color: var(--error-color);
+}
+
+.order-status-step.cancelled-step.selected {
+    background: #fff4f4;
+}
+
+.order-status-step.cancelled-step.selected .order-status-step-icon {
+    background: var(--error-color);
+    color: var(--background-color);
+}
+
+
+/* Info */
+
+.order-status-step-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.order-status-step-top {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.order-status-step-top strong {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+}
+
+.order-status-step-info p {
+    margin: 0.3rem 0 0;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.current-status-label {
+    padding: 0.3rem 0.7rem;
+    border-radius: 2rem;
+    background: var(--primary-color);
+    color: var(--background-color);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+/* Connecting line */
+
+.order-status-line {
+    width: 0.2rem;
+    height: 1.2rem;
+    margin-left: 2.8rem;
+    background: var(--border-color);
+}
+
+.order-status-line.completed {
+    background: var(--success-color);
+}
+
+
+/* Footer */
+
+.change-order-status-footer {
+    padding: 1.5rem 2.2rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    border-top: 0.1rem solid var(--border-color);
+}
+
+.change-order-status-footer button {
+    height: 4rem;
+    padding: 0 1.8rem;
+    border-radius: 0.8rem;
+    font-family: inherit;
+    font-size: 1.3rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.change-order-status-cancel {
+    border: 0.1rem solid var(--border-color);
+    background: var(--background-color);
+    color: var(--text-primary);
+}
+
+.change-order-status-submit {
+    min-width: 16rem;
+    border: none;
+    background: var(--primary-color);
+    color: var(--background-color);
+}
+
+.change-order-status-submit:hover {
+    background: var(--primary-hover);
+}
+
+.change-order-status-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+    .change-order-status-form {
+        max-width: 100%;
+        max-height: 95vh;
+        border-radius: 1rem;
+    }
+
+    .change-order-status-header {
+        padding: 1.5rem;
+    }
+
+    .change-order-status-content {
+        padding: 1.5rem;
+    }
+
+    .change-order-status-footer {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .change-order-status-footer button {
+        flex: 1;
+    }
+
+}

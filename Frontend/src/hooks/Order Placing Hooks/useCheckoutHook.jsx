@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createOrder } from "../../features/order/orderThunk";
 import { clearCart } from "../../features/cart/cartSlice";
+import toast from "react-hot-toast";
 
 const useCheckoutHook = () => {
 
@@ -128,13 +129,13 @@ const useCheckoutHook = () => {
 
         // Check restaurant
         if (!restaurant) {
-            console.log("Restaurant is missing");
+            toast.error("Restaurant is missing");
             return;
         }
 
         // Check cart
         if (!items || items.length === 0) {
-            console.log("Cart is empty");
+            toast.error("Cart is empty");
             return;
         }
 
@@ -148,13 +149,13 @@ const useCheckoutHook = () => {
             !addressForm.city ||
             !addressForm.pincode
         ) {
-            console.log("Please add delivery address");
+            toast.error("Please add your delivery address");
             return;
         }
 
         // Check payment method
         if (!paymentMethod) {
-            console.log("Please select payment method");
+            toast.error("Please select payment method");
             return;
         }
 

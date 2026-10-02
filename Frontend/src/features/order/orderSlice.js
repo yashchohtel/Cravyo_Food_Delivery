@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createOrder, getMyOrders, getRestaurantOrders } from "./orderThunk";
+import { createOrder, getMyOrders, getRestaurantOrders, updateOrderStatus } from "./orderThunk";
 
 const initialState = {
     order: null,
@@ -8,6 +8,7 @@ const initialState = {
     loading: false,
     ordersLoading: false,
     restaurantOrdersLoading: false,
+    updateOrderStatusLoading: false,
     errorMessage: null,
     successMessage: null
 };
@@ -80,7 +81,27 @@ const orderSlice = createSlice({
                 state.errorMessage = action.payload;
             })
 
-            
+            /* ----------- UPDATE ORDER STATUS ↓ */
+            .addCase(updateOrderStatus.pending, (state) => {
+                state.updateOrderStatusLoading = true;
+                state.errorMessage = null;
+            })
+            .addCase(updateOrderStatus.fulfilled, (state, action) => {
+                state.updateOrderStatusLoading = false;
+
+                const updatedOrder = action.payload.order;
+
+                state.restaurantOrders = state.restaurantOrders.map((order) =>
+                    order._id === updatedOrder._id
+                        ? updatedOrder
+                        : order
+                );
+            })
+            .addCase(updateOrderStatus.rejected, (state, action) => {
+                state.updateOrderStatusLoading = false;
+                state.errorMessage = action.payload;
+            })
+
     },
 
 });

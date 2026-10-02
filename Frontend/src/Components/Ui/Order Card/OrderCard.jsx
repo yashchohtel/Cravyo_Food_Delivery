@@ -1,9 +1,10 @@
-import { FiChevronDown, FiEye, FiPackage} from "react-icons/fi";
+import { FiEye, FiPackage } from "react-icons/fi";
 import "./OrderCard.css";
 
-const OrderCard = ({ order }) => {
+const OrderCard = ({ order, onView, onChangeStatus }) => {
 
     const getStatusLabel = (status) => {
+
         const labels = {
             pending: "New",
             confirmed: "Confirmed",
@@ -16,16 +17,13 @@ const OrderCard = ({ order }) => {
         return labels[status] || status;
     };
 
-    const handleStatusChange = (e) => {
-        console.log("Change status:", order._id, e.target.value);
-    };
-
     const totalItems = order.items.reduce(
         (total, item) => total + item.quantity,
         0
     );
 
     return (
+
         <div className="order-card">
 
             {/* Header */}
@@ -72,7 +70,7 @@ const OrderCard = ({ order }) => {
                     </h4>
 
                     <p>
-                        {order.user?.mobileNumber || "No phone number"}
+                        {order.user?.mobileNumber || order.user?.email || "No contact information"}
                     </p>
                 </div>
 
@@ -124,28 +122,22 @@ const OrderCard = ({ order }) => {
             {/* Actions */}
             <div className="order-card-actions">
 
-                <button className="order-view-btn">
+                <button
+                    className="order-view-btn"
+                    type="button"
+                    onClick={() => onView(order)}
+                >
                     <FiEye />
                     View Details
                 </button>
 
-                <div className="order-status-change">
-                    <select
-                        value={order.status}
-                        onChange={handleStatusChange}
-                    >
-                        <option value="pending">Pending</option>
-                        <option value="confirmed">Confirmed</option>
-                        <option value="preparing">Preparing</option>
-                        <option value="out_for_delivery">
-                            Out for Delivery
-                        </option>
-                        <option value="delivered">Delivered</option>
-                        <option value="cancelled">Cancelled</option>
-                    </select>
-
-                    <FiChevronDown />
-                </div>
+                <button
+                    type="button"
+                    className="order-change-status-btn"
+                    onClick={() => onChangeStatus(order)}
+                >
+                    Change Order Status
+                </button>
 
             </div>
 

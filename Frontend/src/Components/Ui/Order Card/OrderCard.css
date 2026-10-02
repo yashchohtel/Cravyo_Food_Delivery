@@ -6,6 +6,7 @@
     box-shadow: var(--shadow-mild);
 }
 
+/* Header */
 .order-card-header {
     display: flex;
     align-items: flex-start;
@@ -27,6 +28,7 @@
     color: var(--text-secondary);
 }
 
+/* Status */
 .order-status {
     display: flex;
     align-items: center;
@@ -76,7 +78,6 @@
 }
 
 /* Customer */
-
 .order-customer {
     display: flex;
     align-items: center;
@@ -185,66 +186,49 @@
 }
 
 /* Actions */
-
 .order-card-actions {
-    display: grid;
-    grid-template-columns: 1fr 12rem;
+    display: flex;
+    align-items: center;
     gap: 0.7rem;
     margin-top: 1.2rem;
 }
 
-.order-view-btn,
-.order-status-change {
-    height: 3.8rem;
-    border: 0.1rem solid var(--border-color);
-    border-radius: 0.8rem;
-    background: var(--background-color);
-}
-
 .order-view-btn {
+    width: 14rem;
+    height: 3.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.7rem;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 0.8rem;
+    background: var(--background-color);
+    color: var(--text-primary);
     font-family: inherit;
     font-size: 1.3rem;
     cursor: pointer;
 }
 
-.order-view-btn:hover {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-.order-status-change {
-    position: relative;
-}
-
-.order-status-change select {
-    width: 100%;
-    height: 100%;
-    padding: 0 2.5rem 0 0.9rem;
-    border: none;
-    outline: none;
-    appearance: none;
-    background: transparent;
+.order-change-status-btn {
+    flex: 1;
+    height: 3.8rem;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 0.8rem;
+    background: var(--border-color);
+    color: var(--text-primary);
     font-family: inherit;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 500;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
-.order-status-change svg {
-    position: absolute;
-    top: 50%;
-    right: 0.7rem;
-    width: 1.4rem;
-    transform: translateY(-50%);
-    pointer-events: none;
+.order-change-status-btn:hover {
+    background: var(--primary-color);
+    color: white;
 }
 
-@media (max-width: 500px) {
-
-    .order-card-actions {
-        grid-template-columns: 1fr;
-    }
+.order-view-btn:hover {
+    border-color: var(--text-secondary);
 }

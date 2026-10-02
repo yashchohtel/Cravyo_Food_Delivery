@@ -85,7 +85,7 @@ export const createOrder = async (req, res, next) => {
     }
 
     // Calculate delivery fee
-    const deliveryFee = itemTotal > 150 ? 30 : 0;
+    const deliveryFee = itemTotal <= 150 ? 30 : 0;
 
     // Calculate taxes
     const taxes = Math.round(itemTotal * 0.05);
@@ -191,3 +191,49 @@ export const getRestaurantOrders = async (req, res, next) => {
 
 };
 
+// Update restaurant order status
+export const updateOrderStatus = async (req, res, next) => {
+
+    const { status } = req.body;
+
+    const allowedStatuses = [
+        "pending",
+        "confirmed",
+        "preparing",
+        "out_for_delivery",
+        "delivered",
+        "cancelled"
+    ];
+
+    if (!allowedStatuses.includes(status)) {
+        return next(new ErrorHandler("Invalid order status", 400));
+    }
+
+    const restaurant = await Shop.findOne({
+        owner: req.user._id
+    }).select("_id");
+
+    if (!restaurant) {
+        return next(new ErrorHandler("Restaurant not found", 404));
+    }
+
+    const order = await Order.findOne({
+        _id: req.params.id,
+        "restaurant.restaurantId": restaurant._id
+    });
+
+    if (!order) {
+        return next(new ErrorHandler("Order not found", 404));
+    }
+
+    order.status = status;
+
+    await order.save();
+
+    return res.status(200).json({
+        success: true,
+        message: "Order status updated successfully",
+        order
+    });
+    
+};
