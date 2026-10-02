@@ -64,6 +64,10 @@ export const updateOrderStatus = createAsyncThunk("order/updateOrderStatus", asy
 
         const { data } = await api.patch(`/api/order/updateOrderStatus/${orderId}`, { status });
 
+        console.log("------------------------")
+        console.log("Update Order Status Response:", data); // Log the response for debugging
+        console.log("------------------------")
+
         return data;
 
     } catch (error) {

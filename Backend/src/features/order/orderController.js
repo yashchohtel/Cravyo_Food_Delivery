@@ -209,9 +209,7 @@ export const updateOrderStatus = async (req, res, next) => {
         return next(new ErrorHandler("Invalid order status", 400));
     }
 
-    const restaurant = await Shop.findOne({
-        owner: req.user._id
-    }).select("_id");
+    const restaurant = await Shop.findOne({ owner: req.user._id }).select("_id");
 
     if (!restaurant) {
         return next(new ErrorHandler("Restaurant not found", 404));
@@ -228,6 +226,8 @@ export const updateOrderStatus = async (req, res, next) => {
 
     order.status = status;
 
+    await order.populate("user", "fullName email mobileNumber");
+
     await order.save();
 
     return res.status(200).json({
@@ -235,5 +235,5 @@ export const updateOrderStatus = async (req, res, next) => {
         message: "Order status updated successfully",
         order
     });
-    
+
 };

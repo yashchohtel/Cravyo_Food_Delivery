@@ -8,20 +8,21 @@ import ButtonLoader from "../../Loaders/ButtonLoader/ButtonLoader";
 
 const ChangeOrderStatusForm = ({ onClose, data }) => {
 
+    // initialize use dispatch
     const dispatch = useDispatch();
 
-    const { updateOrderStatusLoading } = useSelector(
-        (state) => state.order
-    );
+    // get update order status loading state from redux store
+    const { updateOrderStatusLoading } = useSelector((state) => state.order);
 
-    const [selectedStatus, setSelectedStatus] = useState(
-        data?.status || "pending"
-    );
+    // selected status state
+    const [selectedStatus, setSelectedStatus] = useState(data?.status || "pending");
 
+    // effect to update selected status when data changes
     useEffect(() => {
         setSelectedStatus(data?.status || "pending");
     }, [data]);
 
+    // define order statuses with their labels, descriptions, and icons
     const statuses = [
         {
             value: "pending",
@@ -61,10 +62,12 @@ const ChangeOrderStatusForm = ({ onClose, data }) => {
         }
     ];
 
+    // find the current and selected status indices
     const currentIndex = statuses.findIndex(
         (status) => status.value === data?.status
     );
 
+    // find the index of the selected status
     const selectedIndex = statuses.findIndex(
         (status) => status.value === selectedStatus
     );
@@ -107,7 +110,6 @@ const ChangeOrderStatusForm = ({ onClose, data }) => {
         >
 
             {/* Header */}
-
             <div className="change-order-status-header">
 
                 <div>
@@ -130,7 +132,6 @@ const ChangeOrderStatusForm = ({ onClose, data }) => {
 
 
             {/* Status Steps */}
-
             <div className="change-order-status-content">
 
                 <div className="change-order-status-title">
@@ -142,19 +143,15 @@ const ChangeOrderStatusForm = ({ onClose, data }) => {
 
                 </div>
 
-
                 <div className="order-status-progress">
 
                     {statuses.map((status, index) => {
 
-                        const isSelected =
-                            selectedStatus === status.value;
+                        const isSelected = selectedStatus === status.value;
 
-                        const isCompleted =
-                            isStepCompleted(index);
+                        const isCompleted = isStepCompleted(index);
 
-                        const isCancelled =
-                            status.value === "cancelled";
+                        const isCancelled = status.value === "cancelled";
 
                         return (
 

@@ -34,6 +34,8 @@ const Orders = () => {
     resetFilters
   } = useManageOrder();
 
+  console.log(filteredOrders);
+  
   /* -------------------------------------- */
 
   // modal state
