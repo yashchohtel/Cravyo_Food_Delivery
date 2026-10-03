@@ -5,6 +5,7 @@ import useManageOrder from "../../../hooks/Restaruant Owner Hooks/useManageOrder
 import "./Orders.css";
 import RestaurantOwnerFormModal from "../Restaurant Owner Form Modal/RestaurantOwnerFormModal";
 import { useState } from "react";
+import OrderCardSkeleton from "../../../Components/Skeletons/Order Card Skeleton/OrderCardSkeleton";
 
 const Orders = () => {
 
@@ -35,7 +36,7 @@ const Orders = () => {
   } = useManageOrder();
 
   console.log(filteredOrders);
-  
+
   /* -------------------------------------- */
 
   // modal state
@@ -193,7 +194,17 @@ const Orders = () => {
       </div>
 
       {/* Orders */}
-      {!restaurantOrdersLoading && filteredOrders.length > 0 && (
+      {restaurantOrdersLoading ? (
+
+        <div className="orders-grid">
+
+          {Array.from({ length: 6 }).map((_, index) => (
+            <OrderCardSkeleton key={index} />
+          ))}
+
+        </div>
+
+      ) : filteredOrders.length > 0 ? (
 
         <div className="orders-grid">
 
@@ -202,17 +213,17 @@ const Orders = () => {
               key={order._id}
               order={order}
               onView={(order) => openModal("viewOrder", "view", order)}
-              onChangeStatus={(order) => openModal("changeOrderStatus", "edit", order)}
+              onChangeStatus={(order) =>
+                openModal("changeOrderStatus", "edit", order)
+              }
             />
           ))}
 
         </div>
 
-      )}
+      ) : (
 
-      {!restaurantOrdersLoading && filteredOrders.length === 0 && (
         <div className="orders-empty-state">
-
           <FiPackage />
 
           <h2>No Orders Found</h2>
@@ -222,8 +233,8 @@ const Orders = () => {
               ? "No orders match your current filters."
               : "Orders will appear here when customers place orders."}
           </p>
-
         </div>
+        
       )}
 
     </div>

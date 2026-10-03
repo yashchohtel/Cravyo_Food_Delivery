@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useDispatch, useSelector } from 'react-redux';
 import './MyOrders.css'
 import { useEffect } from 'react';
@@ -11,7 +12,6 @@ const MyOrders = () => {
     // Accessing the orders and loading state from the Redux store
     const { orders, ordersLoading } = useSelector((state) => state.order);
 
-    console.log(ordersLoading);
     console.log(orders);
 
     // Fetch user's orders when the component mounts

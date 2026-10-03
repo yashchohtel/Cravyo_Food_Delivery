@@ -58,6 +58,7 @@ export const getRestaurantOrders = createAsyncThunk("order/getRestaurantOrders",
 
 });
 
+// update order status thunk
 export const updateOrderStatus = createAsyncThunk("order/updateOrderStatus", async ({ orderId, status }, { rejectWithValue }) => {
 
     try {

@@ -63,6 +63,7 @@ const ChangeOrderStatusForm = ({ onClose, data }) => {
     ];
 
     // find the current and selected status indices
+    // eslint-disable-next-line no-unused-vars
     const currentIndex = statuses.findIndex(
         (status) => status.value === data?.status
     );
