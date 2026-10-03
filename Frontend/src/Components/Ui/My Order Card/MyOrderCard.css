@@ -1,0 +1,283 @@
+.my-order-card {
+    padding: 1.4rem;
+    background: var(--background-color);
+    border: 0.1rem solid var(--border-color);
+    border-radius: 1.2rem;
+    box-shadow: var(--shadow-mild);
+    cursor: pointer;
+}
+
+/* Header */
+
+.my-order-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.my-order-restaurant {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.my-order-restaurant-image {
+    width: 5rem;
+    height: 5rem;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 0.8rem;
+}
+
+.my-order-restaurant-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.my-order-restaurant h3 {
+    margin: 0;
+    overflow: hidden;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.my-order-restaurant p {
+    margin: 0.5rem 0 0;
+    display: flex;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Amount */
+
+.my-order-card-amount {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+    gap: 0.5rem;
+}
+
+.my-order-card-amount strong {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.my-order-card-amount span {
+    padding: 0.4rem 0.7rem;
+    border-radius: 1rem;
+    background: #fff4df;
+    color: #d97706;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Progress */
+
+.my-order-progress {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 2rem;
+}
+
+.my-order-progress-step {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+}
+
+.my-order-progress-circle {
+    position: relative;
+    z-index: 2;
+    width: 2.3rem;
+    height: 2.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.1rem solid var(--border-color-dark);
+    border-radius: 50%;
+    background: var(--background-color);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.my-order-progress-circle.completed,
+.my-order-progress-circle.current {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.my-order-progress-step span {
+    width: 100%;
+    margin-top: 0.6rem;
+    padding: 0 0.2rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.my-order-progress-circle.current+span {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.my-order-progress-line {
+    position: absolute;
+    top: 1.1rem;
+    left: 50%;
+    width: 100%;
+    height: 0.2rem;
+    background: var(--border-color);
+}
+
+.my-order-progress-line.completed {
+    background: var(--primary-color);
+}
+
+/* Status Message */
+
+.my-order-status-message {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding: 1.2rem;
+    border-radius: 0.9rem;
+}
+
+.my-order-status-icon {
+    width: 3.2rem;
+    height: 3.2rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.6rem;
+}
+
+.my-order-status-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.my-order-status-content strong {
+    display: block;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+}
+
+.my-order-status-content p {
+    margin: 0.3rem 0 0;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.my-order-status-arrow {
+    flex-shrink: 0;
+    font-size: 1.8rem;
+}
+
+/* Pending */
+
+.my-order-status-pending {
+    background: #fff5ec;
+}
+
+.my-order-status-pending .my-order-status-icon {
+    background: #ffead8;
+    color: #f97316;
+}
+
+.my-order-status-pending .my-order-status-arrow {
+    color: #f97316;
+}
+
+/* Confirmed */
+
+.my-order-status-confirmed {
+    background: #fff8e8;
+}
+
+.my-order-status-confirmed .my-order-status-icon {
+    background: #ffefc5;
+    color: #d97706;
+}
+
+.my-order-status-confirmed .my-order-status-arrow {
+    color: #d97706;
+}
+
+/* Preparing */
+
+.my-order-status-preparing {
+    background: #fff5ec;
+}
+
+.my-order-status-preparing .my-order-status-icon {
+    background: #ffe5cf;
+    color: var(--primary-color);
+}
+
+.my-order-status-preparing .my-order-status-arrow {
+    color: var(--primary-color);
+}
+
+/* Out for delivery */
+
+.my-order-status-out_for_delivery {
+    background: #fff3ed;
+}
+
+.my-order-status-out_for_delivery .my-order-status-icon {
+    background: #ffe1d5;
+    color: var(--primary-color);
+}
+
+.my-order-status-out_for_delivery .my-order-status-arrow {
+    color: var(--primary-color);
+}
+
+/* Delivered */
+
+.my-order-status-delivered {
+    background: var(--veg-light);
+}
+
+.my-order-status-delivered .my-order-status-icon {
+    background: #d9f5df;
+    color: var(--success-color);
+}
+
+.my-order-status-delivered .my-order-status-arrow {
+    color: var(--success-color);
+}
+
+/* Cancelled */
+
+.my-order-status-cancelled {
+    background: #fff0f0;
+}
+
+.my-order-status-cancelled .my-order-status-icon {
+    background: #ffdada;
+    color: var(--error-color);
+}
+
+.my-order-status-cancelled .my-order-status-arrow {
+    color: var(--error-color);
+}

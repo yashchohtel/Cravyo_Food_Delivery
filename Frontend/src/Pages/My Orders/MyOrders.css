@@ -1,0 +1,117 @@
+.my-orders-page {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--background-color);
+}
+
+.my-orders-page.container {
+    padding: 0 1rem;
+}
+
+/* Header */
+.my-orders-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4.5rem;
+    border-bottom: 1.5px solid var(--border-color);
+}
+
+.my-orders-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.my-orders-back-button {
+    position: absolute;
+    left: 0;
+    width: 3.8rem;
+    height: 3.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Tabs */
+
+.my-orders-tabs {
+    display: flex;
+    gap: 0.7rem;
+    margin-top: 1.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.my-orders-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.my-orders-tabs button {
+    flex: 1;
+    height: 3.8rem;
+    padding: 0 1.4rem;
+    border: none;
+    border-radius: 2rem;
+    background: var(--surface-color-2);
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 1.3rem;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.my-orders-tabs button.active {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.my-orders-tabs button:hover:not(.active) {
+    background: #f1f2f4;
+    color: var(--text-primary);
+}
+
+/* Orders */
+
+.my-orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 2rem;
+}
+
+/* Loading */
+
+.my-orders-list>p {
+    padding: 3rem 0;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.3rem;
+}
+
+/* Empty */
+
+.my-orders-empty {
+    padding: 5rem 1.5rem;
+    text-align: center;
+}
+
+.my-orders-empty h2 {
+    margin: 0;
+    font-size: 1.7rem;
+}
+
+.my-orders-empty p {
+    margin: 0.7rem 0 0;
+    color: var(--text-secondary);
+    font-size: 1.3rem;
+}
