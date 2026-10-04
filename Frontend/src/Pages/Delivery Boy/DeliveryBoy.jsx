@@ -15,22 +15,6 @@ const DeliveryBoy = () => {
             <br /><br />
 
             <Link to="/home">Home Page</Link>
-
-            <br /><br />
-
-            {user?.roles?.includes("restaurantOwner") && (
-                <>
-                    <Link to="/restaurant">Restaurant Owner Dashboard</Link>
-                    <br /><br />
-                </>
-            )}
-
-            {user?.roles?.includes("deliveryBoy") && (
-                <>
-                    <Link to="/delivery">Delivery Boy Dashboard</Link>
-                    <br /><br />
-                </>
-            )}
         </>
 
     )

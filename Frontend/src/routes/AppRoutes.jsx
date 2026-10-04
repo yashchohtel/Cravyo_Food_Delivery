@@ -86,7 +86,7 @@ function AppRoutes() {
         <Route path="/order/:orderId" element={<ProtectedRoute> <OrderDetails /> </ProtectedRoute>} />
 
         {/* delivery route */}
-        <Route path="/delivery" element={
+        <Route path="/delivery-boy" element={
           <ProtectedRoute>
             <RoleProtectedRoute requiredRole="deliveryBoy"> <DeliveryBoy /> </RoleProtectedRoute>
           </ProtectedRoute>

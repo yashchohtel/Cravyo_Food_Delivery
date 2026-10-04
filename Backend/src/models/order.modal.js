@@ -28,6 +28,20 @@ const orderSchema = new mongoose.Schema({
         }
     },
 
+    // Delivery assignment record
+    deliveryAssignment: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "DeliveryAssignment",
+        default: null
+    },
+
+    // Currently assigned delivery boy
+    deliveryBoy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        default: null
+    },
+
     // Ordered food items
     items: [{
 
