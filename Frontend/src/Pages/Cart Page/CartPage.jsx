@@ -86,7 +86,7 @@ const CartPage = () => {
 
 
     return (
-        <div className="cartPage">
+        <div className="cartPage container">
 
             <div className="cartPage__container">
 

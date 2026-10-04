@@ -1,0 +1,462 @@
+.order-details-page {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--background-color);
+}
+
+.order-details-page.container{
+    padding: 0 1rem;
+}
+
+/* Header */
+
+.order-details-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5.5rem;
+    border-bottom: 1.5px solid var(--border-color);
+}
+
+.order-details-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.order-details-back-button {
+    position: absolute;
+    left: 0;
+    width: 3.8rem;
+    height: 3.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Restaurant */
+
+.order-details-restaurant {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.2rem;
+    padding: 1rem;
+    border-bottom: 0.1rem solid var(--border-color);
+}
+
+.order-details-restaurant-image {
+    width: 5.5rem;
+    height: 5.5rem;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 0.9rem;
+}
+
+.order-details-restaurant-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.order-details-restaurant-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.order-details-restaurant-info h2 {
+    margin: 0;
+    overflow: hidden;
+    font-size: 1.5rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.order-details-restaurant-info p {
+    margin: 0.5rem 0 0;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.order-details-rate-button {
+    padding: 0.7rem 1.1rem;
+    border: 0.1rem solid var(--primary-color);
+    border-radius: 0.8rem;
+    background: transparent;
+    color: var(--primary-color);
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Status Banner */
+
+.order-details-status-banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.2rem;
+    padding: 1.4rem;
+    border-radius: 1rem;
+}
+
+.order-details-status-icon {
+    width: 4rem;
+    height: 4rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 2rem;
+}
+
+.order-details-status-banner h3 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.order-details-status-banner p {
+    margin: 0.4rem 0 0;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.order-details-status-banner span {
+    display: block;
+    margin-top: 0.4rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.order-details-status-active {
+    background: #fff5ec;
+}
+
+.order-details-status-active .order-details-status-icon {
+    background: #ffe4d2;
+    color: var(--primary-color);
+}
+
+.order-details-status-delivered {
+    background: #ebfaf0;
+}
+
+.order-details-status-delivered .order-details-status-icon {
+    background: #c9f1d5;
+    color: var(--success-color);
+}
+
+.order-details-status-cancelled {
+    background: #fff0f0;
+}
+
+.order-details-status-cancelled .order-details-status-icon {
+    background: #ffd8d8;
+    color: var(--error-color);
+}
+
+/* Progress */
+
+.order-details-progress {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 1.2rem;
+    padding: 1.5rem 0.4rem;
+}
+
+.order-details-progress-step {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-details-progress-circle {
+    position: relative;
+    z-index: 2;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.1rem solid var(--border-color-dark);
+    border-radius: 50%;
+    background: var(--background-color);
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.order-details-progress-circle.completed,
+.order-details-progress-circle.current {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.order-details-progress-circle.cancelled {
+    border-color: var(--error-color);
+    background: var(--error-color);
+    color: #fff;
+}
+
+.order-details-progress-step span {
+    width: 100%;
+    margin-top: 0.6rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.2;
+}
+
+.order-details-progress-circle.current+span {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.order-details-progress-line {
+    position: absolute;
+    top: 1.2rem;
+    left: 50%;
+    width: 100%;
+    height: 0.2rem;
+    background: var(--border-color);
+}
+
+.order-details-progress-line.completed {
+    background: var(--primary-color);
+}
+
+/* Info Banner */
+
+.order-details-info-banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.2rem;
+    padding: 1.3rem;
+    border-radius: 1rem;
+    background: #fff5ec;
+}
+
+.order-details-info-icon {
+    width: 3.6rem;
+    height: 3.6rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ffe2cf;
+    color: var(--primary-color);
+    font-size: 1.7rem;
+}
+
+.order-details-info-banner strong {
+    font-size: 1.2rem;
+}
+
+.order-details-info-banner p {
+    margin: 0.3rem 0 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* Common Card */
+
+.order-details-card {
+    margin-top: 1.2rem;
+    padding: 1.4rem;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 1rem;
+    background: var(--background-color);
+    box-shadow: var(--shadow-mild);
+}
+
+.order-details-card h2 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+/* Items */
+
+.order-details-items {
+    margin-top: 1rem;
+}
+
+.order-details-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 0.1rem solid var(--border-color);
+}
+
+.order-details-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.order-details-item:first-child {
+    padding-top: 0;
+}
+
+.order-details-item-image {
+    width: 5rem;
+    height: 5rem;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 0.7rem;
+}
+
+.order-details-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.order-details-item-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.order-details-item-info h3 {
+    margin: 0;
+    overflow: hidden;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.order-details-item-info p {
+    margin: 0.4rem 0 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.order-details-item>strong {
+    flex-shrink: 0;
+    font-size: 1.2rem;
+}
+
+/* Pricing */
+
+.order-details-price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.order-details-total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 0.1rem solid var(--border-color);
+    font-size: 1.4rem;
+}
+
+/* Info Cards */
+
+.order-details-info-card {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1.3rem;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 1rem;
+    background: var(--background-color);
+}
+
+.order-details-info-card-icon {
+    width: 3.6rem;
+    height: 3.6rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+}
+
+.order-details-info-card-icon.payment {
+    background: #edf5ff;
+}
+
+.order-details-info-card-icon.address {
+    background: #fff1e9;
+    color: var(--primary-color);
+}
+
+.order-details-info-card strong {
+    display: block;
+    font-size: 1.2rem;
+}
+
+.order-details-info-card p {
+    margin: 0.3rem 0 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.order-details-info-card span {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Help */
+
+.order-details-help {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 1.3rem;
+    border-radius: 1rem;
+    background: #f4f6f8;
+}
+
+.order-details-help-icon {
+    width: 3.6rem;
+    height: 3.6rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e5e9ed;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+.order-details-help div:nth-child(2) {
+    flex: 1;
+}
+
+.order-details-help strong {
+    font-size: 1.2rem;
+}
+
+.order-details-help p {
+    margin: 0.3rem 0 0;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.order-details-help>span {
+    font-size: 2rem;
+    color: var(--text-secondary);
+}

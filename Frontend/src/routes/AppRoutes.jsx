@@ -28,122 +28,134 @@ import CartPage from "../Pages/Cart Page/CartPage.jsx";
 import CheckoutPage from "../Pages/Checkout Page/CheckoutPage.jsx";
 import OrderSuccess from "../Pages/Order Success/OrderSuccess.jsx";
 import MyOrders from "../Pages/My Orders/MyOrders.jsx";
+import OrderDetails from "../Pages/Order Details/OrderDetails.jsx";
+import ScrollToTop from "./ScrollToTop.jsx";
 
 function AppRoutes() {
 
   return (
 
-    // routes for the app
-    <Routes>
+    <>
 
-      {/* auth route */}
-      <Route path="/" element={<PublicRoute> <Auth /> </PublicRoute>} />
+      {/* scroll to top */}
+      <ScrollToTop />
 
-      {/* forgot password page */}
-      <Route path="/forgotPass" element={<PublicRoute> <ForgotPassword /> </PublicRoute>} />
+      {/* routes for the app */}
+      <Routes>
 
-      {/* reset password page */}
-      <Route path="/reset-password/:token" element={<PublicRoute> <ResetPassword /></PublicRoute>} />
+        {/* auth route */}
+        <Route path="/" element={<PublicRoute> <Auth /> </PublicRoute>} />
 
-      {/* home route */}
-      <Route path="/home" element={<ProtectedRoute> <Home /> </ProtectedRoute>} />
+        {/* forgot password page */}
+        <Route path="/forgotPass" element={<PublicRoute> <ForgotPassword /> </PublicRoute>} />
 
-      {/* Location Page */}
-      <Route path="/location" element={<ProtectedRoute> <LocationPage /> </ProtectedRoute>} />
+        {/* reset password page */}
+        <Route path="/reset-password/:token" element={<PublicRoute> <ResetPassword /></PublicRoute>} />
 
-      {/* Map Page */}
-      <Route path="/map" element={<ProtectedRoute> <MapPage /> </ProtectedRoute>} />
+        {/* home route */}
+        <Route path="/home" element={<ProtectedRoute> <Home /> </ProtectedRoute>} />
 
-      {/* pupular restaurent near you */}
-      <Route path="/restaurants" element={<ProtectedRoute> <AllRestaurants /> </ProtectedRoute>} />
+        {/* Location Page */}
+        <Route path="/location" element={<ProtectedRoute> <LocationPage /> </ProtectedRoute>} />
 
-      {/* pupular restaurent near you */}
-      <Route path="/popular-food" element={<ProtectedRoute> <AllPopularFood /> </ProtectedRoute>} />
+        {/* Map Page */}
+        <Route path="/map" element={<ProtectedRoute> <MapPage /> </ProtectedRoute>} />
 
-      {/* restaurant detail page */}
-      <Route path="/restaurant/:restaurantId" element={<ProtectedRoute> <RestaurantDetail /> </ProtectedRoute>} />
+        {/* pupular restaurent near you */}
+        <Route path="/restaurants" element={<ProtectedRoute> <AllRestaurants /> </ProtectedRoute>} />
 
-      {/* cart page */}
-      <Route path="/cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
+        {/* pupular restaurent near you */}
+        <Route path="/popular-food" element={<ProtectedRoute> <AllPopularFood /> </ProtectedRoute>} />
 
-      {/* checkout page */}
-      <Route path="/checkout" element={<ProtectedRoute> <CheckoutPage /> </ProtectedRoute>} />
+        {/* restaurant detail page */}
+        <Route path="/restaurant/:restaurantId" element={<ProtectedRoute> <RestaurantDetail /> </ProtectedRoute>} />
 
-      {/* order success page */}
-      <Route path="/order-success" element={<ProtectedRoute> <OrderSuccess /> </ProtectedRoute>} />
+        {/* cart page */}
+        <Route path="/cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
 
-      {/* order My orders page */}
-      <Route path="/my-order" element={<ProtectedRoute> <MyOrders /> </ProtectedRoute>} />
+        {/* checkout page */}
+        <Route path="/checkout" element={<ProtectedRoute> <CheckoutPage /> </ProtectedRoute>} />
 
-      {/* delivery route */}
-      <Route path="/delivery" element={
-        <ProtectedRoute>
-          <RoleProtectedRoute requiredRole="deliveryBoy"> <DeliveryBoy /> </RoleProtectedRoute>
-        </ProtectedRoute>
-      } />
+        {/* order success page */}
+        <Route path="/order-success" element={<ProtectedRoute> <OrderSuccess /> </ProtectedRoute>} />
 
-      {/* admin panel page */}
-      <Route path="/admin"
-        element={
+        {/* order My orders page */}
+        <Route path="/my-order" element={<ProtectedRoute> <MyOrders /> </ProtectedRoute>} />
+
+        {/* order details page */}
+        <Route path="/order/:orderId" element={<ProtectedRoute> <OrderDetails /> </ProtectedRoute>} />
+
+        {/* delivery route */}
+        <Route path="/delivery" element={
           <ProtectedRoute>
-            <RoleProtectedRoute requiredRole="admin"> <AdminPanel /> </RoleProtectedRoute>
+            <RoleProtectedRoute requiredRole="deliveryBoy"> <DeliveryBoy /> </RoleProtectedRoute>
           </ProtectedRoute>
-        }
-      >
+        } />
 
-        {/* main index page of admin panel */}
-        <Route index element={<AdminDashboard />} />
+        {/* admin panel page */}
+        <Route path="/admin"
+          element={
+            <ProtectedRoute>
+              <RoleProtectedRoute requiredRole="admin"> <AdminPanel /> </RoleProtectedRoute>
+            </ProtectedRoute>
+          }
+        >
 
-        {/* promotion banners page */}
-        <Route path="banners" element={<PromotionBanners />} />
+          {/* main index page of admin panel */}
+          <Route index element={<AdminDashboard />} />
 
-        {/* food categories */}
-        <Route path="food-categories" element={<FoodCategories />} />
+          {/* promotion banners page */}
+          <Route path="banners" element={<PromotionBanners />} />
 
-      </Route>
+          {/* food categories */}
+          <Route path="food-categories" element={<FoodCategories />} />
 
-      {/* restaurant create route */}
-      <Route
-        path="/restaurant/create"
-        element={
-          <ProtectedRoute>
-            <RestaurantCreateProtectedRoute>
-              <CreateRestaurant />
-            </RestaurantCreateProtectedRoute>
-          </ProtectedRoute>
-        }
-      />
+        </Route>
 
-      {/* restaurant owner admin panel */}
-      <Route
-        path="/restaurant/admin-panel"
-        element={
-          <ProtectedRoute>
-            <RoleProtectedRoute requiredRole="restaurantOwner">
-              <RestaurantOwnerAdminPenal />
-            </RoleProtectedRoute>
-          </ProtectedRoute>
-        }
-      >
+        {/* restaurant create route */}
+        <Route
+          path="/restaurant/create"
+          element={
+            <ProtectedRoute>
+              <RestaurantCreateProtectedRoute>
+                <CreateRestaurant />
+              </RestaurantCreateProtectedRoute>
+            </ProtectedRoute>
+          }
+        />
 
-        {/* default page */}
-        <Route index element={<RestaurantOwnerDashboard />} />
+        {/* restaurant owner admin panel */}
+        <Route
+          path="/restaurant/admin-panel"
+          element={
+            <ProtectedRoute>
+              <RoleProtectedRoute requiredRole="restaurantOwner">
+                <RestaurantOwnerAdminPenal />
+              </RoleProtectedRoute>
+            </ProtectedRoute>
+          }
+        >
 
-        {/* my restaurant */}
-        <Route path="my-restaurant" element={<MyRestaurant />} />
+          {/* default page */}
+          <Route index element={<RestaurantOwnerDashboard />} />
 
-        {/* food items */}
-        <Route path="food-items" element={<FoodItems />} />
+          {/* my restaurant */}
+          <Route path="my-restaurant" element={<MyRestaurant />} />
 
-        {/* orders */}
-        <Route path="orders" element={<Orders />} />
+          {/* food items */}
+          <Route path="food-items" element={<FoodItems />} />
 
-      </Route>
+          {/* orders */}
+          <Route path="orders" element={<Orders />} />
 
-      {/* non existing url 404 */}
-      <Route path="*" element={<Page404 />} />
+        </Route>
 
-    </Routes>
+        {/* non existing url 404 */}
+        <Route path="*" element={<Page404 />} />
+
+      </Routes>
+
+    </>
 
   );
 

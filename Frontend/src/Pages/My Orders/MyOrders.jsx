@@ -3,10 +3,15 @@ import { useEffect, useMemo, useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
 import { getMyOrders } from "../../features/order/orderThunk";
 import MyOrderCard from "../../Components/Ui/My Order Card/MyOrderCard";
+import { useNavigate } from "react-router-dom";
 
 import "./MyOrders.css";
+import MyOrderCardSkeleton from "../../Components/Skeletons/My Order Card Skeleton/MyOrderCardSkeleton";
 
 const MyOrders = () => {
+
+    // initialize navigate
+    const navigate = useNavigate();
 
     // initialize dispatch 
     const dispatch = useDispatch();
@@ -19,8 +24,12 @@ const MyOrders = () => {
 
     // fetch user's orders on component mount
     useEffect(() => {
-        dispatch(getMyOrders());
-    }, [dispatch]);
+
+        if (orders.length === 0) {
+            dispatch(getMyOrders());
+        }
+
+    }, [dispatch, orders.length]);
 
     // useMemo to filter orders based on active tab
     const filteredOrders = useMemo(() => {
@@ -66,6 +75,7 @@ const MyOrders = () => {
                 <button
                     type="button"
                     className="my-orders-back-button"
+                    onClick={() => navigate(-1)}
                 >
                     <FiArrowLeft />
                 </button>
@@ -106,7 +116,9 @@ const MyOrders = () => {
 
                 {ordersLoading ? (
 
-                    <p>Loading...</p>
+                    Array.from({ length: 5 }).map((_, index) => (
+                        <MyOrderCardSkeleton key={index} />
+                    ))
 
                 ) : filteredOrders.length > 0 ? (
 
@@ -115,6 +127,9 @@ const MyOrders = () => {
                         <MyOrderCard
                             key={order._id}
                             order={order}
+                            onClick={(order) => navigate(`/order/${order._id}`, {
+                                state: { order }
+                            })}
                         />
 
                     ))
@@ -131,7 +146,6 @@ const MyOrders = () => {
                 )}
 
             </section>
-
         </main>
 
     );

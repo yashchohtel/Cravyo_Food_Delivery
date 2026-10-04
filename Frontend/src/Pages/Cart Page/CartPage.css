@@ -5,22 +5,20 @@
 .cartPage {
     width: 100%;
     min-height: 100vh;
-
     background: #ffffff;
-
     color: #111;
-
-    padding-bottom: 9rem;
+    padding-bottom: 8rem;
 }
 
+.cartPage.container {
+    padding: 0;
+}
 
 .cartPage__container {
     width: 100%;
     max-width: 46rem;
-
     margin: 0 auto;
-
-    padding: 2rem 1.6rem 2rem;
+    padding: 1.4rem 1.2rem 1.5rem;
 }
 
 
@@ -31,16 +29,17 @@
 .cartPage__header {
     display: flex;
     align-items: center;
+    gap: 0.9rem;
 
-    gap: 1.2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.9rem;
 
-    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
-
 .cartPage__backButton {
-    width: 4.2rem;
-    height: 4.2rem;
+    width: 3.8rem;
+    height: 3.8rem;
 
     flex-shrink: 0;
 
@@ -52,49 +51,43 @@
     border-radius: 50%;
 
     background: #f5f6f6;
-
     color: #111;
 
-    font-size: 2rem;
+    font-size: 1.8rem;
 
     cursor: pointer;
 }
 
-
 .cartPage__headerInfo {
     flex: 1;
+    min-width: 0;
 }
-
 
 .cartPage__headerInfo h1 {
     margin: 0;
 
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
 
     line-height: 1.1;
 }
 
-
 .cartPage__headerInfo span {
     display: block;
 
-    margin-top: 0.4rem;
+    margin-top: 0.3rem;
 
     color: #777;
-
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
-
 
 .cartPage__clearButton {
     border: none;
-
     background: transparent;
 
     color: #ef3f43;
 
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
 
     cursor: pointer;
@@ -113,28 +106,26 @@
 
     width: 100%;
 
-    padding: 1rem;
+    padding: 0.8rem;
 
     border: 1px solid #eeeeee;
-    border-radius: 1.8rem;
+    border-radius: 1.3rem;
 
     background: #fafafa;
 
-    margin-bottom: 2.4rem;
+    margin-bottom: 1.8rem;
 }
 
-
 .cartPage__restaurantImageWrapper {
-    width: 8rem;
-    height: 8rem;
+    width: 6rem;
+    height: 6rem;
 
     flex-shrink: 0;
 
     overflow: hidden;
 
-    border-radius: 1.3rem;
+    border-radius: 1rem;
 }
-
 
 .cartPage__restaurantImageWrapper img {
     width: 100%;
@@ -143,68 +134,58 @@
     object-fit: cover;
 }
 
-
 .cartPage__restaurantInfo {
     min-width: 0;
 
-    padding-left: 1.2rem;
-    padding-right: 2rem;
+    padding-left: 1rem;
+    padding-right: 2.5rem;
 }
 
-
 .cartPage__restaurantInfo h2 {
-    margin: 0 0 0.7rem;
+    margin: 0 0 0.5rem;
 
     overflow: hidden;
 
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     font-weight: 700;
 
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-
 .cartPage__restaurantLocation,
 .cartPage__restaurantTime {
     display: flex;
     align-items: center;
 
-    gap: 0.5rem;
+    gap: 0.4rem;
 
-    font-size: 1.15rem;
+    font-size: 1.05rem;
 }
-
 
 .cartPage__restaurantLocation {
     color: #6f7473;
-
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
 }
-
 
 .cartPage__restaurantTime {
     color: #009b6d;
     font-weight: 600;
 }
 
-
 .cartPage__restaurantLocation svg,
 .cartPage__restaurantTime svg {
     flex-shrink: 0;
-
-    font-size: 1.5rem;
+    font-size: 1.35rem;
 }
-
 
 .cartPage__restaurantArrow {
     position: absolute;
 
-    right: 1.1rem;
+    right: 0.9rem;
 
     color: #222;
-
-    font-size: 2rem;
+    font-size: 1.7rem;
 }
 
 
@@ -216,103 +197,93 @@
     display: flex;
     align-items: center;
 
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.4rem;
 }
-
 
 .cartPage__itemsHeader h2 {
     margin: 0;
 
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
 }
 
-
 .cartPage__itemsHeader span {
-    width: 3rem;
-    height: 3rem;
+    width: 2.6rem;
+    height: 2.6rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    margin-left: 0.8rem;
+    margin-left: 0.7rem;
 
     border-radius: 50%;
 
     background: #eaf8f3;
-
     color: #009b6d;
 
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 700;
 }
 
 
 /* ================================
-   FOOD ITEM
+   FOOD ITEMS
 ================================ */
 
 .cartPage__items {
     width: 100%;
 }
 
-
 .cartPage__item {
     position: relative;
 
     display: flex;
 
-    min-height: 11rem;
+    min-height: 9rem;
 
-    padding: 1.4rem 0;
+    padding: 1rem 0;
 
     border-bottom: 1px solid #eeeeee;
 }
 
-
 .cartPage__foodImage {
-    width: 8.5rem;
-    height: 8.5rem;
+    width: 6rem;
+    height: 6rem;
 
     flex-shrink: 0;
 
     object-fit: cover;
 
-    border-radius: 1.4rem;
+    border-radius: 1rem;
 }
-
 
 .cartPage__foodContent {
     min-width: 0;
 
     flex: 1;
 
-    padding: 0.2rem 7rem 0 1.2rem;
+    padding: 0.1rem 6.2rem 0 2rem;
 }
-
 
 .cartPage__foodType {
     display: flex;
     align-items: center;
 
-    gap: 0.4rem;
+    gap: 0.3rem;
 
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
 
-    font-size: 1.05rem;
+    font-size: 0.95rem;
 }
-
 
 .cartPage__foodType--veg {
     color: #009b6d;
 }
 
-
 .cartPage__foodType--nonVeg {
     color: #ef4147;
 }
-
 
 .cartPage__foodContent h3 {
     margin: 0;
@@ -321,24 +292,23 @@
 
     color: #151515;
 
-    font-size: 1.45rem;
+    font-size: 1.3rem;
     font-weight: 600;
 
-    line-height: 1.3;
+    line-height: 1.25;
 
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-
 .cartPage__foodContent strong {
     display: block;
 
-    margin-top: 0.7rem;
+    margin-top: 0.5rem;
 
     color: #111;
 
-    font-size: 1.4rem;
+    font-size: 1.25rem;
 }
 
 
@@ -349,11 +319,11 @@
 .cartPage__deleteButton {
     position: absolute;
 
-    top: 1.2rem;
+    top: 0.9rem;
     right: 0;
 
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 2.9rem;
+    height: 2.9rem;
 
     display: flex;
     align-items: center;
@@ -363,10 +333,9 @@
     border-radius: 50%;
 
     background: #fff1f1;
-
     color: #ef4147;
 
-    font-size: 1.55rem;
+    font-size: 1.35rem;
 
     cursor: pointer;
 }
@@ -380,24 +349,23 @@
     position: absolute;
 
     right: 0;
-    bottom: 1.3rem;
+    bottom: 0.9rem;
 
     display: flex;
     align-items: center;
 
-    height: 3.8rem;
+    height: 3.2rem;
 
     overflow: hidden;
 
     border: 1px solid #d9ebe5;
-    border-radius: 1.2rem;
+    border-radius: 0.9rem;
 
     background: #f4fbf8;
 }
 
-
 .cartPage__quantity button {
-    width: 3.4rem;
+    width: 2.9rem;
     height: 100%;
 
     display: flex;
@@ -407,17 +375,15 @@
     border: none;
 
     background: transparent;
-
     color: #009b6d;
 
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 
     cursor: pointer;
 }
 
-
 .cartPage__quantity span {
-    min-width: 3rem;
+    min-width: 2.6rem;
     height: 100%;
 
     display: flex;
@@ -425,10 +391,9 @@
     justify-content: center;
 
     background: #ffffff;
-
     color: #111;
 
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
 }
 
@@ -443,17 +408,16 @@
     display: flex;
     align-items: center;
 
-    gap: 1rem;
+    gap: 0.8rem;
 
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
 
-    padding: 1.2rem;
+    padding: 1rem;
 
     border: 1px solid #d8eee7;
-    border-radius: 1.5rem;
+    border-radius: 1.2rem;
 
     background: #f4fbf8;
-
     color: #008f68;
 
     text-align: left;
@@ -461,10 +425,9 @@
     cursor: pointer;
 }
 
-
 .cartPage__addMoreIcon {
-    width: 3.8rem;
-    height: 3.8rem;
+    width: 3.4rem;
+    height: 3.4rem;
 
     flex-shrink: 0;
 
@@ -476,9 +439,8 @@
 
     background: #dff5ed;
 
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
-
 
 .cartPage__addMore div {
     flex: 1;
@@ -487,23 +449,20 @@
     flex-direction: column;
 }
 
-
 .cartPage__addMore strong {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
-
 .cartPage__addMore small {
-    margin-top: 0.2rem;
+    margin-top: 0.15rem;
 
     color: #7b8581;
 
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
-
 .cartPage__addMore > svg {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 
@@ -520,15 +479,14 @@
 
     z-index: 50;
 
-    padding: 0.9rem 1.2rem;
+    padding: 0.7rem 1rem;
 
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.97);
 
     border-top: 1px solid #eeeeee;
 
     backdrop-filter: blur(10px);
 }
-
 
 .cartPage__checkoutInner {
     width: 100%;
@@ -537,63 +495,56 @@
     display: flex;
     align-items: center;
 
-    gap: 1.2rem;
+    gap: 0.9rem;
 
     margin: 0 auto;
 }
 
-
 .cartPage__total {
-    min-width: 7rem;
+    min-width: 6rem;
 
     display: flex;
     flex-direction: column;
 }
 
-
 .cartPage__total span {
     color: #7c8280;
-
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
-
 .cartPage__total strong {
-    margin-top: 0.2rem;
+    margin-top: 0.1rem;
 
     color: #111;
 
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
-
 
 .cartPage__checkoutButton {
     flex: 1;
 
-    height: 5rem;
+    height: 4.4rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    gap: 0.5rem;
+    gap: 0.4rem;
 
     border: none;
-    border-radius: 1.3rem;
+    border-radius: 1.1rem;
 
     background: #009b6d;
-
     color: #ffffff;
 
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
 
     cursor: pointer;
 }
 
-
 .cartPage__checkoutButton svg {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 
@@ -614,47 +565,43 @@
     text-align: center;
 }
 
-
 .cartPage__emptyIcon {
-    width: 9rem;
-    height: 9rem;
+    width: 8rem;
+    height: 8rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 
     border-radius: 50%;
 
     background: #eaf8f3;
 
-    font-size: 4rem;
+    font-size: 3.5rem;
 }
-
 
 .cartPage__empty h2 {
     margin: 0;
 
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
-
 
 .cartPage__empty p {
     max-width: 27rem;
 
-    margin: 0.8rem 0 2rem;
+    margin: 0.7rem 0 1.8rem;
 
     color: #737a78;
 
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 
     line-height: 1.5;
 }
 
-
 .cartPage__exploreButton {
-    height: 5rem;
+    height: 4.5rem;
 
     display: flex;
     align-items: center;
@@ -662,29 +609,27 @@
 
     gap: 0.5rem;
 
-    padding: 0 2.2rem;
+    padding: 0 2rem;
 
     border: none;
-    border-radius: 1.3rem;
+    border-radius: 1.2rem;
 
     background: #009b6d;
-
     color: #ffffff;
 
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
 
     cursor: pointer;
 }
 
-
 .cartPage__exploreButton svg {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 
 /* ================================
-   RESPONSIVE
+   TABLET / DESKTOP
 ================================ */
 
 @media (min-width: 600px) {
@@ -692,7 +637,6 @@
     .cartPage {
         background: #f7f8f7;
     }
-
 
     .cartPage__container {
         margin-top: 2rem;
@@ -707,48 +651,62 @@
 }
 
 
+/* ================================
+   SMALL PHONES
+================================ */
+
 @media (max-width: 380px) {
 
     .cartPage__container {
-        padding-left: 1.2rem;
-        padding-right: 1.2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
+    .cartPage__backButton {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
 
     .cartPage__restaurantImageWrapper {
-        width: 7.2rem;
-        height: 7.2rem;
+        width: 6rem;
+        height: 6rem;
     }
 
+    .cartPage__restaurantInfo {
+        padding-left: 0.8rem;
+    }
+
+    .cartPage__restaurantInfo h2 {
+        font-size: 1.4rem;
+    }
 
     .cartPage__foodImage {
-        width: 7.8rem;
-        height: 7.8rem;
+        width: 6rem;
+        height: 6rem;
     }
-
 
     .cartPage__foodContent {
-        padding-right: 6.5rem;
+        padding-right: 5.8rem;
     }
-
 
     .cartPage__foodContent h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
+    .cartPage__quantity {
+        height: 3rem;
+    }
 
     .cartPage__quantity button {
-        width: 3rem;
+        width: 2.7rem;
     }
-
 
     .cartPage__quantity span {
-        min-width: 2.7rem;
+        min-width: 2.4rem;
     }
 
-
     .cartPage__checkoutButton {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
     }
 
 }

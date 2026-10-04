@@ -126,6 +126,15 @@ export const createOrder = async (req, res, next) => {
         status: "pending"
     });
 
+    await order.populate({
+        path: "restaurant.restaurantId",
+        select: "name image owner",
+        populate: {
+            path: "owner",
+            select: "fullName email mobileNumber"
+        }
+    });
+
     // Update total orders for each food item
     for (const item of orderItems) {
 

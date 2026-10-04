@@ -22,6 +22,8 @@ import RestaurantsNearYou from '../../Components/Ui/Restaurants Near You/Restaur
 import { getNearbyRestaurants } from '../../features/restaurant dashboard/restaurant/restaurantThunk.js';
 import PopularFoodNearYou from '../../Components/Ui/Popular Food Near You/PopularFoodNearYou.jsx';
 import { getPopularFoodNearYou } from '../../features/restaurant dashboard/foodItems/foodItemThunk.js';
+import { getMyOrders } from '../../features/order/orderThunk.js';
+import ActiveOrderFloatingBar from '../../Components/Ui/Active Order Floating Bar/ActiveOrderFloatingBar.jsx';
 
 const Home = () => {
 
@@ -32,9 +34,10 @@ const Home = () => {
 
   // Get location state from Redux store
   const { isLocationErrorDialogOpen, locationError, isLocationLoading, userCurrentLocation } = useSelector((state) => state.location);
-  const { loading: bannerLoading } = useSelector((state) => state.promotionBanners);
-  const { loading: categoryLoading } = useSelector((state) => state.foodCategories);
+  const { banners, loading: bannerLoading } = useSelector((state) => state.promotionBanners);
+  const { categories, loading: categoryLoading } = useSelector((state) => state.foodCategories);
   const { popularFood } = useSelector((state) => state.foodItem);
+  const { orders } = useSelector((state) => state.order);
 
   /* FOOD PREFRENCE ↓ -------------------------------------- */
 
@@ -79,9 +82,16 @@ const Home = () => {
 
   // effect to get banner and food category
   useEffect(() => {
-    dispatch(getPromotionBanners());
-    dispatch(getFoodCategories());
-  }, [dispatch]);
+
+    if (banners.length === 0) {
+      dispatch(getPromotionBanners());
+    }
+
+    if (categories.length === 0) {
+      dispatch(getFoodCategories());
+    }
+
+  }, [dispatch, banners.length, categories.length]);
 
   // stop home scroll if 
   useEffect(() => {
@@ -118,6 +128,13 @@ const Home = () => {
     }
 
   }, [userCurrentLocation, dispatch, popularFood]);
+
+  // dispatch get my orders
+  useEffect(() => {
+    if (orders.length === 0) {
+      dispatch(getMyOrders());
+    }
+  }, [dispatch, orders.length]);
 
   // If the location is still loading, show the LocationLoadingSplash component
   if (isLocationLoading) {
@@ -198,6 +215,9 @@ const Home = () => {
 
         {/* restaurent near you  */}
         <RestaurantsNearYou />
+
+        {/* active order floatins bar */}
+        <ActiveOrderFloatingBar />
 
       </div>
 

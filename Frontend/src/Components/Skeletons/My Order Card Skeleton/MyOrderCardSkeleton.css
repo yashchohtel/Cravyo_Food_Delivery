@@ -1,0 +1,204 @@
+.my-order-card-skeleton {
+    width: 100%;
+    padding: 1.8rem;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-mild);
+}
+
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background: #e9e9e9;
+    border-radius: 0.6rem;
+}
+
+.skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.6),
+            transparent);
+    animation: skeleton-shimmer 1.4s infinite;
+}
+
+@keyframes skeleton-shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Header */
+
+.skeleton-order-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.skeleton-restaurant-info {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.skeleton-restaurant-image {
+    width: 6.2rem;
+    height: 6.2rem;
+    flex-shrink: 0;
+    border-radius: 1rem;
+}
+
+.skeleton-restaurant-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.skeleton-restaurant-name {
+    width: 11rem;
+    height: 1.8rem;
+}
+
+.skeleton-order-date {
+    width: 13rem;
+    height: 1.3rem;
+}
+
+.skeleton-order-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.8rem;
+}
+
+.skeleton-price {
+    width: 5rem;
+    height: 2rem;
+}
+
+.skeleton-payment {
+    width: 4.8rem;
+    height: 2.5rem;
+    border-radius: 2rem;
+}
+
+/* Progress */
+
+.skeleton-order-progress {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 2.5rem 2rem 2rem;
+}
+
+.skeleton-progress-line {
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    right: 2rem;
+    height: 0.3rem;
+    background: #e9e9e9;
+}
+
+.skeleton-progress-step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.skeleton-progress-circle {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+
+.skeleton-progress-label {
+    width: 5.5rem;
+    height: 1.2rem;
+}
+
+/* Status */
+
+.skeleton-status-banner {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.6rem;
+    background: #f1f1f1;
+    border-radius: 1.2rem;
+}
+
+.skeleton-status-icon {
+    width: 4rem;
+    height: 4rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+
+.skeleton-status-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.skeleton-status-title {
+    width: 16rem;
+    height: 1.7rem;
+}
+
+.skeleton-status-description {
+    width: 19rem;
+    height: 1.3rem;
+}
+
+.skeleton-status-description.short {
+    width: 13rem;
+}
+
+.skeleton-status-arrow {
+    width: 2.2rem;
+    height: 1.5rem;
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+    .my-order-card-skeleton {
+        padding: 1.6rem;
+    }
+
+    .skeleton-restaurant-image {
+        width: 5.8rem;
+        height: 5.8rem;
+    }
+
+    .skeleton-restaurant-name {
+        width: 9rem;
+    }
+
+    .skeleton-order-date {
+        width: 11rem;
+    }
+
+    .skeleton-progress-label {
+        width: 4.5rem;
+    }
+
+    .skeleton-status-title {
+        width: 13rem;
+    }
+
+    .skeleton-status-description {
+        width: 15rem;
+    }
+}
