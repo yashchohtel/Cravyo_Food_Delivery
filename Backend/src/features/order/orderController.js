@@ -2,6 +2,7 @@ import FoodItem from "../../models/food.item.model.js";
 import Order from "../../models/order.modal.js";
 import Shop from "../../models/shop.model.js";
 import ErrorHandler from "../../utils/errorHandler.js";
+import { createDeliveryAssignment } from "../../utils/utilityFunctions.js";
 
 // Create Order
 export const createOrder = async (req, res, next) => {
@@ -243,13 +244,21 @@ export const updateOrderStatus = async (req, res, next) => {
     // Update the order status
     order.status = status;
 
+    // Create delivery assignment when order goes out for delivery
+    if (status === "out_for_delivery" && !order.deliveryAssignment) {
+
+        await createDeliveryAssignment(
+            order,
+            restaurant
+        );
+
+    }
+
     // Populate the user details for the order
     await order.populate("user", "fullName email mobileNumber");
 
     // Save the updated order to the database
     await order.save();
-
-    // 
 
     // Return the updated order details in the response
     return res.status(200).json({
