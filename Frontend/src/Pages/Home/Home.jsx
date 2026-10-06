@@ -30,7 +30,7 @@ const Home = () => {
   // initilize useDispatch
   const dispatch = useDispatch();
 
-  /* -------------------------------------- */
+  /* ------------------------------------------------------ */
 
   // Get location state from Redux store
   const { isLocationErrorDialogOpen, locationError, isLocationLoading, userCurrentLocation } = useSelector((state) => state.location);
@@ -49,7 +49,7 @@ const Home = () => {
     setUserFoodPreference   // update food preference
   } = useFoodPreference();
 
-  /* FOOD CATEGORY ↓ -------------------------------------------- */
+  /* FOOD CATEGORY ↓ ----------------------------------------- */
 
   // get elements of use food categoires hook
   const {

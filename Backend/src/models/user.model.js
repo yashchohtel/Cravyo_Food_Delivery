@@ -86,7 +86,23 @@ const userSchema = new mongoose.Schema({
         default: ""
     },
 
+    // user location coordinates
+    location: {
+        type: {
+            type: String,
+            enum: ["Point"],
+            default: "Point"
+        },
+        coordinates: {
+            type: [Number],
+            default: [0, 0]
+        }
+    }
+
 }, { timestamps: true })
+
+// Create a geospatial index on the location field for efficient location-based queries
+userSchema.index({ location: "2dsphere" });
 
 // user schema index or mobie
 userSchema.index(

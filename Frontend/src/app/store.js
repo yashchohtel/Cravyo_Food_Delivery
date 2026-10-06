@@ -7,6 +7,7 @@ import restaurantReducer from "../features/restaurant dashboard/restaurant/resta
 import foodItemReducer from '../features/restaurant dashboard/foodItems/foodItemSlice'
 import cartReducer from "../features/cart/cartSlice";
 import orderReducer from "../features/order/orderSlice";
+import userReducer from "../features/user/userSlice";
 
 // configure store with 
 const store = configureStore({
@@ -37,6 +38,9 @@ const store = configureStore({
 
         // order reducer
         order: orderReducer,
+
+        // user reducer
+        user: userReducer,
 
     },
 

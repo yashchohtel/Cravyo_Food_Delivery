@@ -5,6 +5,7 @@ import AppRoutes from "./routes/AppRoutes"
 import { useEffect, useState } from "react";
 import { loadUser } from "./features/auth/authThunk";
 import AppLoadingSplash from "./Components/Splash Screens/App Loading Splash/AppLoadingSplash";
+import useUpdateLocation from "./hooks/User Hooks/useUpdateLocation";
 
 function App() {
 
@@ -37,6 +38,9 @@ function App() {
     return () => clearTimeout(timer);
 
   }, [dispatch]);
+
+  // custom hook to update user location in the backend
+  useUpdateLocation()
 
   // check if current route belongs to admin section
   const isAdminRoute = location.pathname.startsWith('/admin');

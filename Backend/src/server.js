@@ -10,6 +10,7 @@ import platformActionRouter from "./features/platform/platformActionRoutes.js"; 
 import shopRouter from "./features/shop/shopRoutes.js";
 import foodItemRouter from "./features/foodItem/foodItemRoutes.js";
 import orderRouter from "./features/order/orderRoute.js";
+import userRouter from "./features/user/userRoutes.js";
 
 // -------------------- CONFIGURATION -------------------- //
 
@@ -48,6 +49,9 @@ connectDB() // Call the function to connect to MongoDB
 
 // authentication routes `/api/auth` - Use authRouter for handling auth-related routes
 app.use("/api/auth", authRouter);
+
+// user routes `/api/user` - Use userRouter for handling user-related routes
+app.use("/api/user", userRouter);
 
 // platform action routes `/api/platformAction` - use platformActionRouter for handling platform-related routes
 app.use("/api/platformAction", platformActionRouter);
