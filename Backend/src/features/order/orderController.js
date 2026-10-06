@@ -203,8 +203,10 @@ export const getRestaurantOrders = async (req, res, next) => {
 // Update restaurant order status
 export const updateOrderStatus = async (req, res, next) => {
 
+    // Extract the new status from the request body
     const { status } = req.body;
 
+    // Define allowed statuses for validation
     const allowedStatuses = [
         "pending",
         "confirmed",
@@ -214,31 +216,42 @@ export const updateOrderStatus = async (req, res, next) => {
         "cancelled"
     ];
 
+    // Validate the provided status
     if (!allowedStatuses.includes(status)) {
         return next(new ErrorHandler("Invalid order status", 400));
     }
 
+    // Find the restaurant owned by the logged-in user
     const restaurant = await Shop.findOne({ owner: req.user._id }).select("_id");
 
+    // If the restaurant is not found, return an error
     if (!restaurant) {
         return next(new ErrorHandler("Restaurant not found", 404));
     }
 
+    // Find the order by ID and ensure it belongs to the restaurant
     const order = await Order.findOne({
         _id: req.params.id,
         "restaurant.restaurantId": restaurant._id
     });
 
+    // If the order is not found, return an error
     if (!order) {
         return next(new ErrorHandler("Order not found", 404));
     }
 
+    // Update the order status
     order.status = status;
 
+    // Populate the user details for the order
     await order.populate("user", "fullName email mobileNumber");
 
+    // Save the updated order to the database
     await order.save();
 
+    // 
+
+    // Return the updated order details in the response
     return res.status(200).json({
         success: true,
         message: "Order status updated successfully",
