@@ -247,10 +247,8 @@ export const updateOrderStatus = async (req, res, next) => {
     // Create delivery assignment when order goes out for delivery
     if (status === "out_for_delivery" && !order.deliveryAssignment) {
 
-        await createDeliveryAssignment(
-            order,
-            restaurant
-        );
+        // create delivery assignment utility funciton
+        await createDeliveryAssignment(order, restaurant);
 
     }
 
@@ -268,4 +266,3 @@ export const updateOrderStatus = async (req, res, next) => {
     });
 
 };
-

@@ -1,5 +1,5 @@
-// import DeliveryAssignment from "../models/deliveryAssignment.modal.js";
-// import User from "../models/user.model.js";
+import DeliveryAssignment from "../models/deliveryAssignment.modal.js";
+import User from "../models/user.model.js";
 
 // Calculate distance between two locations
 export const calculateDistance = (lat1, lon1, lat2, lon2) => {
@@ -70,4 +70,8 @@ export const createDeliveryAssignment = async (order, restaurant, next) => {
     await order.save();
 
     return assignment;
+
+
+
+    
 };

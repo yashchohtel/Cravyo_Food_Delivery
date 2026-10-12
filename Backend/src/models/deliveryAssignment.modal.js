@@ -56,6 +56,5 @@ const deliveryAssignmentSchema = new mongoose.Schema({
 // create a model for the delivery assignment schema
 const DeliveryAssignment = mongoose.model("DeliveryAssignment", deliveryAssignmentSchema);
 
-
 // export the model
 export default DeliveryAssignment;

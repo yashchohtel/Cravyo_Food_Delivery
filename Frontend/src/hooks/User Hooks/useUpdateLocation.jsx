@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateUserLocation } from "../../features/user/userThunk";
 
-const useUpdateLocation = () => {
+const useUpdateLocation = () => { 
 
     // console.log("useUpdateLocation hook initialized");
 
