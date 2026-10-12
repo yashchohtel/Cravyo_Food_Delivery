@@ -71,7 +71,4 @@ export const createDeliveryAssignment = async (order, restaurant, next) => {
 
     return assignment;
 
-
-
-    
 };
