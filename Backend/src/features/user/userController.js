@@ -7,7 +7,7 @@ export const updateUserLocation = async (req, res, next) => {
     // Extract location details
     const { latitude, longitude } = req.body;
 
-    console.log("Received location update request:", { latitude, longitude });
+    // console.log("Received location update request:", { latitude, longitude });
 
     // Validate location details
     if (latitude === undefined || longitude === undefined) {

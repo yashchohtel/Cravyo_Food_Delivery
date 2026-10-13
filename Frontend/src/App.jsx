@@ -18,10 +18,8 @@ function App() {
   /* -------------------------------------- */
 
   // Get auth state from Redux store
-  const { authLoading, user } = useSelector((state) => state.auth);
+  const { authLoading } = useSelector((state) => state.auth);
 
-  console.log(user);
-  
   /* -------------------------------------- */
 
   // State to track if the minimum time has passed

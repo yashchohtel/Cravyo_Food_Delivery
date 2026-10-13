@@ -2,6 +2,7 @@
     width: 100%;
     min-height: 100vh;
     background: var(--background-color);
+    padding-bottom: 5rem !important;
 }
 
 .order-details-page.container{

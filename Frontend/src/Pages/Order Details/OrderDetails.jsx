@@ -1,16 +1,39 @@
-import { FiArrowLeft, FiCheck, FiCheckCircle, FiClock, FiMapPin, FiPackage, FiTruck, FiXCircle } from "react-icons/fi";
+import { FiArrowLeft, FiCheck, FiCheckCircle, FiClock, FiMapPin, FiPackage, FiTruck, FiXCircle} from "react-icons/fi";
 import "./OrderDetails.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getMyOrders } from "../../features/order/orderThunk";
 
 const OrderDetails = () => {
 
     const navigate = useNavigate();
-
     const { state } = useLocation();
+    const { orderId } = useParams();
 
-    const order = state?.order;
+    const dispatch = useDispatch();
 
-    if (!order) return null;
+    const { orders, ordersLoading } = useSelector(
+        (state) => state.order
+    );
+
+    // Fetch latest orders when Order Details page opens
+    useEffect(() => {
+        dispatch(getMyOrders());
+    }, [dispatch, orderId]);
+
+    // Find the latest order from Redux
+    const order = orders.find(
+        (item) => item._id === orderId
+    ) || state?.order;
+
+    if (!order && ordersLoading) {
+        return <p>Loading order details...</p>;
+    }
+
+    if (!order) {
+        return <p>Order not found.</p>;
+    }
 
     const isCancelled = order.status === "cancelled";
     const isDelivered = order.status === "delivered";
@@ -102,7 +125,6 @@ const OrderDetails = () => {
                 description: "Your order is on the way.",
                 icon: <FiTruck />
             }
-
         };
 
         return content[order.status];
@@ -146,12 +168,10 @@ const OrderDetails = () => {
             <section className="order-details-restaurant">
 
                 <div className="order-details-restaurant-image">
-
                     <img
                         src={order.restaurant?.restaurantId?.image}
                         alt={order.restaurant?.restaurantName}
                     />
-
                 </div>
 
                 <div className="order-details-restaurant-info">
@@ -182,17 +202,17 @@ const OrderDetails = () => {
             >
 
                 <div className="order-details-status-icon">
-                    {statusContent.icon}
+                    {statusContent?.icon}
                 </div>
 
                 <div>
 
                     <h3>
-                        {statusContent.title}
+                        {statusContent?.title}
                     </h3>
 
                     <p>
-                        {statusContent.description}
+                        {statusContent?.description}
                     </p>
 
                     <span>
@@ -235,12 +255,13 @@ const OrderDetails = () => {
                                 className="order-details-progress-step"
                                 key={status.value}
                             >
+
                                 <div
                                     className={`
-                            order-details-progress-circle
-                            ${completed ? "completed" : ""}
-                            ${current ? "current" : ""}
-                        `}
+                                        order-details-progress-circle
+                                        ${completed ? "completed" : ""}
+                                        ${current ? "current" : ""}
+                                    `}
                                 >
                                     {completed
                                         ? <FiCheck />
@@ -252,11 +273,12 @@ const OrderDetails = () => {
                                 {index < statuses.length - 1 && (
                                     <div
                                         className={`
-                                order-details-progress-line
-                                ${completed ? "completed" : ""}
-                            `}
+                                            order-details-progress-line
+                                            ${completed ? "completed" : ""}
+                                        `}
                                     />
                                 )}
+
                             </div>
                         );
                     })}
@@ -265,33 +287,34 @@ const OrderDetails = () => {
             )}
 
             {/* Preparing Information */}
-            {!isDelivered && !isCancelled && order.status !== "out_for_delivery" && (
+            {!isDelivered &&
+                !isCancelled &&
+                order.status !== "out_for_delivery" && (
 
-                <section className="order-details-info-banner">
+                    <section className="order-details-info-banner">
 
-                    <div className="order-details-info-icon">
-                        <FiPackage />
-                    </div>
+                        <div className="order-details-info-icon">
+                            <FiPackage />
+                        </div>
 
-                    <div>
+                        <div>
 
-                        <strong>
-                            {order.status === "preparing"
-                                ? "The restaurant is preparing your food"
-                                : "Your order is being processed"}
-                        </strong>
+                            <strong>
+                                {order.status === "preparing"
+                                    ? "The restaurant is preparing your food"
+                                    : "Your order is being processed"}
+                            </strong>
 
-                        <p>
-                            {order.status === "preparing"
-                                ? "Your delicious food is being prepared with care."
-                                : "We'll update you when your order moves to the next step."}
-                        </p>
+                            <p>
+                                {order.status === "preparing"
+                                    ? "Your delicious food is being prepared with care."
+                                    : "We'll update you when your order moves to the next step."}
+                            </p>
 
-                    </div>
+                        </div>
 
-                </section>
-
-            )}
+                    </section>
+                )}
 
             {/* Order Items */}
             <section className="order-details-card">
@@ -324,13 +347,9 @@ const OrderDetails = () => {
 
                             <div className="order-details-item-info">
 
-                                <h3>
-                                    {item.name}
-                                </h3>
+                                <h3>{item.name}</h3>
 
-                                <p>
-                                    × {item.quantity}
-                                </p>
+                                <p>× {item.quantity}</p>
 
                             </div>
 
@@ -349,9 +368,7 @@ const OrderDetails = () => {
             {/* Payment Summary */}
             <section className="order-details-card">
 
-                <h2>
-                    Payment Summary
-                </h2>
+                <h2>Payment Summary</h2>
 
                 <div className="order-details-price-row">
                     <span>Item Total</span>
@@ -443,7 +460,6 @@ const OrderDetails = () => {
             )}
 
         </main>
-
     );
 };
 

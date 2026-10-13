@@ -35,14 +35,17 @@ export const createDeliveryAssignment = async (order, restaurant, next) => {
             $near: {
                 $geometry: {
                     type: "Point",
-                    coordinates: restaurant.location.coordinates
+                    coordinates: [
+                        restaurant.address.longitude,
+                        restaurant.address.latitude
+                    ]
                 },
                 $maxDistance: 5000
             }
         }
     }).select("_id");
 
-    log("Nearby Delivery Boys:", deliveryBoys);
+    console.log("Nearby Delivery Boys:", deliveryBoys);
 
     // If no delivery boy is available
     if (deliveryBoys.length === 0) {

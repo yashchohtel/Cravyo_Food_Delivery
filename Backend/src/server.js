@@ -11,6 +11,7 @@ import shopRouter from "./features/shop/shopRoutes.js";
 import foodItemRouter from "./features/foodItem/foodItemRoutes.js";
 import orderRouter from "./features/order/orderRoute.js";
 import userRouter from "./features/user/userRoutes.js";
+import deliveryAssignmentRouter from "./features/delivery Assignment/deliveryAssignmentRoute.js";
 
 // -------------------- CONFIGURATION -------------------- //
 
@@ -64,6 +65,9 @@ app.use("/api/foodItem", foodItemRouter);
 
 // order Router `/api/order` - Use orderRouter for handling order related routes
 app.use("/api/order", orderRouter);
+
+// Delivery Assignment Router `/api/deliveryAssignment` - Use deliveryAssignmentRouter for handling delivery assignment related routes
+app.use("/api/deliveryAssignment", deliveryAssignmentRouter);
 
 // -------------------- ERROR MIDDLEWARES -------------------- //
 

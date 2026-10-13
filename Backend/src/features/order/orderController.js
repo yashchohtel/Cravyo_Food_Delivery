@@ -223,7 +223,9 @@ export const updateOrderStatus = async (req, res, next) => {
     }
 
     // Find the restaurant owned by the logged-in user
-    const restaurant = await Shop.findOne({ owner: req.user._id }).select("_id");
+    const restaurant = await Shop.findOne({
+        owner: req.user._id
+    }).select("_id address.latitude address.longitude");
 
     // If the restaurant is not found, return an error
     if (!restaurant) {
