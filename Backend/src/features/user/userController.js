@@ -42,3 +42,34 @@ export const updateUserLocation = async (req, res, next) => {
     });
 
 };
+
+
+export const updateDeliveryBoyStatus = async (req, res, next) => {
+    try {
+        const { isDeliveryBoyActive } = req.body;
+
+        // Validate delivery boy status
+        if (typeof isDeliveryBoyActive !== "boolean") {
+            return next(new ErrorHandler("Invalid delivery boy status", 400));
+        }
+
+        // Update delivery boy status
+        const user = await User.findByIdAndUpdate(
+            req.user._id,
+            { isDeliveryBoyActive },
+            { new: true, runValidators: true }
+        ).select("isDeliveryBoyActive");
+
+        if (!user) {
+            return next(new ErrorHandler("User not found", 404));
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: `You are now ${isDeliveryBoyActive ? "online" : "offline"}`,
+            isDeliveryBoyActive: user.isDeliveryBoyActive
+        });
+    } catch (error) {
+        return next(error);
+    }
+};

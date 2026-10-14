@@ -21,7 +21,6 @@ export const getAvailableAssignments = async (req, res, next) => {
 
 };
 
-
 // Accept a delivery assignment using transaction
 export const acceptDeliveryAssignment = async (req, res, next) => {
 

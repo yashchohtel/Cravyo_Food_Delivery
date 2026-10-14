@@ -97,7 +97,13 @@ const userSchema = new mongoose.Schema({
             type: [Number],
             default: [0, 0]
         }
-    }
+    },
+
+    // is delivery boy active status
+    isDeliveryBoyActive: {
+        type: Boolean,
+        default: false
+    },
 
 }, { timestamps: true })
 

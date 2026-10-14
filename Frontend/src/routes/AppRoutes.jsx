@@ -5,7 +5,6 @@ import PublicRoute from "./PublicRoute";
 import ProtectedRoute from "./ProtectedRoute";
 import ForgotPassword from "../Pages/Forgot Password/ForgotPassword";
 import ResetPassword from "../Pages/Reset Password/ResetPassword";
-import DeliveryBoy from "../Pages/Delivery Boy/DeliveryBoy";
 import RoleProtectedRoute from "./RoleProtectedRoute";
 import Page404 from "../Pages/Page404/Page404";
 import LocationPage from "../Pages/Location Page/LocationPage";
@@ -30,6 +29,12 @@ import OrderSuccess from "../Pages/Order Success/OrderSuccess.jsx";
 import MyOrders from "../Pages/My Orders/MyOrders.jsx";
 import OrderDetails from "../Pages/Order Details/OrderDetails.jsx";
 import ScrollToTop from "./ScrollToTop.jsx";
+import DeliveryBoyDashboard from "../Pages/Delivery Boy Pages/Delivery Boy Dashboard/DeliveryBoyDashboard.jsx";
+import DeliveryBoyOrders from "../Pages/Delivery Boy Pages/Delivery Boy Orders/DeliveryBoyOrders.jsx";
+import DeliveryBoyEarnings from "../Pages/Delivery Boy Pages/Delivery Boy Earnings/DeliveryBoyEarnings.jsx";
+import DeliveryBoyProfile from "../Pages/Delivery Boy Pages/Delivery Boy Profile/DeliveryBoyProfile.jsx";
+import DeliveryOrderDetails from "../Pages/Delivery Boy Pages/Delivery Order Details/DeliveryOrderDetails.jsx";
+import DeliveryBoy from "../Pages/Delivery Boy Pages/Delivery Boy/DeliveryBoy.jsx";
 
 function AppRoutes() {
 
@@ -42,6 +47,9 @@ function AppRoutes() {
 
       {/* routes for the app */}
       <Routes>
+
+        {/* non existing url 404 */}
+        <Route path="*" element={<Page404 />} />
 
         {/* auth route */}
         <Route path="/" element={<PublicRoute> <Auth /> </PublicRoute>} />
@@ -85,12 +93,6 @@ function AppRoutes() {
         {/* order details page */}
         <Route path="/order/:orderId" element={<ProtectedRoute> <OrderDetails /> </ProtectedRoute>} />
 
-        {/* delivery route */}
-        <Route path="/delivery-boy" element={
-          <ProtectedRoute>
-            <RoleProtectedRoute requiredRole="deliveryBoy"> <DeliveryBoy /> </RoleProtectedRoute>
-          </ProtectedRoute>
-        } />
 
         {/* admin panel page */}
         <Route path="/admin"
@@ -112,9 +114,9 @@ function AppRoutes() {
 
         </Route>
 
+
         {/* restaurant create route */}
-        <Route
-          path="/restaurant/create"
+        <Route path="/restaurant/create"
           element={
             <ProtectedRoute>
               <RestaurantCreateProtectedRoute>
@@ -124,9 +126,9 @@ function AppRoutes() {
           }
         />
 
+
         {/* restaurant owner admin panel */}
-        <Route
-          path="/restaurant/admin-panel"
+        <Route path="/restaurant/admin-panel"
           element={
             <ProtectedRoute>
               <RoleProtectedRoute requiredRole="restaurantOwner">
@@ -150,8 +152,34 @@ function AppRoutes() {
 
         </Route>
 
-        {/* non existing url 404 */}
-        <Route path="*" element={<Page404 />} />
+
+        {/* Delivery Boy Routes */}
+        <Route path="/delivery-boy"
+          element={
+            <ProtectedRoute>
+              <RoleProtectedRoute requiredRole="deliveryBoy">
+                <DeliveryBoy />
+              </RoleProtectedRoute>
+            </ProtectedRoute>
+          }
+        >
+
+          {/* Dashboard */}
+          <Route index element={<DeliveryBoyDashboard />} />
+
+          {/* Delivery Boy Orders */}
+          <Route path="my-orders" element={<DeliveryBoyOrders />} />
+
+          {/* Earnings */}
+          <Route path="earnings" element={<DeliveryBoyEarnings />} />
+
+          {/* Profile */}
+          <Route path="profile" element={<DeliveryBoyProfile />} />
+
+          {/* Order Details */}
+          <Route path="order/:orderId" element={<DeliveryOrderDetails />} />
+
+        </Route>
 
       </Routes>
 

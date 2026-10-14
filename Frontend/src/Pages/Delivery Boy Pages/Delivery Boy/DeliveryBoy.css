@@ -1,0 +1,104 @@
+.delivery-boy-layout {
+    min-height: 100vh;
+    background: var(--page-bg);
+}
+
+.delivery-boy-content {
+    min-height: 100vh;
+}
+
+.delivery-boy-content.container {
+    padding: 0 0.5rem;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+    .delivery-boy-layout {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+.delivery-dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1rem;
+    background: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.delivery-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.delivery-profile-image {
+    width: 4.4rem;
+    height: 4.4rem;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: var(--surface-color);
+}
+
+.delivery-profile-info {
+    min-width: 0;
+}
+
+.delivery-greeting {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+.delivery-profile-info h2 {
+    margin: 0;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.delivery-profile-info p {
+    margin-top: 0.2rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.3;
+}
+
+.delivery-notification-btn {
+    width: 3.8rem;
+    height: 3.8rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    background: var(--surface-color);
+    color: var(--text-primary);
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background var(--transition-fast),
+        color var(--transition-fast);
+}
+
+.delivery-notification-btn:active {
+    background: var(--sruface-color-3);
+    color: var(--primary-color);
+}
+
+@media (min-width: 768px) {
+    .delivery-dashboard-header {
+        padding: 1.4rem 2rem;
+    }
+}

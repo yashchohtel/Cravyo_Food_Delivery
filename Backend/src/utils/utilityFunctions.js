@@ -31,6 +31,7 @@ export const createDeliveryAssignment = async (order, restaurant, next) => {
     // Find nearby delivery boys
     const deliveryBoys = await User.find({
         roles: "deliveryBoy",
+        isDeliveryBoyActive: true, // Only online delivery boys
         location: {
             $near: {
                 $geometry: {
@@ -44,8 +45,6 @@ export const createDeliveryAssignment = async (order, restaurant, next) => {
             }
         }
     }).select("_id");
-
-    console.log("Nearby Delivery Boys:", deliveryBoys);
 
     // If no delivery boy is available
     if (deliveryBoys.length === 0) {
