@@ -21,3 +21,25 @@ export const updateUserLocation = createAsyncThunk("user/updateUserLocation", as
     }
 
 });
+
+// Thunk to update delivery boy online/offline status
+export const updateDeliveryBoyStatus = createAsyncThunk("user/updateDeliveryBoyStatus", async (statusData, { rejectWithValue }) => {
+
+    try {
+
+        // Update delivery boy status api call
+        const { data } = await api.put("/api/user/updateDeliveryBoyStatus", statusData);
+
+        // Return success response
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Something went wrong"
+        );
+
+    }
+
+});
+

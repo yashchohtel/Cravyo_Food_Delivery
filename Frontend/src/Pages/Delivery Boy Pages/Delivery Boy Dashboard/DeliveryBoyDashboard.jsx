@@ -1,24 +1,31 @@
-
-import { useState } from "react";
+import useDeliveryBoy from "../../../hooks/Delivery Boy Hooks/useDeliveryBoyHook";
 import "./DeliveryBoyDashboard.css";
 
 const DeliveryBoyDashboard = () => {
-    const [isOnline, setIsOnline] = useState(false);
+
+    // get state and funcion from hook
+    const {
+        isDeliveryBoyActive,
+        deliveryBoyStatusLoading,
+        handleStatusChange
+    } = useDeliveryBoy();
 
     return (
         <div className="delivery-dashboard">
 
-            {/* delivery boy page  */}
-            <div className={`delivery-status-card ${isOnline ? "online" : "offline"}`}>
+            {/* Delivery Boy Status */}
+            <div className={`delivery-status-card ${isDeliveryBoyActive ? "online" : "offline"}`}>
+
                 <div className="delivery-status-info">
                     <span className="delivery-status-dot"></span>
 
                     <div>
                         <h3>
-                            {isOnline ? "You are Online" : "You are Offline"}
+                            {isDeliveryBoyActive ? "You are Online" : "You are Offline"}
                         </h3>
+
                         <p>
-                            {isOnline
+                            {isDeliveryBoyActive
                                 ? "You will receive new orders"
                                 : "You won't receive new orders"}
                         </p>
@@ -28,15 +35,17 @@ const DeliveryBoyDashboard = () => {
                 <button
                     type="button"
                     className="delivery-status-toggle"
-                    onClick={() => setIsOnline((prev) => !prev)}
+                    onClick={handleStatusChange}
+                    disabled={deliveryBoyStatusLoading}
                     role="switch"
-                    aria-checked={isOnline}
+                    aria-checked={isDeliveryBoyActive}
                     aria-label="Toggle delivery availability"
                 >
                     <span className="delivery-status-toggle-knob"></span>
                 </button>
+
             </div>
-            
+
         </div>
     );
 };

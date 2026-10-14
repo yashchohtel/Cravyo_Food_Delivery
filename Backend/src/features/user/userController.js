@@ -43,33 +43,40 @@ export const updateUserLocation = async (req, res, next) => {
 
 };
 
-
+// UPDATE DELIVERY BOY STATUS
 export const updateDeliveryBoyStatus = async (req, res, next) => {
-    try {
-        const { isDeliveryBoyActive } = req.body;
 
-        // Validate delivery boy status
-        if (typeof isDeliveryBoyActive !== "boolean") {
-            return next(new ErrorHandler("Invalid delivery boy status", 400));
-        }
+    // Extract delivery boy status
+    const { isDeliveryBoyActive } = req.body;
 
-        // Update delivery boy status
-        const user = await User.findByIdAndUpdate(
-            req.user._id,
-            { isDeliveryBoyActive },
-            { new: true, runValidators: true }
-        ).select("isDeliveryBoyActive");
-
-        if (!user) {
-            return next(new ErrorHandler("User not found", 404));
-        }
-
-        return res.status(200).json({
-            success: true,
-            message: `You are now ${isDeliveryBoyActive ? "online" : "offline"}`,
-            isDeliveryBoyActive: user.isDeliveryBoyActive
-        });
-    } catch (error) {
-        return next(error);
+    // Validate delivery boy status
+    if (typeof isDeliveryBoyActive !== "boolean") {
+        return next(new ErrorHandler("Valid delivery boy status is required", 400));
     }
+
+    // Extract authenticated user id
+    const { id } = req.user;
+
+    // Find user
+    const user = await User.findById(id);
+
+    // Check if user exists
+    if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+    }
+
+    // Update delivery boy status
+    user.isDeliveryBoyActive = isDeliveryBoyActive;
+
+    // Save updated user
+    await user.save();
+
+    // Send success response
+    res.status(200).json({
+        success: true,
+        message: `Delivery boy is now ${isDeliveryBoyActive ? "online" : "offline"}`,
+        isDeliveryBoyActive: user.isDeliveryBoyActive
+    });
+
 };
+

@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { updateUserLocation } from "./userThunk";
+import { updateDeliveryBoyStatus, updateUserLocation } from "./userThunk";
 
 // Initial state for user
 const initialState = {
     locationLoading: false,
+    deliveryBoyStatusLoading: false,
+    isDeliveryBoyActive: false,
     errorMessage: null,
     successMessage: null,
 };
@@ -53,6 +55,30 @@ const userSlice = createSlice({
                 state.locationLoading = false;
                 state.errorMessage = action.payload;
             })
+
+
+            /* ----------- UPDATE DELIVERY BOY STATUS ↓ */
+
+            // Pending
+            .addCase(updateDeliveryBoyStatus.pending, (state) => {
+                state.deliveryBoyStatusLoading = true;
+                state.errorMessage = null;
+                state.successMessage = null;
+            })
+
+            // Fulfilled
+            .addCase(updateDeliveryBoyStatus.fulfilled, (state, action) => {
+                state.deliveryBoyStatusLoading = false;
+                state.isDeliveryBoyActive = action.payload.isDeliveryBoyActive;
+                state.successMessage = action.payload.message;
+            })
+
+            // Rejected
+            .addCase(updateDeliveryBoyStatus.rejected, (state, action) => {
+                state.deliveryBoyStatusLoading = false;
+                state.errorMessage = action.payload;
+            })
+
 
     },
 
