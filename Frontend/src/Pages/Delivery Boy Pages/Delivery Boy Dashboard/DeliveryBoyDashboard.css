@@ -5,14 +5,12 @@
     font-family: var(--font-main);
 }
 
-
-
 .delivery-status-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 0.8rem;
     padding: 1.2rem 1.4rem;
     border: 1px solid transparent;
     border-radius: 1.2rem;
@@ -92,4 +90,31 @@
 
 .delivery-status-card.online .delivery-status-toggle-knob {
     transform: translateX(1.8rem);
+}
+
+
+.delivery-status-toggle-knob {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delivery-status-toggle.loading {
+    cursor: pointer;
+    opacity: 0.85;
+}
+
+.delivery-status-loader {
+    width: 1.3rem;
+    height: 1.3rem;
+    border: 2px solid #e5e5e5;
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: deliveryStatusSpin 0.7s linear infinite;
+}
+
+@keyframes deliveryStatusSpin {
+    to {
+        transform: rotate(360deg);
+    }
 }

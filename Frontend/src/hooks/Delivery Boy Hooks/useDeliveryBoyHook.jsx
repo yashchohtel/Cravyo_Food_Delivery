@@ -21,13 +21,13 @@ const useDeliveryBoy = () => {
         try {
 
             await dispatch(
-                updateDeliveryBoyStatus({
-                    isDeliveryBoyActive: !isDeliveryBoyActive
-                })
+                updateDeliveryBoyStatus({ isDeliveryBoyActive: !isDeliveryBoyActive })
             ).unwrap();
 
         } catch (error) {
+
             console.log(error);
+            
         }
 
     };

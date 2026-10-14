@@ -34,14 +34,18 @@ const DeliveryBoyDashboard = () => {
 
                 <button
                     type="button"
-                    className="delivery-status-toggle"
+                    className={`delivery-status-toggle ${deliveryBoyStatusLoading ? "loading" : ""}`}
                     onClick={handleStatusChange}
                     disabled={deliveryBoyStatusLoading}
                     role="switch"
                     aria-checked={isDeliveryBoyActive}
                     aria-label="Toggle delivery availability"
                 >
-                    <span className="delivery-status-toggle-knob"></span>
+                    <span className="delivery-status-toggle-knob">
+                        {deliveryBoyStatusLoading && (
+                            <span className="delivery-status-loader"></span>
+                        )}
+                    </span>
                 </button>
 
             </div>
