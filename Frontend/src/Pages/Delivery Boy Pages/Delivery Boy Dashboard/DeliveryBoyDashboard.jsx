@@ -11,12 +11,14 @@ const DeliveryBoyDashboard = () => {
     } = useDeliveryBoy();
 
     return (
+
         <div className="delivery-dashboard">
 
             {/* Delivery Boy Status */}
             <div className={`delivery-status-card ${isDeliveryBoyActive ? "online" : "offline"}`}>
 
                 <div className="delivery-status-info">
+
                     <span className="delivery-status-dot"></span>
 
                     <div>
@@ -49,6 +51,8 @@ const DeliveryBoyDashboard = () => {
                 </button>
 
             </div>
+
+            
 
         </div>
     );

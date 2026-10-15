@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAvailableAssignments } from "./deliveryAssignmentThunk";
+import { acceptDeliveryAssignment, getAvailableAssignments } from "./deliveryAssignmentThunk";
 
 const initialState = {
     assignments: [],
     assignmentsLoading: false,
+    acceptAssignmentLoading: false,
     errorMessage: null,
     successMessage: null
 };
@@ -34,17 +35,38 @@ const deliveryAssignmentSlice = createSlice({
                 state.assignmentsLoading = true;
                 state.errorMessage = null;
             })
-
             .addCase(getAvailableAssignments.fulfilled, (state, action) => {
                 state.assignmentsLoading = false;
                 state.assignments = action.payload.assignments;
                 state.successMessage = action.payload.message;
             })
-
             .addCase(getAvailableAssignments.rejected, (state, action) => {
                 state.assignmentsLoading = false;
                 state.errorMessage = action.payload;
-            });
+            })
+
+            /* ----------- ACCEPT DELIVERY ASSIGNMENT ↓ */
+
+            .addCase(acceptDeliveryAssignment.pending, (state) => {
+                state.acceptAssignmentLoading = true;
+                state.errorMessage = null;
+                state.successMessage = null;
+            })
+            .addCase(acceptDeliveryAssignment.fulfilled, (state, action) => {
+                state.acceptAssignmentLoading = false;
+
+                // Remove the accepted assignment from available assignments
+                state.assignments = state.assignments.filter(
+                    (assignment) => assignment._id !== action.payload.assignment._id
+                );
+
+                state.successMessage = action.payload.message;
+            })
+            .addCase(acceptDeliveryAssignment.rejected, (state, action) => {
+                state.acceptAssignmentLoading = false;
+                state.errorMessage = action.payload;
+            })
+
 
     }
 

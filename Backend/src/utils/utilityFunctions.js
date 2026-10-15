@@ -21,17 +21,35 @@ export const calculateDistance = (lat1, lon1, lat2, lon2) => {
 };
 
 // CREATE DELIVERY ASSIGNMENT
-export const createDeliveryAssignment = async (order, restaurant, next) => {
+export const createDeliveryAssignment = async (order, restaurant) => {
 
     // Check if assignment already exists
     if (order.deliveryAssignment) {
         return;
     }
 
-    // Find nearby delivery boys
+    // Find delivery boys who already have an active assigned order
+    const busyDeliveryBoyIds = await DeliveryAssignment.distinct(
+        "assignedTo",
+        {
+            status: "assigned",
+            assignedTo: { $ne: null }
+        }
+    );
+
+    // Find nearby available delivery boys
     const deliveryBoys = await User.find({
+        
         roles: "deliveryBoy",
-        isDeliveryBoyActive: true, // Only online delivery boys
+        isDeliveryBoyActive: true,
+
+        // Exclude delivery boys who are already busy
+        _id: { $nin: busyDeliveryBoyIds },
+
+        // Exclude default or invalid locations
+        "location.coordinates": { $ne: [0, 0] },
+
+        // Find delivery boys within 5 km of the restaurant
         location: {
             $near: {
                 $geometry: {
@@ -72,5 +90,4 @@ export const createDeliveryAssignment = async (order, restaurant, next) => {
     await order.save();
 
     return assignment;
-
 };

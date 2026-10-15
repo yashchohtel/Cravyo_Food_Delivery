@@ -25,3 +25,27 @@ export const getAvailableAssignments = createAsyncThunk("deliveryAssignment/getA
     }
 
 );
+
+// Thunk to accept a delivery assignment
+export const acceptDeliveryAssignment = createAsyncThunk("deliveryAssignment/acceptDeliveryAssignment",
+
+    async (assignmentId, { rejectWithValue }) => {
+
+        try {
+
+            // Accept delivery assignment API call
+            const { data } = await api.put(`/api/deliveryAssignment/acceptOrder/${assignmentId}`);
+
+            // Return success response
+            return data;
+
+        } catch (error) {
+
+            return rejectWithValue(
+                error.response?.data?.message || "Something went wrong"
+            );
+
+        }
+
+    }
+);
