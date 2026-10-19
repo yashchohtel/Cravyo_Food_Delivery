@@ -28,6 +28,10 @@ const userSlice = createSlice({
             state.successMessage = null;
         },
 
+        // Set delivery boy active status
+        setDeliveryBoyActiveStatus: (state, action) => {
+            state.isDeliveryBoyActive = action.payload;
+        },
     },
 
     // Extra reducers to handle async actions
@@ -88,6 +92,6 @@ const userSlice = createSlice({
 });
 
 // Export actions for use in components
-export const { clearMessages } = userSlice.actions;
+export const { clearMessages, setDeliveryBoyActiveStatus } = userSlice.actions;
 
 export default userSlice.reducer;

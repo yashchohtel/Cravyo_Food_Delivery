@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { loadUser } from "./features/auth/authThunk";
 import AppLoadingSplash from "./Components/Splash Screens/App Loading Splash/AppLoadingSplash";
 import useUpdateLocation from "./hooks/User Hooks/useUpdateLocation";
+import { setDeliveryBoyActiveStatus } from "./features/user/userSlice";
 
 function App() {
 
@@ -18,11 +19,10 @@ function App() {
   /* -------------------------------------- */
 
   // Get auth state from Redux store
-  // eslint-disable-next-line no-unused-vars
   const { user, authLoading } = useSelector((state) => state.auth);
 
-  console.log(user);
-  
+  // console.log(user);
+
   /* -------------------------------------- */
 
   // State to track if the minimum time has passed
@@ -41,6 +41,16 @@ function App() {
     return () => clearTimeout(timer);
 
   }, [dispatch]);
+
+
+  // Sync delivery boy status with authenticated user
+  useEffect(() => {
+    if (user) {
+      dispatch(
+        setDeliveryBoyActiveStatus(user.isDeliveryBoyActive ?? false)
+      );
+    }
+  }, [user, dispatch]);
 
   // custom hook to update user location in the backend
   useUpdateLocation()

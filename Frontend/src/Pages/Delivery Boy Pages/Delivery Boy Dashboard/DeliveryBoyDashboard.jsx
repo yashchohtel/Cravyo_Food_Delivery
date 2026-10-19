@@ -54,7 +54,55 @@ const DeliveryBoyDashboard = () => {
 
             </div>
 
-            
+
+
+            {/* Available Delivery Assignments */}
+            <section className="available-assignments-section">
+
+                <div className="available-assignments-heading">
+                    <h2>Available Orders</h2>
+                    <span>{assignments.length} Orders</span>
+                </div>
+
+                {!isDeliveryBoyActive ? (
+
+                    <p className="assignments-empty-message">
+                        Go online to receive delivery assignments.
+                    </p>
+
+                ) : assignmentsLoading ? (
+
+                    <p className="assignments-empty-message">
+                        Loading available orders...
+                    </p>
+
+                ) : assignments.length === 0 ? (
+
+                    <p className="assignments-empty-message">
+                        No delivery assignments available right now.
+                    </p>
+
+                ) : (
+
+                    <div className="available-assignments-list">
+
+                        {assignments.map((assignment) => (
+                            <DeliveryAssignmentCard
+                                key={assignment._id}
+                                assignment={assignment}
+                                onAccept={handleAcceptAssignment}
+                                acceptLoading={acceptAssignmentLoading}
+                            />
+                        ))}
+
+                    </div>
+
+                )}
+
+            </section>
+
+
+
 
         </div>
     );
