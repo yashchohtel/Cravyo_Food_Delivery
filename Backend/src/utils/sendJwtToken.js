@@ -17,6 +17,7 @@ export const sendToken = (user, statusCode, res, message) => {
         mobileNumber: user.mobileNumber,
         profileImage: user.profileImage,
         roles: user.roles,
+        isDeliveryBoyActive: user.isDeliveryBoyActive,
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
     };

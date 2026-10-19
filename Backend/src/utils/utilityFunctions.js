@@ -28,6 +28,27 @@ export const createDeliveryAssignment = async (order, restaurant) => {
         return;
     }
 
+    // Get restaurant location
+    const restaurantLatitude = restaurant.address.latitude;
+    const restaurantLongitude = restaurant.address.longitude;
+
+    // Get customer delivery location
+    const customerLatitude = order.deliveryAddress.latitude;
+    const customerLongitude = order.deliveryAddress.longitude;
+
+    // Calculate distance from restaurant to customer
+    const distance = Number(
+        calculateDistance(
+            restaurantLatitude,
+            restaurantLongitude,
+            customerLatitude,
+            customerLongitude
+        ).toFixed(2)
+    );
+
+    // Calculate estimated delivery earning
+    const deliveryEarning = Math.round(20 + (distance * 8));
+
     // Find delivery boys who already have an active assigned order
     const busyDeliveryBoyIds = await DeliveryAssignment.distinct(
         "assignedTo",
@@ -39,7 +60,7 @@ export const createDeliveryAssignment = async (order, restaurant) => {
 
     // Find nearby available delivery boys
     const deliveryBoys = await User.find({
-        
+
         roles: "deliveryBoy",
         isDeliveryBoyActive: true,
 
@@ -55,8 +76,8 @@ export const createDeliveryAssignment = async (order, restaurant) => {
                 $geometry: {
                     type: "Point",
                     coordinates: [
-                        restaurant.address.longitude,
-                        restaurant.address.latitude
+                        restaurantLongitude,
+                        restaurantLatitude
                     ]
                 },
                 $maxDistance: 5000
@@ -80,6 +101,8 @@ export const createDeliveryAssignment = async (order, restaurant) => {
         shop: restaurant._id,
         shopOrderId: order._id,
         broadcastedTo: deliveryBoyIds,
+        distance,
+        deliveryEarning,
         status: "broadcasted"
     });
 

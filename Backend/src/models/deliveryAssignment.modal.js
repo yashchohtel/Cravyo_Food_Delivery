@@ -23,6 +23,20 @@ const deliveryAssignmentSchema = new mongoose.Schema({
         required: true,
     },
 
+    // Distance from restaurant to customer in kilometers
+    distance: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
+
+    // Estimated delivery boy earning in rupees
+    deliveryEarning: {
+        type: Number,
+        required: true,
+        default: 0,
+    },
+
     // Delivery boys to whom the order was broadcasted
     broadcastedTo: [
         {

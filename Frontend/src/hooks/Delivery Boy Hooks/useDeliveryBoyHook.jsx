@@ -1,20 +1,14 @@
-
 import { useDispatch, useSelector } from "react-redux";
 import { updateDeliveryBoyStatus } from "../../features/user/userThunk";
 import { acceptDeliveryAssignment } from "../../features/delivery Assignment/deliveryAssignmentThunk";
-// import { acceptDeliveryAssignment } from "../../features/deliveryAssignment/deliveryAssignmentThunk";
 
 const useDeliveryBoy = () => {
 
+    // initilize use dispatch
     const dispatch = useDispatch();
 
     // Get delivery boy status and loading state
-    const {
-        isDeliveryBoyActive,
-        deliveryBoyStatusLoading,
-        errorMessage,
-        successMessage
-    } = useSelector((state) => state.user);
+    const { isDeliveryBoyActive, deliveryBoyStatusLoading, errorMessage, successMessage } = useSelector((state) => state.user);
 
     // Get delivery assignment state
     const {
@@ -32,10 +26,10 @@ const useDeliveryBoy = () => {
 
         try {
 
+            console.log("hited dispatch");
+            
             await dispatch(
-                updateDeliveryBoyStatus({
-                    isDeliveryBoyActive: !isDeliveryBoyActive
-                })
+                updateDeliveryBoyStatus({ isDeliveryBoyActive: !isDeliveryBoyActive })
             ).unwrap();
 
         } catch (error) {
@@ -53,9 +47,8 @@ const useDeliveryBoy = () => {
 
         try {
 
-            await dispatch(
-                acceptDeliveryAssignment(assignmentId)
-            ).unwrap();
+            // dispatch accpet delivery assignment
+            await dispatch(acceptDeliveryAssignment(assignmentId)).unwrap();
 
         } catch (error) {
 

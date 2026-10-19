@@ -18,8 +18,11 @@ function App() {
   /* -------------------------------------- */
 
   // Get auth state from Redux store
-  const { authLoading } = useSelector((state) => state.auth);
+  // eslint-disable-next-line no-unused-vars
+  const { user, authLoading } = useSelector((state) => state.auth);
 
+  console.log(user);
+  
   /* -------------------------------------- */
 
   // State to track if the minimum time has passed

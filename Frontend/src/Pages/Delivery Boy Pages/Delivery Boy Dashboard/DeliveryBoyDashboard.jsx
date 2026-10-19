@@ -10,6 +10,8 @@ const DeliveryBoyDashboard = () => {
         handleStatusChange
     } = useDeliveryBoy();
 
+    console.log(isDeliveryBoyActive);
+
     return (
 
         <div className="delivery-dashboard">

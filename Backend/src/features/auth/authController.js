@@ -254,6 +254,7 @@ export const getCurrentUser = async (req, res, next) => {
         mobileNumber: user.mobileNumber,
         profileImage: user.profileImage,
         roles: user.roles,
+        isDeliveryBoyActive: user.isDeliveryBoyActive,
         createdAt: user.createdAt,
         updatedAt: user.updatedAt,
     };
