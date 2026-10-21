@@ -1,19 +1,22 @@
 .delivery-dashboard {
     width: 100%;
     min-height: 100vh;
+    padding: 1.6rem;
     background: var(--page-bg);
     font-family: var(--font-main);
 }
+
+/* Delivery Boy Status */
 
 .delivery-status-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    margin-top: 0.8rem;
-    padding: 1.2rem 1.4rem;
+    gap: 1.2rem;
+    margin-bottom: 2.4rem;
+    padding: 1.6rem;
     border: 1px solid transparent;
-    border-radius: 1.2rem;
+    border-radius: 1.4rem;
     transition: background var(--transition-fast);
 }
 
@@ -30,7 +33,7 @@
 .delivery-status-info {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.2rem;
     min-width: 0;
 }
 
@@ -39,35 +42,37 @@
     height: 1.2rem;
     flex-shrink: 0;
     border-radius: 50%;
-    background: #a5a5ad;
+    background: #92929c;
 }
 
 .delivery-status-card.online .delivery-status-dot {
     background: #16a34a;
+    box-shadow: 0 0 0 0.4rem #16a34a1a;
 }
 
 .delivery-status-info h3 {
     margin: 0;
     color: var(--text-primary);
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    line-height: 1.3;
+    line-height: 1.4;
 }
 
 .delivery-status-info p {
-    margin: 0.3rem 0 0;
+    margin: 0.4rem 0 0;
     color: var(--text-secondary);
-    font-size: 1.05rem;
-    line-height: 1.3;
+    font-size: 1.1rem;
+    line-height: 1.5;
 }
 
 .delivery-status-toggle {
-    width: 4.2rem;
-    height: 2.4rem;
-    flex-shrink: 0;
+    position: relative;
     display: flex;
     align-items: center;
-    padding: 0.25rem;
+    width: 4.6rem;
+    height: 2.6rem;
+    flex-shrink: 0;
+    padding: 0.3rem;
     border: none;
     border-radius: 2rem;
     background: #a5a5ad;
@@ -79,34 +84,31 @@
     background: var(--primary-color);
 }
 
-.delivery-status-toggle-knob {
-    width: 1.9rem;
-    height: 1.9rem;
-    border-radius: 50%;
-    background: #ffffff;
-    box-shadow: var(--shadow-mild);
-    transition: transform var(--transition-fast);
+.delivery-status-toggle:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
 }
-
-.delivery-status-card.online .delivery-status-toggle-knob {
-    transform: translateX(1.8rem);
-}
-
 
 .delivery-status-toggle-knob {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: var(--shadow-mild);
+    transition: transform var(--transition-fast);
 }
 
-.delivery-status-toggle.loading {
-    cursor: pointer;
-    opacity: 0.85;
+.delivery-status-card.online .delivery-status-toggle-knob {
+    transform: translateX(2rem);
 }
 
-.delivery-status-loader {
-    width: 1.3rem;
-    height: 1.3rem;
+.delivery-status-loader,
+.assignments-loader {
+    width: 1.4rem;
+    height: 1.4rem;
     border: 2px solid #e5e5e5;
     border-top-color: var(--primary-color);
     border-radius: 50%;
@@ -116,5 +118,130 @@
 @keyframes deliveryStatusSpin {
     to {
         transform: rotate(360deg);
+    }
+}
+
+/* Available Assignments */
+
+.available-assignments-section {
+    width: 100%;
+}
+
+.available-assignments-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.6rem;
+}
+
+.available-assignments-heading h2 {
+    margin: 0;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+
+.available-assignments-heading p {
+    margin: 0.5rem 0 0;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.available-assignments-count {
+    flex-shrink: 0;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 2rem;
+    background: var(--background-color);
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.available-assignments-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.6rem;
+}
+
+/* Empty and Loading States */
+
+.assignments-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    min-height: 18rem;
+    padding: 2.4rem 1.6rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 1.4rem;
+    background: var(--background-color);
+    text-align: center;
+}
+
+.assignments-empty-state h3 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+.assignments-empty-state p {
+    max-width: 32rem;
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.assignments-loader {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-bottom: 0.6rem;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .delivery-dashboard {
+        padding: 1.2rem;
+    }
+
+    .delivery-status-card {
+        margin-bottom: 2rem;
+        padding: 1.3rem;
+    }
+
+    .available-assignments-list {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .delivery-dashboard {
+        padding: 1rem;
+    }
+
+    .delivery-status-info {
+        gap: 0.9rem;
+    }
+
+    .delivery-status-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .delivery-status-info p {
+        font-size: 1rem;
+    }
+
+    .available-assignments-heading h2 {
+        font-size: 1.7rem;
+    }
+
+    .available-assignments-heading p {
+        font-size: 1.1rem;
     }
 }

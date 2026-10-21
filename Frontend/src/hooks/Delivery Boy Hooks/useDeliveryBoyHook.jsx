@@ -25,12 +25,8 @@ const useDeliveryBoy = () => {
         if (deliveryBoyStatusLoading) return;
 
         try {
-
-            console.log("hited dispatch");
             
-            await dispatch(
-                updateDeliveryBoyStatus({ isDeliveryBoyActive: !isDeliveryBoyActive })
-            ).unwrap();
+            await dispatch(updateDeliveryBoyStatus({ isDeliveryBoyActive: !isDeliveryBoyActive })).unwrap();
 
         } catch (error) {
 

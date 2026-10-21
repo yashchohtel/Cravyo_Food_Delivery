@@ -73,8 +73,6 @@ const userSlice = createSlice({
             // Fulfilled
             .addCase(updateDeliveryBoyStatus.fulfilled, (state, action) => {
 
-                console.log("hited slice");
-
                 state.deliveryBoyStatusLoading = false;
                 state.isDeliveryBoyActive = action.payload.isDeliveryBoyActive;
                 state.successMessage = action.payload.message;

@@ -27,8 +27,6 @@ export const updateDeliveryBoyStatus = createAsyncThunk("user/updateDeliveryBoyS
 
     try {
 
-        console.log("hited thunk");
-
         // Update delivery boy status api call
         const { data } = await api.put("/api/user/updateDeliveryBoyStatus", statusData);
 
