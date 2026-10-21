@@ -49,3 +49,27 @@ export const acceptDeliveryAssignment = createAsyncThunk("deliveryAssignment/acc
 
     }
 );
+
+// Thunk to get a specific delivery assignment
+export const getDeliveryAssignmentById = createAsyncThunk("deliveryAssignment/getDeliveryAssignmentById",
+
+    async (assignmentId, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await api.get(`/api/deliveryAssignment/${assignmentId}`);
+
+            return data;
+            
+        } catch (error) {
+
+            return rejectWithValue(
+                error.response?.data?.message ||
+                "Something went wrong"
+            );
+
+        }
+
+    }
+
+);

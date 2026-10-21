@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { acceptDeliveryAssignment, getAvailableAssignments } from "./deliveryAssignmentThunk";
+import { acceptDeliveryAssignment, getAvailableAssignments, getDeliveryAssignmentById } from "./deliveryAssignmentThunk";
 
 const initialState = {
     assignments: [],
     assignmentsLoading: false,
     acceptAssignmentLoading: false,
+    selectedAssignment: null,
+    assignmentDetailsLoading: false,
     errorMessage: null,
     successMessage: null
 };
@@ -64,6 +66,21 @@ const deliveryAssignmentSlice = createSlice({
             })
             .addCase(acceptDeliveryAssignment.rejected, (state, action) => {
                 state.acceptAssignmentLoading = false;
+                state.errorMessage = action.payload;
+            })
+
+            /* ----------- GET DELIVERY ASSIGNMENT DETAILS */
+
+            .addCase(getDeliveryAssignmentById.pending, (state) => {
+                state.assignmentDetailsLoading = true;
+                state.errorMessage = null;
+            })
+            .addCase(getDeliveryAssignmentById.fulfilled, (state, action) => {
+                state.assignmentDetailsLoading = false;
+                state.selectedAssignment = action.payload.assignment;
+            })
+            .addCase(getDeliveryAssignmentById.rejected, (state, action) => {
+                state.assignmentDetailsLoading = false;
                 state.errorMessage = action.payload;
             })
 
