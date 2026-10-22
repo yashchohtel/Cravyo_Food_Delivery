@@ -1,22 +1,28 @@
 import "./DeliveryBoy.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAvailableAssignments } from "../../../features/delivery Assignment/deliveryAssignmentThunk";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import DeliveryBoyBottomNav from "../../../Components/Navbars/Delivery Boy Bottom Nav/DeliveryBoyBottomNav";
-import { LuBell } from "react-icons/lu";
+// eslint-disable-next-line no-unused-vars
+import { LuBell, LuArrowLeft } from "react-icons/lu";
 import { FiUser } from "react-icons/fi";
-import { useState } from "react";
 
 const DeliveryBoy = () => {
 
-    // initilize dispatch
+    // Initialize dispatch
     const dispatch = useDispatch();
+
+    // Get current route
+    const location = useLocation();
+    const isOrderDetailsPage = /^\/delivery-boy\/order\/[^/]+$/.test(
+        location.pathname
+    );
 
     // Get auth state from Redux store
     const { user } = useSelector((state) => state.auth);
 
-    // getting data form store
+    // Get available assignments
     const { assignments } = useSelector((state) => state.deliveryAssignment);
 
     const [isProfileImageError, setIsProfileImageError] = useState(false);
@@ -33,54 +39,52 @@ const DeliveryBoy = () => {
 
     return (
 
-        <>
+        <div className="delivery-boy-layout">
 
-            <div className="delivery-boy-layout">
+            {!isOrderDetailsPage && (
+                <>
+                    {/* Header */}
+                    <header className="delivery-dashboard-header">
+                        <div className="delivery-profile">
+                            <div className="delivery-profile-image-container">
+                                {user?.profileImage && !isProfileImageError ? (
+                                    <img
+                                        src={user.profileImage}
+                                        alt={user?.fullName || "Delivery Partner"}
+                                        className="delivery-profile-image"
+                                        onError={() => setIsProfileImageError(true)}
+                                    />
+                                ) : (
+                                    <FiUser className="delivery-profile-fallback" />
+                                )}
+                            </div>
 
-                {/* header */}
-                <header className="delivery-dashboard-header">
-
-                    <div className="delivery-profile">
-
-                        <div className="delivery-profile-image-container">
-                            {user?.profileImage && !isProfileImageError ? (
-                                <img
-                                    src={user.profileImage}
-                                    alt={user?.fullName || "Delivery Partner"}
-                                    className="delivery-profile-image"
-                                    onError={() => setIsProfileImageError(true)}
-                                />
-                            ) : (
-                                <FiUser className="delivery-profile-fallback" />
-                            )}
+                            <div className="delivery-profile-info">
+                                <h2>{user?.fullName || "Delivery Partner"}</h2>
+                                <p>Delivery Partner</p>
+                            </div>
                         </div>
 
-                        <div className="delivery-profile-info">
-                            <h2>{user?.fullName || "Delivery Partner"}</h2>
-                            <p>Delivery Partner</p>
-                        </div>
-                        
-                    </div>
+                        <button
+                            type="button"
+                            className="delivery-notification-btn"
+                            aria-label="Notifications"
+                        >
+                            <LuBell />
+                        </button>
+                    </header>
+                </>
+            )}
 
-                    <button
-                        type="button"
-                        className="delivery-notification-btn"
-                        aria-label="Notifications"
-                    >
-                        <LuBell />
-                    </button>
+            {/* Page Content */}
+            <main
+                className={`delivery-boy-content container ${isOrderDetailsPage ? "delivery-details-content" : ""}`}
+            >
+                <Outlet />
+            </main>
 
-                </header>
-
-                <main className="delivery-boy-content container">
-                    <Outlet />
-                </main>
-
-                <DeliveryBoyBottomNav />
-
-            </div>
-
-        </>
+            {!isOrderDetailsPage && <DeliveryBoyBottomNav />}
+        </div>
     );
 };
 

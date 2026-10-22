@@ -177,7 +177,7 @@ function AppRoutes() {
           <Route path="profile" element={<DeliveryBoyProfile />} />
 
           {/* Order Details */}
-          <Route path="order/:orderId" element={<DeliveryOrderDetails />} />
+          <Route path="order/:assignmentId" element={<DeliveryOrderDetails />} />
 
         </Route>
 

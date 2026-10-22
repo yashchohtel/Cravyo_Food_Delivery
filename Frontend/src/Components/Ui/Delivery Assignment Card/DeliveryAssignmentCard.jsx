@@ -19,7 +19,7 @@ const DeliveryAssignmentCard = ({
 
     // Open order details page
     const handleViewDetails = () => {
-        navigate(`/delivery-boy/order/${order._id}`);
+        navigate(`/delivery-boy/order/${assignment._id}`);
     };
 
     return (

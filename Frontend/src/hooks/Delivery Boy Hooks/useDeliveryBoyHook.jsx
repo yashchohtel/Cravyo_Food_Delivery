@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updateDeliveryBoyStatus } from "../../features/user/userThunk";
-import { acceptDeliveryAssignment } from "../../features/delivery Assignment/deliveryAssignmentThunk";
+import { acceptDeliveryAssignment, getDeliveryAssignmentById } from "../../features/delivery Assignment/deliveryAssignmentThunk";
 
 const useDeliveryBoy = () => {
 
@@ -15,6 +15,8 @@ const useDeliveryBoy = () => {
         assignments,
         assignmentsLoading,
         acceptAssignmentLoading,
+        selectedAssignment,
+        assignmentDetailsLoading,
         errorMessage: assignmentErrorMessage,
         successMessage: assignmentSuccessMessage
     } = useSelector((state) => state.deliveryAssignment);
@@ -25,7 +27,7 @@ const useDeliveryBoy = () => {
         if (deliveryBoyStatusLoading) return;
 
         try {
-            
+
             await dispatch(updateDeliveryBoyStatus({ isDeliveryBoyActive: !isDeliveryBoyActive })).unwrap();
 
         } catch (error) {
@@ -54,6 +56,15 @@ const useDeliveryBoy = () => {
 
     };
 
+    // Handle fetching delivery assignment details
+    const handleGetDeliveryAssignment = async (assignmentId) => {
+        try {
+            await dispatch(getDeliveryAssignmentById(assignmentId)).unwrap();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return {
         isDeliveryBoyActive,
         deliveryBoyStatusLoading,
@@ -66,7 +77,11 @@ const useDeliveryBoy = () => {
         acceptAssignmentLoading,
         assignmentErrorMessage,
         assignmentSuccessMessage,
-        handleAcceptAssignment
+        handleAcceptAssignment,
+
+        selectedAssignment,
+        assignmentDetailsLoading,
+        handleGetDeliveryAssignment,
     };
 };
 
