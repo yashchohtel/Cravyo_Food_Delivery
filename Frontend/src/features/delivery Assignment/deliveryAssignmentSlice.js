@@ -55,6 +55,7 @@ const deliveryAssignmentSlice = createSlice({
                 state.successMessage = null;
             })
             .addCase(acceptDeliveryAssignment.fulfilled, (state, action) => {
+
                 state.acceptAssignmentLoading = false;
 
                 // Remove the accepted assignment from available assignments
@@ -62,7 +63,11 @@ const deliveryAssignmentSlice = createSlice({
                     (assignment) => assignment._id !== action.payload.assignment._id
                 );
 
+                // Update selected assignment details
+                state.selectedAssignment = action.payload.assignment;
+
                 state.successMessage = action.payload.message;
+                
             })
             .addCase(acceptDeliveryAssignment.rejected, (state, action) => {
                 state.acceptAssignmentLoading = false;
@@ -83,7 +88,6 @@ const deliveryAssignmentSlice = createSlice({
                 state.assignmentDetailsLoading = false;
                 state.errorMessage = action.payload;
             })
-
 
     }
 

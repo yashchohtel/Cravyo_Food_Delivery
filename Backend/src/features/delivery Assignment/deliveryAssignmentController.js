@@ -21,32 +21,6 @@ export const getAvailableAssignments = async (req, res, next) => {
 
 };
 
-// Get a specific delivery assignment by ID
-export const getDeliveryAssignmentById = async (req, res, next) => {
-
-    // find assignment 
-    const assignment = await DeliveryAssignment.findOne({
-        _id: req.params.id,
-        $or: [
-            { broadcastedTo: req.user._id },
-            { assignedTo: req.user._id }
-        ]
-    })
-        .populate("order")
-        .populate("shop", "name image address");
-
-    if (!assignment) {
-        return next(new ErrorHandler("Delivery assignment not found", 404));
-    }
-
-    return res.status(200).json({
-        success: true,
-        message: "Delivery assignment fetched successfully",
-        assignment
-    });
-    
-};
-
 // Accept a delivery assignment using transaction
 export const acceptDeliveryAssignment = async (req, res, next) => {
 
@@ -113,11 +87,21 @@ export const acceptDeliveryAssignment = async (req, res, next) => {
             }
         });
 
+        // Populate assignment details after successful acceptance
+        assignment = await DeliveryAssignment.findById(assignment._id)
+            .populate({
+                path: "order",
+                populate: {
+                    path: "user",
+                    select: "fullName mobileNumber"
+                }
+            })
+            .populate("shop", "name image address");
+
         return res.status(200).json({
             success: true,
             message: "Delivery assignment accepted successfully",
-            assignment,
-            order
+            assignment
         });
 
     } catch (error) {
@@ -129,5 +113,38 @@ export const acceptDeliveryAssignment = async (req, res, next) => {
         await session.endSession();
 
     }
+
+};
+
+// Get a specific delivery assignment by ID
+export const getDeliveryAssignmentById = async (req, res, next) => {
+
+    const assignment = await DeliveryAssignment.findOne({
+        _id: req.params.id,
+        $or: [
+            { broadcastedTo: req.user._id },
+            { assignedTo: req.user._id }
+        ]
+    })
+        .populate({
+            path: "order",
+            populate: {
+                path: "user",
+                select: "fullName mobileNumber"
+            }
+        })
+        .populate("shop", "name image address");
+
+    if (!assignment) {
+        return next(
+            new ErrorHandler("Delivery assignment not found", 404)
+        );
+    }
+
+    return res.status(200).json({
+        success: true,
+        message: "Delivery assignment fetched successfully",
+        assignment
+    });
 
 };
