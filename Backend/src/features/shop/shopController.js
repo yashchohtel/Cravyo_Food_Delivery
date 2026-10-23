@@ -38,6 +38,7 @@ export const createShop = async (req, res, next) => {
             image: image.secure_url,
             imagePublicId: image.public_id,
             description: req.body.description,
+            phoneNumber: req.body.phoneNumber,
             openingTime: req.body.openingTime,
             closingTime: req.body.closingTime,
             foodType: req.body.foodType,
@@ -141,6 +142,10 @@ export const updateShop = async (req, res, next) => {
         // Update shop description
         if (req.body.description !== undefined) {
             shop.description = req.body.description;
+        }
+
+        if (req.body.phoneNumber !== undefined) {
+            shop.phoneNumber = req.body.phoneNumber;
         }
 
         // Update opening time

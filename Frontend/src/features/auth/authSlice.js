@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { googleAuth, loadUser, loginUser, logoutUser, registerUser, resetPassword, sendLoginOtp, sendPasswordResetLink, verifyLoginOtp, verifyResetToken } from "./authThunk";
+import { becomeDeliveryPartner, googleAuth, loadUser, loginUser, logoutUser, registerUser, resetPassword, sendLoginOtp, sendPasswordResetLink, updateProfileImage, verifyLoginOtp, verifyResetToken } from "./authThunk";
 
 // Initial state for authentication
 const initialState = {
@@ -245,6 +245,42 @@ const authSlice = createSlice({
 
             // Rejected
             .addCase(resetPassword.rejected, (state, action) => {
+                state.formLoading = false;
+                state.errorMessage = action.payload;
+            })
+
+            /* ----------- UPDATE PROFILE IMAGE ↓ */
+
+            .addCase(updateProfileImage.pending, (state) => {
+                state.formLoading = true;
+                state.errorMessage = null;
+            })
+
+            .addCase(updateProfileImage.fulfilled, (state, action) => {
+                state.formLoading = false;
+                state.user = action.payload.user;
+                state.successMessage = action.payload.message;
+            })
+
+            .addCase(updateProfileImage.rejected, (state, action) => {
+                state.formLoading = false;
+                state.errorMessage = action.payload;
+            })
+
+            /* ----------- BECOME DELIVERY PARTNER ↓ */
+
+            .addCase(becomeDeliveryPartner.pending, (state) => {
+                state.formLoading = true;
+                state.errorMessage = null;
+            })
+
+            .addCase(becomeDeliveryPartner.fulfilled, (state, action) => {
+                state.formLoading = false;
+                state.user = action.payload.user;
+                state.successMessage = action.payload.message;
+            })
+
+            .addCase(becomeDeliveryPartner.rejected, (state, action) => {
                 state.formLoading = false;
                 state.errorMessage = action.payload;
             })

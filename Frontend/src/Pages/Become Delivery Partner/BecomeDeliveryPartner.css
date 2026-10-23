@@ -1,0 +1,160 @@
+.delivery-partner-join-page {
+    min-height: 100vh;
+    padding: 3rem 1.4rem 10rem;
+    background: var(--page-bg);
+}
+
+.delivery-partner-join-card {
+    width: min(100%, 66rem);
+    margin: 0 auto;
+    overflow: hidden;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 1.8rem;
+    background: var(--background-color);
+    box-shadow: var(--shadow-big);
+}
+
+.delivery-partner-join-heading {
+    padding: 2.5rem 2rem;
+    background: #fff0e9;
+    text-align: center;
+}
+
+.delivery-partner-join-icon {
+    display: grid;
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 0 auto 1.3rem;
+    place-items: center;
+    border-radius: 1.5rem;
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 2.7rem;
+}
+
+.delivery-partner-join-heading p {
+    color: var(--primary-color);
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.12rem;
+}
+
+.delivery-partner-join-heading h1 {
+    margin-top: 0.5rem;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: 2.35rem;
+}
+
+.delivery-partner-join-heading > span:last-child {
+    display: block;
+    margin-top: 0.6rem;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.delivery-partner-join-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.delivery-partner-join-form > label {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.delivery-partner-join-form b {
+    color: var(--error-color);
+}
+
+.delivery-partner-input {
+    display: flex;
+    min-height: 4.5rem;
+    align-items: center;
+    gap: 0.9rem;
+    margin-top: 0.7rem;
+    padding: 0 1.2rem;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 0.9rem;
+    color: #64748b;
+}
+
+.delivery-partner-input:focus-within {
+    border-color: var(--primary-color);
+}
+
+.delivery-partner-input svg {
+    flex-shrink: 0;
+    font-size: 1.8rem;
+}
+
+.delivery-partner-input input,
+.delivery-partner-input select,
+.delivery-partner-input textarea {
+    width: 100%;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+}
+
+.delivery-partner-input select {
+    height: 4.3rem;
+    background: transparent;
+}
+
+.delivery-partner-address-field {
+    grid-column: 1 / -1;
+}
+
+.delivery-partner-address-field .delivery-partner-input {
+    align-items: flex-start;
+    min-height: 8.5rem;
+    padding-top: 1.2rem;
+}
+
+.delivery-partner-input textarea {
+    min-height: 6rem;
+    resize: vertical;
+}
+
+.delivery-partner-join-form > button {
+    grid-column: 1 / -1;
+    min-height: 4.7rem;
+    border-radius: 0.9rem;
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.delivery-partner-join-form > button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+@media (max-width: 48rem) {
+    .delivery-partner-join-page {
+        padding: 1.8rem 1.2rem 9rem;
+    }
+
+    .delivery-partner-join-heading {
+        padding: 2rem 1.4rem;
+    }
+
+    .delivery-partner-join-heading h1 {
+        font-size: 2rem;
+    }
+
+    .delivery-partner-join-form {
+        grid-template-columns: 1fr;
+        gap: 1.3rem;
+        padding: 1.5rem 1.3rem;
+    }
+
+    .delivery-partner-address-field,
+    .delivery-partner-join-form > button {
+        grid-column: auto;
+    }
+}

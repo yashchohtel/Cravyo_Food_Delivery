@@ -31,6 +31,13 @@ const shopSchema = new mongoose.Schema({
         maxlength: 500
     },
 
+    // Contact number customers can use for the restaurant
+    phoneNumber: {
+        type: String,
+        trim: true,
+        default: ""
+    },
+
     // Opening time of the shop
     openingTime: {
         type: String,

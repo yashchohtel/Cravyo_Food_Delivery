@@ -13,7 +13,6 @@ import { clearMessages } from '../../features/auth/authSlice';
 
 const ResetPassword = () => {
 
-
     // initialize use navigate
     const navigate = useNavigate();
 

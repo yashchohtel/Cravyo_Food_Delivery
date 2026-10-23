@@ -1,6 +1,6 @@
 import AdminPanelTopNavbar from "../../../Components/Navbars/Admin Panel Top Navbar/AdminPanelTopNavbar"
 import './CreateRestaurant.css'
-import { Upload, Image as Store, MapPin, Clock, Leaf, Utensils } from "lucide-react";
+import { Upload, Image as Store, MapPin, Clock, Leaf, Phone, Utensils } from "lucide-react";
 import CreateRestaurantMap from "../../../Components/Ui/Create Restaurant Map/CreateRestaurantMap";
 import useCreateRestaurant from "../../../hooks/Restaruant Owner Hooks/useCreateRestaurant";
 import { useSelector } from "react-redux";
@@ -130,6 +130,27 @@ const CreateRestaurant = () => {
                   </div>
 
                   {errors.description && <p className="formError">{errors.description}</p>}
+
+                </div>
+
+                {/* restaurant phone number */}
+                <div className="formGroup">
+
+                  <label>Restaurant Phone Number <span>*</span></label>
+
+                  <div className={`inputBox ${errors.phoneNumber ? "inputError" : ""}`}>
+                    <Phone size={19} />
+                    <input
+                      type="tel"
+                      name="phoneNumber"
+                      placeholder="e.g. 9876543210"
+                      value={formData.phoneNumber}
+                      onChange={handleChange}
+                      inputMode="tel"
+                    />
+                  </div>
+
+                  {errors.phoneNumber && <p className="formError">{errors.phoneNumber}</p>}
 
                 </div>
 

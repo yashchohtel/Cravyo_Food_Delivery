@@ -91,11 +91,9 @@ const NavbarTop = () => {
 
 
         {/* Right */}
-
         <div className="navbar-right">
 
           {/* Cart */}
-
           <button
             className="icon-btn cart-btn"
             type="button"
@@ -116,7 +114,6 @@ const NavbarTop = () => {
 
 
           {/* Profile */}
-
           <button
             className="icon-btn"
             type="button"
@@ -166,7 +163,6 @@ const NavbarTop = () => {
           >
 
             {/* Drawer Header */}
-
             <div className="cart-drawer__header">
 
               <div>

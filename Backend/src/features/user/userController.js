@@ -1,5 +1,18 @@
 import User from "../../models/user.model.js";
 import ErrorHandler from "../../utils/errorHandler.js";
+import { deleteFromCloudinary, uploadBufferToCloudinary } from "../../utils/uploadImage.js";
+
+const getUserData = (user) => ({
+    id: user._id,
+    fullName: user.fullName,
+    email: user.email,
+    mobileNumber: user.mobileNumber,
+    profileImage: user.profileImage,
+    roles: user.roles,
+    isDeliveryBoyActive: user.isDeliveryBoyActive,
+    createdAt: user.createdAt,
+    updatedAt: user.updatedAt,
+});
 
 // UPDATE USER LOCATION
 export const updateUserLocation = async (req, res, next) => {
@@ -78,5 +91,79 @@ export const updateDeliveryBoyStatus = async (req, res, next) => {
         isDeliveryBoyActive: user.isDeliveryBoyActive
     });
 
+};
+
+// UPDATE PROFILE IMAGE
+export const updateProfileImage = async (req, res, next) => {
+
+    if (!req.file) {
+        return next(new ErrorHandler("Profile image is required", 400));
+    }
+
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+    }
+
+    const uploadedImage = await uploadBufferToCloudinary(
+        req.file.buffer,
+        "cravyo/profile-images"
+    );
+    const oldImagePublicId = user.profileImagePublicId;
+
+    user.profileImage = uploadedImage.secure_url;
+    user.profileImagePublicId = uploadedImage.public_id;
+    await user.save();
+
+    if (oldImagePublicId) {
+        await deleteFromCloudinary(oldImagePublicId);
+    }
+
+    res.status(200).json({
+        success: true,
+        message: "Profile photo updated successfully",
+        user: getUserData(user),
+    });
+};
+
+// BECOME DELIVERY PARTNER
+export const becomeDeliveryPartner = async (req, res, next) => {
+
+    const {
+        fullName,
+        email,
+        mobileNumber,
+        vehicleType,
+        vehicleNumber,
+        deliveryAddress
+    } = req.body;
+
+    if (!fullName || !email || !mobileNumber || !vehicleType || !deliveryAddress) {
+        return next(new ErrorHandler("Please complete all required delivery partner details", 400));
+    }
+
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+    }
+
+    user.roles.addToSet("deliveryBoy");
+    user.deliveryPartnerDetails = {
+        fullName,
+        email,
+        mobileNumber,
+        vehicleType,
+        vehicleNumber,
+        deliveryAddress
+    };
+    await user.save();
+
+    res.status(200).json({
+        success: true,
+        message: "You are now a delivery partner",
+        user: getUserData(user),
+    });
 };
 

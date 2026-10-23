@@ -35,6 +35,8 @@ import DeliveryBoyEarnings from "../Pages/Delivery Boy Pages/Delivery Boy Earnin
 import DeliveryBoyProfile from "../Pages/Delivery Boy Pages/Delivery Boy Profile/DeliveryBoyProfile.jsx";
 import DeliveryOrderDetails from "../Pages/Delivery Boy Pages/Delivery Order Details/DeliveryOrderDetails.jsx";
 import DeliveryBoy from "../Pages/Delivery Boy Pages/Delivery Boy/DeliveryBoy.jsx";
+import CustomerProfile from "../Pages/Customer Profile/CustomerProfile.jsx";
+import BecomeDeliveryPartner from "../Pages/Become Delivery Partner/BecomeDeliveryPartner.jsx";
 
 function AppRoutes() {
 
@@ -55,10 +57,10 @@ function AppRoutes() {
         <Route path="/" element={<PublicRoute> <Auth /> </PublicRoute>} />
 
         {/* forgot password page */}
-        <Route path="/forgotPass" element={<PublicRoute> <ForgotPassword /> </PublicRoute>} />
+        <Route path="/forgotPass" element={<ForgotPassword />} />
 
         {/* reset password page */}
-        <Route path="/reset-password/:token" element={<PublicRoute> <ResetPassword /></PublicRoute>} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
 
         {/* home route */}
         <Route path="/home" element={<ProtectedRoute> <Home /> </ProtectedRoute>} />
@@ -93,6 +95,11 @@ function AppRoutes() {
         {/* order details page */}
         <Route path="/order/:orderId" element={<ProtectedRoute> <OrderDetails /> </ProtectedRoute>} />
 
+        {/* customer profile page */}
+        <Route path="/profile" element={<ProtectedRoute> <CustomerProfile /> </ProtectedRoute>} />
+
+        {/* become delivery partner */}
+        <Route path="/delivery-boy/join" element={<ProtectedRoute> <BecomeDeliveryPartner /> </ProtectedRoute>} />
 
         {/* admin panel page */}
         <Route path="/admin"

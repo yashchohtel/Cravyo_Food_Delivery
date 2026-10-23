@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import NavbarBottom from '../../Components/Navbars/Navbar Bottom/NavbarBottom';
+import CustomerBottomNavigation from '../../Components/Navbars/Customer Bottom Navigation/CustomerBottomNavigation';
 import NavbarTop from '../../Components/Navbars/Navbar Top/NavbarTop';
 import './Home.css';
 import Modal from '../../Components/Modal/Modal';
@@ -218,6 +219,9 @@ const Home = () => {
 
         {/* active order floatins bar */}
         <ActiveOrderFloatingBar />
+
+        {/* customer app navigation */}
+        <CustomerBottomNavigation />
 
       </div>
 

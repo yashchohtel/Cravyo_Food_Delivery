@@ -86,6 +86,12 @@ const userSchema = new mongoose.Schema({
         default: ""
     },
 
+    // Cloudinary id for replacing the uploaded profile image
+    profileImagePublicId: {
+        type: String,
+        default: ""
+    },
+
     // user location coordinates
     location: {
         type: {
@@ -103,6 +109,16 @@ const userSchema = new mongoose.Schema({
     isDeliveryBoyActive: {
         type: Boolean,
         default: false
+    },
+
+    // Information submitted when the user becomes a delivery partner
+    deliveryPartnerDetails: {
+        fullName: { type: String, trim: true, default: "" },
+        email: { type: String, trim: true, lowercase: true, default: "" },
+        mobileNumber: { type: String, trim: true, default: "" },
+        vehicleType: { type: String, trim: true, default: "" },
+        vehicleNumber: { type: String, trim: true, default: "" },
+        deliveryAddress: { type: String, trim: true, default: "" }
     },
 
 }, { timestamps: true })

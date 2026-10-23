@@ -384,3 +384,103 @@
 .textareaBox.inputError:focus-within {
     border-color: var(--error-color);
 }
+
+@media (max-width: 90rem) {
+    .restaurantHeroContent {
+        width: 56%;
+    }
+}
+
+@media (max-width: 70rem) {
+    .restaurantForm {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+    }
+
+    .restaurantHero {
+        padding: 2rem 2.5rem;
+    }
+}
+
+@media (max-width: 48rem) {
+    .createRestuarant {
+        padding-bottom: 1.6rem;
+    }
+
+    .restaurantHero {
+        height: auto;
+        min-height: 16rem;
+        align-items: flex-start;
+        padding: 2.2rem 1.8rem;
+        background-image: none;
+    }
+
+    .restaurantHeroContent {
+        width: 100%;
+    }
+
+    .restaurantHeroContent span {
+        font-size: 1.05rem;
+    }
+
+    .restaurantHeroContent span::before {
+        width: 2.4rem;
+        margin-right: 0.7rem;
+    }
+
+    .restaurantHeroContent h1 {
+        margin-top: 0.9rem;
+        font-size: 2.35rem;
+    }
+
+    .restaurantForm {
+        gap: 1.8rem;
+        margin-top: 1.8rem;
+        padding: 1.4rem;
+        border-radius: 1.3rem 1.3rem 0 0;
+    }
+
+    .formCardHeader {
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+    }
+
+    .formCardIcon {
+        width: 4.4rem;
+        height: 4.4rem;
+        border-radius: 1.2rem;
+    }
+
+    .formCardHeader h2 {
+        font-size: 1.5rem;
+    }
+
+    .formRow,
+    .foodTypeRow {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .foodTypeRow {
+        gap: 0.8rem;
+    }
+
+    .imageUploadBox {
+        height: 14rem;
+    }
+
+    .mapBox {
+        height: 22rem;
+    }
+
+    .restaurantFormActions {
+        min-height: auto;
+        padding: 1.3rem 1.4rem;
+        border-radius: 0 0 1.3rem 1.3rem;
+    }
+
+    .cancelButton,
+    .createRestaurantButton {
+        width: 50%;
+    }
+}

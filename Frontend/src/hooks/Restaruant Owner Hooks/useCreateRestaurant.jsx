@@ -15,6 +15,7 @@ const useCreateRestaurant = () => {
     const [formData, setFormData] = useState({
         name: "",
         description: "",
+        phoneNumber: "",
         openingTime: "",
         closingTime: "",
         foodType: "",
@@ -247,6 +248,7 @@ const useCreateRestaurant = () => {
 
         restaurantData.append("name", formData.name);
         restaurantData.append("description", formData.description);
+        restaurantData.append("phoneNumber", formData.phoneNumber);
         restaurantData.append("openingTime", formData.openingTime);
         restaurantData.append("closingTime", formData.closingTime);
         restaurantData.append("foodType", formData.foodType);

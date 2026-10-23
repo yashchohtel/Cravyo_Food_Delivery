@@ -15,3 +15,8 @@
   width: 20rem;
   margin-right: 1rem;
 }
+
+/* Keep order tracking above the customer bottom navigation. */
+.homePage .active-order-floating-wrapper {
+  bottom: 8rem;
+}

@@ -175,6 +175,47 @@ export const resetPassword = createAsyncThunk("auth/resetPassword", async ({ tok
 
 });
 
+// Thunk to upload and save the current user's profile image
+export const updateProfileImage = createAsyncThunk("auth/updateProfileImage", async (imageFile, { rejectWithValue }) => {
+
+    try {
+
+        const formData = new FormData();
+        formData.append("image", imageFile);
+
+        const { data } = await api.put("/api/user/updateProfileImage", formData);
+
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Unable to update profile photo"
+        );
+
+    }
+
+});
+
+// Thunk to submit delivery partner details and update the user's role
+export const becomeDeliveryPartner = createAsyncThunk("auth/becomeDeliveryPartner", async (formData, { rejectWithValue }) => {
+
+    try {
+
+        const { data } = await api.post("/api/user/becomeDeliveryPartner", formData);
+
+        return data;
+
+    } catch (error) {
+
+        return rejectWithValue(
+            error.response?.data?.message || "Unable to become a delivery partner"
+        );
+
+    }
+
+});
+
 // Thunk for Google Authentication
 export const googleAuth = createAsyncThunk("auth/googleAuth", async (idToken, { rejectWithValue }) => {
 
