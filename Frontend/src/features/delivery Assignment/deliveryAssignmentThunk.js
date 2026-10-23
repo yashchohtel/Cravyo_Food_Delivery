@@ -60,12 +60,87 @@ export const getDeliveryAssignmentById = createAsyncThunk("deliveryAssignment/ge
             const { data } = await api.get(`/api/deliveryAssignment/${assignmentId}`);
 
             return data;
-            
+
         } catch (error) {
 
             return rejectWithValue(
                 error.response?.data?.message ||
                 "Something went wrong"
+            );
+
+        }
+
+    }
+
+);
+
+// Thunk to mark order as picked up
+export const markOrderPickedUp = createAsyncThunk("deliveryAssignment/markOrderPickedUp",
+
+    async (assignmentId, { rejectWithValue }) => {
+
+        try {
+
+            // Mark order as picked up API call
+            const { data } = await api.put(`/api/deliveryAssignment/markPickedUp/${assignmentId}`);
+
+            // Return success response
+            return data;
+
+        } catch (error) {
+
+            return rejectWithValue(
+                error.response?.data?.message || "Something went wrong"
+            );
+
+        }
+
+    }
+
+);
+
+// Thunk to mark order as delivered
+export const markOrderDelivered = createAsyncThunk("deliveryAssignment/markOrderDelivered",
+
+    async (assignmentId, { rejectWithValue }) => {
+
+        try {
+
+            // Mark order as delivered API call
+            const { data } = await api.put(`/api/deliveryAssignment/markDelivered/${assignmentId}`);
+
+            // Return success response
+            return data;
+
+        } catch (error) {
+
+            return rejectWithValue(
+                error.response?.data?.message || "Something went wrong"
+            );
+
+        }
+
+    }
+
+);
+
+// Thunk to cancel delivery order
+export const cancelDeliveryOrder = createAsyncThunk("deliveryAssignment/cancelDeliveryOrder",
+
+    async (assignmentId, { rejectWithValue }) => {
+
+        try {
+
+            // Cancel delivery order API call
+            const { data } = await api.put(`/api/deliveryAssignment/cancelOrder/${assignmentId}`);
+
+            // Return success response
+            return data;
+
+        } catch (error) {
+
+            return rejectWithValue(
+                error.response?.data?.message || "Something went wrong"
             );
 
         }

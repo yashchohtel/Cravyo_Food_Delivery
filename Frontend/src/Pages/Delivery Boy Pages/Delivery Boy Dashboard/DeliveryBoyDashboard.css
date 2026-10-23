@@ -1,7 +1,7 @@
 .delivery-dashboard {
     width: 100%;
     min-height: 100vh;
-    padding: 1.6rem;
+    padding: 1rem 0.5rem;
     background: var(--page-bg);
     font-family: var(--font-main);
 }
@@ -206,7 +206,7 @@
 
 @media (max-width: 768px) {
     .delivery-dashboard {
-        padding: 1.2rem;
+        padding: 1rem 0.5rem;
     }
 
     .delivery-status-card {
@@ -222,7 +222,7 @@
 
 @media (max-width: 420px) {
     .delivery-dashboard {
-        padding: 1rem;
+        padding: 1rem 0.5rem;
     }
 
     .delivery-status-info {

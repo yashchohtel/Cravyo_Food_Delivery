@@ -55,7 +55,7 @@ const deliveryAssignmentSchema = new mongoose.Schema({
     // Current assignment status
     status: {
         type: String,
-        enum: ["broadcasted", "assigned", "completed"],
+        enum: ["broadcasted", "assigned", "completed", "cancelled"],
         default: "broadcasted",
     },
 
@@ -63,6 +63,12 @@ const deliveryAssignmentSchema = new mongoose.Schema({
     acceptedAt: {
         type: Date,
         default: null,
+    },
+
+    // Whether the delivery boy has picked up the order
+    orderPicked: {
+        type: Boolean,
+        default: false
     },
 
 }, { timestamps: true });

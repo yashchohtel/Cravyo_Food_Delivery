@@ -130,10 +130,10 @@ export const getDeliveryAssignmentById = async (req, res, next) => {
             path: "order",
             populate: {
                 path: "user",
-                select: "fullName mobileNumber"
+                select: "fullName mobileNumber email"
             }
         })
-        .populate("shop", "name image address");
+        .populate("shop", "name image address mobileNumber");
 
     if (!assignment) {
         return next(
@@ -146,5 +146,249 @@ export const getDeliveryAssignmentById = async (req, res, next) => {
         message: "Delivery assignment fetched successfully",
         assignment
     });
+
+};
+
+// Mark Order as Picked Up
+export const markOrderPickedUp = async (req, res, next) => {
+
+    // Find and update the assigned delivery assignment
+    const assignment = await DeliveryAssignment.findOneAndUpdate(
+        {
+            _id: req.params.id,
+            assignedTo: req.user._id,
+            status: "assigned",
+            orderPicked: false
+        },
+        {
+            $set: {
+                orderPicked: true
+            }
+        },
+        {
+            new: true
+        }
+    )
+        .populate({
+            path: "order",
+            populate: {
+                path: "user",
+                select: "fullName mobileNumber email"
+            }
+        })
+        .populate("shop", "name image address mobileNumber");
+
+    // Check if assignment was found and updated
+    if (!assignment) {
+        return next(
+            new ErrorHandler(
+                "Assignment not found or order already picked up",
+                404
+            )
+        );
+    }
+
+    // Return success response
+    return res.status(200).json({
+        success: true,
+        message: "Order marked as picked up successfully",
+        assignment
+    });
+
+};
+
+// Mark Order as Delivered
+export const markOrderDelivered = async (req, res, next) => {
+
+    // Create session
+    const session = await DeliveryAssignment.startSession();
+
+    try {
+
+        let assignment;
+
+        await session.withTransaction(async () => {
+
+            // Find and update the assigned delivery assignment
+            assignment = await DeliveryAssignment.findOneAndUpdate(
+                {
+                    _id: req.params.id,
+                    assignedTo: req.user._id,
+                    status: "assigned",
+                    orderPicked: true
+                },
+                {
+                    $set: {
+                        status: "completed"
+                    }
+                },
+                {
+                    new: true,
+                    session
+                }
+            );
+
+            // Check if assignment is valid
+            if (!assignment) {
+                throw new ErrorHandler(
+                    "Assignment not found or order has not been picked up",
+                    409
+                );
+            }
+
+            // Update order status to delivered
+            const order = await Order.findOneAndUpdate(
+                {
+                    _id: assignment.order,
+                    deliveryAssignment: assignment._id,
+                    deliveryBoy: req.user._id,
+                    status: "out_for_delivery"
+                },
+                {
+                    $set: {
+                        status: "delivered"
+                    }
+                },
+                {
+                    new: true,
+                    session
+                }
+            );
+
+            // Check if order was updated
+            if (!order) {
+                throw new ErrorHandler(
+                    "Order cannot be marked as delivered",
+                    409
+                );
+            }
+
+        });
+
+        // Populate assignment details
+        assignment = await DeliveryAssignment.findById(assignment._id)
+            .populate({
+                path: "order",
+                populate: {
+                    path: "user",
+                    select: "fullName mobileNumber email"
+                }
+            })
+            .populate("shop", "name image address mobileNumber");
+
+        // Return success response
+        return res.status(200).json({
+            success: true,
+            message: "Order marked as delivered successfully",
+            assignment
+        });
+
+    } catch (error) {
+
+        return next(error);
+
+    } finally {
+
+        await session.endSession();
+
+    }
+
+};
+
+// Cancel Order from Delivery Boy Side
+export const cancelDeliveryOrder = async (req, res, next) => {
+
+    // Create session
+    const session = await DeliveryAssignment.startSession();
+
+    try {
+
+        let assignment;
+
+        await session.withTransaction(async () => {
+
+            // Find and update the assigned delivery assignment
+            assignment = await DeliveryAssignment.findOneAndUpdate(
+                {
+                    _id: req.params.id,
+                    assignedTo: req.user._id,
+                    status: "assigned",
+                    orderPicked: true
+                },
+                {
+                    $set: {
+                        status: "cancelled"
+                    }
+                },
+                {
+                    new: true,
+                    session
+                }
+            );
+
+            // Check if assignment is valid
+            if (!assignment) {
+                throw new ErrorHandler(
+                    "Assignment not found or order is not eligible for cancellation",
+                    409
+                );
+            }
+
+            // Update order status to cancelled
+            const order = await Order.findOneAndUpdate(
+                {
+                    _id: assignment.order,
+                    deliveryAssignment: assignment._id,
+                    deliveryBoy: req.user._id,
+                    status: "out_for_delivery"
+                },
+                {
+                    $set: {
+                        status: "cancelled"
+                    }
+                },
+                {
+                    new: true,
+                    session
+                }
+            );
+
+            // Check if order was updated
+            if (!order) {
+                throw new ErrorHandler(
+                    "Order cannot be cancelled",
+                    409
+                );
+            }
+
+        });
+
+        // Populate assignment details
+        assignment = await DeliveryAssignment.findById(assignment._id)
+            .populate({
+                path: "order",
+                populate: {
+                    path: "user",
+                    select: "fullName mobileNumber email"
+                }
+            })
+            .populate("shop", "name image address mobileNumber");
+
+        // Return success response
+        return res.status(200).json({
+            success: true,
+            message: "Order cancelled successfully",
+            assignment
+        });
+
+    } catch (error) {
+
+        return next(error);
+
+    } finally {
+
+        await session.endSession();
+
+    }
 
 };

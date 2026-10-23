@@ -1,14 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { acceptDeliveryAssignment, getAvailableAssignments, getDeliveryAssignmentById } from "./deliveryAssignmentThunk";
+import { acceptDeliveryAssignment, cancelDeliveryOrder, getAvailableAssignments, getDeliveryAssignmentById, markOrderDelivered, markOrderPickedUp } from "./deliveryAssignmentThunk";
 
 const initialState = {
-    assignments: [],
-    assignmentsLoading: false,
-    acceptAssignmentLoading: false,
-    selectedAssignment: null,
-    assignmentDetailsLoading: false,
-    errorMessage: null,
-    successMessage: null
+    assignments: [], // List of available delivery assignments
+    assignmentsLoading: false, // Loading state while fetching available assignments
+    acceptAssignmentLoading: false, // Loading state while accepting an assignment
+    selectedAssignment: null, // Currently selected delivery assignment details
+    assignmentDetailsLoading: false, // Loading state while fetching assignment details
+    markOrderPickedUpLoading: false, // Loading state while marking order as picked up
+    markOrderDeliveredLoading: false, // Loading state while marking order as delivered
+    cancelDeliveryOrderLoading: false, // Loading state while cancelling a delivery order
+    errorMessage: null, // Stores error messages from assignment-related API calls
+    successMessage: null // Stores success messages from assignment-related API calls
 };
 
 const deliveryAssignmentSlice = createSlice({
@@ -67,7 +70,7 @@ const deliveryAssignmentSlice = createSlice({
                 state.selectedAssignment = action.payload.assignment;
 
                 state.successMessage = action.payload.message;
-                
+
             })
             .addCase(acceptDeliveryAssignment.rejected, (state, action) => {
                 state.acceptAssignmentLoading = false;
@@ -86,6 +89,57 @@ const deliveryAssignmentSlice = createSlice({
             })
             .addCase(getDeliveryAssignmentById.rejected, (state, action) => {
                 state.assignmentDetailsLoading = false;
+                state.errorMessage = action.payload;
+            })
+
+            /* ----------- MARK ORDER AS PICKED UP ↓ */
+
+            .addCase(markOrderPickedUp.pending, (state) => {
+                state.markOrderPickedUpLoading = true;
+                state.errorMessage = null;
+                state.successMessage = null;
+            })
+            .addCase(markOrderPickedUp.fulfilled, (state, action) => {
+                state.markOrderPickedUpLoading = false;
+                state.selectedAssignment = action.payload.assignment;
+                state.successMessage = action.payload.message;
+            })
+            .addCase(markOrderPickedUp.rejected, (state, action) => {
+                state.markOrderPickedUpLoading = false;
+                state.errorMessage = action.payload;
+            })
+
+            /* ----------- MARK ORDER AS DELIVERED ↓ */
+
+            .addCase(markOrderDelivered.pending, (state) => {
+                state.markOrderDeliveredLoading = true;
+                state.errorMessage = null;
+                state.successMessage = null;
+            })
+            .addCase(markOrderDelivered.fulfilled, (state, action) => {
+                state.markOrderDeliveredLoading = false;
+                state.selectedAssignment = action.payload.assignment;
+                state.successMessage = action.payload.message;
+            })
+            .addCase(markOrderDelivered.rejected, (state, action) => {
+                state.markOrderDeliveredLoading = false;
+                state.errorMessage = action.payload;
+            })
+
+            /* ----------- CANCEL DELIVERY ORDER ↓ */
+
+            .addCase(cancelDeliveryOrder.pending, (state) => {
+                state.cancelDeliveryOrderLoading = true;
+                state.errorMessage = null;
+                state.successMessage = null;
+            })
+            .addCase(cancelDeliveryOrder.fulfilled, (state, action) => {
+                state.cancelDeliveryOrderLoading = false;
+                state.selectedAssignment = action.payload.assignment;
+                state.successMessage = action.payload.message;
+            })
+            .addCase(cancelDeliveryOrder.rejected, (state, action) => {
+                state.cancelDeliveryOrderLoading = false;
                 state.errorMessage = action.payload;
             })
 
