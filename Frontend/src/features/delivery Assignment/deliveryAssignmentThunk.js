@@ -148,3 +148,25 @@ export const cancelDeliveryOrder = createAsyncThunk("deliveryAssignment/cancelDe
     }
 
 );
+
+// Fetch assignments accepted by the signed-in delivery boy.
+export const getMyDeliveryAssignments = createAsyncThunk("deliveryAssignment/getMyDeliveryAssignments",
+
+    async (_, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await api.get("/api/deliveryAssignment/my-orders");
+            return data;
+
+        } catch (error) {
+
+            return rejectWithValue(
+                error.response?.data?.message || "Something went wrong"
+            );
+
+        }
+
+    }
+
+);

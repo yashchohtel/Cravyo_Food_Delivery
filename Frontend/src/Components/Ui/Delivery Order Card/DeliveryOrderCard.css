@@ -1,0 +1,207 @@
+.delivery-order-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 1.5rem;
+    background: var(--background-color);
+    box-shadow: var(--shadow-mild);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.delivery-order-card:hover {
+    border-color: #ffc4ad;
+    box-shadow: var(--shadow-mid);
+    transform: translateY(-0.1rem);
+}
+
+.delivery-order-card-link {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    gap: 1.4rem;
+    padding: 1.5rem;
+    color: inherit;
+}
+
+.delivery-order-card-link:focus-visible {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: -0.3rem;
+}
+
+.delivery-order-card-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.delivery-order-number {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.delivery-order-status {
+    flex-shrink: 0;
+    padding: 0.55rem 0.9rem;
+    border-radius: 2rem;
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.delivery-order-status.assigned {
+    background: #fff4df;
+    color: #9a5a00;
+}
+
+.delivery-order-status.out-for-delivery {
+    background: #eaf4ff;
+    color: #1763a5;
+}
+
+.delivery-order-status.delivered {
+    background: #e7f8ed;
+    color: #178144;
+}
+
+.delivery-order-status.cancelled {
+    background: #fff0ef;
+    color: #b42318;
+}
+
+.delivery-order-status.unknown {
+    background: var(--surface-color-2);
+    color: var(--text-secondary);
+}
+
+.delivery-order-card-main {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    min-width: 0;
+}
+
+.delivery-order-shop-image {
+    display: grid;
+    width: 6rem;
+    height: 6rem;
+    flex-shrink: 0;
+    overflow: hidden;
+    place-items: center;
+    border-radius: 1.1rem;
+    background: var(--surface-color);
+    color: var(--text-secondary);
+    font-size: 2.5rem;
+}
+
+.delivery-order-shop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.delivery-order-shop-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.delivery-order-shop-info h2 {
+    overflow: hidden;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: 1.55rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.delivery-order-shop-info p {
+    margin-top: 0.45rem;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.delivery-order-chevron {
+    flex-shrink: 0;
+    color: var(--text-blur);
+    font-size: 2.1rem;
+}
+
+.delivery-order-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+    padding: 1.2rem;
+    border-radius: 1rem;
+    background: var(--surface-color);
+}
+
+.delivery-order-fact {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.delivery-order-fact > span {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+.delivery-order-fact strong {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    overflow-wrap: anywhere;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.delivery-order-fact strong svg {
+    flex-shrink: 0;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+}
+
+.delivery-order-destination {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    line-height: 1.45;
+}
+
+.delivery-order-destination svg {
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    color: var(--primary-color);
+    font-size: 1.6rem;
+}
+
+.delivery-order-open-hint {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    color: var(--primary-color);
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.delivery-order-open-hint svg {
+    font-size: 1.4rem;
+}
+
+@media (min-width: 64rem) {
+    .delivery-order-card-link {
+        gap: 1.5rem;
+        padding: 1.7rem;
+    }
+}

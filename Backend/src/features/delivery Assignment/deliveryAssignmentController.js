@@ -22,6 +22,24 @@ export const getAvailableAssignments = async (req, res, next) => {
 
 };
 
+// Get all delivery assignments owned by the authenticated delivery boy.
+export const getMyDeliveryAssignments = async (req, res, next) => {
+
+    const assignments = await DeliveryAssignment.find({
+        assignedTo: req.user._id
+    })
+        .sort({ updatedAt: -1, createdAt: -1 })
+        .populate("order")
+        .populate("shop", "name image address mobileNumber deliveryTime");
+
+    return res.status(200).json({
+        success: true,
+        message: "Your delivery assignments fetched successfully",
+        assignments
+    });
+
+};
+
 // Accept a delivery assignment using transaction
 export const acceptDeliveryAssignment = async (req, res, next) => {
 

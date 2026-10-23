@@ -1,9 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { acceptDeliveryAssignment, cancelDeliveryOrder, getAvailableAssignments, getDeliveryAssignmentById, markOrderDelivered, markOrderPickedUp } from "./deliveryAssignmentThunk";
+import { acceptDeliveryAssignment, cancelDeliveryOrder, getAvailableAssignments, getDeliveryAssignmentById, getMyDeliveryAssignments, markOrderDelivered, markOrderPickedUp } from "./deliveryAssignmentThunk";
 
 const initialState = {
     assignments: [], // List of available delivery assignments
     assignmentsLoading: false, // Loading state while fetching available assignments
+    assignmentsError: null,
+    myAssignments: [], // Assignments accepted by this delivery boy
+    myAssignmentsLoading: false,
+    myAssignmentsError: null,
     acceptAssignmentLoading: false, // Loading state while accepting an assignment
     selectedAssignment: null, // Currently selected delivery assignment details
     assignmentDetailsLoading: false, // Loading state while fetching assignment details
@@ -38,16 +42,35 @@ const deliveryAssignmentSlice = createSlice({
 
             .addCase(getAvailableAssignments.pending, (state) => {
                 state.assignmentsLoading = true;
+                state.assignmentsError = null;
                 state.errorMessage = null;
             })
             .addCase(getAvailableAssignments.fulfilled, (state, action) => {
                 state.assignmentsLoading = false;
-                state.assignments = action.payload.assignments;
+                state.assignments = action.payload.assignments || [];
+                state.assignmentsError = null;
                 state.successMessage = action.payload.message;
             })
             .addCase(getAvailableAssignments.rejected, (state, action) => {
                 state.assignmentsLoading = false;
+                state.assignmentsError = action.payload;
                 state.errorMessage = action.payload;
+            })
+
+            /* ----------- GET OWNED DELIVERY ASSIGNMENTS ↓ */
+
+            .addCase(getMyDeliveryAssignments.pending, (state) => {
+                state.myAssignmentsLoading = true;
+                state.myAssignmentsError = null;
+            })
+            .addCase(getMyDeliveryAssignments.fulfilled, (state, action) => {
+                state.myAssignmentsLoading = false;
+                state.myAssignments = action.payload.assignments || [];
+                state.myAssignmentsError = null;
+            })
+            .addCase(getMyDeliveryAssignments.rejected, (state, action) => {
+                state.myAssignmentsLoading = false;
+                state.myAssignmentsError = action.payload;
             })
 
             /* ----------- ACCEPT DELIVERY ASSIGNMENT ↓ */
