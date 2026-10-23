@@ -1,6 +1,7 @@
 import DeliveryAssignment from "../../models/deliveryAssignment.modal.js";
 import Order from "../../models/order.modal.js";
 import ErrorHandler from "../../utils/errorHandler.js";
+import { calculateDistance } from "../../utils/utilityFunctions.js";
 
 // Get available delivery assignments
 export const getAvailableAssignments = async (req, res, next) => {
@@ -10,7 +11,7 @@ export const getAvailableAssignments = async (req, res, next) => {
         broadcastedTo: req.user._id,
         assignedTo: null,
         status: "broadcasted"
-    }).populate("order").populate("shop", "name image address");
+    }).populate("order").populate("shop", "name image address mobileNumber deliveryTime");
 
     // return status
     return res.status(200).json({
@@ -96,7 +97,7 @@ export const acceptDeliveryAssignment = async (req, res, next) => {
                     select: "fullName mobileNumber"
                 }
             })
-            .populate("shop", "name image address");
+            .populate("shop", "name image address mobileNumber deliveryTime");
 
         return res.status(200).json({
             success: true,
@@ -133,7 +134,7 @@ export const getDeliveryAssignmentById = async (req, res, next) => {
                 select: "fullName mobileNumber email"
             }
         })
-        .populate("shop", "name image address mobileNumber");
+        .populate("shop", "name image address mobileNumber deliveryTime");
 
     if (!assignment) {
         return next(
@@ -141,10 +142,29 @@ export const getDeliveryAssignmentById = async (req, res, next) => {
         );
     }
 
+    const [deliveryBoyLongitude, deliveryBoyLatitude] = req.user.location?.coordinates || [];
+
+    const hasDeliveryBoyLocation =
+        Number.isFinite(deliveryBoyLatitude) &&
+        Number.isFinite(deliveryBoyLongitude) &&
+        !(deliveryBoyLatitude === 0 && deliveryBoyLongitude === 0);
+    const distanceToShop = hasDeliveryBoyLocation
+        ? Number(calculateDistance(
+            deliveryBoyLatitude,
+            deliveryBoyLongitude,
+            assignment.shop.address.latitude,
+            assignment.shop.address.longitude
+        ).toFixed(2))
+        : null;
+
+    const assignmentData = assignment.toObject();
+    
+    assignmentData.distanceToShop = distanceToShop;
+
     return res.status(200).json({
         success: true,
         message: "Delivery assignment fetched successfully",
-        assignment
+        assignment: assignmentData
     });
 
 };
@@ -176,7 +196,7 @@ export const markOrderPickedUp = async (req, res, next) => {
                 select: "fullName mobileNumber email"
             }
         })
-        .populate("shop", "name image address mobileNumber");
+        .populate("shop", "name image address mobileNumber deliveryTime");
 
     // Check if assignment was found and updated
     if (!assignment) {
@@ -274,7 +294,7 @@ export const markOrderDelivered = async (req, res, next) => {
                     select: "fullName mobileNumber email"
                 }
             })
-            .populate("shop", "name image address mobileNumber");
+            .populate("shop", "name image address mobileNumber deliveryTime");
 
         // Return success response
         return res.status(200).json({
@@ -372,7 +392,7 @@ export const cancelDeliveryOrder = async (req, res, next) => {
                     select: "fullName mobileNumber email"
                 }
             })
-            .populate("shop", "name image address mobileNumber");
+            .populate("shop", "name image address mobileNumber deliveryTime");
 
         // Return success response
         return res.status(200).json({

@@ -81,6 +81,8 @@ const deliveryAssignmentSlice = createSlice({
 
             .addCase(getDeliveryAssignmentById.pending, (state) => {
                 state.assignmentDetailsLoading = true;
+                state.selectedAssignment = null;
+                state.successMessage = null;
                 state.errorMessage = null;
             })
             .addCase(getDeliveryAssignmentById.fulfilled, (state, action) => {

@@ -1,0 +1,924 @@
+.delivery-order-details {
+    width: min(100%, 48rem);
+    margin: 0 auto;
+    padding: 0.8rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    color: var(--text-primary);
+}
+
+.delivery-details-topbar {
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 4.2rem;
+}
+
+.delivery-details-topbar h1 {
+    overflow: hidden;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: 1.7rem;
+    font-weight: 700;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.delivery-back-button,
+.delivery-icon-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+}
+
+.delivery-back-button {
+    width: 4rem;
+    height: 4rem;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 1.2rem;
+    background: var(--background-color);
+    font-size: 2rem;
+}
+
+.delivery-status-chip {
+    padding: 0.6rem 0.9rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.delivery-status-chip.is-pending {
+    background: #fff0e9;
+    color: var(--primary-color);
+}
+
+.delivery-status-chip.is-accepted,
+.delivery-status-chip.is-out-for-delivery {
+    background: #eaf4ff;
+    color: #1671c5;
+}
+
+.delivery-status-chip.is-delivered {
+    background: var(--veg-light);
+    color: var(--veg-dark);
+}
+
+.delivery-status-chip.is-cancelled {
+    background: var(--location-red-bg);
+    color: var(--error-color);
+}
+
+.delivery-progress {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: 0.7rem 0.2rem 0.2rem;
+    border-radius: 1.4rem;
+    background: var(--background-color);
+    box-shadow: var(--shadow-mild);
+}
+
+.delivery-progress-step {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.delivery-progress-line {
+    position: absolute;
+    z-index: 0;
+    top: 1.65rem;
+    right: 50%;
+    width: 100%;
+    height: 0.2rem;
+    background: var(--surface-color-2);
+}
+
+.delivery-progress-line.is-complete {
+    background: var(--primary-color);
+}
+
+.delivery-progress-icon {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 3.3rem;
+    height: 3.3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--surface-color-2);
+    color: var(--text-secondary);
+    font-size: 1.6rem;
+}
+
+.delivery-progress-step.is-active .delivery-progress-icon,
+.delivery-progress-step.is-complete .delivery-progress-icon {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.delivery-progress-step.is-complete .delivery-progress-icon {
+    background: var(--success-color);
+}
+
+.delivery-progress-step.is-cancelled .delivery-progress-icon {
+    background: var(--error-color);
+}
+
+.delivery-progress-step strong {
+    max-width: 100%;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    line-height: 1.25;
+}
+
+.delivery-progress-detail,
+.delivery-progress-step small {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+.delivery-progress-step small {
+    color: var(--veg-dark);
+    font-weight: 700;
+}
+
+.delivery-state-banner {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.3rem;
+    border-radius: 1.2rem;
+}
+
+.delivery-state-banner > svg {
+    flex: 0 0 auto;
+    font-size: 2.7rem;
+}
+
+.delivery-state-banner div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.delivery-state-banner strong {
+    font-size: 1.4rem;
+}
+
+.delivery-state-banner span {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.delivery-state-banner.is-success {
+    background: #e9f9ef;
+    color: #139346;
+}
+
+.delivery-state-banner.is-cancelled {
+    background: var(--location-red-bg);
+    color: var(--error-color);
+}
+
+.delivery-inline-message {
+    padding: 1rem 1.2rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.delivery-inline-message.is-error {
+    background: var(--location-red-bg);
+    color: #a61b1b;
+}
+
+.delivery-inline-message.is-success {
+    background: var(--veg-light);
+    color: var(--veg-dark);
+}
+
+.delivery-detail-card {
+    border: 0.1rem solid var(--border-color);
+    border-radius: 1.4rem;
+    background: var(--background-color);
+    box-shadow: var(--shadow-mild);
+}
+
+.delivery-shop-card {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.2rem;
+}
+
+.delivery-shop-image {
+    display: flex;
+    width: 7.2rem;
+    height: 6.8rem;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: var(--surface-color);
+    color: var(--primary-color);
+    font-size: 2.6rem;
+}
+
+.delivery-shop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.delivery-shop-copy,
+.delivery-customer-copy {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.delivery-shop-copy h2,
+.delivery-customer-copy strong {
+    overflow: hidden;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.delivery-shop-copy p,
+.delivery-customer-copy span {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    line-height: 1.45;
+}
+
+.delivery-icon-action {
+    width: 4rem;
+    height: 4rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    color: #111827;
+    font-size: 2rem;
+}
+
+.delivery-icon-action:hover {
+    background: var(--surface-color);
+    color: var(--primary-color);
+}
+
+.delivery-route-map {
+    position: relative;
+    height: 19rem;
+    overflow: hidden;
+    border: 0.1rem solid var(--border-color);
+    border-radius: 1.4rem;
+    background-color: #f2f4f5;
+    background-image:
+        linear-gradient(29deg, transparent 47%, rgba(255, 255, 255, 0.9) 48%, rgba(255, 255, 255, 0.9) 51%, transparent 52%),
+        linear-gradient(142deg, transparent 42%, rgba(255, 255, 255, 0.9) 43%, rgba(255, 255, 255, 0.9) 46%, transparent 47%),
+        linear-gradient(90deg, rgba(213, 220, 222, 0.28) 0.1rem, transparent 0.1rem),
+        linear-gradient(rgba(213, 220, 222, 0.28) 0.1rem, transparent 0.1rem);
+    background-size: 14rem 11rem, 16rem 13rem, 3.6rem 3.6rem, 3.6rem 3.6rem;
+}
+
+.delivery-route-art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.delivery-map-road {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.95);
+    stroke-linecap: round;
+    stroke-width: 0.9rem;
+}
+
+.delivery-map-route {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-dasharray: 1.4rem 0.8rem;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 0.4rem;
+}
+
+.delivery-route-map.before-accept .delivery-map-route {
+    stroke-dasharray: 1.1rem 0.8rem;
+}
+
+.delivery-map-marker {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.delivery-map-marker svg {
+    display: flex;
+    width: 3.4rem;
+    height: 3.4rem;
+    padding: 0.7rem;
+    border: 0.3rem solid #fff;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: #fff;
+    box-shadow: var(--shadow-mid);
+    font-size: 1.6rem;
+}
+
+.delivery-map-marker span {
+    padding: 0.5rem 0.8rem;
+    border: 0.1rem solid var(--primary-color);
+    border-radius: 0.7rem;
+    background: #fff;
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.delivery-map-marker.start {
+    top: 52%;
+    left: 7%;
+}
+
+.delivery-map-marker.end {
+    top: 14%;
+    right: 6%;
+}
+
+.delivery-route-map.before-accept .delivery-map-marker.end {
+    top: 55%;
+    right: 8%;
+}
+
+.delivery-route-map.before-accept .delivery-map-marker.start {
+    top: 48%;
+    left: 8%;
+}
+
+.delivery-map-caption {
+    position: absolute;
+    right: 50%;
+    bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    max-width: 70%;
+    padding: 0.8rem 1rem;
+    transform: translateX(50%);
+    border-radius: 0.9rem;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.delivery-map-caption svg {
+    flex: 0 0 auto;
+    color: #1976d2;
+    font-size: 1.5rem;
+}
+
+.delivery-route-metrics {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 0.1rem minmax(0, 1fr);
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    border-radius: 1.2rem;
+    background: var(--background-color);
+    box-shadow: var(--shadow-mild);
+}
+
+.delivery-metric {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.delivery-metric > svg {
+    flex: 0 0 auto;
+    color: var(--success-color);
+    font-size: 2.2rem;
+}
+
+.delivery-metric div {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.delivery-metric strong {
+    overflow: hidden;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.delivery-metric span {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.delivery-metric-divider {
+    width: 0.1rem;
+    height: 4.2rem;
+    background: var(--border-color);
+}
+
+.delivery-items-card {
+    padding: 1.2rem 1.4rem;
+}
+
+.delivery-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+}
+
+.delivery-card-heading h2,
+.delivery-section-title {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.delivery-card-heading > svg {
+    color: var(--text-secondary);
+    font-size: 1.8rem;
+}
+
+.delivery-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.delivery-order-item {
+    display: grid;
+    grid-template-columns: 4.8rem minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 0.8rem;
+    min-width: 0;
+}
+
+.delivery-item-image {
+    display: flex;
+    width: 4.8rem;
+    height: 4.8rem;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 0.9rem;
+    background: var(--surface-color);
+    color: var(--text-secondary);
+    font-size: 1.8rem;
+}
+
+.delivery-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.delivery-item-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.delivery-item-copy strong {
+    overflow: hidden;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.delivery-item-copy span,
+.delivery-item-quantity {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+.delivery-item-total {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+.delivery-empty-items {
+    padding: 1.2rem 0;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.delivery-payment-card {
+    padding: 1.2rem 1.4rem;
+}
+
+.delivery-payment-main {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.delivery-payment-icon,
+.delivery-earning-icon,
+.delivery-customer-avatar,
+.delivery-instructions-icon {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.delivery-payment-icon {
+    width: 3.8rem;
+    height: 3.8rem;
+    border-radius: 1rem;
+    background: #eaf4ff;
+    color: #1671c5;
+    font-size: 2rem;
+}
+
+.delivery-payment-label {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.delivery-payment-label strong {
+    font-size: 1.2rem;
+}
+
+.delivery-payment-label span {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.delivery-payment-total {
+    color: var(--text-primary);
+    font-size: 1.7rem;
+    white-space: nowrap;
+}
+
+.delivery-payment-breakdown {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.delivery-payment-breakdown span {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.delivery-payment-breakdown strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.delivery-payment-breakdown i {
+    width: 0.1rem;
+    height: 1.2rem;
+    background: var(--border-color-dark);
+}
+
+.delivery-earning-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    border-radius: 1.2rem;
+    background: linear-gradient(100deg, #e5faed, #f0fff5);
+}
+
+.delivery-earning-icon {
+    width: 3.8rem;
+    height: 3.8rem;
+    border-radius: 1rem;
+    background: #d2f6df;
+    color: #0b9a50;
+    font-size: 2rem;
+}
+
+.delivery-earning-card div {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.delivery-earning-card div strong {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+}
+
+.delivery-earning-card div span {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+.delivery-earning-total {
+    color: var(--text-primary);
+    font-size: 1.7rem;
+    white-space: nowrap;
+}
+
+.delivery-customer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.delivery-section-title {
+    padding-left: 0.2rem;
+}
+
+.delivery-customer-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+}
+
+.delivery-customer-avatar {
+    width: 4.4rem;
+    height: 4.4rem;
+    border-radius: 50%;
+    background: #eef0f4;
+    color: #6b7280;
+    font-size: 2.2rem;
+}
+
+.delivery-instructions-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem;
+}
+
+.delivery-instructions-icon {
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 0.9rem;
+    background: #eaf4ff;
+    color: #1671c5;
+    font-size: 1.9rem;
+}
+
+.delivery-instructions-card > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.delivery-instructions-card strong {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+}
+
+.delivery-instructions-card p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.delivery-action-bar {
+    position: sticky;
+    z-index: 2;
+    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 0 -0.5rem;
+    padding: 1rem 0.5rem calc(1rem + env(safe-area-inset-bottom));
+    border-top: 0.1rem solid var(--border-color);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 -0.5rem 1.6rem rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(0.8rem);
+}
+
+.delivery-primary-button,
+.delivery-secondary-button,
+.delivery-cancel-button {
+    display: inline-flex;
+    min-height: 4.4rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    padding: 0.9rem 1.3rem;
+    border: 0.1rem solid transparent;
+    border-radius: 1rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    transition: background var(--transition-fast), opacity var(--transition-fast);
+}
+
+.delivery-primary-button {
+    flex: 1 1 100%;
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.delivery-primary-button:hover:not(:disabled) {
+    background: var(--primary-hover);
+}
+
+.delivery-secondary-button {
+    flex: 1 1 auto;
+    border-color: var(--primary-color);
+    background: #fff;
+    color: var(--primary-color);
+}
+
+.delivery-cancel-button {
+    flex: 1 1 100%;
+    min-height: 3.8rem;
+    border-color: var(--primary-color);
+    background: #fff;
+    color: var(--primary-color);
+}
+
+.delivery-primary-button:disabled,
+.delivery-secondary-button:disabled,
+.delivery-cancel-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.delivery-details-state {
+    display: flex;
+    min-height: 55vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.delivery-details-state h1 {
+    color: var(--text-primary);
+    font-size: 1.8rem;
+}
+
+.delivery-details-state p {
+    max-width: 32rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.delivery-details-state-icon {
+    display: flex;
+    width: 5rem;
+    height: 5rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fff0e9;
+    color: var(--primary-color);
+    font-size: 2.4rem;
+}
+
+.delivery-details-spinner {
+    width: 3rem;
+    height: 3rem;
+    border: 0.3rem solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: deliveryDetailsSpin 0.8s linear infinite;
+}
+
+@keyframes deliveryDetailsSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (min-width: 52rem) {
+    .delivery-order-details {
+        padding-top: 1.8rem;
+    }
+
+    .delivery-action-bar {
+        margin-right: 0;
+        margin-left: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+
+    .delivery-primary-button {
+        flex-basis: 0;
+    }
+
+    .delivery-cancel-button {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 34rem) {
+    .delivery-details-topbar {
+        grid-template-columns: 3.6rem minmax(0, 1fr) auto;
+        gap: 0.5rem;
+    }
+
+    .delivery-details-topbar h1 {
+        font-size: 1.5rem;
+    }
+
+    .delivery-status-chip {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    .delivery-progress {
+        padding-right: 0.1rem;
+        padding-left: 0.1rem;
+    }
+
+    .delivery-progress-icon {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .delivery-progress-line {
+        top: 1.5rem;
+    }
+
+    .delivery-progress-step strong {
+        font-size: 0.95rem;
+    }
+
+    .delivery-progress-detail,
+    .delivery-progress-step small {
+        font-size: 0.8rem;
+    }
+
+    .delivery-route-map {
+        height: 17rem;
+    }
+
+    .delivery-map-marker span {
+        max-width: 11rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .delivery-payment-breakdown {
+        gap: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .delivery-action-bar {
+        gap: 0.6rem;
+    }
+
+    .delivery-primary-button,
+    .delivery-secondary-button,
+    .delivery-cancel-button {
+        font-size: 1.15rem;
+    }
+}

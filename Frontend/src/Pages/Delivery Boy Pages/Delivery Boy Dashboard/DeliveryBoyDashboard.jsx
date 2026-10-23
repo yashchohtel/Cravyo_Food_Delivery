@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import DeliveryAssignmentCard from "../../../Components/Ui/Delivery Assignment Card/DeliveryAssignmentCard";
 import useDeliveryBoy from "../../../hooks/Delivery Boy Hooks/useDeliveryBoyHook";
 import "./DeliveryBoyDashboard.css";
 
 const DeliveryBoyDashboard = () => {
+    const navigate = useNavigate();
     
     const {
         isDeliveryBoyActive,
@@ -13,6 +15,11 @@ const DeliveryBoyDashboard = () => {
         acceptAssignmentLoading,
         handleAcceptAssignment
     } = useDeliveryBoy();
+
+    const handleAcceptAndOpenDetails = async (assignmentId) => {
+        const accepted = await handleAcceptAssignment(assignmentId);
+        if (accepted) navigate("/delivery-boy/order/" + assignmentId);
+    };
 
     return (
         <div className="delivery-dashboard">
@@ -94,7 +101,7 @@ const DeliveryBoyDashboard = () => {
                             <DeliveryAssignmentCard
                                 key={assignment._id}
                                 assignment={assignment}
-                                onAccept={handleAcceptAssignment}
+                                onAccept={handleAcceptAndOpenDetails}
                                 acceptLoading={acceptAssignmentLoading}
                             />
                         ))}
