@@ -1,0 +1,324 @@
+.delivery-profile-page {
+    width: 100%;
+    max-width: 72rem;
+    min-height: calc(100vh - 8rem);
+    margin: 0 auto;
+    padding: 2.2rem 1.2rem 10rem;
+}
+
+.delivery-profile-page-heading {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.delivery-profile-page-heading > p {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 0.12rem;
+}
+
+.delivery-profile-page-heading h1 {
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.delivery-profile-card,
+.delivery-profile-status-card,
+.delivery-profile-info-section {
+    border: 0.1rem solid var(--border-color);
+    border-radius: 1.5rem;
+    background: var(--background-color);
+    box-shadow: var(--shadow-mild);
+}
+
+.delivery-profile-card {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.6rem;
+}
+
+.delivery-profile-avatar {
+    display: grid;
+    width: 6.5rem;
+    height: 6.5rem;
+    flex-shrink: 0;
+    overflow: hidden;
+    place-items: center;
+    border: 0.3rem solid #fff0e9;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 2.7rem;
+    font-weight: 800;
+}
+
+.delivery-profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.delivery-profile-card-copy {
+    min-width: 0;
+    flex: 1;
+}
+
+.delivery-profile-card-copy h2 {
+    overflow: hidden;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.delivery-profile-card-copy p {
+    margin-top: 0.4rem;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.delivery-profile-verified {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.35rem;
+    color: #16834a;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.delivery-profile-verified svg {
+    font-size: 1.5rem;
+}
+
+.delivery-profile-status-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+}
+
+.delivery-profile-status-card.online {
+    border-color: #b9e7c8;
+    background: #f0fbf4;
+}
+
+.delivery-profile-status-card.offline {
+    background: var(--surface-color);
+}
+
+.delivery-profile-status-copy {
+    display: flex;
+    min-width: 0;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.delivery-profile-status-dot {
+    width: 1.1rem;
+    height: 1.1rem;
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+    border-radius: 50%;
+    background: #92929c;
+}
+
+.delivery-profile-status-card.online .delivery-profile-status-dot {
+    background: var(--success-color);
+    box-shadow: 0 0 0 0.35rem #22c55e1a;
+}
+
+.delivery-profile-status-copy h2 {
+    color: var(--text-primary);
+    font-size: 1.55rem;
+    font-weight: 700;
+}
+
+.delivery-profile-status-copy p {
+    margin-top: 0.4rem;
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    line-height: 1.45;
+}
+
+.delivery-profile-status-toggle {
+    display: flex;
+    width: 4.8rem;
+    height: 2.8rem;
+    flex-shrink: 0;
+    align-items: center;
+    padding: 0.3rem;
+    border-radius: 2rem;
+    background: #a5a5ad;
+    transition: background var(--transition-fast);
+}
+
+.delivery-profile-status-card.online .delivery-profile-status-toggle {
+    background: var(--primary-color);
+}
+
+.delivery-profile-status-toggle:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.delivery-profile-status-toggle > span {
+    display: grid;
+    width: 2.2rem;
+    height: 2.2rem;
+    place-items: center;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: var(--shadow-mild);
+    transition: transform var(--transition-fast);
+}
+
+.delivery-profile-status-card.online .delivery-profile-status-toggle > span {
+    transform: translateX(2rem);
+}
+
+.delivery-profile-status-loader {
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 0.2rem solid var(--surface-color-2);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: delivery-profile-spin 0.7s linear infinite;
+}
+
+.delivery-profile-info-section {
+    margin-top: 1.5rem;
+    overflow: hidden;
+}
+
+.delivery-profile-section-heading {
+    padding: 1.6rem 1.6rem 1.2rem;
+}
+
+.delivery-profile-section-heading h2 {
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.delivery-profile-section-heading p {
+    margin-top: 0.4rem;
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+}
+
+.delivery-profile-info-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.delivery-profile-info-row {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 1.25rem 1.6rem;
+    border-top: 0.1rem solid var(--border-color);
+}
+
+.delivery-profile-info-icon {
+    display: grid;
+    width: 3.9rem;
+    height: 3.9rem;
+    flex-shrink: 0;
+    place-items: center;
+    border-radius: 1.1rem;
+    background: #fff0e9;
+    color: var(--primary-color);
+    font-size: 1.9rem;
+}
+
+.delivery-profile-info-row > div {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.delivery-profile-info-row > div > span {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+.delivery-profile-info-row strong {
+    overflow: hidden;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.delivery-profile-home-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    width: fit-content;
+    min-height: 4.4rem;
+    margin: 2rem auto 0;
+    padding: 0.9rem 1.6rem;
+    border: 0.1rem solid var(--primary-color);
+    border-radius: 1rem;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    font-weight: 800;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.delivery-profile-home-link:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.delivery-profile-home-link:focus-visible {
+    outline: 0.2rem solid var(--primary-color);
+    outline-offset: 0.2rem;
+}
+
+.delivery-profile-home-link svg {
+    font-size: 1.6rem;
+}
+
+@keyframes delivery-profile-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (min-width: 64rem) {
+    .delivery-profile-page {
+        padding: 3rem 2rem 10rem;
+    }
+
+    .delivery-profile-card,
+    .delivery-profile-status-card {
+        padding: 2rem;
+    }
+
+    .delivery-profile-section-heading {
+        padding: 2rem 2rem 1.4rem;
+    }
+
+    .delivery-profile-info-row {
+        padding: 1.4rem 2rem;
+    }
+}
