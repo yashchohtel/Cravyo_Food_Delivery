@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createRestaurant, getMyRestaurant, getNearbyRestaurants, getShopById, updateRestaurantStatus, updateShop } from "./restaurantThunk";
+import { createFoodItem, deleteFoodItem, updateFoodItem } from "../foodItems/foodItemThunk";
 
 const initialState = {
     restaurant: null,
@@ -102,6 +103,34 @@ const restaurantSlice = createSlice({
             .addCase(updateRestaurantStatus.rejected, (state, action) => {
                 state.restaurantStatusLoading = false;
                 state.errorMessage = action.payload;
+            })
+
+            /* ----------- SYNC RESTAURANT FOOD ITEMS ↓ */
+
+            .addCase(createFoodItem.fulfilled, (state, action) => {
+                const foodItem = action.payload.foodItem;
+
+                if (state.restaurant && foodItem) {
+                    state.restaurant.foodItems.push(foodItem);
+                }
+            })
+
+            .addCase(updateFoodItem.fulfilled, (state, action) => {
+                const foodItem = action.payload.foodItem;
+
+                if (state.restaurant && foodItem) {
+                    state.restaurant.foodItems = state.restaurant.foodItems.map((item) =>
+                        item._id === foodItem._id ? foodItem : item
+                    );
+                }
+            })
+
+            .addCase(deleteFoodItem.fulfilled, (state, action) => {
+                if (state.restaurant) {
+                    state.restaurant.foodItems = state.restaurant.foodItems.filter(
+                        (item) => item._id !== action.meta.arg
+                    );
+                }
             })
 
             /* ----------- GET RESTAURANT BY ID ↓ */

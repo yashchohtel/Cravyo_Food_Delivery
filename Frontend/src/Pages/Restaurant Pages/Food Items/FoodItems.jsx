@@ -12,7 +12,7 @@ const FoodItems = () => {
   const { getLoading: getFoodItemsLoading } = useSelector((state) => state.foodItem);
 
   const restaurant = useSelector((state) => state.restaurant.restaurant);
-
+  
   const foodItems = restaurant?.foodItems || [];
 
   /* -------------------------------------- */
@@ -251,7 +251,7 @@ const FoodItems = () => {
         {/* no searched result */}
         {foodItems.length !== 0 && filteredFoodItems.length === 0 && !getFoodItemsLoading && (
           <h2 className='noSearch'>No Searched Item Found.</h2>
-        )}  
+        )}
 
         {/* food item card */}
         {getFoodItemsLoading ?
@@ -286,7 +286,7 @@ const FoodItems = () => {
                   // deleteion food item
                   onDelete={(item) => openModal("deleteFoodItem", "delete", item)}
 
-                // onReviews={(item) => { console.log("Reviews:", item) }}
+                  // onReviews={(item) => { console.log("Reviews:", item) }}
 
                 />
 

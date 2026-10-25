@@ -11,7 +11,6 @@ const initialState = {
     deleteLoading: false,
     errorMessage: null,
     successMessage: null
-
 };
 
 const foodItemSlice = createSlice({
