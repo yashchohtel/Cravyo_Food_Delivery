@@ -11,7 +11,10 @@ const FoodItems = () => {
 
   const { getLoading: getFoodItemsLoading } = useSelector((state) => state.foodItem);
 
-  const restaurant = useSelector((state) => state.restaurant.restaurant);
+  const { restaurant, getRestaurantLoading } = useSelector((state) => state.restaurant);
+
+  // Restaurant data includes the food items, so this is the page's real loading state.
+  const isFoodItemsLoading = getFoodItemsLoading || getRestaurantLoading;
   
   const foodItems = restaurant?.foodItems || [];
 
@@ -224,7 +227,7 @@ const FoodItems = () => {
         </div>
 
         {/* empty state */}
-        {foodItems.length === 0 && !getFoodItemsLoading && (
+        {foodItems.length === 0 && !isFoodItemsLoading && (
           <div className="food-items-empty-state">
 
             <img
@@ -249,12 +252,12 @@ const FoodItems = () => {
         )}
 
         {/* no searched result */}
-        {foodItems.length !== 0 && filteredFoodItems.length === 0 && !getFoodItemsLoading && (
+        {foodItems.length !== 0 && filteredFoodItems.length === 0 && !isFoodItemsLoading && (
           <h2 className='noSearch'>No Searched Item Found.</h2>
         )}
 
         {/* food item card */}
-        {getFoodItemsLoading ?
+        {isFoodItemsLoading ?
 
           (
 
