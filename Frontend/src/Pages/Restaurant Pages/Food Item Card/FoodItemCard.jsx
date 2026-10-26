@@ -3,7 +3,7 @@ import "./FoodItemCard.css";
 
 const FoodItemCard = (props) => {
 
-    const { item, onEdit, onView, onDelete } = props;
+    const { item, onEdit, onView, onDelete, onReviews } = props;
 
     return (
 
@@ -96,7 +96,10 @@ const FoodItemCard = (props) => {
                         View
                     </button>
 
-                    <button type="button">
+                    <button
+                        type="button"
+                        onClick={() => onReviews(item)}
+                    >
                         <FaCommentDots />
                         Reviews
                     </button>

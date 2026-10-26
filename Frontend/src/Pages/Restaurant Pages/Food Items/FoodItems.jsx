@@ -15,7 +15,7 @@ const FoodItems = () => {
 
   // Restaurant data includes the food items, so this is the page's real loading state.
   const isFoodItemsLoading = getFoodItemsLoading || getRestaurantLoading;
-  
+
   const foodItems = restaurant?.foodItems || [];
 
   /* -------------------------------------- */
@@ -289,7 +289,8 @@ const FoodItems = () => {
                   // deleteion food item
                   onDelete={(item) => openModal("deleteFoodItem", "delete", item)}
 
-                  // onReviews={(item) => { console.log("Reviews:", item) }}
+                  // open food item reviews modal
+                  onReviews={(item) => openModal("foodItemReviews", "view", item)}
 
                 />
 

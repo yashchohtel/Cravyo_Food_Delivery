@@ -3,6 +3,7 @@ import ButtonLoader from '../../../Components/Loaders/ButtonLoader/ButtonLoader'
 import useAddFoodItem from '../../../hooks/Restaruant Owner Hooks/useFoodItems';
 import AddFoodItemForm from '../Add Food Item Form/AddFoodItemForm';
 import ViewFoodItem from '../View Food Item/ViewFoodItem';
+import FoodItemReviews from '../Food Item Reviews/FoodItemReviews';
 import { FiX, FiUser, FiMapPin, FiCreditCard, FiPackage } from "react-icons/fi";
 import './RestaurantOwnerFormModal.css'
 import ChangeOrderStatusForm from '../../../Components/Ui/Change Order Status Form/ChangeOrderStatusForm';
@@ -47,6 +48,14 @@ const RestaurantOwnerFormModal = (props) => {
                 {/* if type is viewFoodItem  */}
                 {type === "viewFoodItem" && mode === "view" && (
                     <ViewFoodItem
+                        data={data}
+                        onClose={onClose}
+                    />
+                )}
+
+                {/* food item reviews */}
+                {type === "foodItemReviews" && mode === "view" && (
+                    <FoodItemReviews
                         data={data}
                         onClose={onClose}
                     />

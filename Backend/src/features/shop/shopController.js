@@ -84,7 +84,13 @@ export const getMyShop = async (req, res, next) => {
 
     const shop = await Shop.findOne({ owner: req.user._id })
         .populate("owner", "name")
-        .populate("foodItems");
+        .populate({
+            path: "foodItems",
+            populate: {
+                path: "reviews.user",
+                select: "fullName profileImage"
+            }
+        });
 
     if (!shop) {
         return next(new ErrorHandler("Restaurant not found", 404));
