@@ -276,3 +276,28 @@
         padding-right: 2rem;
     }
 }
+
+@media (max-width: 26rem) {
+    .customer-profile-content {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    .customer-profile-summary {
+        padding: 2rem 1.2rem;
+    }
+
+    .customer-profile-detail-row,
+    .customer-profile-password-link,
+    .customer-profile-action-card {
+        gap: 0.8rem;
+        padding: 1.1rem;
+    }
+
+    .customer-profile-detail-icon {
+        width: 3.6rem;
+        height: 3.6rem;
+        border-radius: 1rem;
+        font-size: 1.7rem;
+    }
+}

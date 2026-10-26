@@ -182,11 +182,56 @@
     .food-items-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .admin-search-filter {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .admin-search-filter .searchFilterRight {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
 }
 
 @media (max-width: 600px) {
+    .food-items-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .food-items-grid {
         grid-template-columns: 1fr;
+    }
+
+    .admin-search-box {
+        width: 100%;
+    }
+
+    .admin-search-filter .searchFilterRight {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+
+    .admin-filter-box,
+    .admin-add-btn {
+        width: 100%;
+    }
+
+    .admin-add-btn {
+        grid-column: 1 / -1;
+    }
+
+    .food-items-empty-state {
+        min-height: 32rem;
+    }
+
+    .food-items-empty-state h2 {
+        font-size: 1.7rem;
+    }
+
+    .food-items-empty-state p {
+        font-size: 1.25rem;
     }
 }
 

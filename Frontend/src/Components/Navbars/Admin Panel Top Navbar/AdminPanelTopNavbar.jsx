@@ -28,6 +28,7 @@ const AdminPanelTopNavbar = () => {
         "/restaurant/admin-panel/my-restaurant": "My Restaurant",
         "/restaurant/admin-panel/food-items": "Food Items",
         "/restaurant/admin-panel/orders": "Orders",
+        "/restaurant/admin-panel/earnings": "Earnings",
         
     };
 

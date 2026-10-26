@@ -1,0 +1,433 @@
+.restaurant-earnings-page {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  color: #1f2937;
+}
+
+.restaurant-earnings-heading,
+.restaurant-earnings-section-heading,
+.restaurant-earnings-order,
+.restaurant-earnings-stat,
+.restaurant-earnings-featured-stat {
+  display: flex;
+  align-items: center;
+}
+
+.restaurant-earnings-heading,
+.restaurant-earnings-section-heading {
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.restaurant-earnings-heading > div > span {
+  color: #ea580c;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.restaurant-earnings-heading h1,
+.restaurant-earnings-section-heading h2 {
+  margin: 0.3rem 0;
+  color: #111827;
+}
+
+.restaurant-earnings-heading h1 {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.restaurant-earnings-heading p,
+.restaurant-earnings-section-heading p,
+.restaurant-earnings-stat p,
+.restaurant-earnings-featured-stat p,
+.restaurant-earnings-stat small,
+.restaurant-earnings-featured-stat small,
+.restaurant-earnings-order-copy span,
+.restaurant-earnings-order time {
+  margin: 0;
+  color: #6b7280;
+}
+
+.restaurant-earnings-month-select {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.72rem 0.85rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #ea580c;
+  box-shadow: 0 0.25rem 0.75rem rgb(15 23 42 / 0.05);
+}
+
+.restaurant-earnings-month-select select {
+  border: 0;
+  background: transparent;
+  color: #374151;
+  font: inherit;
+  font-weight: 700;
+  outline: 0;
+}
+
+.restaurant-earnings-stats {
+  display: grid;
+  grid-template-columns: 1.35fr repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+
+.restaurant-earnings-featured-stat,
+.restaurant-earnings-stat,
+.restaurant-earnings-chart-card,
+.restaurant-earnings-recent-card {
+  border: 1px solid #e8eaed;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 0.6rem 1.5rem rgb(15 23 42 / 0.045);
+}
+
+.restaurant-earnings-featured-stat,
+.restaurant-earnings-stat {
+  min-height: 8rem;
+  gap: 0.8rem;
+  padding: 1.1rem;
+}
+
+.restaurant-earnings-featured-stat {
+  border: 0;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #fff;
+}
+
+.restaurant-earnings-featured-stat p,
+.restaurant-earnings-featured-stat small {
+  color: rgb(255 255 255 / 0.8);
+}
+
+.restaurant-earnings-stat-icon,
+.restaurant-earnings-order-icon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 2.55rem;
+  height: 2.55rem;
+  place-items: center;
+  border-radius: 0.8rem;
+  background: #ffedd5;
+  color: #ea580c;
+  font-size: 1.2rem;
+}
+
+.restaurant-earnings-featured-stat .restaurant-earnings-stat-icon {
+  background: rgb(255 255 255 / 0.18);
+  color: #fff;
+}
+
+.restaurant-earnings-stat-icon.purple { background: #ede9fe; color: #7c3aed; }
+.restaurant-earnings-stat-icon.orange { background: #fef3c7; color: #d97706; }
+.restaurant-earnings-stat-icon.green { background: #dcfce7; color: #16a34a; }
+
+.restaurant-earnings-stat strong,
+.restaurant-earnings-featured-stat strong {
+  display: block;
+  margin: 0.2rem 0;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+}
+
+.restaurant-earnings-stat small,
+.restaurant-earnings-featured-stat small {
+  display: block;
+  font-size: 0.76rem;
+}
+
+.restaurant-earnings-chart-card,
+.restaurant-earnings-recent-card {
+  padding: 1.3rem;
+}
+
+.restaurant-earnings-section-heading h2 { font-size: 1.1rem; }
+.restaurant-earnings-section-heading p { font-size: 0.85rem; }
+.restaurant-earnings-section-heading > span { color: #ea580c; font-size: 0.86rem; font-weight: 800; }
+
+.restaurant-earnings-chart {
+  min-height: 17rem;
+  margin-top: 1.5rem;
+  padding: 1rem 0 0;
+  border-top: 1px solid #f0f1f3;
+}
+
+.restaurant-earnings-bars {
+  display: grid;
+  height: 15rem;
+  grid-template-columns: repeat(7, minmax(2.5rem, 1fr));
+  gap: clamp(0.4rem, 2vw, 1.2rem);
+}
+
+.restaurant-earnings-bar-column {
+  display: grid;
+  min-width: 0;
+  grid-template-rows: 1fr auto;
+  gap: 0.55rem;
+  text-align: center;
+}
+
+.restaurant-earnings-bar-track {
+  position: relative;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  overflow: visible;
+  border-radius: 0.55rem 0.55rem 0.2rem 0.2rem;
+  background: repeating-linear-gradient(to bottom, transparent 0, transparent 31%, #f3f4f6 32%, transparent 33%);
+}
+
+.restaurant-earnings-bar {
+  width: min(2.5rem, 72%);
+  height: max(0.3rem, var(--bar-height));
+  border-radius: 0.45rem 0.45rem 0.15rem 0.15rem;
+  background: #fed7aa;
+  transition: height 0.25s ease;
+}
+
+.restaurant-earnings-bar.highlighted { background: linear-gradient(#fb923c, #ea580c); }
+
+.restaurant-earnings-bar-value {
+  position: absolute;
+  bottom: calc(var(--bar-height, 0%) + 0.4rem);
+  z-index: 1;
+  padding: 0.22rem 0.38rem;
+  border-radius: 0.35rem;
+  background: #1f2937;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.restaurant-earnings-bar-column small {
+  overflow: hidden;
+  color: #6b7280;
+  font-size: 0.68rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.restaurant-earnings-recent-card { margin-top: 1.25rem; }
+.restaurant-earnings-order-list { margin-top: 1rem; }
+
+.restaurant-earnings-order {
+  gap: 0.8rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid #f0f1f3;
+}
+
+.restaurant-earnings-order-icon { width: 2.2rem; height: 2.2rem; border-radius: 0.65rem; font-size: 1rem; }
+.restaurant-earnings-order-copy { display: grid; min-width: 0; gap: 0.18rem; }
+.restaurant-earnings-order-copy strong { font-size: 0.9rem; }
+.restaurant-earnings-order-copy span { overflow: hidden; font-size: 0.8rem; text-overflow: ellipsis; white-space: nowrap; }
+.restaurant-earnings-order time { margin-left: auto; font-size: 0.78rem; }
+.restaurant-earnings-order-amount { color: #15803d; font-size: 0.9rem; white-space: nowrap; }
+
+.restaurant-earnings-empty,
+.restaurant-earnings-loading {
+  display: grid;
+  min-height: 10rem;
+  place-items: center;
+  align-content: center;
+  gap: 0.7rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+.restaurant-earnings-empty svg { color: #f97316; font-size: 2rem; }
+.restaurant-earnings-empty p { margin: 0; }
+.restaurant-earnings-loading span { width: 1.7rem; height: 1.7rem; border: 0.2rem solid #fed7aa; border-top-color: #ea580c; border-radius: 50%; animation: restaurant-earnings-spin 0.7s linear infinite; }
+
+@keyframes restaurant-earnings-spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 68rem) {
+  .restaurant-earnings-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 38rem) {
+  .restaurant-earnings-page { padding: 1rem; }
+  .restaurant-earnings-heading { align-items: start; flex-direction: column; }
+  .restaurant-earnings-month-select { width: 100%; }
+  .restaurant-earnings-month-select select { width: 100%; }
+  .restaurant-earnings-stats { grid-template-columns: 1fr; margin: 1.2rem 0; }
+  .restaurant-earnings-featured-stat, .restaurant-earnings-stat { min-height: 6.8rem; }
+  .restaurant-earnings-chart-card, .restaurant-earnings-recent-card { padding: 1rem; }
+  .restaurant-earnings-section-heading { align-items: start; flex-direction: column; gap: 0.35rem; }
+  .restaurant-earnings-bars { gap: 0.3rem; }
+  .restaurant-earnings-bar-value { display: none; }
+  .restaurant-earnings-order { display: grid; grid-template-columns: auto 1fr auto; }
+  .restaurant-earnings-order time { grid-column: 2; margin-left: 0; }
+  .restaurant-earnings-order-amount { grid-column: 3; grid-row: 1 / span 2; align-self: center; }
+}
+
+
+/* Typography update: improve readability without changing dashboard behavior */
+.restaurant-earnings-page {
+  font-size: 1.15rem;
+}
+
+.restaurant-earnings-heading > div > span {
+  font-size: 1rem;
+  letter-spacing: 0.09em;
+}
+
+.restaurant-earnings-heading h1 {
+  font-size: clamp(2.3rem, 3.4vw, 3rem);
+  line-height: 1.2;
+}
+
+.restaurant-earnings-heading p {
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+.restaurant-earnings-month-select {
+  font-size: 1.2rem;
+  padding: 0.9rem 1rem;
+}
+
+.restaurant-earnings-month-select select {
+  font-size: 1.2rem;
+}
+
+.restaurant-earnings-stat p,
+.restaurant-earnings-featured-stat p {
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.restaurant-earnings-stat strong,
+.restaurant-earnings-featured-stat strong {
+  font-size: clamp(1.7rem, 2.2vw, 2.1rem);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.restaurant-earnings-stat small,
+.restaurant-earnings-featured-stat small {
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.restaurant-earnings-stat-icon {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.45rem;
+}
+
+.restaurant-earnings-section-heading h2 {
+  font-size: 1.65rem;
+  line-height: 1.3;
+}
+
+.restaurant-earnings-section-heading p {
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+.restaurant-earnings-section-heading > span {
+  font-size: 1.15rem;
+}
+
+.restaurant-earnings-chart {
+  min-height: 18rem;
+}
+
+.restaurant-earnings-bars {
+  height: 16rem;
+}
+
+.restaurant-earnings-bar-value {
+  font-size: 0.9rem;
+  padding: 0.3rem 0.45rem;
+}
+
+.restaurant-earnings-bar-column small {
+  font-size: 0.95rem;
+}
+
+.restaurant-earnings-order-copy strong {
+  font-size: 1.2rem;
+}
+
+.restaurant-earnings-order-copy span {
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.restaurant-earnings-order time {
+  font-size: 1rem;
+}
+
+.restaurant-earnings-order-amount {
+  font-size: 1.2rem;
+}
+
+.restaurant-earnings-empty,
+.restaurant-earnings-loading {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.restaurant-earnings-empty p {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 38rem) {
+  .restaurant-earnings-heading h1 {
+    font-size: 2.2rem;
+  }
+
+  .restaurant-earnings-heading p {
+    font-size: 1.15rem;
+  }
+
+  .restaurant-earnings-stat p,
+  .restaurant-earnings-featured-stat p {
+    font-size: 1.2rem;
+  }
+
+  .restaurant-earnings-stat strong,
+  .restaurant-earnings-featured-stat strong {
+    font-size: 1.8rem;
+  }
+
+  .restaurant-earnings-stat small,
+  .restaurant-earnings-featured-stat small {
+    font-size: 1rem;
+  }
+
+  .restaurant-earnings-section-heading h2 {
+    font-size: 1.5rem;
+  }
+
+  .restaurant-earnings-section-heading p,
+  .restaurant-earnings-section-heading > span {
+    font-size: 1.05rem;
+  }
+
+  .restaurant-earnings-bar-column small {
+    font-size: 0.85rem;
+  }
+
+  .restaurant-earnings-order-copy strong {
+    font-size: 1.1rem;
+  }
+
+  .restaurant-earnings-order-copy span {
+    font-size: 0.98rem;
+  }
+
+  .restaurant-earnings-order time {
+    font-size: 0.95rem;
+  }
+
+  .restaurant-earnings-order-amount {
+    font-size: 1.1rem;
+  }
+}

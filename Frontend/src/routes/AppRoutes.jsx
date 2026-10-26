@@ -17,6 +17,7 @@ import CreateRestaurant from "../Pages/Restaurant Pages/Create Restaurant/Create
 import RestaurantCreateProtectedRoute from "./RestaurantCreateProtectedRoute.jsx";
 import RestaurantOwnerAdminPenal from "../Pages/Restaurant Pages/Restaurant Owner Admin Penal/RestaurantOwnerAdminPenal.jsx";
 import RestaurantOwnerDashboard from "../Pages/Restaurant Pages/Restaurant Owner Dashboard/RestaurantOwnerDashboard.jsx";
+import RestaurantEarnings from "../Pages/Restaurant Pages/Restaurant Earnings/RestaurantEarnings.jsx";
 import Orders from "../Pages/Restaurant Pages/Orders/Orders.jsx";
 import FoodItems from "../Pages/Restaurant Pages/Food Items/FoodItems.jsx";
 import MyRestaurant from "../Pages/Restaurant Pages/My Restaurant/MyRestaurant.jsx";
@@ -156,6 +157,9 @@ function AppRoutes() {
 
           {/* orders */}
           <Route path="orders" element={<Orders />} />
+
+          {/* earnings */}
+          <Route path="earnings" element={<RestaurantEarnings />} />
 
         </Route>
 

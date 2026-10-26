@@ -322,3 +322,34 @@
         padding: 1.4rem 2rem;
     }
 }
+
+@media (max-width: 26rem) {
+    .delivery-profile-page {
+        padding-right: 0.8rem;
+        padding-left: 0.8rem;
+    }
+
+    .delivery-profile-card {
+        gap: 0.9rem;
+        padding: 1.2rem;
+    }
+
+    .delivery-profile-avatar {
+        width: 5.5rem;
+        height: 5.5rem;
+        font-size: 2.2rem;
+    }
+
+    .delivery-profile-verified {
+        gap: 0;
+        font-size: 0;
+    }
+
+    .delivery-profile-verified svg {
+        font-size: 1.7rem;
+    }
+
+    .delivery-profile-status-card {
+        padding: 1.2rem;
+    }
+}

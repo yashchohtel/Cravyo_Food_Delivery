@@ -589,3 +589,33 @@
         align-items: center;
     }
 }
+
+@media (max-width: 30rem) {
+    .delivery-earnings-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .delivery-earnings-month-select {
+        width: 100%;
+    }
+
+    .delivery-earnings-month-select select {
+        max-width: none;
+        flex: 1;
+    }
+
+    .delivery-earnings-section-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .delivery-earnings-period-select {
+        width: 100%;
+    }
+
+    .delivery-earnings-y-axis {
+        width: 3.4rem;
+        font-size: 0.9rem;
+    }
+}

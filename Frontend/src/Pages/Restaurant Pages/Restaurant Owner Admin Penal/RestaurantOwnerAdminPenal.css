@@ -38,3 +38,22 @@
 .admin-content::-webkit-scrollbar-track {
     background: transparent;
 }
+
+@media (max-width: 48rem) {
+    .admin-layout.ResturantOwnerAdminLayout {
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .admin-body {
+        display: block;
+        overflow: visible;
+    }
+
+    .admin-content {
+        min-height: calc(100vh - 14rem);
+        overflow: visible;
+        padding: 1.2rem;
+    }
+}

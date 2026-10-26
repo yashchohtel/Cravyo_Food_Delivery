@@ -101,3 +101,29 @@
   font-size: 1.2rem;
   color: var(--primary-hover);
 }
+
+@media (max-width: 48rem) {
+  .admin-navbar {
+    padding-block: 0.8rem;
+  }
+
+  .admin-navbar .navbar-left {
+    min-width: 0;
+    gap: 1.2rem;
+  }
+
+  .navbar-logo img {
+    width: 5.5rem;
+  }
+
+  .navbar-page h2 {
+    overflow: hidden;
+    font-size: 1.65rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .admin-info {
+    display: none;
+  }
+}

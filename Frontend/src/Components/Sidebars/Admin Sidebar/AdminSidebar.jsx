@@ -6,7 +6,7 @@ import { RiMenu2Line } from "react-icons/ri";
 import { IoCloseSharp } from "react-icons/io5";
 import { FaImage } from "react-icons/fa";
 import { useState } from 'react';
-import { ClipboardList, LayoutDashboard, Pizza, Store } from 'lucide-react';
+import { ClipboardList, LayoutDashboard, Pizza, Store, WalletCards } from 'lucide-react';
 
 
 const AdminSidebar = (props) => {
@@ -91,6 +91,12 @@ const AdminSidebar = (props) => {
                             <NavLink to="/restaurant/admin-panel/orders" className="sidebar-link">
                                 <ClipboardList className="sidebar-icon" />
                                 <span>Orders</span>
+                            </NavLink>
+
+                            {/* earnings */}
+                            <NavLink to="/restaurant/admin-panel/earnings" className="sidebar-link">
+                                <WalletCards className="sidebar-icon" />
+                                <span>Earnings</span>
                             </NavLink>
                         </>
                     )}
