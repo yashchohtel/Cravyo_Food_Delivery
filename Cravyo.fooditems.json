@@ -1,0 +1,3451 @@
+[{
+  "_id": {
+    "$oid": "6ab385c2bd4d75abe9183be0"
+  },
+  "shop": {
+    "$oid": "6aad056f07693e30be6b2de6"
+  },
+  "name": "Classic Hand",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1790150079/cravyo/food-items/xdrbf8eydm4poedqlvgw.jpg",
+  "imagePublicId": "cravyo/food-items/xdrbf8eydm4poedqlvgw",
+  "description": "Classic hand-toasted bread layered with fresh ingredients and flavorful fillings, grilled to golden perfection for a crispy, satisfying bite.",
+  "price": 49,
+  "category": "Pizza",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 10,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 21,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-09-23T07:54:42.148Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-23T15:13:58.441Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ab38d4c01cacd6983d09c92"
+  },
+  "shop": {
+    "$oid": "6aad056f07693e30be6b2de6"
+  },
+  "name": "Golden Corn Pizza",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1790152010/cravyo/food-items/x8vfgsk6tdgbnt9gtnxv.jpg",
+  "imagePublicId": "cravyo/food-items/x8vfgsk6tdgbnt9gtnxv",
+  "description": "Creamy cheese pizza loaded with sweet golden corn for a simple and delicious bite.",
+  "price": 149,
+  "category": "Pizza",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 7,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-09-23T08:26:52.487Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-23T15:25:52.056Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ab38e2301cacd6983d09c93"
+  },
+  "shop": {
+    "$oid": "6aad056f07693e30be6b2de6"
+  },
+  "name": "Onion Cheese Pizza",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1790152225/cravyo/food-items/edt6fxsplbx3ak23qx0p.jpg",
+  "imagePublicId": "cravyo/food-items/edt6fxsplbx3ak23qx0p",
+  "description": "A simple cheesy pizza topped with fresh onions and a generous layer of melted cheese.",
+  "price": 79,
+  "category": "Pizza",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 16,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 4,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-09-23T08:30:27.686Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-14T03:45:44.818Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ab38e6201cacd6983d09c94"
+  },
+  "shop": {
+    "$oid": "6aad056f07693e30be6b2de6"
+  },
+  "name": "Chicken Keema Pizza",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1790152288/cravyo/food-items/acsy0zfkvwnjjg9t88ji.jpg",
+  "imagePublicId": "cravyo/food-items/acsy0zfkvwnjjg9t88ji",
+  "description": "Flavorful pizza topped with seasoned chicken keema, melted cheese, and fresh herbs.",
+  "price": 149,
+  "category": "Pizza",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 5,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-09-23T08:31:30.551Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-14T06:22:05.571Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ab38e9101cacd6983d09c95"
+  },
+  "shop": {
+    "$oid": "6aad056f07693e30be6b2de6"
+  },
+  "name": "Chicken Loaded Pizza",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1790152335/cravyo/food-items/d5sfhwgpo1vlbtj3xtnt.jpg",
+  "imagePublicId": "cravyo/food-items/d5sfhwgpo1vlbtj3xtnt",
+  "description": "A hearty chicken pizza loaded with juicy chicken pieces, fresh vegetables, and melted cheese.",
+  "price": 249,
+  "category": "Pizza",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 4,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-09-23T08:32:17.845Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-23T06:24:07.155Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ab38ece01cacd6983d09c96"
+  },
+  "shop": {
+    "$oid": "6aad056f07693e30be6b2de6"
+  },
+  "name": "Chicken Sausage Pizza",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1790152396/cravyo/food-items/iu0pclc8gnhvoyps4g1x.jpg",
+  "imagePublicId": "cravyo/food-items/iu0pclc8gnhvoyps4g1x",
+  "description": "Cheesy pizza topped with flavorful chicken sausage slices and a perfectly baked crust.",
+  "price": 224,
+  "category": "Pizza",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 29,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 5,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-09-23T08:33:18.506Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-23T06:24:07.258Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ab3970201cacd6983d09c97"
+  },
+  "shop": {
+    "$oid": "6aad056f07693e30be6b2de6"
+  },
+  "name": "Veggie Loaded Pizza",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1790154495/cravyo/food-items/njvt6t2eozynulfakwlz.jpg",
+  "imagePublicId": "cravyo/food-items/njvt6t2eozynulfakwlz",
+  "description": "Loaded with fresh vegetables, sweet corn, capsicum, and plenty of melted cheese.",
+  "price": 149,
+  "category": "Pizza",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 3,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-09-23T09:08:18.167Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-04T09:01:12.803Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ab3973201cacd6983d09c98"
+  },
+  "shop": {
+    "$oid": "6aad056f07693e30be6b2de6"
+  },
+  "name": "Capsicum Corn Pizza",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1790154544/cravyo/food-items/i5fdb8bxvo3nmrzpjbxi.jpg",
+  "imagePublicId": "cravyo/food-items/i5fdb8bxvo3nmrzpjbxi",
+  "description": "A cheesy pizza topped with crunchy capsicum and sweet corn for a fresh veggie combination.",
+  "price": 149,
+  "category": "Pizza",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 6,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-09-23T09:09:06.998Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-23T06:55:03.190Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ab3978301cacd6983d09c99"
+  },
+  "shop": {
+    "$oid": "6aad056f07693e30be6b2de6"
+  },
+  "name": "Onion Capsicum Pizza",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1790154625/cravyo/food-items/dgs5zusbonfmirsve9qv.jpg",
+  "imagePublicId": "cravyo/food-items/dgs5zusbonfmirsve9qv",
+  "description": "A classic veggie combination of crunchy onion, fresh capsicum, and melted cheese.",
+  "price": 139,
+  "category": "Pizza",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 16,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 8,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-09-23T09:10:27.353Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-23T18:33:29.841Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ab397c701cacd6983d09c9a"
+  },
+  "shop": {
+    "$oid": "6aad056f07693e30be6b2de6"
+  },
+  "name": "Pepper BBQ Pizza",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1790154693/cravyo/food-items/srvivzyn0xzosjdlftc4.jpg",
+  "imagePublicId": "cravyo/food-items/srvivzyn0xzosjdlftc4",
+  "description": "Smoky BBQ-flavored pizza topped with juicy chicken, black pepper, and melted cheese.",
+  "price": 169,
+  "category": "Pizza",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 18,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 12,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-09-23T09:11:35.287Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-23T06:55:03.366Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcb45cc8ee1e8bef1788e1"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Classic Veg Burger",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792848987/cravyo/food-items/yh674zwm98dbzz1cqp3f.webp",
+  "imagePublicId": "cravyo/food-items/yh674zwm98dbzz1cqp3f",
+  "description": "A crispy vegetable patty topped with fresh lettuce, tomato, onion, and creamy house sauce, served in a soft toasted bun.",
+  "price": 129,
+  "category": "Burger",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T13:36:28.454Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T13:36:28.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcb4fac8ee1e8bef1788e2"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Double Cheese Burger",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792849145/cravyo/food-items/z0escvlrprwmdpcijyud.jpg",
+  "imagePublicId": "cravyo/food-items/z0escvlrprwmdpcijyud",
+  "description": "A hearty burger with two juicy patties, melted cheese, fresh toppings, and our signature sauce.",
+  "price": 229,
+  "category": "Burger",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T13:39:06.249Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T13:39:06.249Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcc389c8ee1e8bef1788ef"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Smoky BBQ Chicken Burger",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792852872/cravyo/food-items/ctmvnp8umxnaaxugsbs1.jpg",
+  "imagePublicId": "cravyo/food-items/ctmvnp8umxnaaxugsbs1",
+  "description": "Juicy grilled chicken with smoky barbecue sauce, melted cheese, crisp lettuce, and a toasted bun.",
+  "price": 199,
+  "category": "Burger",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T14:41:13.219Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T14:41:13.219Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcc3c8c8ee1e8bef1788f0"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Crispy Chicken Burger",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792852935/cravyo/food-items/byqcqnibus0qexdtmsvi.jpg",
+  "imagePublicId": "cravyo/food-items/byqcqnibus0qexdtmsvi",
+  "description": "Golden, crunchy chicken layered with fresh lettuce and creamy mayo in a soft toasted bun.",
+  "price": 189,
+  "category": "Burger",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T14:42:16.041Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T14:42:16.041Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcc412c8ee1e8bef1788f1"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Spicy Zinger Burger",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792853009/cravyo/food-items/wtgjx7ssuhngeqnpqohg.jpg",
+  "imagePublicId": "cravyo/food-items/wtgjx7ssuhngeqnpqohg",
+  "description": "A crispy chicken fillet with spicy sauce, crunchy lettuce, and a hint of tangy mayo.",
+  "price": 189,
+  "category": "Burger",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T14:43:30.010Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T14:43:30.010Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcc488c8ee1e8bef1788f2"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Classic Chicken Burger",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792853128/cravyo/food-items/jtvr3aqphavqahfef3sf.jpg",
+  "imagePublicId": "cravyo/food-items/jtvr3aqphavqahfef3sf",
+  "description": "A tender chicken patty with lettuce, tomato, and creamy house dressing in a toasted bun.",
+  "price": 169,
+  "category": "Burger",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T14:45:28.713Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T14:45:28.713Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcea1ec8ee1e8bef1788ff"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Chicken Dum Biryani",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792862749/cravyo/food-items/cqfawmv4dp08c89buxtk.webp",
+  "imagePublicId": "cravyo/food-items/cqfawmv4dp08c89buxtk",
+  "description": "Fragrant basmati rice and tender chicken slow-cooked with aromatic spices, then served with a golden, flavorful finish.",
+  "price": 249,
+  "category": "Biryani",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 12,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:25:50.812Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:25:50.812Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcea69c8ee1e8bef178900"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Hyderabadi Chicken Biryani",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792862824/cravyo/food-items/ri2yfg8yi6u0uyde0txe.webp",
+  "imagePublicId": "cravyo/food-items/ri2yfg8yi6u0uyde0txe",
+  "description": "Spiced chicken layered with long-grain basmati rice and herbs, cooked dum-style for a rich, savory taste.",
+  "price": 279,
+  "category": "Biryani",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 12,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:27:05.596Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:27:05.596Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adceaabc8ee1e8bef178901"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Royal Chicken Biryani",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792862890/cravyo/food-items/qugkog4neqlcqsjxytab.jpg",
+  "imagePublicId": "cravyo/food-items/qugkog4neqlcqsjxytab",
+  "description": "A generous serving of aromatic chicken biryani, slow-cooked with fragrant spices and topped with fresh herbs.",
+  "price": 299,
+  "category": "Biryani",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:28:11.451Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:28:11.451Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adceafdc8ee1e8bef178902"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Veg Dum Biryani",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792862972/cravyo/food-items/wegpwluese060yxoq1mp.webp",
+  "imagePublicId": "cravyo/food-items/wegpwluese060yxoq1mp",
+  "description": "Basmati rice cooked with mixed vegetables, fresh herbs, and traditional biryani spices.",
+  "price": 199,
+  "category": "Biryani",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:29:33.522Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:29:33.522Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adceb57c8ee1e8bef178904"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Classic Veg Biryani",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792863063/cravyo/food-items/iflnudmrdocjmo6gdia3.jpg",
+  "imagePublicId": "cravyo/food-items/iflnudmrdocjmo6gdia3",
+  "description": "Light, fluffy basmati rice tossed with vegetables and aromatic spices for a satisfying meal.",
+  "price": 1189,
+  "category": "Biryani",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:31:03.949Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:31:03.949Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adceb81c8ee1e8bef178905"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Paneer Biryani",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792863104/cravyo/food-items/puocpawxn6ufcdrwtiu8.jpg",
+  "imagePublicId": "cravyo/food-items/puocpawxn6ufcdrwtiu8",
+  "description": "Fragrant rice layered with soft paneer, vegetables, and warming spices for a rich vegetarian biryani.",
+  "price": 249,
+  "category": "Biryani",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 13,
+  "discount": 10,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:31:45.689Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:31:45.689Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcec44c8ee1e8bef178906"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Chicken Hakka Noodles",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792863299/cravyo/food-items/lsguds1ajw4sj3wgcrjx.webp",
+  "imagePublicId": "cravyo/food-items/lsguds1ajw4sj3wgcrjx",
+  "description": "Wok-tossed noodles with juicy chicken, crunchy vegetables, and savory Chinese sauces.",
+  "price": 199,
+  "category": "Chinese",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:35:00.387Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:35:00.387Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcecccc8ee1e8bef178907"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Chicken Schezwan Noodles",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792863435/cravyo/food-items/nmb40f6d0zgthhyfjpdf.jpg",
+  "imagePublicId": "cravyo/food-items/nmb40f6d0zgthhyfjpdf",
+  "description": "Spicy noodles tossed with tender chicken, vegetables, and bold Schezwan sauce.",
+  "price": 219,
+  "category": "Chinese",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:37:16.534Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:37:16.534Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcecf9c8ee1e8bef178908"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Chicken Manchurian",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792863480/cravyo/food-items/qdsju4wnvpncsdjkyhvn.jpg",
+  "imagePublicId": "cravyo/food-items/qdsju4wnvpncsdjkyhvn",
+  "description": "Crispy chicken pieces coated in tangy, savory Manchurian sauce.",
+  "price": 229,
+  "category": "Chinese",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 25,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:38:01.219Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:38:01.219Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adced33c8ee1e8bef178909"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Veg Chow Mein",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792863538/cravyo/food-items/ogqvezb1bwty9ieaxm79.webp",
+  "imagePublicId": "cravyo/food-items/ogqvezb1bwty9ieaxm79",
+  "description": "Stir-fried noodles with fresh vegetables and a light, flavorful Chinese sauce.",
+  "price": 169,
+  "category": "Chinese",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:38:59.290Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:38:59.290Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adced5ac8ee1e8bef17890a"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Veg Hakka Noodles",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792863577/cravyo/food-items/m1ftrrb4hoo5gbhmin1w.jpg",
+  "imagePublicId": "cravyo/food-items/m1ftrrb4hoo5gbhmin1w",
+  "description": "Classic wok-tossed noodles with crunchy vegetables, garlic, and savory sauces.",
+  "price": 159,
+  "category": "Chinese",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:39:38.508Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:39:38.508Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcedb4c8ee1e8bef17890b"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Veg Schezwan Noodles",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792863668/cravyo/food-items/cla7otkckkkca0buyrur.jpg",
+  "imagePublicId": "cravyo/food-items/cla7otkckkkca0buyrur",
+  "description": "Spicy noodles tossed with vegetables and fiery Schezwan sauce.",
+  "price": 179,
+  "category": "Chinese",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:41:08.930Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:41:08.930Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcee37c8ee1e8bef17890c"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Veg Special Thal",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792863798/cravyo/food-items/otwgvxwcpitpcwz00zsk.webp",
+  "imagePublicId": "cravyo/food-items/otwgvxwcpitpcwz00zsk",
+  "description": "A wholesome platter with seasonal vegetable curry, dal, rice, roti, and fresh salad.",
+  "price": 199,
+  "category": "North Indian",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 21,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:43:19.383Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:43:19.383Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcee60c8ee1e8bef17890d"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "North Indian Veg Thali",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792863839/cravyo/food-items/aghxhfpvee8ued3fre4b.jpg",
+  "imagePublicId": "cravyo/food-items/aghxhfpvee8ued3fre4b",
+  "description": "A traditional spread of assorted curries, dal, rice, roti, and accompaniments.",
+  "price": 1229,
+  "category": "North Indian",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:44:00.089Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:44:00.089Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcee8fc8ee1e8bef17890e"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Paneer Thali",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792863886/cravyo/food-items/t2bge47tfd57yl7yohmr.webp",
+  "imagePublicId": "cravyo/food-items/t2bge47tfd57yl7yohmr",
+  "description": "A satisfying meal with paneer curry, dal, rice, roti, and classic sides.",
+  "price": 249,
+  "category": "North Indian",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:44:47.243Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:44:47.243Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adceebec8ee1e8bef17890f"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Mini Veg Thali",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792863933/cravyo/food-items/wksjrgw3mgsxhv3e3n6i.webp",
+  "imagePublicId": "cravyo/food-items/wksjrgw3mgsxhv3e3n6i",
+  "description": "A lighter platter with assorted vegetables, dal, roti, rice, and chutney.",
+  "price": 179,
+  "category": "North Indian",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:45:34.466Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:45:34.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adceeddc8ee1e8bef178910"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Rajasthani Veg Thali",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792863964/cravyo/food-items/l0pjcrrpd4efog0ctnj6.jpg",
+  "imagePublicId": "cravyo/food-items/l0pjcrrpd4efog0ctnj6",
+  "description": "A colorful feast of regional vegetarian dishes, breads, rice, and traditional accompaniments.",
+  "price": 269,
+  "category": "North Indian",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:46:05.801Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:46:05.801Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcef00c8ee1e8bef178911"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Dal Roti Meal",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792864000/cravyo/food-items/uegwsrlths9evgkkythe.jpg",
+  "imagePublicId": "cravyo/food-items/uegwsrlths9evgkkythe",
+  "description": "1. Comforting dal served with roti, rice, and a selection of vegetable sides.",
+  "price": 189,
+  "category": "North Indian",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:46:40.914Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:46:40.914Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcef8cc8ee1e8bef178912"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Plain Dosa",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792864139/cravyo/food-items/panxs96svbwqwhfaa2df.jpg",
+  "imagePublicId": "cravyo/food-items/panxs96svbwqwhfaa2df",
+  "description": "Crispy golden dosa served with coconut chutney and sambar.",
+  "price": 99,
+  "category": "South Indian",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:49:00.325Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:49:00.325Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcefbbc8ee1e8bef178913"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Masala Dosa",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792864186/cravyo/food-items/rsdvpehfv0cinsyob5pj.webp",
+  "imagePublicId": "cravyo/food-items/rsdvpehfv0cinsyob5pj",
+  "description": "Crispy dosa filled with spiced potato masala, served with chutney and sambar.",
+  "price": 149,
+  "category": "South Indian",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:49:47.232Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:49:47.232Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcefddc8ee1e8bef178914"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Ven Pongal",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792864218/cravyo/food-items/zkmbpuht2ozkapegb3za.jpg",
+  "imagePublicId": "cravyo/food-items/zkmbpuht2ozkapegb3za",
+  "description": "A comforting rice and lentil dish seasoned with pepper, cumin, and ghee.",
+  "price": 129,
+  "category": "South Indian",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:50:21.560Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:50:21.560Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcf00dc8ee1e8bef178915"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "South Indian Breakfast Platter",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792864268/cravyo/food-items/ruqe1aanvowdxrr4wgng.jpg",
+  "imagePublicId": "cravyo/food-items/ruqe1aanvowdxrr4wgng",
+  "description": "A traditional banana-leaf meal with soft idli, rice, chutneys, and accompaniments.",
+  "price": 179,
+  "category": "South Indian",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:51:09.397Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:51:09.397Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcf028c8ee1e8bef178916"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Medu Vada & Sambar",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792864295/cravyo/food-items/nauc56a9jotrslxwamum.jpg",
+  "imagePublicId": "cravyo/food-items/nauc56a9jotrslxwamum",
+  "description": "Golden, crisp lentil vadas served with warm sambar and coconut chutney.",
+  "price": 199,
+  "category": "South Indian",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:51:36.648Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:51:36.648Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adcf04dc8ee1e8bef178917"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "South Indian Veg Thali",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792864332/cravyo/food-items/hrlv7ijfxtmyfm09lbfo.jpg",
+  "imagePublicId": "cravyo/food-items/hrlv7ijfxtmyfm09lbfo",
+  "description": "A hearty banana-leaf platter with rice, vegetable sides, sambar, and traditional accompaniments.",
+  "price": 229,
+  "category": "South Indian",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-24T17:52:13.067Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-24T17:52:13.067Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade40dac8ee1e8bef178920"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Crispy Veg Spring Roll",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792950488/cravyo/food-items/b578owcnmtdznl44qv4d.webp",
+  "imagePublicId": "cravyo/food-items/b578owcnmtdznl44qv4d",
+  "description": "Crunchy rolls filled with seasoned vegetables, served with tangy dipping sauce.",
+  "price": 129,
+  "category": "Rolls",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T17:48:10.324Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T17:48:10.324Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade411dc8ee1e8bef178921"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Paneer Tikka Roll",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792950555/cravyo/food-items/jcs2hi5yvs4pfrydq0nj.webp",
+  "imagePublicId": "cravyo/food-items/jcs2hi5yvs4pfrydq0nj",
+  "description": "Soft paneer tikka wrapped with fresh vegetables and mint chutney.",
+  "price": 49,
+  "category": "Rolls",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T17:49:17.051Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T17:49:17.051Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade4143c8ee1e8bef178922"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Veg Kathi Roll",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792950593/cravyo/food-items/sbwjo6vl0m8uwukqhid1.jpg",
+  "imagePublicId": "cravyo/food-items/sbwjo6vl0m8uwukqhid1",
+  "description": "Spiced vegetables wrapped in warm flatbread with fresh herbs and chutney.",
+  "price": 49,
+  "category": "Rolls",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T17:49:55.265Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T17:49:55.265Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade4176c8ee1e8bef178923"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Chicken Seekh Roll",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792950645/cravyo/food-items/f2rj4xiidmd7ztpidf5d.webp",
+  "imagePublicId": "cravyo/food-items/f2rj4xiidmd7ztpidf5d",
+  "description": "Juicy chicken seekh kebab wrapped with onions and mint chutney.",
+  "price": 30,
+  "category": "Rolls",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 11,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T17:50:46.857Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T17:50:46.857Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade4269c8ee1e8bef178924"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Chicken Spring Roll",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792950881/cravyo/food-items/tfoqr8at7ujlop6cksij.webp",
+  "imagePublicId": "cravyo/food-items/tfoqr8at7ujlop6cksij",
+  "description": "Crispy rolls filled with savory chicken and vegetables, served with dipping sauce.",
+  "price": 79,
+  "category": "Rolls",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T17:54:49.449Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T17:54:49.449Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade44ed477906de1be265ea"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Chicken Tikka Roll",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792951532/cravyo/food-items/ecrsyk1cxu3it99dyfr3.webp",
+  "imagePublicId": "cravyo/food-items/ecrsyk1cxu3it99dyfr3",
+  "description": "Tender chicken tikka wrapped with crisp vegetables and creamy mint sauce.",
+  "price": 89,
+  "category": "Rolls",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T18:05:33.876Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T18:05:33.876Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade4803477906de1be265eb"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Steamed Veg Momos",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792952317/cravyo/food-items/de1av5lvxjslycwiwcdu.jpg",
+  "imagePublicId": "cravyo/food-items/de1av5lvxjslycwiwcdu",
+  "description": "Soft dumplings filled with seasoned vegetables, served with spicy chutney.",
+  "price": 120,
+  "category": "Momos",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T18:18:43.737Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T18:18:43.737Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade4821477906de1be265ec"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Veg Fried Momos",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792952352/cravyo/food-items/cwpeyydnktdkwc3i9kft.jpg",
+  "imagePublicId": "cravyo/food-items/cwpeyydnktdkwc3i9kft",
+  "description": "Crispy fried dumplings filled with flavorful vegetables.",
+  "price": 40,
+  "category": "Momos",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T18:19:13.823Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T18:19:13.823Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade4841477906de1be265ed"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Veg Tandoori Momos",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792952383/cravyo/food-items/lrohysnzob9fj0iwndmj.webp",
+  "imagePublicId": "cravyo/food-items/lrohysnzob9fj0iwndmj",
+  "description": "Vegetable momos coated in smoky tandoori masala and served with chutney.\r\nNon-Veg Momos",
+  "price": 30,
+  "category": "Momos",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T18:19:45.173Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T18:19:45.173Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade49a8477906de1be265ee"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Chicken Fried Momos",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792952743/cravyo/food-items/zpg8nqtjaihn4jbtulmj.webp",
+  "imagePublicId": "cravyo/food-items/zpg8nqtjaihn4jbtulmj",
+  "description": "Crispy dumplings filled with spiced chicken and served with tangy chutney.",
+  "price": 120,
+  "category": "Momos",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T18:25:44.903Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T18:25:44.903Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade49ca477906de1be265ef"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Steamed Chicken Momos",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792952777/cravyo/food-items/vazyobcaqzkuu9tunnmm.webp",
+  "imagePublicId": "cravyo/food-items/vazyobcaqzkuu9tunnmm",
+  "description": "Juicy chicken-filled dumplings, steamed and served with spicy chutney.",
+  "price": 20,
+  "category": "Momos",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T18:26:18.491Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T18:26:18.491Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade49ed477906de1be265f0"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Chicken Tandoori Momos",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792952811/cravyo/food-items/ckrqfa0nef4zx1s9rb0b.jpg",
+  "imagePublicId": "cravyo/food-items/ckrqfa0nef4zx1s9rb0b",
+  "description": "Chicken momos tossed in smoky tandoori spices for a bold, savory bite.",
+  "price": 120,
+  "category": "Momos",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 19,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T18:26:53.066Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T18:26:53.066Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade4b0e477906de1be265f1"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Veg Grilled Sandwich",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792953101/cravyo/food-items/u9vgqe1qmlglzpxexo2e.jpg",
+  "imagePublicId": "cravyo/food-items/u9vgqe1qmlglzpxexo2e",
+  "description": "Grilled bread filled with fresh vegetables, cheese, and a tangy spread.",
+  "price": 129,
+  "category": "Sandwich",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T18:31:42.680Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T18:31:42.680Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade4c22477906de1be265f2"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Paneer Tikka Sandwich",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792953376/cravyo/food-items/kwaqusumejszudwehsio.jpg",
+  "imagePublicId": "cravyo/food-items/kwaqusumejszudwehsio",
+  "description": "Spiced paneer, crunchy vegetables, and mint chutney in a toasted sandwich.",
+  "price": 120,
+  "category": "Sandwich",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T18:36:18.461Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T18:36:18.461Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade4c44477906de1be265f3"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Veg Club Sandwich",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792953411/cravyo/food-items/hpoedbuds011ip7kqubl.jpg",
+  "imagePublicId": "cravyo/food-items/hpoedbuds011ip7kqubl",
+  "description": "Toasted layers of vegetables, cheese, and creamy dressing.",
+  "price": 40,
+  "category": "Sandwich",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T18:36:52.764Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T18:36:52.764Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade4c7d477906de1be265f4"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Chicken Cheese Sandwich",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792953468/cravyo/food-items/ktaho1iowy0j0emszp7z.jpg",
+  "imagePublicId": "cravyo/food-items/ktaho1iowy0j0emszp7z",
+  "description": "Grilled chicken and melted cheese tucked inside crisp toasted bread.",
+  "price": 179,
+  "category": "Sandwich",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T18:37:49.599Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T18:37:49.599Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade4c98477906de1be265f5"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Chicken Mayo Sandwich",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792953495/cravyo/food-items/bwh0xti01fmnzthfg7ui.jpg",
+  "imagePublicId": "cravyo/food-items/bwh0xti01fmnzthfg7ui",
+  "description": "Tender chicken mixed with creamy mayo and served between soft bread slices.",
+  "price": 129,
+  "category": "Sandwich",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 19,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T18:38:16.427Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T18:38:16.427Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6ade4cb5477906de1be265f6"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Grilled Chicken Sandwich",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792953524/cravyo/food-items/v8vi66u8wygcg6feiqgx.jpg",
+  "imagePublicId": "cravyo/food-items/v8vi66u8wygcg6feiqgx",
+  "description": "Seasoned chicken with fresh vegetables and house sauce in toasted bread.\r\n\r\n  \r\n11:58 PM",
+  "price": 130,
+  "category": "Sandwich",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 19,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-25T18:38:45.509Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-25T18:38:45.509Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adee1fe6702394d2e9c9b34"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Veg Alfredo Pasta",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792991740/cravyo/food-items/v0jfiddwnxu0vgha4bww.jpg",
+  "imagePublicId": "cravyo/food-items/v0jfiddwnxu0vgha4bww",
+  "description": "Pasta tossed with fresh vegetables in a creamy Alfredo sauce.",
+  "price": 120,
+  "category": "Pasta",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T05:15:42.393Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T05:15:42.393Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adee22e6702394d2e9c9b35"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Spicy Arrabbiata Pasta",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792991788/cravyo/food-items/wzmlzt8nfbi3xurbxunp.jpg",
+  "imagePublicId": "cravyo/food-items/wzmlzt8nfbi3xurbxunp",
+  "description": "Pasta with vegetables in a tangy tomato and chilli sauce.",
+  "price": 89,
+  "category": "Pasta",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T05:16:30.433Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T05:16:30.433Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adee26c6702394d2e9c9b36"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Creamy Pesto Pasta",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792991850/cravyo/food-items/kgycuvsbqpf7i0c8vqng.jpg",
+  "imagePublicId": "cravyo/food-items/kgycuvsbqpf7i0c8vqng",
+  "description": "Pasta tossed in herby pesto sauce with vegetables and a touch of cream.",
+  "price": 120,
+  "category": "Pasta",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T05:17:32.281Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T05:17:32.281Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adee2956702394d2e9c9b37"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Chicken Arrabbiata Pasta",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792991892/cravyo/food-items/v3mvyelrshtbrqslahrl.jpg",
+  "imagePublicId": "cravyo/food-items/v3mvyelrshtbrqslahrl",
+  "description": "Tender chicken and pasta tossed in a zesty tomato chilli sauce.",
+  "price": 120,
+  "category": "Pasta",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T05:18:13.952Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T05:18:13.952Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adee2bd6702394d2e9c9b38"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Chicken Alfredo Pasta",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792991931/cravyo/food-items/qxavichi6uglltre8pkm.jpg",
+  "imagePublicId": "cravyo/food-items/qxavichi6uglltre8pkm",
+  "description": "Juicy chicken and pasta coated in a rich, creamy Alfredo sauce.",
+  "price": 130,
+  "category": "Pasta",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T05:18:53.463Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T05:18:53.463Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adee61e6702394d2e9c9b39"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Spicy Chicken Pasta",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792992796/cravyo/food-items/nqhhylhrafyccnldgvxs.jpg",
+  "imagePublicId": "cravyo/food-items/nqhhylhrafyccnldgvxs",
+  "description": "Pasta with seasoned chicken in a bold, spicy sauce.",
+  "price": 120,
+  "category": "Pasta",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T05:33:18.514Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T05:33:18.514Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef35914c4386d07273974"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Masala Dosa",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792996184/cravyo/food-items/hf76hdmwwkrq4gxjrhft.jpg",
+  "imagePublicId": "cravyo/food-items/hf76hdmwwkrq4gxjrhft",
+  "description": "Crispy dosa filled with spiced potato masala, served with sambar and chutney.",
+  "price": 80,
+  "category": "Dosa",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:29:45.618Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:29:45.618Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef3a514c4386d07273975"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Mysore Masala Dosa",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792996260/cravyo/food-items/su5ywlbbuhcrgeyr9gql.jpg",
+  "imagePublicId": "cravyo/food-items/su5ywlbbuhcrgeyr9gql",
+  "description": "Golden dosa with spicy Mysore chutney and flavorful potato filling.",
+  "price": 120,
+  "category": "Dosa",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:31:01.867Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:31:01.867Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef3e514c4386d07273976"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Crispy Spring Dosa",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792996323/cravyo/food-items/flpip4jzstbeyqt1xjeg.jpg",
+  "imagePublicId": "cravyo/food-items/flpip4jzstbeyqt1xjeg",
+  "description": "Thin, crisp dosa with a savory vegetable filling and chutney.",
+  "price": 60,
+  "category": "Dosa",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:32:05.530Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:32:05.530Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef40e14c4386d07273977"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "paper dosa",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792996364/cravyo/food-items/imdnkxbqm2emyjhb7lek.jpg",
+  "imagePublicId": "cravyo/food-items/imdnkxbqm2emyjhb7lek",
+  "description": "Soft steamed idlis served with warm sambar and coconut chutney.",
+  "price": 100,
+  "category": "Dosa",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:32:46.031Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:32:46.031Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef55f14c4386d07273978"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Ghee Roast Dosa",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792996702/cravyo/food-items/tn3vocplcsvuokniat4z.jpg",
+  "imagePublicId": "cravyo/food-items/tn3vocplcsvuokniat4z",
+  "description": "Crisp dosa roasted with ghee and served with sambar and chutney.",
+  "price": 30,
+  "category": "Dosa",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:38:23.903Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:38:23.903Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef57b14c4386d07273979"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "South Indian Special Dosa",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792996729/cravyo/food-items/iescdj17cllgwqszi9lo.jpg",
+  "imagePublicId": "cravyo/food-items/iescdj17cllgwqszi9lo",
+  "description": "A hearty dosa served with traditional chutneys and sambar.",
+  "price": 60,
+  "category": "Dosa",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:38:51.457Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:38:51.457Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef62d14c4386d0727397a"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Mini Veg Thali",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792996908/cravyo/food-items/d2zhj61kybwbbdqiehvo.jpg",
+  "imagePublicId": "cravyo/food-items/d2zhj61kybwbbdqiehvo",
+  "description": "Rice, dal, seasonal sabzi, roti, aur chutney ka halka meal.",
+  "price": 130,
+  "category": "Thali",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:41:49.849Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:41:49.849Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef65814c4386d0727397b"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "North Indian Veg Thali",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792996950/cravyo/food-items/fheh8yfm9tldbezxjkp5.jpg",
+  "imagePublicId": "cravyo/food-items/fheh8yfm9tldbezxjkp5",
+  "description": "Roti, rice, dal, mixed curries, aur traditional sides ke saath.",
+  "price": 150,
+  "category": "Thali",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:42:32.273Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:42:32.273Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef69414c4386d0727397c"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Punjabi Veg Thali",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997010/cravyo/food-items/xphegz8rh6ubjgmpim1h.jpg",
+  "imagePublicId": "cravyo/food-items/xphegz8rh6ubjgmpim1h",
+  "description": "Punjabi-style curry, dal, rice, roti, aur refreshing sides.",
+  "price": 200,
+  "category": "Thali",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:43:32.109Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:43:32.109Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef6c114c4386d0727397d"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Special Veg Thali",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997056/cravyo/food-items/kv5gfexrgpkchueh9fap.jpg",
+  "imagePublicId": "cravyo/food-items/kv5gfexrgpkchueh9fap",
+  "description": "Rice, roti, dal, paneer ya seasonal sabzi, aur accompaniments ka hearty platter.",
+  "price": 130,
+  "category": "Thali",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:44:17.760Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:44:17.760Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef6de14c4386d0727397e"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Deluxe Veg Thali",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997084/cravyo/food-items/nfczvqg3k0loszvjqv02.jpg",
+  "imagePublicId": "cravyo/food-items/nfczvqg3k0loszvjqv02",
+  "description": "Assorted curries, dal, rice, breads, aur classic accompaniments ka filling spread.",
+  "price": 220,
+  "category": "Thali",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:44:46.438Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:44:46.438Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef6fc14c4386d0727397f"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Homestyle Veg Thali",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997114/cravyo/food-items/pyadarolzf7i4tnjap40.jpg",
+  "imagePublicId": "cravyo/food-items/pyadarolzf7i4tnjap40",
+  "description": "Ghar-jaisa dal, sabzi, rice, roti, aur simple sides.",
+  "price": 220,
+  "category": "Thali",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:45:16.067Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:45:16.067Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef76d14c4386d07273980"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Steamed Idli & Sambar",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997228/cravyo/food-items/o3f8s1ty8qgfuaonyuvu.jpg",
+  "imagePublicId": "cravyo/food-items/o3f8s1ty8qgfuaonyuvu",
+  "description": "Soft steamed idlis served with sambar and coconut chutney for a light, comforting meal.",
+  "price": 120,
+  "category": "Healthy Food",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:47:09.836Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:47:09.836Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef79d14c4386d07273981"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Fresh Garden Salad",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997276/cravyo/food-items/jaymjccd6ulrnxswr75w.jpg",
+  "imagePublicId": "cravyo/food-items/jaymjccd6ulrnxswr75w",
+  "description": "A colorful mix of fresh vegetables tossed with a light, tangy dressing.",
+  "price": 149,
+  "category": "Healthy Food",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:47:57.874Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:47:57.874Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef7c214c4386d07273982"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Protein Power Salad",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997312/cravyo/food-items/bp09l31eillspewynyxw.jpg",
+  "imagePublicId": "cravyo/food-items/bp09l31eillspewynyxw",
+  "description": "A hearty bowl of fresh vegetables, beans, and chickpeas for a wholesome bite.",
+  "price": 130,
+  "category": "Healthy Food",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:48:34.123Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:48:34.123Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef7fd14c4386d07273983"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "egg omlate",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997371/cravyo/food-items/tvmnhuzku9lqrtv3h5yl.jpg",
+  "imagePublicId": "cravyo/food-items/tvmnhuzku9lqrtv3h5yl",
+  "description": "Comforting oats cooked with vegetables and mild spices.",
+  "price": 40,
+  "category": "Healthy Food",
+  "isVeg": false,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:49:33.416Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:49:33.416Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef81e14c4386d07273984"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Grilled Chicken & Veggies",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997405/cravyo/food-items/j3jlg0tetln9s4jxfmfr.jpg",
+  "imagePublicId": "cravyo/food-items/j3jlg0tetln9s4jxfmfr",
+  "description": "Grilled chicken served with fresh vegetables for a balanced, protein-rich meal.",
+  "price": 121,
+  "category": "Healthy Food",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:50:06.719Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:50:06.719Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef84214c4386d07273985"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Healthy Veg Bowl",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997440/cravyo/food-items/jonkqzravik7lww4l4zl.jpg",
+  "imagePublicId": "cravyo/food-items/jonkqzravik7lww4l4zl",
+  "description": "A nourishing bowl of rice, vegetables, and lentils with a light seasoning.",
+  "price": 120,
+  "category": "Healthy Food",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:50:42.477Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:50:42.477Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef8a314c4386d07273986"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Gulab Jamun",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997538/cravyo/food-items/vjwxlvwao8did8mx0x1s.jpg",
+  "imagePublicId": "cravyo/food-items/vjwxlvwao8did8mx0x1s",
+  "description": "Soft, warm milk dumplings soaked in fragrant sugar syrup.",
+  "price": 90,
+  "category": "Desserts",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:52:19.754Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:52:19.754Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef8c214c4386d07273987"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Rasgulla",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997568/cravyo/food-items/tabbyjxjc0vbujx1cyhv.jpg",
+  "imagePublicId": "cravyo/food-items/tabbyjxjc0vbujx1cyhv",
+  "description": "Soft paneer discs soaked in creamy, cardamom-scented milk.",
+  "price": 80,
+  "category": "Desserts",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:52:50.056Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:52:50.056Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef8ec14c4386d07273988"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Rasmalai",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997610/cravyo/food-items/zrqzxvuulpre5xrrdlgl.jpg",
+  "imagePublicId": "cravyo/food-items/zrqzxvuulpre5xrrdlgl",
+  "description": "soft paneer discs soaked in creamy, cardamom-scented milk.",
+  "price": 120,
+  "category": "Desserts",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:53:32.995Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:53:39.735Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef93f14c4386d07273989"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Red Velvet Cheesecake",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997693/cravyo/food-items/nn5ksukruisxkw5akzvk.jpg",
+  "imagePublicId": "cravyo/food-items/nn5ksukruisxkw5akzvk",
+  "description": "Creamy cheesecake with a red velvet base and a smooth, rich finish.",
+  "price": 50,
+  "category": "Desserts",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:54:55.043Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:54:55.043Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef96114c4386d0727398a"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Blueberry Chocolate Cake",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997728/cravyo/food-items/xz8ofmc6lybx7c2sz0lu.jpg",
+  "imagePublicId": "cravyo/food-items/xz8ofmc6lybx7c2sz0lu",
+  "description": "Moist chocolate cake layered with blueberry cream and a sweet berry topping.",
+  "price": 50,
+  "category": "Desserts",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:55:29.448Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:55:29.448Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adef98914c4386d0727398b"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Kala Jamun",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997767/cravyo/food-items/t3yzvwiaz2f7cxavxvul.jpg",
+  "imagePublicId": "cravyo/food-items/t3yzvwiaz2f7cxavxvul",
+  "description": "Deep-fried milk dumplings with a rich center, served in light sugar syrup.",
+  "price": 59,
+  "category": "Desserts",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:56:09.391Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:56:09.391Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefa3814c4386d0727398c"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Chocolate Truffle Cake",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997942/cravyo/food-items/lkax1mnjw6ymmkiia81d.jpg",
+  "imagePublicId": "cravyo/food-items/lkax1mnjw6ymmkiia81d",
+  "description": "Rich chocolate sponge layered with smooth truffle ganache.",
+  "price": 199,
+  "category": "Cakes",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:59:04.188Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:59:04.188Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefa5914c4386d0727398d"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Black Forest Cake",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792997976/cravyo/food-items/mszetmjqolumxyamqcyh.jpg",
+  "imagePublicId": "cravyo/food-items/mszetmjqolumxyamqcyh",
+  "description": "Chocolate sponge with whipped cream, cherries, and chocolate shavings.",
+  "price": 250,
+  "category": "Cakes",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T06:59:37.633Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T06:59:37.633Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefa8614c4386d0727398e"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Chocolate Loaf Cake",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998020/cravyo/food-items/acqrz1adgsegtyhuwqlx.jpg",
+  "imagePublicId": "cravyo/food-items/acqrz1adgsegtyhuwqlx",
+  "description": "Soft, moist chocolate loaf with a deep cocoa flavor.",
+  "price": 169,
+  "category": "Cakes",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:00:22.459Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:00:22.459Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefab214c4386d0727398f"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Mango Mousse Cake",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998065/cravyo/food-items/qpczxjyh2aae7mvhlgpi.jpg",
+  "imagePublicId": "cravyo/food-items/qpczxjyh2aae7mvhlgpi",
+  "description": "Light, creamy mango mousse on a soft cake base.",
+  "price": 250,
+  "category": "Cakes",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:01:06.811Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:01:06.811Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefacf14c4386d07273990"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Fruit & Nut Tea Cake",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998093/cravyo/food-items/gufowslyahb1fqzkvaox.jpg",
+  "imagePublicId": "cravyo/food-items/gufowslyahb1fqzkvaox",
+  "description": "A tender loaf cake filled with dried fruits and crunchy nuts.",
+  "price": 120,
+  "category": "Cakes",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:01:35.250Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:01:35.250Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefae914c4386d07273991"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Chocolate Fudge Cake",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998120/cravyo/food-items/eltpegncn3qondlnopnq.jpg",
+  "imagePublicId": "cravyo/food-items/eltpegncn3qondlnopnq",
+  "description": "Moist chocolate cake topped with rich fudge and creamy frosting.",
+  "price": 120,
+  "category": "Cakes",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:02:01.650Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:02:01.650Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefb3814c4386d07273992"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Strawberry Ice Cream",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998228/cravyo/food-items/ahetaoe1mix2ld4icpnj.jpg",
+  "imagePublicId": "cravyo/food-items/ahetaoe1mix2ld4icpnj",
+  "description": "Smooth strawberry ice cream with a sweet, fruity flavor.",
+  "price": 69,
+  "category": "Ice Cream",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:03:20.502Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:03:49.842Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefb7d14c4386d07273993"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Mango Kulfi",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998268/cravyo/food-items/kuvlbc9harap5recesqi.jpg",
+  "imagePublicId": "cravyo/food-items/kuvlbc9harap5recesqi",
+  "description": "Creamy mango kulfi on a stick, made with a rich, traditional taste.",
+  "price": 120,
+  "category": "Ice Cream",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 14,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:04:29.981Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:04:29.981Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefba114c4386d07273994"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Vanilla Strawberry Scoop",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998303/cravyo/food-items/nox2v1oodaaxonqfk6hn.jpg",
+  "imagePublicId": "cravyo/food-items/nox2v1oodaaxonqfk6hn",
+  "description": "A scoop each of classic vanilla and strawberry ice cream.",
+  "price": 60,
+  "category": "Ice Cream",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:05:05.087Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:05:05.087Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefbda14c4386d07273995"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Pistachio Kulfi",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998361/cravyo/food-items/fns2wieeuinm9v9bhiq7.jpg",
+  "imagePublicId": "cravyo/food-items/fns2wieeuinm9v9bhiq7",
+  "description": "Traditional kulfi with a creamy texture and pistachio flavor.",
+  "price": 30,
+  "category": "Ice Cream",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:06:02.859Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:06:02.859Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefbfd14c4386d07273996"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Pistachio Ice Cream",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998396/cravyo/food-items/bonadasmtvh3isn9sbma.jpg",
+  "imagePublicId": "cravyo/food-items/bonadasmtvh3isn9sbma",
+  "description": "Rich, nutty pistachio ice cream served in a bowl.",
+  "price": 50,
+  "category": "Ice Cream",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:06:37.919Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:06:37.919Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefc1a14c4386d07273997"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Butterscotch Sundae",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998425/cravyo/food-items/mdiymofmtknfh2rn19yw.jpg",
+  "imagePublicId": "cravyo/food-items/mdiymofmtknfh2rn19yw",
+  "description": "Creamy butterscotch ice cream topped with a sweet sauce and crunchy bits.",
+  "price": 60,
+  "category": "Ice Cream",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:07:06.794Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:07:06.794Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefda714c4386d07273998"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Packaged Drinking Water",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998821/cravyo/food-items/esriqshw5rjmk92mm6z5.jpg",
+  "imagePublicId": "cravyo/food-items/esriqshw5rjmk92mm6z5",
+  "description": "Chilled bottled water to keep you refreshed.",
+  "price": 20,
+  "category": "Beverages",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 0,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:13:43.220Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:13:43.220Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefdd114c4386d07273999"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "lassi",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998864/cravyo/food-items/yutcunc9lmxtqhgpviua.webp",
+  "imagePublicId": "cravyo/food-items/yutcunc9lmxtqhgpviua",
+  "description": "cold milk lassi",
+  "price": 40,
+  "category": "Beverages",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 0,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:14:25.591Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:14:25.591Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefdf414c4386d0727399a"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "coke",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998899/cravyo/food-items/zaddxx9oldnmomp53hsg.jpg",
+  "imagePublicId": "cravyo/food-items/zaddxx9oldnmomp53hsg",
+  "description": "cold coke can",
+  "price": 40,
+  "category": "Beverages",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 0,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:15:00.729Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:15:00.729Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefe4d14c4386d0727399b"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Strawberry Milkshake",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792998987/cravyo/food-items/eiq4ext5spxavcazvnye.jpg",
+  "imagePublicId": "cravyo/food-items/eiq4ext5spxavcazvnye",
+  "description": "A thick, creamy shake blended with sweet strawberries.",
+  "price": 50,
+  "category": "Beverages",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:16:29.234Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:16:29.234Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefe6d14c4386d0727399c"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Mango Juice",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792999019/cravyo/food-items/trt7yxhhdk9obopr9cgj.jpg",
+  "imagePublicId": "cravyo/food-items/trt7yxhhdk9obopr9cgj",
+  "description": "Refreshing mango drink with a naturally sweet, fruity taste.",
+  "price": 50,
+  "category": "Beverages",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 10,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:17:01.015Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:17:01.015Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefe8814c4386d0727399d"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Fanta Orange",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792999046/cravyo/food-items/i5bovgckfeugunneqb6g.jpg",
+  "imagePublicId": "cravyo/food-items/i5bovgckfeugunneqb6g",
+  "description": "fanta",
+  "price": 50,
+  "category": "Beverages",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 0,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:17:28.143Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:17:28.143Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefea114c4386d0727399e"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Sprite",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792999071/cravyo/food-items/fhdr3olmry8jmbv8npe5.jpg",
+  "imagePublicId": "cravyo/food-items/fhdr3olmry8jmbv8npe5",
+  "description": "Sprite",
+  "price": 40,
+  "category": "Beverages",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 0,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:17:53.232Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:17:53.232Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adefef214c4386d0727399f"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Berry Yogurt Breakfast Bowl",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792999151/cravyo/food-items/d98noxshdc8h4bmdlhvw.jpg",
+  "imagePublicId": "cravyo/food-items/d98noxshdc8h4bmdlhvw",
+  "description": "Creamy yogurt topped with fresh berries, banana, and crunchy granola.",
+  "price": 240,
+  "category": "Breakfast",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:19:14.216Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:19:14.216Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adeff1914c4386d072739a0"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Fresh Veg Poha",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792999192/cravyo/food-items/v2ajvyryerhbaczcemwi.jpg",
+  "imagePublicId": "cravyo/food-items/v2ajvyryerhbaczcemwi",
+  "description": "Light flattened rice cooked with vegetables, herbs, and a squeeze of lemon.",
+  "price": 40,
+  "category": "Breakfast",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:19:53.752Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:19:53.752Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adf002714c4386d072739a1"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Masala Poha",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792999461/cravyo/food-items/kmh75d4xqyomizmr1mxr.jpg",
+  "imagePublicId": "cravyo/food-items/kmh75d4xqyomizmr1mxr",
+  "description": "A savory breakfast bowl of spiced poha topped with herbs and lemon.",
+  "price": 60,
+  "category": "Breakfast",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:24:23.780Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:24:23.780Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adf005014c4386d072739a2"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Idli Sambar Breakfast",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792999502/cravyo/food-items/ueq5qnb1btq3s7hpmbcz.jpg",
+  "imagePublicId": "cravyo/food-items/ueq5qnb1btq3s7hpmbcz",
+  "description": "Soft steamed idlis served with warm sambar and chutney.",
+  "price": 50,
+  "category": "Breakfast",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 20,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:25:04.533Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:25:04.533Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adf007014c4386d072739a3"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Aloo Paratha Combo",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792999534/cravyo/food-items/um81xbsifpoekwgcvger.jpg",
+  "imagePublicId": "cravyo/food-items/um81xbsifpoekwgcvger",
+  "description": "Stuffed paratha served with yogurt, pickle, and a side of curry.",
+  "price": 50,
+  "category": "Breakfast",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:25:36.127Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:25:36.127Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adf009114c4386d072739a4"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Fruit & Oats Bowl",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792999567/cravyo/food-items/ezxoyhpshqo2u7el7kzy.jpg",
+  "imagePublicId": "cravyo/food-items/ezxoyhpshqo2u7el7kzy",
+  "description": "Oats topped with fresh fruit and a touch of honey for a filling start to the day.",
+  "price": 60,
+  "category": "Breakfast",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:26:09.392Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:26:09.392Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adf01c514c4386d072739a5"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Pav Bhaji",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792999875/cravyo/food-items/beuivmysddk1vyifknvz.jpg",
+  "imagePublicId": "cravyo/food-items/beuivmysddk1vyifknvz",
+  "description": "Spiced mashed vegetable curry served with buttery toasted pav.",
+  "price": 60,
+  "category": "Fast Food",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:31:17.175Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:31:17.175Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adf01ff14c4386d072739a6"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "Veg Fried Rice",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792999933/cravyo/food-items/jgvkanzunlz7zqnuepdc.jpg",
+  "imagePublicId": "cravyo/food-items/jgvkanzunlz7zqnuepdc",
+  "description": "Flavorful rice tossed with vegetables and savory sauces.",
+  "price": 60,
+  "category": "Fast Food",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:32:15.165Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:32:15.165Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adf022b14c4386d072739a7"
+  },
+  "shop": {
+    "$oid": "6adcb31ac8ee1e8bef1788e0"
+  },
+  "name": "French Fries",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1792999977/cravyo/food-items/hgyus5ayo0fmcb1h0gxm.jpg",
+  "imagePublicId": "cravyo/food-items/hgyus5ayo0fmcb1h0gxm",
+  "description": "Crispy golden potato fries served with ketchup.",
+  "price": 50,
+  "category": "Fast Food",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:32:59.359Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:32:59.359Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adf029414c4386d072739a8"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Pani Puri",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1793000083/cravyo/food-items/ttqrueqjidnins5xxo8u.jpg",
+  "imagePublicId": "cravyo/food-items/ttqrueqjidnins5xxo8u",
+  "description": "Crisp puris served with tangy flavored water and potato filling.",
+  "price": 40,
+  "category": "Street Food",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:34:44.795Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:34:44.795Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adf030e14c4386d072739a9"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Vada Pav",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1793000204/cravyo/food-items/scbs0nwsbo4vvfsbtq7q.jpg",
+  "imagePublicId": "cravyo/food-items/scbs0nwsbo4vvfsbtq7q",
+  "description": "Spiced potato fritter tucked into a soft pav with chutneys.",
+  "price": 40,
+  "category": "Street Food",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:36:46.255Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:36:46.255Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6adf033214c4386d072739aa"
+  },
+  "shop": {
+    "$oid": "6ab4074072f8b75716692c77"
+  },
+  "name": "Chow Mein with Manchurian",
+  "image": "https://res.cloudinary.com/dbywnbex0/image/upload/v1793000241/cravyo/food-items/myocnrjwro4jmovze57b.jpg",
+  "imagePublicId": "cravyo/food-items/myocnrjwro4jmovze57b",
+  "description": "Stir-fried noodles served with flavorful Manchurian bites.",
+  "price": 60,
+  "category": "Street Food",
+  "isVeg": true,
+  "isAvailable": true,
+  "preparationTime": 15,
+  "discount": 0,
+  "rating": 0,
+  "totalReviews": 0,
+  "totalOrders": 0,
+  "reviews": [],
+  "createdAt": {
+    "$date": "2026-10-26T07:37:22.816Z"
+  },
+  "updatedAt": {
+    "$date": "2026-10-26T07:37:22.816Z"
+  },
+  "__v": 0
+}]
