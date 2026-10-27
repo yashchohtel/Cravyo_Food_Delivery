@@ -590,3 +590,146 @@
     line-height: 1.5;
 }
 
+.restaurant-dashboard-menu-link {
+    min-height: 4.6rem;
+    margin: auto 2rem 2rem;
+}
+
+.restaurant-dashboard-no-orders,
+.restaurant-dashboard-loading,
+.restaurant-dashboard-empty {
+    gap: 1rem;
+    min-height: 18rem;
+    padding: 2.4rem;
+    font-size: 1.3rem;
+    line-height: 1.6;
+}
+
+.restaurant-dashboard-empty h1 {
+    font-size: 2rem;
+    line-height: 1.3;
+}
+
+@media (max-width: 51.99rem) {
+    .restaurant-dashboard-hero {
+        gap: 1.4rem;
+        padding: 1.6rem;
+    }
+
+    .restaurant-dashboard-hero h1 {
+        font-size: 2.5rem;
+        white-space: normal;
+    }
+
+    .restaurant-dashboard-hero-copy > p {
+        font-size: 1.3rem;
+    }
+
+    .restaurant-dashboard-stats {
+        gap: 1rem;
+        margin-top: 1.4rem;
+    }
+
+    .restaurant-dashboard-stat-card {
+        padding: 1.3rem;
+    }
+
+    .restaurant-dashboard-stat-card strong {
+        font-size: 2rem;
+    }
+
+    .restaurant-dashboard-panel-heading {
+        padding: 1.5rem 1.6rem 1.3rem;
+    }
+
+    .restaurant-dashboard-order {
+        padding: 1.3rem 1.6rem;
+    }
+
+    .restaurant-dashboard-menu-summary {
+        margin-right: 1.6rem;
+        margin-left: 1.6rem;
+    }
+
+    .restaurant-dashboard-menu-link {
+        margin-right: 1.6rem;
+        margin-left: 1.6rem;
+    }
+}
+
+@media (max-width: 25rem) {
+    .restaurant-dashboard-hero {
+        gap: 1rem;
+        padding: 1.2rem;
+    }
+
+    .restaurant-dashboard-hero h1 {
+        font-size: 2.1rem;
+    }
+
+    .restaurant-dashboard-status {
+        font-size: 1.1rem;
+    }
+
+    .restaurant-dashboard-hero-copy > p {
+        font-size: 1.2rem;
+    }
+
+    .restaurant-dashboard-meta {
+        font-size: 1.1rem;
+    }
+
+    .restaurant-dashboard-stat-card {
+        gap: .8rem;
+        padding: 1rem;
+    }
+
+    .restaurant-dashboard-stat-card > span {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.7rem;
+    }
+
+    .restaurant-dashboard-stat-card small {
+        font-size: 1.05rem;
+    }
+
+    .restaurant-dashboard-stat-card strong {
+        font-size: 1.7rem;
+    }
+
+    .restaurant-dashboard-panel-heading h2 {
+        font-size: 1.7rem;
+    }
+
+    .restaurant-dashboard-panel-heading p {
+        font-size: 1.15rem;
+    }
+
+    .restaurant-dashboard-order {
+        grid-template-columns: 3.6rem minmax(0, 1fr) auto;
+        gap: .8rem;
+        padding: 1.2rem 1.1rem;
+    }
+
+    .restaurant-dashboard-order-icon {
+        width: 3.6rem;
+        height: 3.6rem;
+    }
+
+    .restaurant-dashboard-order > div strong {
+        font-size: 1.2rem;
+    }
+
+    .restaurant-dashboard-order > div span {
+        font-size: 1.05rem;
+    }
+
+    .restaurant-dashboard-order-total {
+        font-size: 1.15rem;
+    }
+
+    .restaurant-dashboard-order-status {
+        font-size: .95rem;
+    }
+}
